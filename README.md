@@ -1,1 +1,22 @@
-Somos Proyecta, una empresa enfocada en acompañar a los jóvenes en su desarrollo académico y profesional. Nuestro objetivo es brindar orientación y herramientas que les permitan tomar decisiones informadas sobre su futuro, especialmente en la elección de especialidades y carreras. Proyecta es una página web orientadora y gratuita, pensada para estudiantes que se encuentran en proceso de elegir su especialidad en el colegio o su futura carrera, facilitando la toma de decisiones mediante información útil y recursos que se adapten a los intereses y objetivos de cada persona.
+Proyecta
+Descripción del Problema
+Hoy en día no existen suficientes herramientas que ayuden a los chicos a decidir qué estudiar. Esto hace que muchos elijan una carrera o una especialidad del colegio sin estar seguros, solo "por elegir", sin saber si realmente les va a gustar.
+
+Propuesta de Solución
+Creamos una página web donde el usuario ingresa su ciudad, provincia y colegio para realizar un test vocacional completo. Al finalizar, el sistema le muestra qué carreras o especialidades encajan mejor con su perfil, brindándole herramientas para que decida con confianza.
+
+Público Objetivo
+Chicos de 14 y 15 años que deben elegir su especialidad en la escuela.
+
+Jóvenes de 17 y 18 años que están por empezar la facultad.
+
+Stack Tecnológico
+Software: HTML.
+
+Estructura del Repositorio
+/src: Archivos de la página web.
+
+/docs: Información sobre el test y documentos del proyecto.
+
+/assets: Fotos, logos y diseños.
+
