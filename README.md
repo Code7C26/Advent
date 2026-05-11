@@ -1,8 +1,8 @@
-#Proyecta
-##Descripción del Problema
+# Proyecta
+## Descripción del Problema
 Hoy en día no existen suficientes herramientas que ayuden a los chicos a decidir qué estudiar. Esto hace que muchos elijan una carrera o una especialidad del colegio sin estar seguros, solo "por elegir", sin saber si realmente les va a gustar.
 
-Propuesta de Solución
+## Propuesta de Solución
 Creamos una página web donde el usuario ingresa su ciudad, provincia y colegio para realizar un test vocacional completo. Al finalizar, el sistema le muestra qué carreras o especialidades encajan mejor con su perfil, brindándole herramientas para que decida con confianza.
 
 Público Objetivo
