@@ -13,7 +13,7 @@ Jóvenes de 17 y 18 años que están por empezar la facultad.
 Stack Tecnológico
 Software: HTML.
 
-Estructura del Repositorio
+# Estructura del Repositorio
 /src: Archivos de la página web.
 
 /docs: Información sobre el test y documentos del proyecto.
