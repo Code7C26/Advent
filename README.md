@@ -10,10 +10,10 @@ Chicos de 14 y 15 años que deben elegir su especialidad en la escuela.
 
 Jóvenes de 17 y 18 años que están por empezar la facultad.
 
-# Stack Tecnológico
+### Stack Tecnológico
 Software: HTML.
 
-## Estructura del Repositorio
+### Estructura del Repositorio
 /src: Archivos de la página web.
 
 /docs: Información sobre el test y documentos del proyecto.
