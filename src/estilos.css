@@ -1,0 +1,605 @@
+/* ==============================
+   CONFIGURACIÓN GENERAL
+   ============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #1f2d22;
+
+    background-color: #f3f5ef;
+}
+
+
+/* ==============================
+   ENCABEZADO / MENÚ
+   ============================== */
+
+header {
+    width: 100%;
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 5%;
+
+    background-color: #f3f5ef;
+
+    border-bottom: 1px solid #d5d9d0;
+}
+
+
+/* LOGO */
+
+.logo img {
+    width: 65px;
+    height: auto;
+}
+
+
+/* MENÚ */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+
+    color: #1f2d22;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #536c56;
+}
+
+
+/* ==============================
+   PORTADA
+   ============================== */
+
+.portada {
+    min-height: 520px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+
+/* TU */
+
+.portada h1 {
+    margin: 0;
+
+    font-size: 60px;
+    font-weight: normal;
+
+    color: #1f2d22;
+}
+
+
+/* PORTAL ESTUDIANTIL */
+
+.portada h2 {
+    margin: 10px 0;
+
+    font-size: 55px;
+    line-height: 0.95;
+
+    letter-spacing: 3px;
+
+    color: #29402d;
+}
+
+
+/* TEXTO */
+
+.portada p {
+    max-width: 650px;
+
+    font-size: 18px;
+    line-height: 1.5;
+
+    color: #465047;
+}
+
+
+/* ==============================
+   ESPECIALIDADES
+   ============================== */
+
+.especialidades {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 50px 0 80px;
+}
+
+
+/* TÍTULO */
+
+.especialidades > h2 {
+    display: inline-block;
+
+    margin-bottom: 35px;
+
+    font-size: 40px;
+
+    border-bottom: 3px solid #29402d;
+
+    padding-bottom: 5px;
+}
+
+
+/* CONTENEDOR */
+
+.contenedor-especialidades {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* TARJETA */
+
+.especialidad {
+    background-color: white;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    border: 1px solid #dce1d8;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    padding-bottom: 15px;
+}
+
+
+/* IMÁGENES */
+
+.imagen-construcciones,
+.imagen-quimica,
+.imagen-informatica {
+
+    height: 190px;
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Por ahora usamos colores.
+   Después vamos a poner las fotos reales. */
+
+.imagen-construcciones {
+    background-color: #d8c8a9;
+}
+
+.imagen-quimica {
+    background-color: #d6e4dc;
+}
+
+.imagen-informatica {
+    background-color: #27313a;
+}
+
+
+/* TEXTO DE LAS TARJETAS */
+
+.especialidad h3 {
+    margin: 18px 18px 8px;
+
+    font-size: 18px;
+}
+
+.especialidad p {
+    margin: 0 18px 10px;
+
+    line-height: 1.4;
+
+    font-size: 14px;
+}
+
+.especialidad a {
+    display: block;
+
+    margin-left: 18px;
+
+    font-size: 25px;
+
+    color: #29402d;
+}
+
+
+/* ==============================
+   SECCIONES GENERALES
+   ============================== */
+
+.seccion {
+
+    width: 90%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 70px 0;
+
+    border-top: 1px solid #d5d9d0;
+}
+
+
+/* TÍTULOS */
+
+.seccion > h2 {
+
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    font-size: 42px;
+
+    border-bottom: 3px solid #29402d;
+
+    padding-bottom: 5px;
+}
+
+
+/* TEXTOS */
+
+.seccion p {
+
+    max-width: 750px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   ACTIVIDADES EXTRA
+   ============================== */
+
+.seccion ul {
+
+    list-style: none;
+
+    padding: 0;
+
+    max-width: 700px;
+}
+
+.seccion li {
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid #cbd1c7;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   VIANDAS
+   ============================== */
+
+.lista {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.lista p {
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    border: 1px solid #dce1d8;
+}
+
+
+/* ==============================
+   LIBRERÍA
+   ============================== */
+
+.libreria-info {
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    margin-bottom: 30px;
+}
+
+
+.persona {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.foto-persona {
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background-color: #777;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+
+.productos {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.producto {
+
+    min-height: 150px;
+
+    background-color: white;
+
+    border-radius: 8px;
+
+    border: 1px solid #dce1d8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   UNIVERSIDADES
+   ============================== */
+
+.universidades {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+.universidades article {
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    border: 1px solid #dce1d8;
+}
+
+
+.boton {
+
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    background-color: #29402d;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 4px;
+}
+
+
+/* ==============================
+   BIBLIOTECA
+   ============================== */
+
+.biblioteca-personas {
+
+    display: flex;
+
+    gap: 50px;
+
+    margin-bottom: 40px;
+}
+
+
+.biblioteca-personas > div {
+
+    text-align: center;
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+}
+
+
+th,
+td {
+
+    border: 1px solid #bfc7bc;
+
+    padding: 15px;
+
+    text-align: center;
+}
+
+
+th {
+
+    background-color: #dfe5dc;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   PIE DE PÁGINA
+   ============================== */
+
+footer {
+
+    margin-top: 50px;
+
+    padding: 40px 5%;
+
+    background-color: #29402d;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+/* ==============================
+   CELULAR
+   ============================== */
+
+@media (max-width: 800px) {
+
+    header {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+
+    nav {
+
+        justify-content: center;
+
+    }
+
+
+    .portada h2 {
+
+        font-size: 40px;
+
+    }
+
+
+    .contenedor-especialidades {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .lista {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .productos {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .universidades {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .biblioteca-personas {
+
+        flex-direction: column;
+
+    }
+
+
+    table {
+
+        font-size: 12px;
+
+    }
+
+
+    th,
+    td {
+
+        padding: 8px;
+
+    }
+
+}
