@@ -13,357 +13,1251 @@
 
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
     <header>
 
         <div class="logo">
-            <img src="Gemini_Generated_Image_s6f3nzs6f3nzs6f3.png" alt="Logo Advent">
+            <img src="Gemini_Generated_Image_s6f3nzs6f3nzs6f3.png"
+                 alt="Logo Advent">
         </div>
 
         <nav>
-            <a href="#nosotros">NOSOTRAS</a>
-            <a href="#actividades">ACTIVIDADES EXTRAS</a>
-            <a href="#viandas">VIANDAS</a>
-            <a href="#noticias">NOTICIAS</a>
-            <a href="#libreria">LIBRERÍA</a>
-            <a href="#universidades">UNIVERSIDADES</a>
-            <a href="#biblioteca">BIBLIOTECA</a>
+
+            <a href="#" data-seccion="inicio">ESPECIALIDADES</a>
+
+            <a href="#" data-seccion="nosotros">NOSOTRAS</a>
+
+            <a href="#" data-seccion="actividades">ACTIVIDADES EXTRAS</a>
+
+            <a href="#" data-seccion="viandas">VIANDAS</a>
+
+            <a href="#" data-seccion="noticias">NOTICIAS</a>
+
+            <a href="#" data-seccion="libreria">LIBRERÍA</a>
+            
+            <a href="#" data-seccion="biblioteca">BIBLIOTECA</a>
+
+            <a href="#" data-seccion="universidades">UNIVERSIDADES</a>
+
+
         </nav>
 
     </header>
 
 
-    <!-- PORTADA -->
-    <main>
+    <!-- =========================
+         INICIO
+    ========================== -->
 
-        <section class="portada">
+    <section id="inicio" class="seccion-pagina activa">
 
-            <h1>TU</h1>
+        <main class="inicio">
 
-            <h2>PORTAL<br>ESTUDIANTIL ↗</h2>
+            <h1>Tu portal estudiantil</h1>
 
-            <p>
-                Un espacio creado por y para estudiantes,
-                para ayudarte a elegir tu especialidad.
+            <p class="bajada">
+                ¿Te gustaría saber sobre las especialidades
+                a nivel secundario?, acá te contamos!
             </p>
 
-        </section>
+
+            <!-- TARJETAS -->
+
+            <div class="especialidades">
+
+                <button
+                    class="tarjeta informatica"
+                    data-seccion="informatica">
+
+                    <span>Informática</span>
+
+                </button>
 
 
-        <!-- ESPECIALIDADES -->
-        <section class="especialidades">
+                <button
+                    class="tarjeta quimica"
+                    data-seccion="quimica">
 
-            <h2>ESPECIALIDADES</h2>
+                    <span>Química</span>
 
-            <div class="contenedor-especialidades">
+                </button>
 
-                <article class="especialidad">
-                    <div class="imagen-construcciones">
-                    </div>
 
-                    <h3>CONSTRUCCIONES</h3>
+                <button
+                    class="tarjeta construcciones"
+                    data-seccion="construcciones">
+
+                    <span>Construcciones</span>
+
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         NOSOTRAS
+    ========================== -->
+
+    <section id="nosotros" class="seccion-pagina">
+
+        <main class="pagina">
+
+            <div class="mini-menu">
+
+                <button data-seccion="inicio">
+                    INICIO
+                </button>
+
+                <button class="seleccionado">
+                    NOSOTRAS
+                </button>
+
+            </div>
+
+
+            <h1 class="titulo-pagina">
+                Nosotras
+            </h1>
+
+
+            <div class="linea"></div>
+
+
+            <div class="nosotras-contenido">
+
+                <div class="nosotras-texto">
 
                     <p>
-                        Todo lo necesario para hacer realidad
-                        una edificación: desde dibujar los planos
-                        hasta dirigir el trabajo en la obra.
+                        Sabemos que elegir una orientación
+                        escolar en 3.º año puede generar
+                        muchas dudas e incertidumbre.
                     </p>
 
-                    <a href="construcciones.html">↗</a>
+                    <p>
+                        Por eso creamos Advent: un espacio
+                        diseñado por y para estudiantes,
+                        enfocado en acompañarte a descubrir
+                        qué especialidad conecta realmente
+                        con vos.
+                    </p>
+
+                    <p>
+                        Te brindamos herramientas sencillas,
+                        información clara sobre los colegios
+                        de Alta Gracia y un test vocacional
+                        pensado para ayudarte a tomar la mejor
+                        decisión para tu futuro.
+                    </p>
+
+                </div>
+
+
+                <div class="imagen-nosotras">
+                    <!-- ACÁ DESPUÉS VAMOS A PONER LA FOTO -->
+                </div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         ACTIVIDADES EXTRAS
+    ========================== -->
+
+    <section id="actividades" class="seccion-pagina">
+
+        <main class="pagina">
+
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Actividades extras
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <div class="tarjetas-contenido">
+
+                <article>
+                    <h2>Olimpiadas Matemática</h2>
+                    <p>
+                        Información sobre las olimpiadas
+                        de matemática.
+                    </p>
                 </article>
 
 
-                <article class="especialidad">
-                    <div class="imagen-quimica">
-                    </div>
-
-                    <h3>QUÍMICA</h3>
-
+                <article>
+                    <h2>Olimpiadas Química</h2>
                     <p>
-                        Aprender cómo están hechas las cosas
-                        y cómo combinarlas en un laboratorio
-                        para crear nuevos productos.
+                        Información sobre las olimpiadas
+                        de química.
                     </p>
-
-                    <a href="quimica.html">↗</a>
                 </article>
 
 
-                <article class="especialidad">
-                    <div class="imagen-informatica">
-                    </div>
-
-                    <h3>INFORMÁTICA</h3>
-
+                <article>
+                    <h2>Olimpiadas Informática</h2>
                     <p>
-                        Entender cómo funcionan las computadoras,
-                        armar equipos, conectar redes y solucionar
-                        fallas.
+                        Información sobre las olimpiadas
+                        de informática.
                     </p>
+                </article>
 
-                    <a href="informatica.html">↗</a>
+
+                <article>
+                    <h2>Copa Robótica</h2>
+                    <p>
+                        Información sobre la Copa Robótica.
+                    </p>
                 </article>
 
             </div>
 
-        </section>
+        </main>
+
+    </section>
 
 
-        <!-- NOSOTROS -->
-        <section id="nosotros" class="seccion">
+    <!-- =========================
+         VIANDAS
+    ========================== -->
 
-            <h2>NOSOTROS</h2>
+    <section id="viandas" class="seccion-pagina">
 
-            <p>
-                Sabemos que elegir una orientación escolar
-                en 3.° año puede generar muchas dudas e incertidumbre.
-            </p>
+        <main class="pagina">
 
-            <p>
-                Por eso creamos Advent: un espacio diseñado
-                por y para estudiantes, enfocado en acompañarte
-                a descubrir qué especialidad conecta realmente
-                con vos.
-            </p>
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
 
-        </section>
+            <h1 class="titulo-pagina">
+                Viandas
+            </h1>
 
-
-        <!-- ACTIVIDADES -->
-        <section id="actividades" class="seccion">
-
-            <h2>ACTIVIDADES EXTRA</h2>
-
-            <ul>
-                <li>OLIMPIADAS MATEMÁTICA</li>
-                <li>OLIMPIADAS QUÍMICA</li>
-                <li>OLIMPIADAS INFORMÁTICA</li>
-                <li>COPA ROBÓTICA</li>
-            </ul>
-
-        </section>
+            <div class="linea"></div>
 
 
-        <!-- VIANDAS -->
-        <section id="viandas" class="seccion">
+            <div class="tarjetas-contenido">
 
-            <h2>VIANDAS</h2>
+                <article>
+                    <h2>Natural Chef</h2>
+                    <p>
+                        Información sobre viandas.
+                    </p>
+                </article>
 
-            <div class="lista">
+                <article>
+                    <h2>Delirios</h2>
+                    <p>
+                        Información sobre viandas.
+                    </p>
+                </article>
 
-                <p><strong>Natural Chef</strong><br>
-                    53678298765434 | Hace delivery
-                </p>
+                <article>
+                    <h2>El lugar de enfrente</h2>
+                    <p>
+                        Información sobre viandas.
+                    </p>
+                </article>
 
-                <p><strong>Delirios</strong><br>
-                    53678298765434 | Hace delivery
-                </p>
+                <article>
+                    <h2>Dulce Catalina</h2>
+                    <p>
+                        Información sobre viandas.
+                    </p>
+                </article>
 
-                <p><strong>El lugar de enfrente</strong><br>
-                    53678298765434 | No hace delivery
-                </p>
-
-                <p><strong>Dulce Catalina</strong><br>
-                    53678298765434 | No hace delivery
-                </p>
+                <article>
+                    <h2>Axion</h2>
+                    <p>
+                        Información sobre viandas.
+                    </p>
+                </article>
 
             </div>
 
-        </section>
+        </main>
+
+    </section>
 
 
-        <!-- LIBRERÍA -->
-        <section id="libreria" class="seccion">
+    <!-- =========================
+         NOTICIAS
+    ========================== -->
 
-            <h2>LIBRERÍA</h2>
+    <section id="noticias" class="seccion-pagina">
 
-            <div class="libreria-info">
+        <main class="pagina">
 
-                <div class="persona">
-                    <div class="foto-persona">
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Noticias
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <div class="tarjetas-contenido">
+
+                <article>
+
+                    <h2>Noticias</h2>
+
+                    <p>
+                        En este espacio se publicarán
+                        las noticias y novedades para
+                        estudiantes.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </main>
+
+    </section>
+
+<!-- =========================LIBRERÍA========================= -->
+ <section id="libreria" class="seccion-pagina">
+    <main class="libreria-pagina">
+
+        <!-- MENÚ -->
+
+        <div class="mini-menu">
+
+            <button data-seccion="inicio">
+                INICIO
+            </button>
+
+            <button class="seleccionado">
+                LIBRERÍA
+            </button>
+
+        </div>
+
+
+        <!-- TÍTULO -->
+
+        <h1 class="titulo-libreria">
+            Librería
+        </h1>
+
+        <div class="linea-libreria"></div>
+
+
+        <!-- =========================
+             CONTENIDO
+        ========================== -->
+
+        <div class="libreria-contenido">
+
+
+            <!-- =========================
+                 INFORMACIÓN DE LA LIBRERÍA
+            ========================== -->
+
+            <div class="datos-libreria">
+
+
+                <!-- FOTO DE LORENZO -->
+
+                <img
+                    src="img/LIB1.jpg"
+                    alt="Lorenzo"
+                    class="foto-libreria"
+                >
+
+
+                <div class="info-persona">
+
+                    <p>
+                        <strong>
+                            NOMBRE Y APELLIDO:
+                        </strong>
                         Lorenzo
-                    </div>
+                    </p>
 
-                    <div>
-                        <h3>Salvador Lorenzo</h3>
+                    <p>
+                        <strong>
+                            TELEFONO:
+                        </strong>
+                        3547 570898
+                    </p>
 
-                        <p>
-                            Librería Amedotti Piédrola
-                        </p>
+                    <p>
+                        <strong>
+                            ALIAS:
+                        </strong>
+                        salvamelo
+                    </p>
 
-                        <p>
-                            Teléfono: 3547 570898
-                        </p>
 
-                        <p>
-                            Alias: salvamelo
-                        </p>
-                    </div>
+                    <p class="descripcion-titulo">
+                        <strong>
+                            DESCRIPCIÓN:
+                        </strong>
+                    </p>
+
+                    <p class="descripcion-libreria">
+                        no solo podes conseguir estos
+                        productos, sino que además realizo
+                        fotocopias blanco y negro, a color,
+                        stickers, etc.
+                    </p>
+
                 </div>
-
-
-                <p>
-                    Además de los productos escolares,
-                    realiza fotocopias blanco y negro,
-                    a color, stickers y otros servicios.
-                </p>
 
             </div>
 
 
-            <div class="productos">
+            <!-- =========================
+                 PRODUCTOS
+            ========================== -->
 
-                <div class="producto">
-                    LAPICERAS
-                </div>
-
-                <div class="producto">
-                    PORTAMINAS 0.5 Y 0.7
-                </div>
-
-                <div class="producto">
-                    RESALTADORES
-                </div>
-
-                <div class="producto">
-                    TABLAS PERIÓDICAS
-                </div>
-
-                <div class="producto">
-                    FOTOCOPIAS
-                </div>
-
-                <div class="producto">
-                    ELEMENTOS DE DIBUJO TÉCNICO
-                </div>
-
-            </div>
-
-        </section>
+            <div class="productos-libreria">
 
 
-        <!-- UNIVERSIDADES -->
-        <section id="universidades" class="seccion">
+                <!-- LAPICERAS -->
 
-            <h2>UNIVERSIDADES</h2>
+                <article class="producto-libreria">
 
-            <div class="universidades">
+                    <img
+                        src="img/LIB5.jpg"
+                        alt="Lapiceras"
+                    >
 
-                <article>
-                    <h3>UCC</h3>
+                    <h2>
+                        LAPICERAS
+                    </h2>
 
-                    <p>
-                        Descripción de la facultad.
-                    </p>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
 
-                    <p>
-                        Tiene convenios con las siguientes facultades:
-                    </p>
-
-                    <a href="#" class="boton">
-                        VER PÁGINA
-                    </a>
                 </article>
 
 
-                <article>
-                    <h3>UNC</h3>
+                <!-- PORTAMINAS -->
 
-                    <p>
-                        Descripción de la facultad.
-                    </p>
+                <article class="producto-libreria">
 
-                    <p>
-                        Tiene convenios con las siguientes facultades:
-                    </p>
+                    <img
+                        src="img/LIB6.jpg"
+                        alt="Portaminas"
+                    >
 
-                    <a href="#" class="boton">
-                        VER PÁGINA
-                    </a>
+                    <h2>
+                        PORTAMINAS<br>
+                        0.5 Y 0.7
+                    </h2>
+
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+
                 </article>
 
+
+                <!-- RESALTADORES -->
+
+                <article class="producto-libreria">
+
+                    <img
+                        src="img/LIB7.jpg"
+                        alt="Resaltadores"
+                    >
+
+                    <h2>
+                        RESALTADORES
+                    </h2>
+
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+
+                </article>
+
+
+                <!-- TABLAS PERIÓDICAS -->
+
+                <article class="producto-libreria">
+
+                    <img
+                        src="img/LIB11.jpg"
+                        alt="Tablas periódicas"
+                    >
+
+                    <h2>
+                        TABLAS<br>
+                        PERIÓDICAS
+                    </h2>
+
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+
+                </article>
+
+
+                <!-- FOTOCOPIAS -->
+
+                <article class="producto-libreria">
+
+                    <img
+                        src="img/LIB13.jpg"
+                        alt="Fotocopias en blanco y negro"
+                    >
+
+                    <h2>
+                        FOTOCOPIAS EN<br>
+                        BLANCO Y NEGRO
+                    </h2>
+
+                    <small>
+                        (CONSULTAR POR CUADERNILLO)
+                    </small>
+
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+
+                </article>
+
+
+                <!-- DIBUJO TÉCNICO -->
+
+                <article class="producto-libreria">
+
+                    <img
+                        src="img/LIB10.jpg"
+                        alt="Elementos de dibujo técnico"
+                    >
+
+                    <h2>
+                        ELEMENTOS DE<br>
+                        DIBUJO TÉCNICO
+                    </h2>
+
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+
+                </article>
+
+
             </div>
 
-        </section>
-
-
-        <!-- BIBLIOTECA -->
-        <section id="biblioteca" class="seccion">
-
-            <h2>BIBLIOTECA</h2>
-
-            <div class="biblioteca-personas">
-
-                <div>
-                    <div class="foto-persona">
-                        Matías
-                    </div>
-
-                    <h3>Matías Vivas</h3>
-                </div>
-
-
-                <div>
-                    <div class="foto-persona">
-                        Víctor
-                    </div>
-
-                    <h3>Víctor Vella</h3>
-                </div>
-
-            </div>
-
-
-            <h3>HORARIOS</h3>
-
-            <table>
-
-                <tr>
-                    <th>Turno</th>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-                </tr>
-
-                <tr>
-                    <td>Mañana</td>
-                    <td>Víctor Vella</td>
-                    <td>Matías Vivas</td>
-                    <td>Matías Vivas</td>
-                    <td>Matías Vivas</td>
-                    <td>Matías Vivas</td>
-                </tr>
-
-                <tr>
-                    <td>Tarde</td>
-                    <td>Matías Vivas</td>
-                    <td>Víctor Vella</td>
-                    <td>Víctor Vella</td>
-                    <td>Víctor Vella</td>
-                    <td>Víctor Vella</td>
-                </tr>
-
-            </table>
-
-        </section>
+        </div>
 
     </main>
 
+</section>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- =========================
+         UNIVERSIDADES
+    ========================== -->
+
+    <section id="universidades" class="seccion-pagina">
+
+        <main class="pagina">
+
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Universidades
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <div class="tarjetas-contenido">
+
+                <article>
+
+                    <h2>UCC</h2>
+
+                    <p>
+                        Universidad Católica de Córdoba.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <h2>UNC</h2>
+
+                    <p>
+                        Universidad Nacional de Córdoba.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         BIBLIOTECA
+    ========================== -->
+
+   <section id="biblioteca" class="seccion-pagina">
+
+    <main class="biblioteca-pagina">
+
+        <!-- MENÚ -->
+
+        <div class="mini-menu">
+
+            <button data-seccion="inicio">
+                INICIO
+            </button>
+
+            <button class="seleccionado">
+                BIBLIOTECA
+            </button>
+
+        </div>
+
+
+        <!-- TÍTULO -->
+
+        <h1 class="titulo-biblioteca">
+            Biblioteca
+        </h1>
+
+        <div class="linea-biblioteca"></div>
+
+
+        <!-- =========================
+             PARTE SUPERIOR
+        ========================== -->
+
+        <div class="biblioteca-superior">
+
+
+            <!-- PERSONAS -->
+
+            <div class="personas-biblioteca">
+
+
+                <!-- MATÍAS -->
+
+                <div class="persona">
+
+                    <img
+                        src="img/BIB1.jpg"
+                        alt="Matías Vivas"
+                    >
+
+                    <h2>
+                        NOMBRE Y<br>
+                        APELLIDO:
+                    </h2>
+
+                    <p>
+                        Matías Vivas
+                    </p>
+
+                </div>
+
+
+                <!-- VÍCTOR -->
+
+                <div class="persona">
+
+                    <img
+                        src="img/BIB2.jpg"
+                        alt="Víctor Vella"
+                    >
+
+                    <h2>
+                        NOMBRE Y<br>
+                        APELLIDO:
+                    </h2>
+
+                    <p>
+                        Víctor Vella
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 HORARIOS
+            ========================== -->
+
+            <div class="horarios">
+
+                <h2>
+                    HORARIOS
+                </h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>TURNO</th>
+
+                            <th>LUNES</th>
+
+                            <th>MARTES</th>
+
+                            <th>MIÉRCOLES</th>
+
+                            <th>JUEVES</th>
+
+                            <th>VIERNES</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                MAÑANA
+                            </td>
+
+                            <td>
+                                VÍCTOR<br>
+                                VELLA
+                            </td>
+
+                            <td>
+                                MATÍAS<br>
+                                VIVAS
+                            </td>
+
+                            <td>
+                                MATÍAS<br>
+                                VIVAS
+                            </td>
+
+                            <td>
+                                MATÍAS<br>
+                                VIVAS
+                            </td>
+
+                            <td>
+                                MATÍAS<br>
+                                VIVAS
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                TARDE
+                            </td>
+
+                            <td>
+                                MATÍAS<br>
+                                VIVAS
+                            </td>
+
+                            <td>
+                                VÍCTOR<br>
+                                VELLA
+                            </td>
+
+                            <td>
+                                VÍCTOR<br>
+                                VELLA
+                            </td>
+
+                            <td>
+                                VÍCTOR<br>
+                                VELLA
+                            </td>
+
+                            <td>
+                                VÍCTOR<br>
+                                VELLA
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RECURSOS
+        ========================== -->
+
+        <div class="recursos-biblioteca">
+
+
+            <!-- COMPUTADORAS -->
+
+            <div class="recurso-biblioteca">
+
+                <img
+                    src="img/BIB3.jpg"
+                    alt="Computadoras"
+                >
+
+                <h3>
+                    Computadoras
+                </h3>
+
+                <p>
+                    Sin profe
+                </p>
+
+            </div>
+
+
+            <!-- ZAPATILLA -->
+
+            <div class="recurso-biblioteca">
+
+                <img
+                    src="img/BIB4.jpg"
+                    alt="Zapatilla"
+                >
+
+                <h3>
+                    Zapatilla
+                </h3>
+
+                <p>
+                    Sin profe
+                </p>
+
+            </div>
+
+
+            <!-- ELEMENTOS DE DIBUJO TÉCNICO -->
+
+            <div class="recurso-biblioteca">
+
+                <img
+                    src="img/BIB5.jpg"
+                    alt="Elementos de dibujo técnico"
+                >
+
+                <h3>
+                    Elementos de dibujo técnico
+                </h3>
+
+                <p>
+                    Sin profe
+                </p>
+
+            </div>
+
+
+            <!-- TELE -->
+
+            <div class="recurso-biblioteca">
+
+                <img
+                    src="img/BIB6.jpg"
+                    alt="Tele"
+                >
+
+                <h3>
+                    Tele
+                </h3>
+
+                <p>
+                    Con profe
+                </p>
+
+            </div>
+
+
+            <!-- MAPAS -->
+
+            <div class="recurso-biblioteca">
+
+                <img
+                    src="img/BIB7.jpg"
+                    alt="Mapas"
+                >
+
+                <h3>
+                    Mapas
+                </h3>
+
+                <p>
+                    Consultar
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</section>
+
+
+    <!-- =========================
+         INFORMÁTICA
+    ========================== -->
+
+    <section id="informatica" class="seccion-pagina">
+
+        <main class="especialidad">
+
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Informática
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <h2>
+                Introducción de la especialidad
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <h2>
+                Plan de estudio
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <div class="separador"></div>
+
+
+            <h1 class="titulo-comentarios">
+                Comentarios
+            </h1>
+
+
+            <div class="comentarios">
+
+                <div class="comentario">
+
+                    <p>
+                        <strong>
+                            pepita martinez 4to C
+                        </strong>
+                    </p>
+
+                    <p>
+                        necesito ayuda con programacion,
+                        alguno conoce un particular?
+                        necesito aprobar con mira
+                    </p>
+
+                    <p>
+                        comentarios(3)
+                    </p>
+
+                </div>
+
+
+                <form class="formulario">
+
+                    <label>
+                        Nombre completo
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Curso
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Escribe tu opinión aquí:
+                    </label>
+
+                    <textarea></textarea>
+
+
+                    <button type="submit">
+                        Subir
+                    </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         QUÍMICA
+    ========================== -->
+
+    <section id="quimica" class="seccion-pagina">
+
+        <main class="especialidad">
+
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Química
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <h2>
+                Introducción de la especialidad
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <h2>
+                Plan de estudio
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <div class="separador"></div>
+
+
+            <h1 class="titulo-comentarios">
+                Comentarios
+            </h1>
+
+
+            <div class="comentarios">
+
+                <div class="comentario">
+
+                    <p>
+                        <strong>
+                            pepita martinez 4to B
+                        </strong>
+                    </p>
+
+                    <p>
+                        necesito ayuda con química
+                        inorgánica, alguno conoce
+                        un particular?
+                    </p>
+
+                    <p>
+                        comentarios(3)
+                    </p>
+
+                </div>
+
+
+                <form class="formulario">
+
+                    <label>
+                        Nombre completo
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Curso
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Escribe tu opinión aquí:
+                    </label>
+
+                    <textarea></textarea>
+
+
+                    <button type="submit">
+                        Subir
+                    </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         CONSTRUCCIONES
+    ========================== -->
+
+    <section id="construcciones" class="seccion-pagina">
+
+        <main class="especialidad">
+
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+
+            <h1 class="titulo-pagina">
+                Construcciones
+            </h1>
+
+            <div class="linea"></div>
+
+
+            <h2>
+                Introducción de la especialidad
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <h2>
+                Plan de estudio
+            </h2>
+
+            <p class="texto-especialidad">
+                ...
+            </p>
+
+
+            <div class="separador"></div>
+
+
+            <h1 class="titulo-comentarios">
+                Comentarios
+            </h1>
+
+
+            <div class="comentarios">
+
+                <div class="comentario">
+
+                    <p>
+                        <strong>
+                            pepita martinez 4to A
+                        </strong>
+                    </p>
+
+                    <p>
+                        necesito ayuda con
+                        construcciones I,
+                        alguno conoce un particular?
+                    </p>
+
+                    <p>
+                        comentarios(3)
+                    </p>
+
+                </div>
+
+
+                <form class="formulario">
+
+                    <label>
+                        Nombre completo
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Curso
+                    </label>
+
+                    <input type="text">
+
+
+                    <label>
+                        Escribe tu opinión aquí:
+                    </label>
+
+                    <textarea></textarea>
+
+
+                    <button type="submit">
+                        Subir
+                    </button>
+
+                </form>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
     <footer>
 
-        <p>ADVENT - PORTAL ESTUDIANTIL</p>
-
-        <p>
-            Proyecto final
-        </p>
+        Advent - Portal Estudiantil
 
     </footer>
 
 
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
 </body>
 
 </html>
