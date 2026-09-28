@@ -1,8 +1,10 @@
-/* ==============================
+/* ==========================================
    CONFIGURACIÓN GENERAL
-   ============================== */
+   ========================================== */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -11,595 +13,1159 @@ html {
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #1f2d22;
-
-    background-color: #f3f5ef;
+    background-color: #f6e9da;
+    color: #3c2b24;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* ==============================
-   ENCABEZADO / MENÚ
-   ============================== */
+/* ==========================================
+   HEADER
+   ========================================== */
 
 header {
     width: 100%;
-    min-height: 80px;
+    height: 90px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px 5%;
+    padding: 20px 50px;
 
-    background-color: #f3f5ef;
-
-    border-bottom: 1px solid #d5d9d0;
+    background-color: #f6e9da;
 }
 
-
-/* LOGO */
-
 .logo img {
-    width: 65px;
+    width: 55px;
     height: auto;
 }
 
 
-/* MENÚ */
+/* ==========================================
+   MENÚ
+   ========================================== */
 
 nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
+    align-items: center;
+    gap: 25px;
 }
 
 nav a {
     text-decoration: none;
 
-    color: #1f2d22;
+    color: #3c2b24;
 
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 13px;
 
-    transition: 0.2s;
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    transition: 0.3s;
 }
 
 nav a:hover {
-    color: #536c56;
+    background-color: #3c2b24;
+    color: #ffffff;
 }
 
 
-/* ==============================
-   PORTADA
-   ============================== */
+/* ==========================================
+   SISTEMA DE SECCIONES
+   ========================================== */
 
-.portada {
-    min-height: 520px;
+.seccion-pagina {
+    display: none;
+}
 
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 60px 20px;
+.seccion-pagina.activa {
+    display: block;
 }
 
 
-/* TU */
+/* ==========================================
+   INICIO
+   ========================================== */
 
-.portada h1 {
-    margin: 0;
-
-    font-size: 60px;
-    font-weight: normal;
-
-    color: #1f2d22;
-}
-
-
-/* PORTAL ESTUDIANTIL */
-
-.portada h2 {
-    margin: 10px 0;
-
-    font-size: 55px;
-    line-height: 0.95;
-
-    letter-spacing: 3px;
-
-    color: #29402d;
-}
-
-
-/* TEXTO */
-
-.portada p {
-    max-width: 650px;
-
-    font-size: 18px;
-    line-height: 1.5;
-
-    color: #465047;
-}
-
-
-/* ==============================
-   ESPECIALIDADES
-   ============================== */
-
-.especialidades {
+.inicio {
     width: 90%;
     max-width: 1100px;
 
-    margin: auto;
+    margin: 25px auto 70px;
+}
 
-    padding: 50px 0 80px;
+.inicio h1 {
+    font-size: 55px;
+
+    font-weight: 400;
+
+    margin-bottom: 5px;
+}
+
+.bajada {
+    font-size: 18px;
+
+    margin-bottom: 30px;
 }
 
 
-/* TÍTULO */
+/* ==========================================
+   TARJETAS PRINCIPALES
+   ========================================== */
 
-.especialidades > h2 {
-    display: inline-block;
-
-    margin-bottom: 35px;
-
-    font-size: 40px;
-
-    border-bottom: 3px solid #29402d;
-
-    padding-bottom: 5px;
-}
-
-
-/* CONTENEDOR */
-
-.contenedor-especialidades {
+.especialidades {
     display: grid;
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 25px;
+    gap: 20px;
 }
 
 
-/* TARJETA */
+.tarjeta {
+    height: 210px;
 
-.especialidad {
-    background-color: white;
+    border: none;
 
-    border-radius: 10px;
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    position: relative;
 
     overflow: hidden;
 
-    border: 1px solid #dce1d8;
+    display: flex;
 
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    align-items: flex-end;
 
-    padding-bottom: 15px;
-}
-
-
-/* IMÁGENES */
-
-.imagen-construcciones,
-.imagen-quimica,
-.imagen-informatica {
-
-    height: 190px;
-
-    background-size: cover;
-    background-position: center;
-}
-
-
-/* Por ahora usamos colores.
-   Después vamos a poner las fotos reales. */
-
-.imagen-construcciones {
-    background-color: #d8c8a9;
-}
-
-.imagen-quimica {
-    background-color: #d6e4dc;
-}
-
-.imagen-informatica {
-    background-color: #27313a;
-}
-
-
-/* TEXTO DE LAS TARJETAS */
-
-.especialidad h3 {
-    margin: 18px 18px 8px;
-
-    font-size: 18px;
-}
-
-.especialidad p {
-    margin: 0 18px 10px;
-
-    line-height: 1.4;
-
-    font-size: 14px;
-}
-
-.especialidad a {
-    display: block;
-
-    margin-left: 18px;
-
-    font-size: 25px;
-
-    color: #29402d;
-}
-
-
-/* ==============================
-   SECCIONES GENERALES
-   ============================== */
-
-.seccion {
-
-    width: 90%;
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 70px 0;
-
-    border-top: 1px solid #d5d9d0;
-}
-
-
-/* TÍTULOS */
-
-.seccion > h2 {
-
-    display: inline-block;
-
-    margin-bottom: 30px;
-
-    font-size: 42px;
-
-    border-bottom: 3px solid #29402d;
-
-    padding-bottom: 5px;
-}
-
-
-/* TEXTOS */
-
-.seccion p {
-
-    max-width: 750px;
-
-    font-size: 17px;
-
-    line-height: 1.6;
-}
-
-
-/* ==============================
-   ACTIVIDADES EXTRA
-   ============================== */
-
-.seccion ul {
-
-    list-style: none;
+    text-align: left;
 
     padding: 0;
 
-    max-width: 700px;
+    transition: transform 0.2s;
 }
 
-.seccion li {
 
-    padding: 20px 0;
+.tarjeta:hover {
+    transform: translateY(-4px);
+}
 
-    border-bottom: 1px solid #cbd1c7;
 
+/* Colores provisionales hasta poner las fotos */
+
+.tarjeta.informatica {
+    background-color: #6b5b50;
+}
+
+.tarjeta.quimica {
+    background-color: #88776a;
+}
+
+.tarjeta.construcciones {
+    background-color: #aa9a8c;
+}
+
+
+.tarjeta span {
+    color: white;
+
+    font-size: 27px;
+
+    font-weight: 400;
+
+    padding: 20px;
+}
+
+
+/* ==========================================
+   PÁGINAS INTERNAS
+   ========================================== */
+
+.pagina {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 15px 0 70px;
+}
+
+
+.mini-menu {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.mini-menu button {
+    border: none;
+
+    background: transparent;
+
+    color: #3c2b24;
+
+    padding: 8px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+.mini-menu .seleccionado {
+    background-color: #3c2b24;
+
+    color: white;
+}
+
+
+/* ==========================================
+   TÍTULOS
+   ========================================== */
+
+.titulo-pagina {
+    font-size: 58px;
+
+    font-weight: 400;
+
+    margin-bottom: 5px;
+}
+
+
+.linea {
+    width: 360px;
+
+    height: 4px;
+
+    background-color: #3c2b24;
+
+    margin-bottom: 50px;
+}
+
+
+/* ==========================================
+   VOLVER
+   ========================================== */
+
+.volver {
+    border: none;
+
+    background: transparent;
+
+    color: #3c2b24;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   NOSOTRAS
+   ========================================== */
+
+.nosotras-contenido {
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.2fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+
+.nosotras-texto p {
+    font-size: 19px;
+
+    line-height: 1.55;
+
+    margin-bottom: 20px;
+}
+
+
+.imagen-nosotras {
+    width: 100%;
+
+    height: 370px;
+
+    border-radius: 20px;
+
+    background-color: #b3a195;
+}
+
+
+/* ==========================================
+   TARJETAS DE CONTENIDO
+   ========================================== */
+
+.tarjetas-contenido {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.tarjetas-contenido article {
+    background-color: #ead8c5;
+
+    border-radius: 20px;
+
+    padding: 30px;
+}
+
+
+.tarjetas-contenido h2 {
+    font-size: 25px;
+
+    font-weight: 400;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   LIBRERÍA
+   ========================================== */
+
+.contenido-simple {
+    background-color: #ead8c5;
+
+    border-radius: 20px;
+
+    padding: 35px;
+}
+
+
+.contenido-simple h2 {
+    font-weight: 400;
+
+    margin-bottom: 15px;
+
+    margin-top: 25px;
+}
+
+
+.contenido-simple h2:first-child {
+    margin-top: 0;
+}
+
+
+.contenido-simple ul {
+    margin-left: 25px;
+
+    margin-bottom: 20px;
+}
+
+
+.contenido-simple li {
+    margin-bottom: 7px;
+}
+
+
+/* ==========================================
+   ESPECIALIDADES
+   ========================================== */
+
+.especialidad {
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 15px 0 70px;
+}
+
+
+.especialidad > h2 {
+    font-size: 20px;
+
+    font-weight: 400;
+
+    margin-bottom: 15px;
+}
+
+
+.texto-especialidad {
     font-size: 18px;
 
-    font-weight: bold;
-}
-
-
-/* ==============================
-   VIANDAS
-   ============================== */
-
-.lista {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 20px;
-}
-
-.lista p {
-
-    background-color: white;
-
-    padding: 20px;
-
-    border-radius: 8px;
-
-    border: 1px solid #dce1d8;
-}
-
-
-/* ==============================
-   LIBRERÍA
-   ============================== */
-
-.libreria-info {
-
-    background-color: white;
-
-    padding: 30px;
-
-    border-radius: 10px;
-
-    margin-bottom: 30px;
-}
-
-
-.persona {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 25px;
-}
-
-
-.foto-persona {
-
-    width: 110px;
-    height: 110px;
-
-    border-radius: 50%;
-
-    background-color: #777;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    color: white;
-
-    font-weight: bold;
-}
-
-
-.productos {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-
-.producto {
-
-    min-height: 150px;
-
-    background-color: white;
-
-    border-radius: 8px;
-
-    border: 1px solid #dce1d8;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 20px;
-
-    font-weight: bold;
-}
-
-
-/* ==============================
-   UNIVERSIDADES
-   ============================== */
-
-.universidades {
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 25px;
-}
-
-
-.universidades article {
-
-    background-color: white;
-
-    padding: 30px;
-
-    border-radius: 10px;
-
-    border: 1px solid #dce1d8;
-}
-
-
-.boton {
-
-    display: inline-block;
-
-    padding: 10px 18px;
-
-    background-color: #29402d;
-
-    color: white;
-
-    text-decoration: none;
-
-    border-radius: 4px;
-}
-
-
-/* ==============================
-   BIBLIOTECA
-   ============================== */
-
-.biblioteca-personas {
-
-    display: flex;
-
-    gap: 50px;
+    min-height: 50px;
 
     margin-bottom: 40px;
 }
 
 
-.biblioteca-personas > div {
+.separador {
+    width: 100%;
 
-    text-align: center;
+    height: 2px;
+
+    background-color: #dfcdbc;
+
+    margin: 40px 0;
 }
 
 
-table {
+/* ==========================================
+   COMENTARIOS
+   ========================================== */
+
+.titulo-comentarios {
+    font-size: 58px;
+
+    font-weight: 400;
+
+    display: inline-block;
+
+    border-bottom: 4px solid #3c2b24;
+
+    padding-bottom: 8px;
+
+    margin-bottom: 35px;
+}
+
+
+.comentarios {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+}
+
+
+.comentario {
+    font-size: 17px;
+
+    line-height: 1.5;
+}
+
+
+.comentario p {
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   FORMULARIO
+   ========================================== */
+
+.formulario {
+    display: grid;
+
+    grid-template-columns: 1fr 70px;
+
+    gap: 8px;
+}
+
+
+.formulario label {
+    font-size: 13px;
+}
+
+
+.formulario input {
+    height: 32px;
 
     width: 100%;
 
-    border-collapse: collapse;
+    border: none;
 
-    background-color: white;
+    background-color: #aa9789;
 }
 
 
-th,
-td {
+.formulario textarea {
+    grid-column: 1 / 3;
 
-    border: 1px solid #bfc7bc;
+    width: 100%;
 
-    padding: 15px;
+    height: 105px;
 
-    text-align: center;
+    border: none;
+
+    background-color: #aa9789;
+
+    resize: none;
 }
 
 
-th {
+.formulario button {
+    grid-column: 2;
 
-    background-color: #dfe5dc;
+    border: none;
 
-    font-weight: bold;
+    background-color: #3c2b24;
+
+    color: white;
+
+    padding: 10px;
+
+    cursor: pointer;
 }
 
 
-/* ==============================
-   PIE DE PÁGINA
-   ============================== */
+/* ==========================================
+   FOOTER
+   ========================================== */
 
 footer {
-
-    margin-top: 50px;
-
-    padding: 40px 5%;
-
-    background-color: #29402d;
+    background-color: #3c2b24;
 
     color: white;
 
     text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
 }
 
 
-/* ==============================
-   CELULAR
-   ============================== */
+/* ==========================================
+   CELULARES
+   ========================================== */
 
 @media (max-width: 800px) {
 
     header {
+        height: auto;
 
         flex-direction: column;
 
-        gap: 20px;
+        gap: 15px;
 
+        padding: 15px;
     }
 
 
     nav {
+        flex-wrap: wrap;
 
         justify-content: center;
 
+        gap: 5px;
     }
 
 
-    .portada h2 {
-
-        font-size: 40px;
-
+    nav a {
+        font-size: 11px;
     }
 
 
-    .contenedor-especialidades {
+    .inicio {
+        width: 92%;
+    }
+
+
+    .inicio h1 {
+        font-size: 38px;
+    }
+
+
+    .especialidades {
+        grid-template-columns: 1fr;
+    }
+
+
+    .nosotras-contenido {
+        grid-template-columns: 1fr;
+    }
+
+
+    .tarjetas-contenido {
+        grid-template-columns: 1fr;
+    }
+
+
+    .comentarios {
+        grid-template-columns: 1fr;
+    }
+
+
+    .titulo-pagina,
+    .titulo-comentarios {
+        font-size: 42px;
+    }
+}
+
+/* ==========================================
+   BIBLIOTECA
+   ========================================== */
+
+.biblioteca-pagina {
+    width: 94%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 60px;
+}
+
+
+/* MENÚ */
+
+.biblioteca-pagina .mini-menu {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.biblioteca-pagina .mini-menu button {
+    border: none;
+    background: transparent;
+    color: #3c2b24;
+    font-size: 13px;
+    padding: 7px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.biblioteca-pagina .mini-menu .seleccionado {
+    background-color: #3c2b24;
+    color: white;
+}
+
+
+/* TÍTULO */
+
+.titulo-biblioteca {
+    font-size: 62px;
+    font-weight: 700;
+    color: #173b32;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.linea-biblioteca {
+    width: 360px;
+    height: 4px;
+    background-color: #173b32;
+    margin-bottom: 35px;
+}
+
+
+/* PARTE SUPERIOR */
+
+.biblioteca-superior {
+    display: grid;
+    grid-template-columns: 390px 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+
+/* PERSONAS */
+
+.personas-biblioteca {
+    display: flex;
+    gap: 35px;
+}
+
+.persona {
+    width: 150px;
+}
+
+.persona img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.persona h2 {
+    color: #3c2b24;
+    font-size: 19px;
+    line-height: 1.35;
+    margin-bottom: 3px;
+}
+
+.persona p {
+    color: #3c2b24;
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+
+/* HORARIOS */
+
+.horarios h2 {
+    text-align: center;
+    color: #111;
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+}
+
+.horarios table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.horarios th,
+.horarios td {
+    border: 1px solid #aaa;
+    text-align: center;
+    color: #222;
+}
+
+.horarios th {
+    height: 40px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.horarios td {
+    height: 105px;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.horarios td:first-child {
+    width: 105px;
+}
+
+
+/* RECURSOS */
+
+.recursos-biblioteca {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin-top: 55px;
+}
+
+.recurso-biblioteca {
+    text-align: center;
+}
+
+.recurso-biblioteca img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.recurso-biblioteca h3 {
+    color: #3c2b24;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.recurso-biblioteca p {
+    color: #3c2b24;
+    font-size: 15px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 900px) {
+
+    .biblioteca-superior {
+        grid-template-columns: 1fr;
+    }
+
+    .personas-biblioteca {
+        justify-content: center;
+    }
+
+    .horarios {
+        overflow-x: auto;
+    }
+
+    .horarios table {
+        min-width: 750px;
+    }
+
+    .recursos-biblioteca {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .titulo-biblioteca {
+        font-size: 45px;
+    }
+
+    .linea-biblioteca {
+        width: 280px;
+    }
+
+    .personas-biblioteca {
+        gap: 15px;
+    }
+
+    .persona {
+        width: 130px;
+    }
+
+    .persona img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .recursos-biblioteca {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==========================================
+   LIBRERÍA
+   ========================================== */
+
+.libreria-pagina {
+    width: 94%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 10px 0 60px;
+}
+
+
+/* ==========================================
+   MENÚ
+   ========================================== */
+
+.libreria-pagina .mini-menu {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 20px;
+
+    margin-bottom: 5px;
+}
+
+
+.libreria-pagina .mini-menu button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #3c2b24;
+
+    font-size: 13px;
+
+    padding: 7px 15px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+.libreria-pagina .mini-menu .seleccionado {
+
+    background-color: #3c2b24;
+
+    color: white;
+}
+
+
+/* ==========================================
+   TÍTULO
+   ========================================== */
+
+.titulo-libreria {
+
+    font-size: 62px;
+
+    font-weight: 700;
+
+    color: #173b32;
+
+    margin-top: 5px;
+
+    margin-bottom: 5px;
+}
+
+
+.linea-libreria {
+
+    width: 360px;
+
+    height: 4px;
+
+    background-color: #173b32;
+
+    margin-bottom: 35px;
+}
+
+
+/* ==========================================
+   CONTENIDO GENERAL
+   ========================================== */
+
+.libreria-contenido {
+
+    display: grid;
+
+    grid-template-columns: 350px 1fr;
+
+    gap: 55px;
+
+    align-items: start;
+}
+
+
+/* ==========================================
+   INFORMACIÓN
+   ========================================== */
+
+.datos-libreria {
+
+    padding-left: 20px;
+}
+
+
+.foto-libreria {
+
+    width: 220px;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+
+    margin: 0 auto 40px;
+}
+
+
+.info-persona p {
+
+    color: #173b32;
+
+    font-size: 17px;
+
+    line-height: 1.5;
+
+    margin-bottom: 8px;
+}
+
+
+.info-persona strong {
+
+    font-weight: 700;
+}
+
+
+.descripcion-titulo {
+
+    margin-top: 8px;
+}
+
+
+.descripcion-libreria {
+
+    max-width: 300px;
+
+    line-height: 1.6 !important;
+
+    margin-top: 5px;
+}
+
+
+/* ==========================================
+   PRODUCTOS
+   ========================================== */
+
+.productos-libreria {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* ==========================================
+   TARJETA PRODUCTO
+   ========================================== */
+
+.producto-libreria {
+
+    height: 315px;
+
+    background-color: #ffffff;
+
+    border-radius: 10px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+
+    text-align: center;
+}
+
+
+.producto-libreria img {
+
+    width: calc(100% - 12px);
+
+    height: 180px;
+
+    object-fit: cover;
+
+    margin: 6px;
+
+    border-radius: 7px;
+
+    display: block;
+}
+
+
+.producto-libreria h2 {
+
+    color: #173b32;
+
+    font-size: 17px;
+
+    line-height: 1.25;
+
+    margin-top: 32px;
+
+    padding: 0 10px;
+
+    font-weight: 700;
+}
+
+
+.producto-libreria small {
+
+    display: block;
+
+    color: #173b32;
+
+    font-size: 7px;
+
+    font-weight: 700;
+
+    margin-top: 5px;
+}
+
+
+/* ==========================================
+   FLECHA
+   ========================================== */
+
+.flecha-producto {
+
+    position: absolute;
+
+    right: 12px;
+
+    bottom: 10px;
+
+    color: #173b32;
+
+    font-size: 25px;
+
+    font-weight: 300;
+}
+
+
+/* ==========================================
+   EFECTO AL PASAR EL MOUSE
+   ========================================== */
+
+.producto-libreria {
+
+    transition: transform 0.2s ease;
+}
+
+
+.producto-libreria:hover {
+
+    transform: translateY(-4px);
+}
+
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+
+@media (max-width: 1000px) {
+
+    .libreria-contenido {
 
         grid-template-columns: 1fr;
-
     }
 
 
-    .lista {
+    .datos-libreria {
+
+        text-align: center;
+
+        padding-left: 0;
+    }
+
+
+    .descripcion-libreria {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .productos-libreria {
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .titulo-libreria {
+
+        font-size: 45px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .productos-libreria {
 
         grid-template-columns: 1fr;
-
     }
 
 
-    .productos {
+    .foto-libreria {
 
-        grid-template-columns: 1fr;
+        width: 180px;
 
-    }
-
-
-    .universidades {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .biblioteca-personas {
-
-        flex-direction: column;
-
-    }
-
-
-    table {
-
-        font-size: 12px;
-
-    }
-
-
-    th,
-    td {
-
-        padding: 8px;
-
+        height: 180px;
     }
 
 }
