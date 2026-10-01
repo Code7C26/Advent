@@ -37,7 +37,7 @@ header {
 }
 
 .logo img {
-    width: 55px;
+    width: 130px;
     height: auto;
 }
 
@@ -1168,4 +1168,356 @@ footer {
         height: 180px;
     }
 
+}
+/* ==========================================
+   PLAN DE ESTUDIO - INFORMÁTICA
+   ========================================== */
+
+.plan-informatica {
+    width: 100%;
+    margin-top: -50px;
+}
+
+
+/* TÍTULO */
+
+.plan-informatica > h2 {
+    font-size: 32px;
+    color: #3c2b24;
+    margin-bottom: 30px;
+}
+
+
+/* LAS 4 COLUMNAS */
+
+.plan-columnas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    width: 100%;
+}
+
+
+/* CADA AÑO */
+
+.anio-plan {
+    min-width: 0;
+    border-right: 2px solid #1d1c50;
+    padding-right: 12px;
+}
+
+.anio-plan:last-child {
+    border-right: none;
+}
+
+
+/* NOMBRE DEL AÑO */
+
+.anio-plan h3 {
+    text-align: center;
+    color: #25213f;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 18px 0;
+}
+
+
+/* CAJAS DE MATERIAS */
+
+.materias {
+    border-radius: 12px;
+    padding: 12px 13px;
+    margin-bottom: 12px;
+
+    color: #272727;
+
+    font-size: 14px;
+    line-height: 1.35;
+
+    box-sizing: border-box;
+}
+
+
+/* CELESTE - HUMANÍSTICA */
+
+.materias.humanistica {
+    background-color: #d2edf2;
+}
+
+
+/* ROJO - CIENTÍFICO TECNOLÓGICA */
+
+.materias.cientifico {
+    background-color: #ff7d83;
+}
+
+
+/* AMARILLO - TÉCNICA ESPECÍFICA */
+
+.materias.tecnica {
+    background-color: #ffeca9;
+}
+
+
+/* VERDE - PRÁCTICA PROFESIONALIZANTE */
+
+.materias.profesionalizante {
+    background-color: #81d77d;
+}
+
+
+/* VIOLETA - PASTORAL */
+
+.materias.pastoral {
+    background-color: #d5a7df;
+}
+
+
+/* ==========================================
+   REFERENCIA DE COLORES
+   ========================================== */
+
+.referencia-plan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+
+    color: #333;
+
+    font-size: 13px;
+}
+
+
+.referencia {
+    padding: 7px 12px;
+
+    border-radius: 7px;
+
+    display: inline-block;
+}
+
+
+.referencia.humanistica {
+    background-color: #d2edf2;
+}
+
+
+.referencia.cientifico {
+    background-color: #ff7d83;
+}
+
+
+.referencia.tecnica {
+    background-color: #ffeca9;
+}
+
+
+.referencia.profesionalizante {
+    background-color: #81d77d;
+}
+
+
+.referencia.pastoral {
+    background-color: #d5a7df;
+}
+
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+
+@media (max-width: 900px) {
+
+    .plan-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .anio-plan:nth-child(2) {
+        border-right: none;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .plan-columnas {
+        grid-template-columns: 1fr;
+    }
+
+    .anio-plan {
+        border-right: none;
+        border-bottom: 2px solid #1d1c50;
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .anio-plan:last-child {
+        border-bottom: none;
+    }
+
+    .referencia-plan {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .referencia {
+        text-align: center;
+    }
+
+}
+/* SUBIR EL PLAN DE ESTUDIO */
+
+#informatica .plan-informatica {
+    margin-top: -80px !important;
+    position: relative;
+    top: -40px;
+}
+/* ==========================================
+   PLAN DE ESTUDIO - CONSTRUCCIONES
+   ========================================== */
+
+.plan-construcciones {
+    width: 100%;
+    margin-top: -30px;
+}
+
+
+/* TÍTULO */
+
+.plan-construcciones > h2 {
+    font-size: 32px;
+    color: #3c2b24;
+    margin-bottom: 30px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 900px) {
+
+    .plan-construcciones .plan-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .plan-construcciones .plan-columnas {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* ==========================================
+   PLAN DE ESTUDIO - QUÍMICA
+   ========================================== */
+
+.plan-quimica {
+    width: 100%;
+    margin-top: -30px;
+}
+
+.plan-quimica > h2 {
+    font-size: 32px;
+    color: #3c2b24;
+    margin-bottom: 30px;
+}
+
+
+@media (max-width: 900px) {
+
+    .plan-quimica .plan-columnas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .plan-quimica .plan-columnas {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =========================
+   FOTOS DE LAS ESPECIALIDADES
+========================= */
+
+.tarjeta {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+/* INFORMÁTICA */
+.tarjeta.informatica {
+    background-image:
+        linear-gradient(rgba(40, 30, 25, 0.25), rgba(40, 30, 25, 0.45)),
+        url("img/informatica.png");
+}
+
+/* QUÍMICA */
+.tarjeta.quimica {
+    background-image:
+        linear-gradient(rgba(40, 30, 25, 0.20), rgba(40, 30, 25, 0.45)),
+        url("img/quimica.png");
+}
+
+/* CONSTRUCCIONES */
+.tarjeta.construcciones {
+    background-image:
+        linear-gradient(rgba(40, 30, 25, 0.20), rgba(40, 30, 25, 0.45)),
+        url("img/construcciones.png");
+}
+/* =========================
+   CUESTIONARIO VOCACIONAL
+========================= */
+
+.cuestionario {
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #e2d1bd;
+    border-radius: 20px;
+}
+
+.cuestionario h2 {
+    margin: 0 0 15px;
+    font-size: 30px;
+    color: #3f2c24;
+}
+
+.cuestionario p {
+    margin: 8px 0;
+    font-size: 18px;
+    color: #3f2c24;
+}
+
+.boton-cuestionario {
+    margin-top: 20px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background-color: #3f2c24;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.boton-cuestionario:hover {
+    background-color: #594238;
 }
