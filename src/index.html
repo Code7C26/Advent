@@ -1,165 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Advent - Portal Estudiantil</title>
-
     <link rel="stylesheet" href="estilos.css">
 </head>
-
 <body>
-
     <!-- =========================
          ENCABEZADO
     ========================== -->
-
     <header>
-
         <div class="logo">
             <img src="logo-advent.png"
                  alt="Logo Advent">
         </div>
-
         <nav>
-
             <a href="#" data-seccion="inicio">ESPECIALIDADES</a>
-
             <a href="#" data-seccion="nosotros">NOSOTRAS</a>
-
-            <a href="#" data-seccion="actividades">ACTIVIDADES EXTRAS</a>
-
+            <a href="#" data-seccion="actividades">RECONOCIMIENTOS</a>
             <a href="#" data-seccion="viandas">VIANDAS</a>
-
             <a href="#" data-seccion="noticias">NOTICIAS</a>
-
-            <a href="#" data-seccion="libreria">LIBRERÍA</a>
-            
+            <a href="#" data-seccion="libreria">LIBRERÍA</a>           
             <a href="#" data-seccion="biblioteca">BIBLIOTECA</a>
-
             <a href="#" data-seccion="universidades">UNIVERSIDADES</a>
-
-
         </nav>
-
     </header>
-
 
     <!-- =========================
          INICIO
     ========================== -->
-
     <section id="inicio" class="seccion-pagina activa">
-
         <main class="inicio">
-
             <h1>Advent - Tu Portal Estudiantil</h1>
-
             <p class="bajada">
                 ¿Te gustaría saber sobre las especialidades
                 del nivel secundario de nuestro colegio?
             </p>
-
             <p class="bajada">
                 ¡Acá te contamos! Hacé click en la especialidad
                 que te interesa y descubrí todo lo que podés aprender
                 y hacer en ella.
             </p>
 
-
             <!-- TARJETAS -->
-
             <div class="especialidades">
-
                 <button
                     class="tarjeta informatica"
                     data-seccion="informatica">
-
                     <span>Informática</span>
-
                 </button>
-
 
                 <button
                     class="tarjeta quimica"
                     data-seccion="quimica">
-
                     <span>Química</span>
-
                 </button>
-
 
                 <button
                     class="tarjeta construcciones"
                     data-seccion="construcciones">
-
                     <span>Construcciones</span>
-
-                </button>
-
-            </div>
-
-            <div class="cuestionario">
-                <h2>Cuestionario de Intereses Vocacionales</h2>
-
-                <p>
-                    ¿Todavía no sabés qué especialidad puede interesarte más?
-                </p>
-                <p>
-                    Respondé nuestro cuestionario y descubrí cuáles son tus intereses vocacionales
-                </p>
-                <button class="boton-cuestionario" type="button">
-                    Comenzar cuestionario
                 </button>
             </div>
-
         </main>
-
     </section>
-
-
+    <section id="cuestionario" class="seccion-pagina">
+    <button
+        type="button"
+        class="boton-volver-cuestionario"
+        data-seccion="inicio">
+        ← Volver
+    </button>
+    <div class="contenedor-cuestionario">
+        <h1>Cuestionario de Intereses Vocacionales</h1>
+        <p class="introduccion-cuestionario">
+            Completá tus datos antes de comenzar.
+        </p>
+        <form id="formulario-vocacional">
+            <div class="datos-estudiante">
+                <div class="campo-dato">
+                    <label for="nombre-vocacional">Nombre</label>
+                    <input
+                        type="text"
+                        id="nombre-vocacional"
+                        placeholder="Ingresá tu nombre">
+                </div>
+                <div class="campo-dato">
+                    <label for="apellido-vocacional">Apellido</label>
+                    <input
+                        type="text"
+                        id="apellido-vocacional"
+                        placeholder="Ingresá tu apellido">
+                </div>
+                <div class="campo-dato">
+                    <label for="curso-vocacional">Curso</label>
+                    <input
+                        type="text"
+                        id="curso-vocacional"
+                        placeholder="Ejemplo: 3° A">
+                </div>
+            </div>
+            <div class="instrucciones-vocacional">
+                <h2>¿Cómo responder?</h2>
+                <p>
+                    Leé cada afirmación y elegí una sola opción:
+                </p>
+                <p>
+                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta
+                </p>
+                <p>
+                    <strong>I (2 puntos)</strong> = Me es indiferente
+                </p>
+                <p>
+                    <strong>A (3 puntos)</strong> = Me agrada / me gusta
+                </p>
+            </div>
+            <div id="preguntas-vocacionales"></div>
+            <button
+                type="submit"
+                class="boton-finalizar-cuestionario">
+                Ver mi resultado
+            </button>
+        </form>
+        <div
+            id="resultado-vocacional"
+            class="resultado-vocacional">
+        </div>
+    </div>
+</section>
     <!-- =========================
          NOSOTRAS
     ========================== -->
-
     <section id="nosotros" class="seccion-pagina">
-
         <main class="pagina">
-
             <div class="mini-menu">
-
                 <button data-seccion="inicio">
                     INICIO
                 </button>
-
                 <button class="seleccionado">
                     NOSOTRAS
                 </button>
-
             </div>
-
-
             <h1 class="titulo-pagina">
                 Nosotras
             </h1>
 
-
             <div class="linea"></div>
-
-
             <div class="nosotras-contenido">
-
                 <div class="nosotras-texto">
-
                     <p>
                         Sabemos que elegir una orientación
                         escolar en 3º año puede generar
                         muchas dudas e incertidumbre.
                     </p>
-
                     <p>
                         Por eso creamos Advent: un espacio
                         diseñado por y para estudiantes,
@@ -167,7 +161,6 @@
                         qué especialidad conecta realmente
                         con vos.
                     </p>
-
                     <p>
                         Te brindamos herramientas sencillas,
                         información clara sobre las orientaciones
@@ -175,427 +168,1536 @@
                         intereses vocacionales, pensado para 
                         ayudarte a tomar la mejor decisión para 
                         tu futuro.
-                    </p>
-                    
+                    </p>                   
                     <p>
                         Además, podés encontrar información general
                         del cole, por ejemplo, de librería, horarios 
                         de biblioteca, actividades escolares, viandas,
                         reconocimientos y mucho más.
                     </p>
-
                 </div>
-
 
                 <div class="imagen-nosotras">
                     <!-- ACÁ DESPUÉS VAMOS A PONER LA FOTO -->
                 </div>
-
             </div>
-
         </main>
-
     </section>
-
 
     <!-- =========================
          ACTIVIDADES EXTRAS
     ========================== -->
-
     <section id="actividades" class="seccion-pagina">
-
         <main class="pagina">
-
             <button class="volver" data-seccion="inicio">
                 ← VOLVER
             </button>
-
             <h1 class="titulo-pagina">
-                Actividades extras
+                Reconocimientos
             </h1>
-
             <div class="linea"></div>
-
-
             <div class="tarjetas-contenido">
-
-                <article>
-                    <h2>Olimpiadas Matemática</h2>
-                    <p>
-                        Información sobre las olimpiadas
-                        de matemática.
-                    </p>
+                <article class="tarjeta-reconocimiento" data-seccion="joaquin-decara">
+                    <img
+                    src="img/JD2.jpg"
+                    alt="Joaquin Decara"
+                    class="foto-reconocimiento"
+                    >
+                    <div class="nombre-reconocimiento">
+                        Joaquin Decara
+                    </div>
                 </article>
-
-
-                <article>
-                    <h2>Olimpiadas Química</h2>
-                    <p>
-                        Información sobre las olimpiadas
-                        de química.
-                    </p>
+                <article class="tarjeta-reconocimiento" data-seccion="felipe-gonzalez-rivero">
+                    <img
+                    src="img/FGR3.jpg"
+                    alt="Felipe Gonzalez Rivero"
+                    class="foto-reconocimiento"
+                    >
+                    <div class="nombre-reconocimiento">
+                        Felipe Gonzalez Rivero
+                    </div>
                 </article>
-
-
-                <article>
-                    <h2>Olimpiadas Informática</h2>
-                    <p>
-                        Información sobre las olimpiadas
-                        de informática.
-                    </p>
+                <article class="tarjeta-reconocimiento" data-seccion="guillermina-gonzalez-rivero">
+                    <div class="foto-reconocimiento">
+                        <img src="img/GGR2.jpg" alt="Guillermina Gonzalez Rivero">
+                    </div>
+                    <div class="nombre-reconocimiento">
+                        Guillermina Gonzalez Rivero
+                    </div>
                 </article>
-
-
-                <article>
-                    <h2>Copa Robótica</h2>
-                    <p>
-                        Información sobre la Copa Robótica.
-                    </p>
-                </article>
-
             </div>
-
         </main>
-
     </section>
-
 
     <!-- =========================
          VIANDAS
     ========================== -->
-
     <section id="viandas" class="seccion-pagina">
-
         <main class="pagina">
-
             <button class="volver" data-seccion="inicio">
                 ← VOLVER
             </button>
-
             <h1 class="titulo-pagina">
                 Viandas
             </h1>
-
             <div class="linea"></div>
-
-
             <div class="tarjetas-contenido">
-
-                <article>
+                <article class="tarjeta-vianda" data-seccion="natural-chef">
                     <h2>Natural Chef</h2>
-                    <p>
-                        Información sobre viandas.
-                    </p>
                 </article>
-
-                <article>
-                    <h2>Delirios</h2>
-                    <p>
-                        Información sobre viandas.
-                    </p>
-                </article>
-
-                <article>
-                    <h2>El lugar de enfrente</h2>
-                    <p>
-                        Información sobre viandas.
-                    </p>
-                </article>
-
-                <article>
-                    <h2>Dulce Catalina</h2>
-                    <p>
-                        Información sobre viandas.
-                    </p>
-                </article>
-
-                <article>
+                <article class="tarjeta-vianda" data-seccion="axion">
                     <h2>Axion</h2>
-                    <p>
-                        Información sobre viandas.
-                    </p>
+                </article> 
+                <article class="tarjeta-vianda" data-seccion="dulce-catalina">
+                    <h2>Dulce Catalina</h2>
                 </article>
-
+                <article class="tarjeta-vianda" data-seccion="Delirios">
+                    <h2>Delirios</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="Wonder">
+                    <h2>Wonder</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="Lo-del-mati">
+                    <h2>Lo del Mati</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="pizza-box">
+                    <h2>Pizza Box</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="polo">
+                    <h2>Polo</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="rotiseria-el-buen-sabor">
+                    <h2>Rotisería El Buen Sabor</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="la-granjita">
+                    <h2>La Granjita</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="shell-del-alto">
+                    <h2>Shell del Alto</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="maja-morena-alta-gracia">
+                    <h2>Maja Morena Alta Gracia</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="tutti">
+                    <h2>Tutti</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="filomena">
+                    <h2>Filomena</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="la-colonia">
+                    <h2>La Colonia</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="della-casa">
+                    <h2>Della Casa</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="francisco-resto-bar">
+                    <h2>Francisco Resto Bar</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="pizza-quick">
+                    <h2>Pizza Quick</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="tentate-cumana">
+                    <h2>Tentate Cumaná</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="virrey-resto-bar">
+                    <h2>Virrey Resto Bar</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="pepenero-parrilla-resto">
+                    <h2>Pepenero Parrilla Resto</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="loris">
+                    <h2>Loris</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="nova-sushi-alta-gracia">
+                    <h2>Nova Sushi Alta Gracia</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="maiki-sushi">
+                    <h2>Maiki Sushi</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="monkey-burgers-pizzas">
+                    <h2>Monkey Burgers Pizzas</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="alta-palta">
+                    <h2>Alta Palta</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="el-hornito-santiagueño">
+                    <h2>El Hornito Santiagueño</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="empanaderia">
+                    <h2>Empanadería</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="solo-pizza">
+                    <h2>Solo Pizza</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="bite's-premium-fast-food">
+                    <h2>Bite's Premium Fast Food</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="sake-sushi">
+                    <h2>Sake Sushi</h2>
+                </article>
+                <article class="tarjeta-vianda" data-seccion="cantina-del-cole">
+                    <h2>Cantina del Cole</h2>
+                </article>
             </div>
-
         </main>
-
     </section>
-
 
     <!-- =========================
-         NOTICIAS
-    ========================== -->
-
-    <section id="noticias" class="seccion-pagina">
-
-        <main class="pagina">
-
-            <button class="volver" data-seccion="inicio">
-                ← VOLVER
-            </button>
-
-            <h1 class="titulo-pagina">
-                Noticias
-            </h1>
-
-            <div class="linea"></div>
-
-
-            <div class="tarjetas-contenido">
-
-                <article>
-
-                    <h2>Noticias</h2>
-
-                    <p>
-                        En este espacio se publicarán
-                        las noticias y novedades para
-                        estudiantes.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </main>
-
-    </section>
-
-<!-- =========================LIBRERÍA========================= -->
- <section id="libreria" class="seccion-pagina">
-    <main class="libreria-pagina">
-
-        <!-- MENÚ -->
-
-        <div class="mini-menu">
-
-            <button data-seccion="inicio">
-                INICIO
-            </button>
-
-            <button class="seleccionado">
-                LIBRERÍA
-            </button>
-
+     NATURAL CHEF
+========================= -->
+<section id="natural-chef" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Natural Chef
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
         </div>
+    </main>
+</section>
+<!-- =========================
+     NATURAL CHEF
+========================= -->
 
+<section id="axion" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Axion
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
 
-        <!-- TÍTULO -->
+            <p>
+                <strong>Teléfono:</strong> 3547 469516
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
 
-        <h1 class="titulo-libreria">
-            Librería
+<!-- =========================
+     NATURAL CHEF
+========================= -->
+
+<section id="dulce-catalina" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Dulce Catalina
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+<section id="delirios" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Delirios
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+<section id="wonder" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Wonder
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+<section id="lo-del-mati" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Lo del Mati
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+<section id="pizza-box" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Pizza Box
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+<section id="Polo" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Polo
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="rotiseria-el-buen-sabor" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Rotisería El Buen Sabor
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="la-granjita" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            La Granjita
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="shell-del-alto" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Shell del Alto
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="maja-morena-alta-gracia" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Maja Morena Alta Gracia
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="tutti" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Tutti
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="filomena" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Filomena
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="la-colonia" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            La Colonia
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="della-casa" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Della Casa
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="francisco-resto-bar" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Francisco Resto Bar
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="pizza-quick" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Pizza Quick
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="tentate-cumuna" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Tentate Cumuná
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="virrey-resto-bar" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Virrey Resto Bar
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="pepenero-parrilla-resto" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Pepenero Parrilla Resto
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="loris" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Loris
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda"></div>
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="nova-sushi-alta-gracia" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Nova Sushi Alta Gracia
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="maiki-sushi" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Maiki Sushi
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda"></div>
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="monkey-burgers-pizzas" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Monkey Burgers y Pizzas
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="alta-palta" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Alta Palta
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="el-hornito-santiagueño" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            El Hornito Santiagueño
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="solo-pizza" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Solo Pizza
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="bite's-premium-fast-food" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Bite's Premium Fast Food
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="sake-sushi" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Sake Sushi
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<section id="cantina-del-cole" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="viandas">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Cantina del Cole
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-vianda">
+            <p>
+                <strong>Teléfono:</strong> 3547 561052
+            </p>
+            <p>
+                <strong>Delivery:</strong> Sí
+            </p>
+            <h3>Opciones de menú</h3>
+            <p>
+                Acá vamos a colocar las opciones de menú.
+            </p>
+            <h3>Horarios</h3>
+            <p>
+                Acá vamos a colocar los días y horarios.
+            </p>
+            <h3>Información adicional</h3>
+            <p>
+                Acá vamos a colocar información adicional.
+            </p>
+        </div>
+    </main>
+</section>
+
+<!-- =========================
+     JOAQUIN DECARA
+========================= -->
+<section id="joaquin-decara" class="seccion-pagina">
+    <main class="pagina">
+        <button class="volver" data-seccion="noticias">
+            ← VOLVER
+        </button>
+        <h1 class="titulo-pagina">
+            Joaquin Decara 6C
+        </h1>
+        <div class="linea"></div>
+        <div class="detalle-reconocimiento">
+            <p>
+                Soy Joaquín Decara, de 6C. Juego al Handball en 
+                la Municipalidad de Alta Gracia.
+            </p>
+            <p>
+                Participé en la Selección Cordobesa durante 5 años consecutivos, tuve la oportunidad 
+                de estar en 2 procesos de Selección Argentina y he jugado en los binacionales 2007-2008 
+                siendo 2009. 
+                También he jugado muchísimos nacionales de clubes donde hemos tenido grandes puestos y 
+                ganado infinidad de veces el torneo local (apertura y clausura) de la Fe.Co.Bal 
+                (Federación Cordobesa de Balonmano).
+            </p>
+            <h3>Fotos</h3>
+            <div class="fotos-reconocimiento">
+                <img src="img/JD1.jpg">
+                <img src="img/JD3.jpg">
+                <img src="img/JD4.jpg">
+                <img src="img/JD5.jpg">
+                <img src="img/JD6.jpg">
+                <img src="img/JD7.jpg">
+            </div>
+        </div>
+    </main>
+</section>
+<!-- =========================
+     FELIPE GONZALEZ RIVERO
+========================= -->
+
+<section id="felipe-gonzalez-rivero" class="seccion-pagina">
+
+    <main class="pagina">
+
+        <button class="volver" data-seccion="noticias">
+            ← VOLVER
+        </button>
+
+        <h1 class="titulo-pagina">
+            Felipe Gonzalez Rivero
         </h1>
 
-        <div class="linea-libreria"></div>
+        <div class="linea"></div>
 
+        <div class="detalle-reconocimiento">
+            <p>
+               Soy Felipe Gonzalez Rivero, de 7B. Juego al Handball en la Municipalidad de Alta Gracia y al Beach Handball.
+            </p>
+            <p>
+                El beach me dio la oportunidad de vivir experiencias increíbles. Tuve el orgullo de vestir 
+               la camiseta de la Selección Argentina y jugar varios torneos importantes, incluyendo el Mundial. 
+               También me consagré campeón de Argentina en Mar del Plata, gané el Sur-Centro saliendo campeón de 
+               América y llegué a ser subcampeón del mundo en el Mundial de Clubes. Además, gracias a este 
+               deporte pude viajar y conocer lugares como Brasil, Chile y Túnez.
+            </p>
+            <p>
+                Con indoor fui a reoresentar a la Seleccion Cordobesa en varios Argentinos de Selecciones 
+                y tambien binavionales, con Alta Gracia jugué varios Nacionales A en los cuales el mejor 
+                puesto que tuvimos fue el 6to del pais.
+            </p>
+            <h3>Fotos</h3>
 
-        <!-- =========================
-             CONTENIDO
-        ========================== -->
-
-        <div class="libreria-contenido">
-
-
-            <!-- =========================
-                 INFORMACIÓN DE LA LIBRERÍA
-            ========================== -->
-
-            <div class="datos-libreria">
-
-
-                <!-- FOTO DE LORENZO -->
-
+            <div class="fotos-reconocimiento">
                 <img
-                    src="img/LIB1.jpg"
-                    alt="Lorenzo"
-                    class="foto-libreria"
+                    src="img/FGR1.jpg"
                 >
-
-
-                <div class="info-persona">
-
-                    <p>
-                        <strong>
-                            NOMBRE Y APELLIDO:
-                        </strong>
-                        Lorenzo
-                    </p>
-
-                    <p>
-                        <strong>
-                            TELEFONO:
-                        </strong>
-                        3547 570898
-                    </p>
-
-                    <p>
-                        <strong>
-                            ALIAS:
-                        </strong>
-                        salvamelo
-                    </p>
-
-
-                    <p class="descripcion-titulo">
-                        <strong>
-                            DESCRIPCIÓN:
-                        </strong>
-                    </p>
-
-                    <p class="descripcion-libreria">
-                        no solo podes conseguir estos
-                        productos, sino que además realizo
-                        fotocopias blanco y negro, a color,
-                        stickers, etc.
-                    </p>
-
-                </div>
-
+                <img
+                    src="img/FGR2.jpg"
+                >
+                <img
+                    src="img/FGR4.jpg"
+                >
+                <img
+                    src="img/FGR5.jpg"
+                >
+                <img
+                    src="img/FGR6.jpg"
+                >
+                <img
+                    src="img/FGR7.jpg"
+                >
             </div>
+        </div>
+    </main>
+</section>
+<section id="guillermina-gonzalez-rivero" class="seccion-pagina">
 
+    <main class="pagina">
 
-            <!-- =========================
-                 PRODUCTOS
-            ========================== -->
+        <button class="volver" data-seccion="noticias">
+            ← VOLVER
+        </button>
 
-            <div class="productos-libreria">
+        <h1 class="titulo-pagina">
+            Guillermina Gonzalez Rivero
+        </h1>
 
+        <div class="linea"></div>
 
-                <!-- LAPICERAS -->
+        <div class="detalle-reconocimiento">
 
-                <article class="producto-libreria">
+            <p>
+                Soy Guillermina González Rivero, tengo 14 años y voy a 2do año C.
+                Juego al Handball y el beach handball en la Municipalidad de Alta 
+                Gracia en la categoría menores.
+            </p>
+            <p>
+                Forme parte de la Selección Argentina en 2025, donde salimos subcampeonas 
+                del sur centro (torneo suramericano de Handball).
+                También forme parte de la Selección Cordobesa de mi categoría en 2025 y 
+                en 2026, este año quedamos 5tas a nivel nacional entre 16 provincias que participamos.
+            </p>
+            <p>
+                Entreno todos los días, voy al gimnasio y los fines de semana jugamos partidos del torneo 
+                de la Federación Cordobesa de Handball.
+                En noviembre tenemos un torneo Nacional C en Chaco. También me llamaron para jugar con un 
+                equipo de Buenos Aires algunos torneos de beach handball
+            </p>
 
-                    <img
-                        src="img/LIB5.jpg"
-                        alt="Lapiceras"
-                    >
+            <h2>Fotos</h2>
 
-                    <h2>
-                        LAPICERAS
-                    </h2>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
-                <!-- PORTAMINAS -->
-
-                <article class="producto-libreria">
-
-                    <img
-                        src="img/LIB6.jpg"
-                        alt="Portaminas"
-                    >
-
-                    <h2>
-                        PORTAMINAS<br>
-                        0.5 Y 0.7
-                    </h2>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
-                <!-- RESALTADORES -->
-
-                <article class="producto-libreria">
-
-                    <img
-                        src="img/LIB7.jpg"
-                        alt="Resaltadores"
-                    >
-
-                    <h2>
-                        RESALTADORES
-                    </h2>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
-                <!-- TABLAS PERIÓDICAS -->
-
-                <article class="producto-libreria">
-
-                    <img
-                        src="img/LIB11.jpg"
-                        alt="Tablas periódicas"
-                    >
-
-                    <h2>
-                        TABLAS<br>
-                        PERIÓDICAS
-                    </h2>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
-                <!-- FOTOCOPIAS -->
-
-                <article class="producto-libreria">
-
-                    <img
-                        src="img/LIB13.jpg"
-                        alt="Fotocopias en blanco y negro"
-                    >
-
-                    <h2>
-                        FOTOCOPIAS EN<br>
-                        BLANCO Y NEGRO
-                    </h2>
-
-                    <small>
-                        (CONSULTAR POR CUADERNILLO)
-                    </small>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
-                <!-- DIBUJO TÉCNICO -->
-
-                <article class="producto-libreria">
-
-                    <img
-                        src="img/LIB10.jpg"
-                        alt="Elementos de dibujo técnico"
-                    >
-
-                    <h2>
-                        ELEMENTOS DE<br>
-                        DIBUJO TÉCNICO
-                    </h2>
-
-                    <span class="flecha-producto">
-                        ↗
-                    </span>
-
-                </article>
-
-
+            <div class="galeria-reconocimiento">
+                <img class="foto-ggr1" src="img/GGR1.jpg" alt="Guillermina Gonzalez Rivero">
+                <img src="img/GGR3.jpg" alt="Guillermina Gonzalez Rivero">
+                <img src="img/GGR4.jpg" alt="Guillermina Gonzalez Rivero">
+                <img src="img/GGR5.jpg" alt="Guillermina Gonzalez Rivero">
             </div>
 
         </div>
 
     </main>
 
+</section>
+
+    <!-- =========================
+         NOTICIAS
+    ========================== -->
+    <section id="noticias" class="seccion-pagina">
+        <main class="pagina">
+            <button class="volver" data-seccion="inicio">
+                ← VOLVER
+            </button>
+            <h1 class="titulo-pagina">
+                Noticias
+            </h1>
+            <div class="linea"></div>
+            <div class="tarjetas-contenido">
+                <article>
+                    <h2>Olimpiadas Matemática</h2>
+                    <p>
+                        Información sobre las olimpiadas de matemática.
+                    </p>
+                </article>
+                <article>
+                    <h2>Olimpiadas Química</h2>
+                    <p>
+                        Información sobre las olimpiadas de química
+                    </p>
+                </article>
+                <article>
+                    <h2>Olimpiadas Informática</h2>
+                    <p>
+                        Información sobre las olimpiadas de informática.
+                    </p>
+                </article>
+                <article>
+                    <h2>Copa Robótica</h2>
+                    <p>
+                        Información sobre la Copa Robótica.
+                    </p>
+                </article>
+            </div>
+        </main>
+    </section>
+
+<!-- =========================
+ LIBRERÍA========================= -->
+ <section id="libreria" class="seccion-pagina">
+    <main class="libreria-pagina">
+        <!-- MENÚ -->
+        <div class="mini-menu">
+            <button data-seccion="inicio">
+                INICIO
+            </button>
+            <button class="seleccionado">
+                LIBRERÍA
+            </button>
+        </div>
+        
+        <!-- TÍTULO -->
+
+        <h1 class="titulo-libreria">
+            Librería
+        </h1>
+        <div class="linea-libreria"></div>
+        
+        <!-- =========================
+             CONTENIDO
+        ========================== -->
+
+        <div class="libreria-contenido">
+            
+            <!-- =========================
+                 INFORMACIÓN DE LA LIBRERÍA
+            ========================== -->
+
+            <div class="datos-libreria">
+                <!-- FOTO DE SALVADOR -->
+                <img
+                    src="img/LIB1.jpg"
+                    alt="Salvador"
+                    class="foto-libreria"
+                >
+                <div class="info-persona">
+                    <p>
+                        <strong>
+                            NOMBRE Y APELLIDO:
+                        </strong>
+                        Salvador
+                    </p>
+                    <p>
+                        <strong>
+                            TELEFONO:
+                        </strong>
+                        3547 570898
+                    </p>
+                    <p>
+                        <strong>
+                            ALIAS:
+                        </strong>
+                        salvamelo
+                    </p>
+                    <p class="descripcion-titulo">
+                        <strong>
+                            DESCRIPCIÓN:
+                        </strong>
+                    </p>
+                    <p class="descripcion-libreria">
+                        no solo podes conseguir estos
+                        productos, sino que además realizo
+                        fotocopias blanco y negro, a color,
+                        stickers, etc.
+                    </p>
+                </div>
+            </div>
+
+            <!-- =========================
+                 PRODUCTOS
+            ========================== -->
+
+            <div class="productos-libreria">
+                <!-- LAPICERAS -->
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB5.jpg"
+                        alt="Lapiceras"
+                    >
+                    <h2>
+                        LAPICERAS
+                    </h2>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+                <!-- PORTAMINAS -->
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB6.jpg"
+                        alt="Portaminas"
+                    >
+                    <h2>
+                        PORTAMINAS<br>
+                        0.5 Y 0.7
+                    </h2>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+
+                <!-- RESALTADORES -->
+
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB7.jpg"
+                        alt="Resaltadores"
+                    >
+                    <h2>
+                        RESALTADORES
+                    </h2>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+
+                <!-- TABLAS PERIÓDICAS -->
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB11.jpg"
+                        alt="Tablas periódicas"
+                    >
+                    <h2>
+                        TABLAS<br>
+                        PERIÓDICAS
+                    </h2>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+
+                <!-- FOTOCOPIAS -->
+
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB13.jpg"
+                        alt="Fotocopias en blanco y negro"
+                    >
+                    <h2>
+                        FOTOCOPIAS EN<br>
+                        BLANCO Y NEGRO
+                    </h2>
+                    <small>
+                        (CONSULTAR POR CUADERNILLO)
+                    </small>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+
+                <!-- DIBUJO TÉCNICO -->
+
+                <article class="producto-libreria">
+                    <img
+                        src="img/LIB10.jpg"
+                        alt="Elementos de dibujo técnico"
+                    >
+                    <h2>
+                        ELEMENTOS DE<br>
+                        DIBUJO TÉCNICO
+                    </h2>
+                    <span class="flecha-producto">
+                        ↗
+                    </span>
+                </article>
+            </div>
+        </div>
+    </main>
 </section>
 
     <!-- =========================
@@ -603,409 +1705,321 @@
     ========================== -->
 
     <section id="universidades" class="seccion-pagina">
-
         <main class="pagina">
-
             <button class="volver" data-seccion="inicio">
                 ← VOLVER
             </button>
-
             <h1 class="titulo-pagina">
                 Universidades
             </h1>
-
             <div class="linea"></div>
-
-
             <div class="tarjetas-contenido">
-
                 <article>
-
                     <h2>UCC</h2>
-
                     <p>
                         Universidad Católica de Córdoba.
                     </p>
-
                 </article>
-
-
                 <article>
-
                     <h2>UNC</h2>
-
                     <p>
                         Universidad Nacional de Córdoba.
                     </p>
-
                 </article>
-
             </div>
-
         </main>
-
     </section>
-
 
     <!-- =========================
          BIBLIOTECA
     ========================== -->
 
    <section id="biblioteca" class="seccion-pagina">
-
     <main class="biblioteca-pagina">
-
         <!-- MENÚ -->
-
         <div class="mini-menu">
-
             <button data-seccion="inicio">
                 INICIO
             </button>
-
             <button class="seleccionado">
                 BIBLIOTECA
             </button>
-
         </div>
-
-
         <!-- TÍTULO -->
-
         <h1 class="titulo-biblioteca">
             Biblioteca
         </h1>
-
         <div class="linea-biblioteca"></div>
-
-
         <!-- =========================
              PARTE SUPERIOR
         ========================== -->
-
         <div class="biblioteca-superior">
-
-
             <!-- PERSONAS -->
 
             <div class="personas-biblioteca">
-
-
                 <!-- MATÍAS -->
-
                 <div class="persona">
-
                     <img
                         src="img/BIB1.jpg"
                         alt="Matías Vivas"
                     >
-
                     <h2>
                         NOMBRE Y<br>
                         APELLIDO:
                     </h2>
-
                     <p>
                         Matías Vivas
                     </p>
-
                 </div>
-
-
                 <!-- VÍCTOR -->
-
                 <div class="persona">
-
                     <img
                         src="img/BIB2.jpg"
                         alt="Víctor Vella"
                     >
-
                     <h2>
                         NOMBRE Y<br>
                         APELLIDO:
                     </h2>
-
                     <p>
                         Víctor Vella
                     </p>
-
                 </div>
-
             </div>
-
-
             <!-- =========================
                  HORARIOS
             ========================== -->
-
             <div class="horarios">
-
                 <h2>
                     HORARIOS
                 </h2>
-
                 <table>
-
                     <thead>
-
                         <tr>
-
                             <th>TURNO</th>
-
                             <th>LUNES</th>
-
                             <th>MARTES</th>
-
                             <th>MIÉRCOLES</th>
-
                             <th>JUEVES</th>
-
                             <th>VIERNES</th>
-
                         </tr>
-
                     </thead>
-
-
                     <tbody>
-
                         <tr>
-
                             <td>
                                 MAÑANA
                             </td>
-
                             <td>
                                 VÍCTOR<br>
                                 VELLA
                             </td>
-
                             <td>
                                 MATÍAS<br>
                                 VIVAS
                             </td>
-
                             <td>
                                 MATÍAS<br>
                                 VIVAS
                             </td>
-
                             <td>
                                 MATÍAS<br>
                                 VIVAS
                             </td>
-
                             <td>
                                 MATÍAS<br>
                                 VIVAS
                             </td>
-
                         </tr>
-
-
                         <tr>
-
                             <td>
                                 TARDE
                             </td>
-
                             <td>
                                 MATÍAS<br>
                                 VIVAS
                             </td>
-
                             <td>
                                 VÍCTOR<br>
                                 VELLA
                             </td>
-
                             <td>
                                 VÍCTOR<br>
                                 VELLA
                             </td>
-
                             <td>
                                 VÍCTOR<br>
                                 VELLA
                             </td>
-
                             <td>
                                 VÍCTOR<br>
                                 VELLA
                             </td>
-
                         </tr>
-
                     </tbody>
-
                 </table>
-
             </div>
-
         </div>
-
 
         <!-- =========================
              RECURSOS
         ========================== -->
 
         <div class="recursos-biblioteca">
-
-
             <!-- COMPUTADORAS -->
-
             <div class="recurso-biblioteca">
-
                 <img
                     src="img/BIB3.jpg"
                     alt="Computadoras"
                 >
-
                 <h3>
                     Computadoras
                 </h3>
-
                 <p>
                     Sin profe
                 </p>
-
             </div>
-
-
             <!-- ZAPATILLA -->
-
             <div class="recurso-biblioteca">
-
                 <img
                     src="img/BIB4.jpg"
                     alt="Zapatilla"
                 >
-
                 <h3>
                     Zapatilla
                 </h3>
-
                 <p>
                     Sin profe
                 </p>
-
             </div>
-
-
             <!-- ELEMENTOS DE DIBUJO TÉCNICO -->
-
             <div class="recurso-biblioteca">
-
                 <img
                     src="img/BIB5.jpg"
                     alt="Elementos de dibujo técnico"
                 >
-
                 <h3>
                     Elementos de dibujo técnico
                 </h3>
-
                 <p>
                     Sin profe
                 </p>
-
             </div>
-
-
             <!-- TELE -->
-
             <div class="recurso-biblioteca">
-
-                <img
+                <img>
                     src="img/BIB6.jpg"
                     alt="Tele"
                 >
-
                 <h3>
                     Tele
                 </h3>
-
                 <p>
                     Con profe
                 </p>
-
             </div>
-
-
             <!-- MAPAS -->
-
             <div class="recurso-biblioteca">
-
                 <img
                     src="img/BIB7.jpg"
                     alt="Mapas"
                 >
-
                 <h3>
                     Mapas
                 </h3>
-
                 <p>
                     Consultar
                 </p>
-
             </div>
-
-
         </div>
-
     </main>
-
 </section>
-
 
     <!-- =========================
          INFORMÁTICA
     ========================== -->
 
     <section id="informatica" class="seccion-pagina">
-
         <main class="especialidad">
-
             <button class="volver" data-seccion="inicio">
                 ← VOLVER
             </button>
-
             <h1 class="titulo-pagina">
                 Informática
             </h1>
-
             <div class="linea"></div>
-
-            <h2>
-                Introducción de la especialidad
-            </h2>
-
+            <h2>Introducción de la especialidad</h2>
             <p class="texto-especialidad">
-                ...
+                Esta orientación brinda una formación específica en el ámbito de la computación, 
+                tanto en hardware como en software. Al concluir sus estudios, los estudiantes 
+                obtienen el título de Técnico en Informática Profesional y Personal, lo que les 
+                permite una inserción directa en el mercado laboral. Por otro lado, la amplia 
+                formación teórica y práctica los prepara de la mejor manera para afrontar estudios 
+                universitarios en carreras afines.
             </p>
-
+            <h2>Capacidades</h2>
             <p class="texto-especialidad">
-                <!-- =========================
+                Los Técnicos en Informática Profesional y Personal brindan servicios de asistencia 
+                técnica y asesoramiento al usuario y, como parte de ello, pueden instalar, reemplazar 
+                y configurar o reconfigurar elementos de hardware o de software, incluyendo la 
+                intercomunicación entre equipos, o también diseñar programas y ejecutar procesos para 
+                proteger datos, recuperar datos dañados o no accesibles, convertirlos a formatos 
+                diferentes para utilizarlos en otros ambientes, o complementar funcionalidades de sistemas.
+                Es decir, no toma parte de un proceso productivo o de desarrollo de software, sino que 
+                brinda servicios de apoyo al usuario de computadoras personales, que son los que las 
+                operan como parte de sus actividades principales (productivas, comerciales, administrativas, 
+                artísticas o lúdicas) realizando intervenciones más o menos puntuales para resolver los 
+                problemas que los mismos experimentan en su utilización.
+            </p>
+            <p class="texto-especialidad">
+                Es decir, no toma parte de un proceso productivo o de desarrollo de software, sino que 
+                brinda servicios de apoyo al usuario de computadoras personales, que son los que las 
+                operan como parte de sus actividades principales (productivas, comerciales, administrativas, 
+                artísticas o lúdicas) realizando intervenciones más o menos puntuales para resolver los 
+                problemas que los mismos experimentan en su utilización.
+            </p>
+            <h3>Áreas ocupacionales</h3>
+            <ul class="lista-ocupacional">
+                <li>
+                    Empresas y organizaciones que utilizan sistemas y servicios informáticos.
+                </li>
+                <li>
+                    Servicios de soporte y asistencia técnica a usuarios.
+                </li>
+                <li>
+                    Empresas dedicadas al desarrollo y comercialización de productos
+                    o servicios basados en Tecnologías de la Información y la Comunicación.
+                </li>
+                <li>
+                    Servicios de capacitación, asesoramiento y apoyo a usuarios informáticos.
+                </li>
+                <li>
+                    Microemprendimientos y trabajos independientes relacionados con la informática.
+                </li>
+            </ul>
+
+<div class="acceso-cuestionario">
+    <button
+        type="button"
+        data-seccion="cuestionario">
+        
+        <img
+            src="img/SNOINF.png"
+            alt="Test vocacional de Informática">
+            
+    </button>
+</div>
+    <!-- =========================
      PLAN DE ESTUDIO - INFORMÁTICA
 ========================= -->
 
 <div class="plan-informatica">
-
     <h2>Plan de estudio</h2>
-
     <div class="plan-columnas">
-
-
         <!-- =========================
              CUARTO AÑO
         ========================== -->
-
         <div class="anio-plan">
-
             <h3>CUARTO AÑO</h3>
-
             <div class="materias humanistica">
                 Lengua y Literatura<br>
                 Biología<br>
@@ -1015,34 +2029,27 @@
                 Educación Artística<br>
                 Educación Física
             </div>
-
             <div class="materias cientifico">
                 Matemática<br>
                 Física<br>
                 Química
             </div>
-
             <div class="materias tecnica">
                 Laboratorio de Aplicaciones I<br>
                 Introducción a la Programación<br>
                 Laboratorio de Sistemas Operativos
             </div>
-
             <div class="materias pastoral">
                 Formación Cristiana
             </div>
-
         </div>
-
 
         <!-- =========================
              QUINTO AÑO
         ========================== -->
 
         <div class="anio-plan">
-
             <h3>QUINTO AÑO</h3>
-
             <div class="materias humanistica">
                 Lengua y Literatura<br>
                 Psicología<br>
@@ -1052,35 +2059,28 @@
                 Educación Artística<br>
                 Educación Física
             </div>
-
             <div class="materias cientifico">
                 Matemática<br>
                 Física<br>
                 Química
             </div>
-
             <div class="materias tecnica">
                 Gestión de Datos<br>
                 Sistemas y Organizaciones<br>
                 Laboratorio de Hardware
             </div>
-
             <div class="materias pastoral">
                 Formación Cristiana y<br>
                 Proyecto de Vida
             </div>
-
         </div>
-
 
         <!-- =========================
              SEXTO AÑO
         ========================== -->
 
         <div class="anio-plan">
-
             <h3>SEXTO AÑO</h3>
-
             <div class="materias humanistica">
                 Lengua y Literatura<br>
                 Filosofía<br>
@@ -1089,7 +2089,6 @@
                 Educación Artística<br>
                 Educación Física
             </div>
-
             <div class="materias cientifico">
                 Análisis Matemático<br>
                 Economía y Gestión<br>
@@ -1097,28 +2096,22 @@
                 Estadística<br>
                 Recursos Humanos
             </div>
-
             <div class="materias tecnica">
                 Laboratorio de Programación<br>
                 Base de Datos<br>
                 Laboratorio de Aplicaciones II
             </div>
-
             <div class="materias pastoral">
                 Bioética y Cuidado de la Vida
             </div>
-
         </div>
-
 
         <!-- =========================
              SÉPTIMO AÑO
         ========================== -->
 
         <div class="anio-plan">
-
             <h3>SÉPTIMO AÑO</h3>
-
             <div class="materias cientifico">
                 Inglés Técnico<br>
                 Emprendimientos<br>
@@ -1126,7 +2119,6 @@
                 Actividades Industriales<br>
                 Higiene y Seguridad Laboral
             </div>
-
             <div class="materias tecnica">
                 Mantenimiento de Hardware<br>
                 Monousuario y Software<br>
@@ -1134,225 +2126,1389 @@
                 de Redes Locales<br>
                 Conexión de Redes Extendidas
             </div>
-
             <div class="materias profesionalizante">
                 Formación en Ambiente<br>
                 de Trabajo
             </div>
-
             <div class="materias pastoral">
                 Doctrina Social
             </div>
-
         </div>
-
     </div>
 
-
     <!-- REFERENCIA DE COLORES -->
-
     <div class="referencia-plan">
-
         <span>Campo de Formación:</span>
-
         <span class="referencia humanistica">
             Humanística
         </span>
-
         <span class="referencia cientifico">
             Científico Tecnológica
         </span>
-
         <span class="referencia tecnica">
             Técnica específica
         </span>
-
         <span class="referencia profesionalizante">
             Práctica profesionalizante
         </span>
-
         <span class="referencia pastoral">
             Pastoral
         </span>
+    </div>
+</div>
+<!-- HORARIOS -->
+<section class="horarios-especialidad">
+
+    <h2>Horarios</h2>
+
+    <h3>4.º AÑO "C" 2026</h3>
+
+    <div class="tabla-horarios-contenedor">
+
+        <table class="tabla-horarios">
+
+            <thead>
+                <tr>
+                    <th class="hora-lateral">HORA</th>
+                    <th>LUNES</th>
+                    <th>MARTES</th>
+                    <th>MIÉRCOLES</th>
+                    <th>JUEVES</th>
+                    <th>VIERNES</th>
+                    <th class="hora-lateral">HORA</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- MAÑANA -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">MAÑANA</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">07:45</td>
+
+                    <td>
+                        <strong>LENGUA</strong><br>
+                        Roja Fabiana
+                    </td>
+
+                    <td>
+                        <strong>INT. A LA PROGRAM.</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS</strong><br>
+                        Luna Gabriela
+                    </td>
+
+                    <td>
+                        <strong>FÍSICA</strong><br>
+                        Orozco Gabriela
+                    </td>
+
+                    <td>
+                        <strong>FORM. CRISTIANA</strong><br>
+                        Argüello Antonella
+                    </td>
+
+                    <td class="hora-lateral">08:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">09:05</td>
+
+                    <td>
+                        <strong>BIOLOGÍA</strong><br>
+                        Sisti Silvana
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE SIST. OPER.</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS</strong>
+                        <hr>
+                        <strong>GEOGRAFÍA</strong><br>
+                        Masgoret Germán
+                    </td>
+
+                    <td>
+                        <strong>LENGUA</strong><br>
+                        Roja Fabiana
+                    </td>
+
+                    <td>
+                        <strong>INTROD. A LA PROGRAM.</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td class="hora-lateral">09:55</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">10:45</td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong><br>
+                        Farias Laura
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE APLICAC.</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td>
+                        <strong>GEOGRAFÍA</strong><br>
+                        Masgoret Germán
+                    </td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong><br>
+                        Farias Laura
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE SIST. OPER.</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td class="hora-lateral">11:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">12:10</td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>LAB. DE APLICAC.</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong><br>
+                        Farias Laura
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">12:50</td>
+                </tr>
+
+                <tr class="fin-turno">
+                    <td class="hora-lateral"></td>
+                    <td colspan="5"></td>
+                    <td class="hora-lateral">13:30</td>
+                </tr>
+
+
+                <!-- TARDE -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">TARDE</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">13:45</td>
+
+                    <td>
+                        <strong>LAB. DE APLIC.</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>FÍSICA</strong><br>
+                        Orozco Gabriela
+                    </td>
+
+                    <td>
+                        <strong>HISTORIA</strong><br>
+                        Oyola Lucía
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">14:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">15:15</td>
+
+                    <td>
+                        <strong>LAB. DE APLIC.</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>BIOLOGÍA</strong><br>
+                        Sisti Silvana
+                    </td>
+
+                    <td>
+                        <strong>HISTORIA</strong>
+                        <hr>
+                        <strong>QUÍMICA</strong>
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">15:55</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral">16:45</td>
+
+                    <td>
+                        <strong>ED. FÍSICA</strong><br>
+                        Liendo Marcelo
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>FORM. ARTÍSTICA</strong><br>
+                        Hoffman Gabriela
+                    </td>
+
+                    <td>
+                        <strong>QUÍMICA</strong><br>
+                        Jacquelin Daniela
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">17:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral"></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td class="hora-lateral">18:05</td>
+                </tr>
+
+            </tbody>
+
+        </table>
 
     </div>
 
-</div>
+</section>
+<!-- HORARIOS 5.º AÑO -->
+<section class="horarios-especialidad">
+
+    <h3>HORARIO 5.º AÑO "C" 2026</h3>
+
+    <div class="tabla-horarios-contenedor">
+
+        <table class="tabla-horarios">
+
+            <thead>
+                <tr>
+                    <th class="hora-lateral">HORA</th>
+                    <th>LUNES</th>
+                    <th>MARTES</th>
+                    <th>MIÉRCOLES</th>
+                    <th>JUEVES</th>
+                    <th>VIERNES</th>
+                    <th class="hora-lateral">HORA</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- MAÑANA -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">MAÑANA</td>
+                    <td></td>
+                </tr>
+
+                <!-- 07:45 - 09:05 -->
+                <tr>
+                    <td class="hora-lateral">07:45</td>
+
+                    <td>
+                        <strong>QUÍMICA</strong><br>
+                        Carzoglio Natalia
+                    </td>
+
+                    <td>
+                        <strong>ED. ARTÍSTICA</strong><br>
+                        Sliakonis Mauricio
+                    </td>
+
+                    <td>
+                        <strong>GESTIÓN DE DATOS</strong><br>
+                        Mariela Flores
+                    </td>
+
+                    <td>
+                        <strong>SIST. Y ORGANIZ.</strong><br>
+                        Miguel Martin
+                    </td>
+
+                    <td>
+                        <strong>EDUC. FÍSICA</strong><br>
+                        7:45 a 9:45 hs
+                    </td>
+
+                    <td class="hora-lateral">08:25</td>
+                </tr>
+
+                <!-- 09:15 - 10:35 -->
+                <tr>
+                    <td class="hora-lateral">09:15</td>
+
+                    <td>
+                        <strong>QUÍMICA</strong>
+                        <hr>
+                        <strong>HISTORIA</strong>
+                    </td>
+
+                    <td>
+                        <strong>LENGUA</strong><br>
+                        Roja Fabiana
+                    </td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong><br>
+                        Farias Laura
+                    </td>
+
+                    <td>
+                        <strong>FÍSICA</strong><br>
+                        Maidana Federico
+                    </td>
+
+                    <td>
+                        <strong>GESTIÓN DE DATOS</strong><br>
+                        Flores Mariela
+                    </td>
+
+                    <td class="hora-lateral">09:55</td>
+                </tr>
+
+                <!-- 10:45 - 12:05 -->
+                <tr>
+                    <td class="hora-lateral">10:45</td>
+
+                    <td>
+                        <strong>HISTORIA</strong><br>
+                        Masgoret Germán
+                    </td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong><br>
+                        Farias Laura
+                    </td>
+
+                    <td>
+                        <strong>FÍSICA</strong><br>
+                        Maidana Federico
+                    </td>
+
+                    <td>
+                        <strong>LENGUA</strong>
+                        <hr>
+                        <strong>FORM. CRIS. Y P. VIDA</strong>
+                    </td>
+
+                    <td>
+                        <strong>GESTIÓN DE DATOS</strong><br>
+                        Flores Mariela
+                    </td>
+
+                    <td class="hora-lateral">11:25</td>
+                </tr>
+
+                <!-- 12:10 -->
+                <tr>
+                    <td class="hora-lateral">12:10</td>
+
+                    <td>
+                        <strong>SIST. Y ORGANIZ.</strong>
+                    </td>
+
+                    <td>
+                        <strong>MATEMÁTICA</strong>
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        Victor Vella
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">12:50</td>
+                </tr>
+
+                <!-- TARDE -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">TARDE</td>
+                    <td></td>
+                </tr>
+
+                <!-- 13:45 - 15:05 -->
+                <tr>
+                    <td class="hora-lateral">13:45</td>
+
+                    <td>
+                        <strong>INGLÉS</strong><br>
+                        Coria Marcia
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>LAB. DE HARDWARE</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>PSICOLOGÍA</strong><br>
+                        Heredia Belén
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE HARDWARE</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td class="hora-lateral">14:25</td>
+                </tr>
+
+                <!-- 15:15 - 16:35 -->
+                <tr>
+                    <td class="hora-lateral">15:15</td>
+
+                    <td>
+                        <strong>INGLÉS</strong>
+                        <hr>
+                        <strong>SIST. Y ORGANIZ.</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>LAB. DE HARDWARE</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>PSICOLOGÍA</strong>
+                        <hr>
+                        <strong>GEOGRAFÍA</strong>
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE HARDWARE</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td class="hora-lateral">15:55</td>
+                </tr>
+
+                <!-- 16:45 - 18:05 -->
+                <tr>
+                    <td class="hora-lateral">16:45</td>
+
+                    <td>
+                        <strong>SIST. Y ORGANIZ.</strong>
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>GEOGRAFÍA</strong><br>
+                        García
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">17:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral"></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td class="hora-lateral">18:05</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- HORARIOS 6.º AÑO -->
+<section class="horarios-especialidad">
+
+    <h3>HORARIO 6.º AÑO "C" 2026</h3>
+
+    <div class="tabla-horarios-contenedor">
+
+        <table class="tabla-horarios">
+
+            <thead>
+                <tr>
+                    <th class="hora-lateral">HORA</th>
+                    <th>LUNES</th>
+                    <th>MARTES</th>
+                    <th>MIÉRCOLES</th>
+                    <th>JUEVES</th>
+                    <th>VIERNES</th>
+                    <th class="hora-lateral">HORA</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- MAÑANA -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">MAÑANA</td>
+                    <td></td>
+                </tr>
+
+                <!-- 07:45 - 09:05 -->
+                <tr>
+                    <td class="hora-lateral">07:45</td>
+
+                    <td>
+                        <strong>RECURSOS HUM</strong><br>
+                        Torres María
+                    </td>
+
+                    <td>
+                        <strong>BASE DE DATOS</strong><br>
+                        Miguel Martin
+                    </td>
+
+                    <td>
+                        <strong>ANAL. MATEMÁTICO</strong><br>
+                        Manias Cynthia
+                    </td>
+
+                    <td>
+                        <strong>FILOSOFÍA</strong><br>
+                        Sliakonis Maxi
+                    </td>
+
+                    <td>
+                        <strong>ESTADÍSTICA</strong><br>
+                        Molina Irene
+                    </td>
+
+                    <td class="hora-lateral">08:25</td>
+                </tr>
+
+                <!-- 09:15 - 10:35 -->
+                <tr>
+                    <td class="hora-lateral">09:15</td>
+
+                    <td>
+                        <strong>FILOSOFÍA</strong>
+                        <hr>
+                        <strong>LAB. DE APLICAC. II</strong>
+                    </td>
+
+                    <td>
+                        <strong>BASE DE DATOS</strong><br>
+                        BASE DE DATOS
+                    </td>
+
+                    <td>
+                        <strong>ANAL. MATEMÁTICO</strong>
+                        <hr>
+                        <strong>LAB. DE APLICAC. II</strong>
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE APLICAC. II</strong>
+                        <hr>
+                        <strong>ANAL. MATEMÁTICO</strong>
+                    </td>
+
+                    <td>
+                        <strong>ED. ARTÍSTICA (TEATRO)</strong><br>
+                        Ferrari Mara
+                    </td>
+
+                    <td class="hora-lateral">09:55</td>
+                </tr>
+
+                <!-- 10:45 - 12:05 -->
+                <tr>
+                    <td class="hora-lateral">10:45</td>
+
+                    <td>
+                        <strong>LAB. DE APLICAC. II</strong><br>
+                        Martin Miguel
+                    </td>
+
+                    <td>
+                        <strong>LENGUA</strong><br>
+                        Roja Fabiana
+                    </td>
+
+                    <td>
+                        <strong>Martin Miguel</strong>
+                        <hr>
+                        <strong>BASE DE DATOS</strong>
+                    </td>
+
+                    <td>
+                        <strong>Manias Cynthia</strong>
+                        <hr>
+                        <strong>ESTADÍSTICA</strong>
+                    </td>
+
+                    <td>
+                        <strong>BIOÉT. Y CUID. VIDA</strong><br>
+                        Oyola L / Schiavone Clara
+                    </td>
+
+                    <td class="hora-lateral">11:25</td>
+                </tr>
+
+                <!-- 12:10 - 12:50 -->
+                <tr>
+                    <td class="hora-lateral">12:10</td>
+
+                    <td>
+                        <strong>RECURSOS HUM</strong>
+                    </td>
+
+                    <td>
+                        <strong>LENGUA</strong>
+                    </td>
+
+                    <td>
+                        Martin Miguel
+                    </td>
+
+                    <td>
+                        Molina Irene
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">12:50</td>
+                </tr>
+
+                <!-- FIN MAÑANA -->
+                <tr class="fin-turno">
+                    <td class="hora-lateral"></td>
+                    <td colspan="5"></td>
+                    <td class="hora-lateral">13:30</td>
+                </tr>
+
+
+                <!-- TARDE -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">TARDE</td>
+                    <td></td>
+                </tr>
+
+                <!-- 13:45 - 15:05 -->
+                <tr>
+                    <td class="hora-lateral">13:45</td>
+
+                    <td>
+                        <strong>ECON. Y GEST.</strong><br>
+                        Miranda Gladys
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS</strong><br>
+                        Coria Marcia
+                    </td>
+
+                    <td>
+                        <strong>CIUD. Y POLÍTICA</strong><br>
+                        Persichelli Ivana
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE PROGRAM</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">14:25</td>
+                </tr>
+
+                <!-- 15:15 - 16:35 -->
+                <tr>
+                    <td class="hora-lateral">15:15</td>
+
+                    <td>
+                        <strong>ECON. Y GEST.</strong><br>
+                        Miranda Gladys
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS</strong>
+                        <hr>
+                        <strong>LAB. DE PROGRAM.</strong>
+                    </td>
+
+                    <td>
+                        <strong>CIUD. Y POLÍTICA</strong>
+                    </td>
+
+                    <td>
+                        <strong>LAB. DE PROGRAM</strong>
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">15:55</td>
+                </tr>
+
+                <!-- 16:45 - 18:05 -->
+                <tr>
+                    <td class="hora-lateral">16:45</td>
+
+                    <td></td>
+
+                    <td>
+                        Mira Jorge
+                        <br><br>
+                        <strong>LAB. DE PROGRAM</strong>
+                    </td>
+
+                    <td>
+                        <strong>EDUCACIÓN FÍSICA</strong><br>
+                        15:55 a 17:55 hs<br>
+                        Villalba Emanuel
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">17:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral"></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td class="hora-lateral">18:05</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- HORARIOS 7.º AÑO -->
+<section class="horarios-especialidad">
+
+    <h3>HORARIO 7.º AÑO "C" 2026</h3>
+
+    <div class="tabla-horarios-contenedor">
+
+        <table class="tabla-horarios">
+
+            <thead>
+                <tr>
+                    <th class="hora-lateral">HORA</th>
+                    <th>LUNES</th>
+                    <th>MARTES</th>
+                    <th>MIÉRCOLES</th>
+                    <th>JUEVES</th>
+                    <th>VIERNES</th>
+                    <th class="hora-lateral">HORA</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- MAÑANA -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">MAÑANA</td>
+                    <td></td>
+                </tr>
+
+                <!-- 07:45 - 09:05 -->
+                <tr>
+                    <td class="hora-lateral">07:45</td>
+
+                    <td>
+                        <strong>FORM. AMB. TRABAJO</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>MARCO JURÍDICO</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td>
+                        <strong>FORM. AMB. TRABAJO</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS TÉCNICO</strong><br>
+                        Luna Gabriela
+                    </td>
+
+                    <td>
+                        <strong>CONEXIÓN REDES</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td class="hora-lateral">08:25</td>
+                </tr>
+
+                <!-- 09:15 - 10:35 -->
+                <tr>
+                    <td class="hora-lateral">09:15</td>
+
+                    <td>
+                        <strong>FORM. AMB. TRABAJO</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>INST. ADM. REDES</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td>
+                        <strong>FORM. AMB. TRABAJO</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>EMPRENDIMIENTOS</strong>
+                    </td>
+
+                    <td>
+                        <strong>CONEXIÓN REDES</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td class="hora-lateral">09:55</td>
+                </tr>
+
+                <!-- 10:45 - 12:05 -->
+                <tr>
+                    <td class="hora-lateral">10:45</td>
+
+                    <td>
+                        <strong>FORM. AMB. TRABAJO</strong><br>
+                        Piccini Tamara
+                    </td>
+
+                    <td>
+                        <strong>INST. ADM. REDES</strong>
+                        <hr>
+                        <strong>MANTENIM. HARD</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>MANTENIM. HARD</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>EMPRENDIMIENTOS</strong>
+                    </td>
+
+                    <td>
+                        <strong>DOCTRINA SOCIAL</strong><br>
+                        Oyola L / Rego Marcos
+                    </td>
+
+                    <td class="hora-lateral">11:25</td>
+                </tr>
+
+                <!-- 12:10 -->
+                <tr>
+                    <td class="hora-lateral">12:10</td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>MANTENIM. HARD</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>MANTENIM. HARD</strong>
+                    </td>
+
+                    <td>
+                        <strong>MARCO JURÍDICO</strong>
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">12:50</td>
+                </tr>
+
+                <!-- FIN MAÑANA -->
+                <tr class="fin-turno">
+                    <td class="hora-lateral"></td>
+                    <td colspan="5"></td>
+                    <td class="hora-lateral"></td>
+                </tr>
+
+
+                <!-- TARDE -->
+                <tr class="titulo-turno">
+                    <td></td>
+                    <td colspan="5">TARDE</td>
+                    <td></td>
+                </tr>
+
+                <!-- 13:45 - 15:05 -->
+                <tr>
+                    <td class="hora-lateral">13:45</td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>MANTENIM. HARD</strong><br>
+                        Mira Jorge
+                    </td>
+
+                    <td>
+                        <strong>INST. ADM. REDES</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td>
+                        <strong>CONEXIÓN REDES</strong><br>
+                        Cabral Gustavo
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">14:25</td>
+                </tr>
+
+                <!-- 15:15 - 16:35 -->
+                <tr>
+                    <td class="hora-lateral">15:15</td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>MANTENIM. HARD</strong>
+                    </td>
+
+                    <td>
+                        <strong>INST. ADM. REDES</strong>
+                        <hr>
+                        <strong>HIGIENE Y SEG. LAB.</strong>
+                    </td>
+
+                    <td>
+                        <strong>INGLÉS TÉCNICO</strong><br>
+                        Luna Gabriela
+                    </td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">15:55</td>
+                </tr>
+
+                <!-- 16:45 - 18:05 -->
+                <tr>
+                    <td class="hora-lateral">16:45</td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td>
+                        <strong>HIGIENE Y SEG. LAB.</strong><br>
+                        López Daniel
+                    </td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td class="hora-lateral">17:25</td>
+                </tr>
+
+                <tr>
+                    <td class="hora-lateral"></td>
+
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td class="hora-lateral">18:05</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- PROFESORES -->
+<section class="profesores">
+
+    <h2>Profesores</h2>
+
+    <div class="contenedor-profesores">
+
+        <!-- PROFESOR 1 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe1.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor: Fabiana Roja</h3>
+
+                <p>
+                    <strong>Materia:</strong><br>
+                    Lengua 4C.<br>
+                    Lengua 5C.<br>
+                    Lengua 6C.
+                </p>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 2 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe2.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor: Silvana Sisti</h3>
+
+                <p>
+                    <strong>Materia:</strong><br>
+                    Biología 4C
+                </p>
+            </div>
+        </article>
+
+        <!-- PROFESOR 3 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe3.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor: Laura Farías</h3>
+
+                <p>
+                    <strong>Materias:</strong><br>
+                    Matemática 4C<br>
+                    Matemática 5C
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 4 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe4.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor: Miguel Martín</h3>
+
+                <p>
+                    <strong>Materias:</strong><br>
+                    Laboratorio de Aplicaciones 4C.<br>
+                    Sistemas y Organizaciones 5C.<br>
+                    Laboratorio de Aplicaciones II 6C.<br>
+                    Base de Datos.
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 5 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe5.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor: Marcelo Liendo</h3>
+
+                <p>
+                    <strong>Materia:</strong><br>
+                    Educación Física 4C.<br>
+                    Educación Física 5C.
+                </p>
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 6 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe6.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor</h3>
+
+                <p>
+                    <strong>Materias:</strong><br>
+                    Materia 1<br>
+                    Materia 2
+                </p>
+
+                <p>
+                    <strong>Años:</strong><br>
+                    5.º C y 6.º C
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 7 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe7.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor</h3>
+
+                <p>
+                    <strong>Materia:</strong><br>
+                    Nombre de la materia
+                </p>
+
+                <p>
+                    <strong>Año:</strong><br>
+                    7.º C
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- PROFESOR 8 -->
+        <article class="tarjeta-profesor">
+
+            <img src="img/profesores/fotoprofe8.jpg"
+                 alt="Foto del profesor">
+
+            <div class="datos-profesor">
+
+                <h3>Nombre del profesor</h3>
+
+                <p>
+                    <strong>Materia: Laboratorio</strong><br>
+                </p>
+
+                <p>
+                    <strong>Año: 4C</strong><br>
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
             </p>
-
-
             <div class="separador"></div>
-
-
             <h1 class="titulo-comentarios">
                 Comentarios
             </h1>
-
-
             <div class="comentarios">
-
                 <div class="comentario">
-
                     <p>
                         <strong>
                             pepita martinez 4to C
                         </strong>
                     </p>
-
                     <p>
                         necesito ayuda con programacion,
                         alguno conoce un particular?
                         necesito aprobar con mira
                     </p>
-
                     <p>
                         comentarios(3)
                     </p>
-
                 </div>
-
-
                 <form class="formulario">
 
-                    <label>
-                        Nombre completo
-                    </label>
-
-                    <input type="text">
-
-
-                    <label>
-                        Curso
-                    </label>
-
-                    <input type="text">
-
-
-                    <label>
-                        Escribe tu opinión aquí:
-                    </label>
-
-                    <textarea></textarea>
-
-
-                    <button type="submit">
-                        Subir
-                    </button>
-
+                    <div class="formulario-comentarios">
+    <div class="campo-comentario">
+        <label for="nombre-comentario">Nombre completo</label>
+        <input
+            type="text"
+            id="nombre-comentario"
+            placeholder="Escribí tu nombre completo">
+    </div>
+    <div class="campo-comentario">
+        <label for="curso-comentario">Curso</label>
+        <input
+            type="text"
+            id="curso-comentario"
+            placeholder="Ejemplo: 3° A">
+    </div>
+    <div class="campo-comentario">
+        <label for="opinion-comentario">
+            Escribí tu opinión aquí:
+        </label>
+        <textarea
+            id="opinion-comentario"
+            placeholder="Escribí tu opinión sobre la especialidad..."></textarea>
+    </div>
+<button
+    type="button"
+    class="boton-subir-comentario">
+    Subir
+</button>s
+</div>
                 </form>
-
             </div>
-
         </main>
-
     </section>
-
 
     <!-- =========================
          QUÍMICA
     ========================== -->
 
     <section id="quimica" class="seccion-pagina">
-
         <main class="especialidad">
-
             <button class="volver" data-seccion="inicio">
                 ← VOLVER
             </button>
-
             <h1 class="titulo-pagina">
                 Química
             </h1>
-
             <div class="linea"></div>
-
-
             <h2>
                 Introducción de la especialidad
             </h2>
-
             <p class="texto-especialidad">
                 ...
             </p>
-
-            <!-- =========================
-     PLAN DE ESTUDIO - QUÍMICA
-========================= -->
-
+            <div class="acceso-cuestionario-quimica" data-seccion="cuestionario">
+                <img src="img/SNOQUI.png"
+                alt="Snoopy - Test vocacional">
+            </div>
+    
 <div class="plan-quimica">
-
     <h2>Plan de estudio</h2>
-
     <div class="plan-columnas">
-
-
         <!-- =========================
              CUARTO AÑO
         ========================== -->
-
         <div class="anio-plan">
-
             <h3>CUARTO AÑO</h3>
-
-            <!-- HUMANÍSTICA -->
-
+           <!-- HUMANÍSTICA -->
             <div class="materias humanistica">
-
                 Lengua y Literatura<br>
                 Geografía<br>
                 Historia<br>
                 Inglés<br>
                 Educación Artística<br>
                 Educación Física
-
             </div>
-
-
             <!-- CIENTÍFICO TECNOLÓGICA -->
-
             <div class="materias cientifico">
-
                 Matemática<br>
                 Biología<br>
                 Física
-
             </div>
-
-
             <!-- TÉCNICA ESPECÍFICA -->
-
             <div class="materias tecnica">
-
                 Química General<br>
                 Química Inorgánica<br>
                 Tecnología de los Materiales
-
             </div>
-
-
             <!-- PASTORAL -->
-
             <div class="materias pastoral">
-
                 Formación Cristiana
-
             </div>
-
         </div>
-
-
         <!-- =========================
              QUINTO AÑO
         ========================== -->
-
         <div class="anio-plan">
-
             <h3>QUINTO AÑO</h3>
-
             <!-- HUMANÍSTICA -->
-
             <div class="materias humanistica">
-
                 Lengua y Literatura<br>
                 Psicología<br>
                 Geografía<br>
@@ -1360,249 +3516,180 @@
                 Inglés<br>
                 Educación Artística<br>
                 Educación Física
-
             </div>
-
-
             <!-- CIENTÍFICO TECNOLÓGICA -->
-
             <div class="materias cientifico">
-
                 Matemática<br>
                 Física<br>
                 Energías Renovables<br>
                 y Ambiente
-
             </div>
-
-
             <!-- TÉCNICA ESPECÍFICA -->
-
             <div class="materias tecnica">
-
                 Operaciones y Procesos<br>
                 Químicos I<br>
                 Química Analítica Cualitativa<br>
                 Química Orgánica I
-
             </div>
-
-
             <!-- PASTORAL -->
-
             <div class="materias pastoral">
-
                 Formación Cristiana y<br>
                 Proyecto de Vida
-
             </div>
-
         </div>
-
-
         <!-- =========================
              SEXTO AÑO
         ========================== -->
-
         <div class="anio-plan">
-
             <h3>SEXTO AÑO</h3>
-
             <!-- HUMANÍSTICA -->
-
             <div class="materias humanistica">
-
                 Lengua y Literatura<br>
                 Filosofía<br>
                 Ciudadanía y Política<br>
                 Inglés<br>
                 Educación Artística<br>
                 Educación Física
-
             </div>
-
-
             <!-- CIENTÍFICO TECNOLÓGICA -->
-
             <div class="materias cientifico">
-
                 Análisis Matemático<br>
                 Economía y Gestión de la<br>
                 Producción Industrial
-
             </div>
-
-
             <!-- TÉCNICA ESPECÍFICA -->
-
             <div class="materias tecnica">
-
                 Operaciones y Procesos<br>
                 Químicos II<br>
                 Química Analítica Cuantitativa I<br>
                 Química Orgánica II<br>
                 Química Industrial I
-
             </div>
-
-
             <!-- PASTORAL -->
-
             <div class="materias pastoral">
-
                 Bioética y Cuidado de la Vida
-
             </div>
-
         </div>
-
-
         <!-- =========================
              SÉPTIMO AÑO
         ========================== -->
-
         <div class="anio-plan">
-
             <h3>SÉPTIMO AÑO</h3>
-
-
             <!-- CIENTÍFICO TECNOLÓGICA -->
-
             <div class="materias cientifico">
-
                 Inglés Técnico<br>
                 Emprendimientos<br>
                 Marco Jurídico de las<br>
                 Actividades Industriales<br>
                 Higiene y Seguridad Laboral
-
             </div>
-
-
             <!-- TÉCNICA ESPECÍFICA -->
-
             <div class="materias tecnica">
-
                 Química Analítica Cuantitativa II<br>
                 Química Industrial II<br>
                 Estadística Aplicada
-
             </div>
-
-
             <!-- PRÁCTICA PROFESIONALIZANTE -->
-
             <div class="materias profesionalizante">
-
                 Formación en Ambiente<br>
                 de Trabajo
-
             </div>
-
-
             <!-- PASTORAL -->
-
             <div class="materias pastoral">
-
                 Doctrina Social
-
             </div>
-
         </div>
-
-
     </div>
-
-
+    
     <!-- =========================
          REFERENCIA DE COLORES
     ========================== -->
-
     <div class="referencia-plan">
-
         <span>Campo de Formación:</span>
-
         <span class="referencia humanistica">
             Humanística
         </span>
-
         <span class="referencia cientifico">
             Científico Tecnológica
         </span>
-
         <span class="referencia tecnica">
             Técnica específica
         </span>
-
         <span class="referencia profesionalizante">
             Práctica profesionalizante
         </span>
-
         <span class="referencia pastoral">
             Pastoral
         </span>
-
     </div>
-
 </div>
-
             <div class="separador"></div>
-
-
             <h1 class="titulo-comentarios">
                 Comentarios
             </h1>
-
-
             <div class="comentarios">
-
                 <div class="comentario">
-
                     <p>
                         <strong>
-                            pepita martinez 4to B
+                            Pepita Martinez 4to B
                         </strong>
                     </p>
-
                     <p>
-                        necesito ayuda con química
+                        Necesito ayuda con química
                         inorgánica, alguno conoce
                         un particular?
                     </p>
-
                     <p>
                         comentarios(3)
                     </p>
-
                 </div>
 
 
                 <form class="formulario">
 
-                    <label>
-                        Nombre completo
-                    </label>
+                    <div class="formulario-comentarios">
+    <div class="campo-comentario">
+        <label for="nombre-comentario-quimica">
+            Nombre completo
+        </label>
 
-                    <input type="text">
-
-
-                    <label>
-                        Curso
-                    </label>
-
-                    <input type="text">
-
-
-                    <label>
-                        Escribe tu opinión aquí:
-                    </label>
-
-                    <textarea></textarea>
+        <input
+            type="text"
+            id="nombre-comentario-quimica"
+            placeholder="Escribí tu nombre completo">
+    </div>
 
 
-                    <button type="submit">
-                        Subir
-                    </button>
+    <div class="campo-comentario">
+        <label for="curso-comentario-quimica">
+            Curso
+        </label>
+
+        <input
+            type="text"
+            id="curso-comentario-quimica"
+            placeholder="Ejemplo: 3° A">
+    </div>
+
+
+    <div class="campo-comentario">
+        <label for="opinion-comentario-quimica">
+            Escribí tu opinión aquí:
+        </label>
+
+        <textarea
+            id="opinion-comentario-quimica"
+            placeholder="Escribí tu opinión sobre la especialidad..."></textarea>
+    </div>
+
+
+    <button
+        type="button"
+        class="boton-subir-comentario">
+        Subir
+    </button>
+
+</div>
 
                 </form>
 
@@ -1639,10 +3726,11 @@
             <p class="texto-especialidad">
                 ...
             </p>
-
-            <!-- =========================
-     PLAN DE ESTUDIO - CONSTRUCCIONES
-========================= -->
+        <div class="acceso-cuestionario-construcciones"
+        data-seccion="cuestionario">
+        <img src="img/SNOCONST.png"
+        alt="Test vocacional">
+    </div>
 
 <div class="plan-construcciones">
 
@@ -1835,65 +3923,91 @@
 
 
             <div class="separador"></div>
-
-
             <h1 class="titulo-comentarios">
-                Comentarios
-            </h1>
+    Comentarios
+</h1>
 
 
-            <div class="comentarios">
+<div class="comentarios">
 
-                <div class="comentario">
+    <!-- COMENTARIO PUBLICADO -->
+    <div class="comentario">
 
-                    <p>
-                        <strong>
-                            pepita martinez 4to A
-                        </strong>
-                    </p>
+        <p>
+            <strong>
+                pepita martinez 4to A
+            </strong>
+        </p>
 
-                    <p>
-                        necesito ayuda con
-                        construcciones I,
-                        alguno conoce un particular?
-                    </p>
+        <p>
+            necesito ayuda con construcciones I,
+            alguno conoce un particular?
+        </p>
 
-                    <p>
-                        comentarios(3)
-                    </p>
+        <p>
+            comentarios(3)
+        </p>
 
-                </div>
-
-
-                <form class="formulario">
-
-                    <label>
-                        Nombre completo
-                    </label>
-
-                    <input type="text">
+    </div>
 
 
-                    <label>
-                        Curso
-                    </label>
+    <!-- FORMULARIO PARA ESCRIBIR -->
+    <div class="formulario-comentarios">
 
-                    <input type="text">
+        <div class="campo-comentario">
+
+            <label for="nombre-comentario-construcciones">
+                Nombre completo
+            </label>
+
+            <input
+                type="text"
+                id="nombre-comentario-construcciones"
+                placeholder="Escribí tu nombre completo">
+
+        </div>
 
 
-                    <label>
-                        Escribe tu opinión aquí:
-                    </label>
+        <div class="campo-comentario">
 
-                    <textarea></textarea>
+            <label for="curso-comentario-construcciones">
+                Curso
+            </label>
+
+            <input
+                type="text"
+                id="curso-comentario-construcciones"
+                placeholder="Ejemplo: 3° A">
+
+        </div>
 
 
-                    <button type="submit">
-                        Subir
-                    </button>
+        <div class="campo-comentario">
 
-                </form>
+            <label for="opinion-comentario-construcciones">
+                Escribí tu opinión aquí:
+            </label>
 
+            <textarea
+                id="opinion-comentario-construcciones"
+                placeholder="Escribí tu opinión sobre la especialidad..."></textarea>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="boton-subir-comentario">
+            Subir
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+               
             </div>
 
         </main>
@@ -1915,6 +4029,7 @@
     <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
+    <script src="cuestionario.js"></script>
 </body>
 
-</html>
+</html>s
