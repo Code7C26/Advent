@@ -1521,3 +1521,811 @@ footer {
 .boton-cuestionario:hover {
     background-color: #594238;
 }
+/* ==========================================
+   CUESTIONARIO DE INTERESES VOCACIONALES
+========================================== */
+
+.contenedor-cuestionario {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+    box-sizing: border-box;
+    background-color: #e2d1bd;
+    border-radius: 25px;
+}
+
+.contenedor-cuestionario h1 {
+    text-align: center;
+    color: #3f2c24;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.introduccion-cuestionario {
+    text-align: center;
+    font-size: 19px;
+    color: #3f2c24;
+    margin-bottom: 35px;
+}
+
+
+/* DATOS DEL ESTUDIANTE */
+
+.datos-estudiante {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.campo-dato {
+    flex: 1;
+}
+
+.campo-dato label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #3f2c24;
+}
+
+.campo-dato input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #b9a28d;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #fffaf5;
+}
+
+
+/* INSTRUCCIONES */
+
+.instrucciones-vocacional {
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: #f4e8dc;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.instrucciones-vocacional h2 {
+    color: #3f2c24;
+    margin-top: 0;
+}
+
+.instrucciones-vocacional p {
+    color: #3f2c24;
+    margin: 7px 0;
+}
+
+
+/* CADA PREGUNTA */
+
+.pregunta-vocacional {
+    background-color: #fffaf5;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.texto-pregunta {
+    margin: 0 0 15px;
+    color: #3f2c24;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+
+/* OPCIONES D I A */
+
+.opciones-vocacionales {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.opciones-vocacionales label {
+    cursor: pointer;
+}
+
+.opciones-vocacionales input {
+    display: none;
+}
+
+.opciones-vocacionales span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background-color: #e2d1bd;
+    color: #3f2c24;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.opciones-vocacionales input:checked + span {
+    background-color: #3f2c24;
+    color: white;
+    transform: scale(1.08);
+}
+
+
+/* BOTÓN FINAL */
+
+.boton-finalizar-cuestionario {
+    display: block;
+    margin: 35px auto 10px;
+
+    padding: 15px 35px;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: #3f2c24;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.boton-finalizar-cuestionario:hover {
+    background-color: #594238;
+}
+
+
+/* RESULTADO */
+
+.resultado-vocacional {
+    display: none;
+    margin-top: 40px;
+    padding: 35px;
+
+    background-color: #f4e8dc;
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+.resultado-vocacional.mostrar {
+    display: block;
+}
+
+.resultado-contenido h2 {
+    color: #3f2c24;
+    font-size: 30px;
+}
+
+.saludo-resultado {
+    font-weight: bold;
+    font-size: 20px;
+    color: #3f2c24;
+}
+
+.areas-resultado {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.area-resultado {
+    width: 250px;
+    padding: 25px;
+    background-color: #e2d1bd;
+    border-radius: 18px;
+}
+
+.area-resultado span {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #594238;
+}
+
+.area-resultado strong {
+    display: block;
+    margin: 10px 0;
+    font-size: 22px;
+    color: #3f2c24;
+}
+
+.area-resultado small {
+    color: #594238;
+    font-size: 16px;
+}
+
+.texto-final-resultado {
+    color: #3f2c24;
+    font-size: 17px;
+}
+
+
+/* BOTÓN VOLVER */
+
+.boton-volver-inicio {
+    margin-top: 20px;
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 25px;
+
+    background-color: #3f2c24;
+    color: white;
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* ADAPTACIÓN PARA CELULAR */
+
+@media (max-width: 700px) {
+
+    .contenedor-cuestionario {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .contenedor-cuestionario h1 {
+        font-size: 28px;
+    }
+
+    .datos-estudiante {
+        flex-direction: column;
+    }
+
+    .areas-resultado {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .area-resultado {
+        width: 90%;
+    }
+}
+/* BOTÓN VOLVER DEL CUESTIONARIO */
+
+.boton-volver-cuestionario {
+    display: block;
+    margin-bottom: 15px;
+
+    padding: 8px 16px;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: transparent;
+    color: #3f2c24;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.boton-volver-cuestionario:hover {
+    text-decoration: underline;
+}
+/* ==========================================
+   FORMULARIO DE COMENTARIOS
+========================================== */
+
+.formulario-comentarios {
+    width: 100%;
+    max-width: 575px;
+}
+
+
+/* CADA CAMPO */
+
+.campo-comentario {
+    margin-bottom: 20px;
+}
+
+
+/* TEXTO DE LOS CAMPOS */
+
+.campo-comentario label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #3f2c24;
+    font-size: 16px;
+}
+
+
+/* CAJAS PARA ESCRIBIR */
+
+.campo-comentario input,
+.campo-comentario textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 16px;
+
+    border: 1px solid #b9a28d;
+    border-radius: 12px;
+
+    background-color: #fffaf5;
+
+    color: #3f2c24;
+
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+/* EFECTO CUANDO HACÉS CLIC */
+
+.campo-comentario input:focus,
+.campo-comentario textarea:focus {
+    border-color: #3f2c24;
+    box-shadow: 0 0 0 2px rgba(63, 44, 36, 0.10);
+}
+
+
+/* TEXTO DE AYUDA DENTRO DE LAS CAJAS */
+
+.campo-comentario input::placeholder,
+.campo-comentario textarea::placeholder {
+    color: #8f8178;
+}
+
+
+/* CAJA GRANDE DE OPINIÓN */
+
+.campo-comentario textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+
+/* BOTÓN */
+
+.boton-subir-comentario {
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #3f2c24;
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.boton-subir-comentario:hover {
+    background-color: #594238;
+}
+/* ==========================================
+   RECONOCIMIENTOS
+========================================== */
+
+.tarjeta-reconocimiento {
+    background-color: #ead8c5;
+    border-radius: 20px;
+    padding: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.tarjeta-reconocimiento:hover {
+    transform: translateY(-5px);
+    background-color: #dfc9b2;
+}
+
+.tarjeta-reconocimiento h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: #3c2b24;
+    margin: 0;
+}
+
+
+/* ==========================================
+   DETALLE DEL RECONOCIMIENTO
+========================================== */
+
+.detalle-reconocimiento {
+    background-color: #ead8c5;
+    border-radius: 20px;
+    padding: 35px;
+    max-width: 900px;
+}
+
+.detalle-reconocimiento h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.detalle-reconocimiento h3 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.detalle-reconocimiento p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.fotos-reconocimiento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.fotos-reconocimiento img {
+    width: 280px;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 15px;
+    background-color: #ead8c5;
+}
+/* TARJETAS DE RECONOCIMIENTOS */
+
+.tarjeta-reconocimiento {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-reconocimiento:hover {
+    transform: translateY(-5px);
+}
+
+.foto-reconocimiento {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.nombre-reconocimiento {
+    background-color: #ead8c5;
+    padding: 18px 20px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 25px;
+    color: #3c2b24;
+    text-align: left;
+    border-radius: 0 0 20px 20px;
+}
+/* Snoopy del test vocacional */
+
+.acceso-cuestionario {
+    position: absolute;
+    right: 40px;
+    top: 250px;
+    width: 170px;
+    z-index: 10;
+}
+
+.acceso-cuestionario img {
+    width: 200px;
+    height: auto;
+    display: block;
+}
+
+.acceso-cuestionario button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.acceso-cuestionario img:hover {
+    transform: scale(1.03);
+}
+/* =========================
+   TARJETAS DE RECONOCIMIENTOS
+========================= */
+
+.tarjeta-reconocimiento {
+    background-color: #e8d7c3;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-reconocimiento:hover {
+    transform: translateY(-5px);
+}
+
+.foto-reconocimiento {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.foto-reconocimiento img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.nombre-reconocimiento {
+    padding: 18px 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #3f2c24;
+}
+/* =========================
+   FOTOS DE RECONOCIMIENTOS
+========================= */
+
+.galeria-reconocimiento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.galeria-reconocimiento img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    display: block;
+}
+.foto-ggr1 {
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* SNOOPY DEL TEST - QUÍMICA */
+
+.acceso-cuestionario-quimica {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -140px;
+    margin-bottom: -20px;
+    margin-right: -180px;
+    cursor: pointer;
+}
+
+.acceso-cuestionario-quimica img {
+    width: 160px;
+    height: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.acceso-cuestionario-quimica:hover img {
+    transform: scale(1.05);
+}
+.acceso-cuestionario-construcciones {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -140px;
+    margin-bottom: -20px;
+    margin-right: 0;
+    cursor: pointer;
+}
+
+.acceso-cuestionario-construcciones img {
+    width: 160px !important;
+    height: auto !important;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.acceso-cuestionario-construcciones:hover img {
+    transform: scale(1.05);
+}
+.lista-ocupacional {
+    margin-top: 20px;
+    margin-bottom: 130px;
+    padding-left: 30px;
+}
+
+.lista-ocupacional li {
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+/* =========================
+   HORARIOS
+   ========================= */
+
+.horarios-especialidad {
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+.horarios-especialidad h2 {
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.horarios-especialidad h3 {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.tabla-horarios-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-horarios {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: transparent;
+}
+
+.tabla-horarios th,
+.tabla-horarios td {
+    border: 1px solid #33221d;
+    padding: 10px 7px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.tabla-horarios th {
+    background-color: #eee0cd;
+    font-weight: bold;
+}
+
+.tabla-horarios .hora-lateral {
+    width: 65px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+}
+
+.tabla-horarios td strong {
+    font-weight: bold;
+}
+
+.tabla-horarios hr {
+    border: none;
+    border-top: 1px dashed #33221d;
+    margin: 7px 0;
+}
+
+.titulo-turno td {
+    border: none;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    padding: 12px;
+}
+
+.fin-turno td {
+    border: none;
+    height: 8px;
+}
+
+/* Separación entre el horario de 4.º y el de 5.º */
+.horarios-especialidad + .horarios-especialidad {
+    margin-top: 100px;
+}
+/* =========================
+   PROFESORES
+   ========================= */
+
+.profesores {
+    width: 100%;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.profesores h2 {
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0 0 40px 0;
+    border-bottom: 3px solid #3b2923;
+    padding-bottom: 10px;
+}
+
+.contenedor-profesores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.tarjeta-profesor {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    min-height: 190px;
+    padding: 20px;
+
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid #3b2923;
+    border-radius: 15px;
+
+    box-sizing: border-box;
+}
+
+.tarjeta-profesor img {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+    border: 1px solid #3b2923;
+
+    flex-shrink: 0;
+}
+
+.datos-profesor {
+    flex: 1;
+    min-width: 0;
+}
+
+.datos-profesor h3 {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.datos-profesor p {
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.datos-profesor strong {
+    font-weight: bold;
+}
+
+
+/* =========================
+   ADAPTACIÓN PARA CELULAR
+   ========================= */
+
+@media (max-width: 800px) {
+
+    .contenedor-profesores {
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta-profesor {
+        gap: 18px;
+    }
+
+    .tarjeta-profesor img {
+        width: 120px;
+        height: 120px;
+    }
+
+}
