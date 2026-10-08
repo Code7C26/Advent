@@ -2123,23 +2123,20 @@ footer {
     transform: scale(1.05);
 }
 .acceso-cuestionario-construcciones {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -140px;
-    margin-bottom: -20px;
-    margin-right: 0;
-    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    top: 250px;
+    width: 170px;
+    z-index: 10;
 }
 
 .acceso-cuestionario-construcciones img {
-    width: 160px !important;
-    height: auto !important;
+    width: 200px;
+    height: auto;
     display: block;
-    transition: transform 0.2s ease;
 }
-
 .acceso-cuestionario-construcciones:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 .lista-ocupacional {
     margin-top: 20px;
@@ -2254,10 +2251,11 @@ footer {
 }
 
 .contenedor-profesores {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 30px !important;
+    width: 100% !important;
+    box-sizing: border-box;
 }
 
 .tarjeta-profesor {
@@ -2276,14 +2274,9 @@ footer {
 }
 
 .tarjeta-profesor img {
-    width: 150px;
-    height: 150px;
-
+    width: 150px !important;
+    height: 150px !important;
     object-fit: cover;
-
-    border-radius: 12px;
-    border: 1px solid #3b2923;
-
     flex-shrink: 0;
 }
 
@@ -2328,4 +2321,262 @@ footer {
         height: 120px;
     }
 
+}
+/* =========================================
+   HORARIOS - FORMATO IGUAL A LAS FOTOS
+   ========================================= */
+
+.tabla-horarios-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-horarios {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 auto 25px auto;
+}
+
+.tabla-horarios th,
+.tabla-horarios td {
+    border: 1px solid #4a3830;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px 6px;
+    font-size: 15px;
+}
+
+.tabla-horarios th {
+    font-weight: bold;
+}
+
+.tabla-horarios .hora-lateral {
+    width: 65px;
+    border: none;
+    font-weight: bold;
+    background: transparent;
+}
+
+.tabla-horarios th.hora-lateral {
+    border: none;
+}
+
+.tabla-horarios strong {
+    font-weight: bold;
+}
+
+.tabla-horarios .fila-turno td {
+    border: none;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.tabla-horarios .medio-modulo {
+    padding-bottom: 7px;
+    margin-bottom: 7px;
+    border-bottom: 2px dashed #4a3830;
+}
+
+.tabla-horarios .hora-doble {
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 5px !important;
+}
+
+.tabla-horarios .hora-doble span {
+    display: block;
+    padding: 8px 0;
+}
+
+.tabla-horarios .hora-doble span:first-child {
+    border-bottom: 1px solid #4a3830;
+}
+.celda-salida-1250 {
+    position: relative;
+    height: 55px;
+    vertical-align: top !important;
+    padding-top: 18px !important;
+}
+
+.celda-salida-1250::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid #4a3830;
+}
+/* ================================
+   ALINEACIÓN DE HORARIOS
+   ================================ */
+
+.horarios-especialidad .tabla-horarios-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.horarios-especialidad .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Las dos columnas laterales de las horas tienen
+   exactamente el mismo ancho */
+.horarios-especialidad .hora-lateral {
+    width: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+}
+
+/* Las 5 columnas de los días tienen el mismo ancho */
+.horarios-especialidad .tabla-horarios th:not(.hora-lateral),
+.horarios-especialidad .tabla-horarios td:not(.hora-lateral) {
+    width: auto;
+}
+
+/* ================================
+   TARDE SIN RECUADRO
+   ================================ */
+
+.horarios-especialidad .titulo-turno td {
+    border: none !important;
+    background: transparent !important;
+    padding: 10px 0 !important;
+}
+
+/* El texto TARDE queda centrado */
+.horarios-especialidad .titulo-turno {
+    border: none !important;
+}
+
+.horarios-especialidad .titulo-turno td {
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+/* =========================================
+   6.º C - TARDE IGUAL A LA TABLA DE MAÑANA
+   ========================================= */
+
+#horario-6c .horarios-especialidad,
+#horario-6c .tabla-horarios-contenedor {
+    width: 100%;
+}
+
+#horario-6c .tabla-horarios {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+
+/* Mantener iguales las columnas de los días */
+#horario-6c .tabla-horarios th:not(.hora-lateral),
+#horario-6c .tabla-horarios td:not(.hora-lateral) {
+    width: auto;
+}
+
+/* Columnas de las horas */
+#horario-6c .tabla-horarios .hora-lateral {
+    width: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+}
+
+/* Título TARDE sin recuadro */
+#horario-6c .titulo-turno,
+#horario-6c .titulo-turno td {
+    border: none !important;
+    background: transparent !important;
+}
+/* ===== CORRECCIÓN HORARIO 6.º C ===== */
+
+#horario-6c {
+    width: 100%;
+}
+
+#horario-6c .tabla-horarios-contenedor {
+    width: 100%;
+    display: block;
+}
+
+#horario-6c .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Las dos tablas deben tener exactamente el mismo ancho */
+#horario-6c .tabla-horarios-contenedor + .tabla-horarios-contenedor {
+    width: 100%;
+}
+
+/* Mantener las columnas alineadas */
+#horario-6c table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* Horas laterales */
+#horario-6c .hora-lateral {
+    width: 70px;
+}
+
+/* TARDE */
+#horario-6c .turno-tarde {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+}
+/* ==========================================
+   PROFESORES - INFORMÁTICA
+   ========================================== */
+
+#informatica .contenedor-profesores {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+#informatica .tarjeta-profesor {
+    width: 100% !important;
+    min-height: 190px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+#informatica .tarjeta-profesor img {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#informatica .datos-profesor {
+    flex: 1;
+}
+.lista-capacitado {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding-left: 35px;
+}
+
+.lista-capacitado li {
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
