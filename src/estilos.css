@@ -2173,37 +2173,30 @@ footer {
 
 .tabla-horarios-contenedor {
     width: 100%;
-    overflow-x: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .tabla-horarios {
     width: 100%;
-    border-collapse: collapse;
     table-layout: fixed;
-    background-color: transparent;
+    border-collapse: collapse;
 }
-
 .tabla-horarios th,
 .tabla-horarios td {
-    border: 1px solid #33221d;
-    padding: 10px 7px;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 14px;
-}
-
-.tabla-horarios th {
-    background-color: #eee0cd;
-    font-weight: bold;
+    box-sizing: border-box;
 }
 
 .tabla-horarios .hora-lateral {
-    width: 65px;
-    font-size: 13px;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
+    width: 70px;
 }
+
+.tabla-horarios th:not(.hora-lateral),
+.tabla-horarios td:not(.hora-lateral) {
+    width: auto;
+}
+
 
 .tabla-horarios td strong {
     font-weight: bold;
@@ -2579,4 +2572,9 @@ footer {
 .lista-capacitado li {
     margin-bottom: 15px;
     line-height: 1.5;
+}
+.linea-punteada {
+    border: none;
+    border-top: 2px dashed #3b2923;
+    margin: 6px 0;
 }
