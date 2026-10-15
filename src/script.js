@@ -1,72 +1,73 @@
-// ==========================================
-// CAMBIO DE SECCIONES
-// ==========================================
 
+document.addEventListener("DOMContentLoaded", function () {
 
-// Buscamos todos los elementos que tengan
-// data-seccion
+    // Buscar todos los botones que permiten cambiar de sección
+    const botonesSeccion = document.querySelectorAll("[data-seccion]");
 
-const botonesSeccion =
-    document.querySelectorAll("[data-seccion]");
+    // Buscar todas las secciones principales de la página
+    const secciones = document.querySelectorAll(".seccion-pagina");
 
+    // Recorrer los botones
+    botonesSeccion.forEach(function (boton) {
 
-// Buscamos todas las secciones
+        boton.addEventListener("click", function (event) {
 
-const secciones =
-    document.querySelectorAll(".seccion-pagina");
+            event.preventDefault();
 
+            // Obtener el nombre de la sección que queremos abrir
+            const nombreSeccion = boton.getAttribute("data-seccion");
 
-// Recorremos todos los botones
+            // Obtener el lugar al que queremos desplazarnos, si existe
+            const destinoScroll = boton.getAttribute("data-scroll-destino");
 
-botonesSeccion.forEach(function(boton) {
+            // Ocultar todas las secciones principales
+            secciones.forEach(function (seccion) {
+                seccion.classList.remove("activa");
+            });
 
+            // Buscar la sección que corresponde al botón
+            const seccionMostrar = document.getElementById(nombreSeccion);
 
-    // Cuando hacemos clic
+            // Mostrar la sección elegida
+            if (seccionMostrar) {
+                seccionMostrar.classList.add("activa");
+            } else {
+                console.error(
+                    "No se encontró la sección con el ID: " + nombreSeccion
+                );
+                return;
+            }
 
-    boton.addEventListener("click", function(event) {
+            // Si el botón tiene un destino específico, ir a ese lugar
+            if (destinoScroll) {
 
+                const destino = document.getElementById(destinoScroll);
 
-        // Evitamos que el enlace
-        // recargue la página
+                if (destino) {
+                    destino.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+                    console.error(
+                        "No se encontró el destino: " + destinoScroll
+                    );
+                }
 
-        event.preventDefault();
+            } else {
 
+                // Si no hay destino, volver al inicio de la página
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
-        // Averiguamos qué sección queremos mostrar
+            }
 
-        const nombreSeccion =
-            boton.getAttribute("data-seccion");
-
-
-        // Ocultamos todas las secciones
-
-        secciones.forEach(function(seccion) {
-
-            seccion.classList.remove("activa");
-
-        });
-
-
-        // Buscamos la sección elegida
-
-        const seccionMostrar =
-            document.getElementById(nombreSeccion);
-
-
-        // La mostramos
-
-        if (seccionMostrar) {
-
-            seccionMostrar.classList.add("activa");
-
-        }
-
-
-        // Volvemos al comienzo
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
         });
 
     });
