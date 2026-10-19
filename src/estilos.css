@@ -2849,3 +2849,240 @@ footer {
         padding: 7px 3px;
     }
 }
+/* Alineación de los perfiles de profesores */
+.resumen-materia {
+    text-align: left;
+}
+
+.resumen-materia h2,
+.resumen-materia h3 {
+    text-align: center;
+}
+
+.resumen-materia p {
+    text-align: justify;
+    line-height: 1.6;
+}
+/* Igualar el tamaño de los horarios de mañana y tarde */
+#construcciones table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Mantener el mismo ancho para las columnas */
+#construcciones table th,
+#construcciones table td {
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+/* ALINEAR MAÑANA Y TARDE - 4.º A CONSTRUCCIONES */
+#horario-4a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-4a-construcciones .tabla-tarde-construcciones {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+#horario-4a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+#horario-4a-construcciones .tabla-horarios th,
+#horario-4a-construcciones .tabla-horarios td {
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+}
+/* HORARIO 5.º A CONSTRUCCIONES */
+#horario-5a-construcciones .tabla-horarios-contenedor {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    box-sizing: border-box;
+}
+
+#horario-5a-construcciones .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+#horario-5a-construcciones .tabla-horarios th,
+#horario-5a-construcciones .tabla-horarios td {
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px 5px;
+}
+
+#horario-5a-construcciones .tabla-horarios .hora-lateral {
+    width: 9%;
+    white-space: nowrap;
+}
+
+#horario-5a-construcciones .tabla-horarios .linea-punteada {
+    border: none;
+    border-top: 1px dashed #333;
+    margin: 5px 0;
+}
+
+
+/* PROFESORES DE CONSTRUCCIONES: MISMO DISEÑO QUE INFORMÁTICA */
+
+#profesores-construcciones .contenedor-profesores {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 32px !important;
+    max-width: 1250px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#profesores-construcciones .tarjeta-profesor {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 20px;
+    width: 100%;
+    min-height: 210px;
+    padding: 24px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+#profesores-construcciones .tarjeta-profesor img {
+    width: 180px;
+    height: 150px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#profesores-construcciones .tarjeta-profesor .datos-profesor {
+    flex: 1;
+    min-width: 0;
+    text-align: left !important;
+}
+
+@media (max-width: 768px) {
+    #profesores-construcciones .contenedor-profesores {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ajustar horario de 6.º A para que quede como el de 5.º A */
+#horario-6a-construcciones {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+#horario-6a-construcciones h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    margin: 0 auto 30px;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+#horario-6a-construcciones .tabla-horarios th,
+#horario-6a-construcciones .tabla-horarios td {
+    border: 1px solid #78685c;
+    padding: 8px 5px;
+    text-align: center;
+    vertical-align: middle;
+    overflow-wrap: break-word;
+}
+
+#horario-6a-construcciones .tabla-horarios .hora-lateral {
+    width: 75px;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+#horario-6a-construcciones .titulo-turno td {
+    border: none;
+    font-weight: bold;
+    font-style: italic;
+    padding: 12px;
+}
+
+#horario-6a-construcciones .linea-punteada {
+    border: 0;
+    border-top: 1px dashed #78685c;
+    margin: 5px 0;
+}
+/* Horario 6.º A: mismo tamaño que 5.º A */
+#horario-6a-construcciones {
+    width: 100%;
+    max-width: 1170px;
+    margin: 30px auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+/* Igualar el ancho de los horarios de Construcciones */
+#horario-5a-construcciones,
+#horario-6a-construcciones {
+    width: 100%;
+    max-width: 1170px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+#horario-5a-construcciones .tabla-horarios-contenedor,
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    box-sizing: border-box;
+}
+
+#horario-5a-construcciones .tabla-horarios,
+#horario-6a-construcciones .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
