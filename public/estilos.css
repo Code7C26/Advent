@@ -3755,28 +3755,32 @@ header .logo {
     font-size: 18px;
 }
 
-/* ================================
-   AJUSTES PARA CELULARES
-================================ */
-@media (max-width: 600px) {
 
-    /* Snoopy de Informática */
+/* =========================================
+   SNOOPY EN INTRODUCCIÓN - CELULARES
+========================================= */
+@media screen and (max-width: 600px) {
+
     #informatica .acceso-cuestionario {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin: 15px 0 25px;
-        z-index: 1;
+        position: absolute !important;
+        top: 105px !important;
+        right: 12px !important;
+        left: auto !important;
+        width: 75px !important;
+        margin: 0 !important;
+        display: block !important;
+        z-index: 2;
     }
 
     #informatica .acceso-cuestionario img {
-        width: 105px;
-        max-width: 35%;
+        display: block;
+        width: 75px !important;
+        max-width: 75px !important;
         height: auto;
     }
+
+}
+
 
     /* Evita que el contenido se salga de la pantalla */
     .especialidad {
@@ -3834,6 +3838,117 @@ header .logo {
         width: 65px !important;
         min-width: 65px !important;
         max-width: 65px !important;
+    }
+
+}
+
+/* =========================================
+   CORRECCIÓN FINAL DE HORARIOS EN CELULARES
+========================================= */
+@media screen and (max-width: 600px) {
+
+    .horarios-especialidad .tabla-horarios-contenedor {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 auto 25px !important;
+        padding-bottom: 8px;
+    }
+
+    .horarios-especialidad .tabla-horarios {
+        display: table !important;
+        width: 850px !important;
+        min-width: 850px !important;
+        max-width: none !important;
+        table-layout: fixed !important;
+        margin: 0 !important;
+        border-collapse: collapse;
+    }
+
+    .horarios-especialidad .tabla-horarios th,
+    .horarios-especialidad .tabla-horarios td {
+        font-size: 12px !important;
+        line-height: 1.25;
+        padding: 6px 4px !important;
+        overflow-wrap: break-word;
+        vertical-align: middle;
+    }
+
+    .horarios-especialidad .tabla-horarios .hora-lateral {
+        width: 65px !important;
+        min-width: 65px !important;
+        max-width: 65px !important;
+    }
+
+    .horarios-especialidad h2 {
+        font-size: 32px !important;
+        text-align: center;
+    }
+
+    .horarios-especialidad h3 {
+        font-size: 20px !important;
+    }
+
+}
+
+/* =========================================
+   TARJETAS DE PROFESORES EN CELULARES
+========================================= */
+@media screen and (max-width: 600px) {
+
+    #profesores-informatica .contenedor-profesores {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 22px !important;
+        box-sizing: border-box;
+    }
+
+    #profesores-informatica .tarjeta-profesor {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        box-sizing: border-box;
+        padding: 20px 14px !important;
+        gap: 15px;
+    }
+
+    #profesores-informatica .tarjeta-profesor img {
+        display: block;
+        width: 130px !important;
+        height: 150px !important;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+        margin: 0 auto;
+    }
+
+    #profesores-informatica .tarjeta-profesor .datos-profesor {
+        width: 100% !important;
+        min-width: 0 !important;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    #profesores-informatica .tarjeta-profesor h3 {
+        font-size: 20px !important;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+    }
+
+    #profesores-informatica .tarjeta-profesor p {
+        font-size: 16px !important;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
     }
 
 }
