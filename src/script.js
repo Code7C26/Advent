@@ -73,3 +73,80 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+const botonMenu = document.getElementById("boton-menu");
+const menuLateral = document.getElementById("menu-lateral");
+const fondoMenu = document.getElementById("fondo-menu");
+
+function cerrarMenu() {
+    menuLateral.classList.remove("abierto");
+    fondoMenu.classList.remove("visible");
+    botonMenu.setAttribute("aria-expanded", "false");
+}
+
+botonMenu.addEventListener("click", () => {
+    const estaAbierto = menuLateral.classList.toggle("abierto");
+
+    fondoMenu.classList.toggle("visible", estaAbierto);
+    botonMenu.setAttribute("aria-expanded", estaAbierto);
+});
+
+fondoMenu.addEventListener("click", cerrarMenu);
+
+menuLateral.querySelectorAll("a[data-seccion]").forEach(enlace => {
+    enlace.addEventListener("click", cerrarMenu);
+});
+
+
+
+/* MENÚ INTERNO DE INFORMÁTICA */
+document.querySelectorAll("#informatica [data-subseccion]").forEach(function (boton) {
+    boton.addEventListener("click", function () {
+        const destino = boton.getAttribute("data-subseccion");
+        const secciones = document.querySelectorAll(
+            "#informatica .contenido-subseccion"
+        );
+
+        secciones.forEach(function (seccion) {
+            seccion.classList.remove("activo");
+        });
+
+        const elegida = document.getElementById(destino);
+
+        if (elegida) {
+            elegida.classList.add("activo");
+        } else {
+            console.error("No se encontró la subsección:", destino);
+        }
+
+        document.querySelectorAll("#informatica [data-subseccion]").forEach(function (otroBoton) {
+            otroBoton.classList.remove("activo");
+        });
+
+        boton.classList.add("activo");
+    });
+});
+
+function destacarTitulosUnidades() {
+    document.querySelectorAll(".resumen-materia .contenido-pendiente").forEach(parrafo => {
+        if (parrafo.dataset.titulosMarcados === "true") return;
+
+        // Recorre el contenido del párrafo y conserva los saltos de línea.
+        const lineas = parrafo.innerHTML.split(/<br\s*\/?>/i);
+
+        parrafo.innerHTML = lineas.map(linea => {
+            const texto = linea.trim();
+
+            if (/^(Unidad|Eje)\s+\d+[\.:]/i.test(texto)) {
+                return `<span class="titulo-unidad">${texto}</span>`;
+            }
+
+            return linea;
+        }).join("<br>");
+
+        parrafo.dataset.titulosMarcados = "true";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", destacarTitulosUnidades);
+

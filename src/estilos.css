@@ -1175,7 +1175,8 @@ footer {
 
 .plan-informatica {
     width: 100%;
-    margin-top: -50px;
+    margin-top: 100px;
+    clear: both;
 }
 
 
@@ -2266,12 +2267,17 @@ footer {
     box-sizing: border-box;
 }
 
+
+/* Fotos de las tarjetas de profesores */
 .tarjeta-profesor img {
-    width: 150px !important;
-    height: 150px !important;
+    width: 180px;
+    height: 180px;
     object-fit: cover;
-    flex-shrink: 0;
+    object-position: center;
+    border-radius: 12px;
+    display: block;
 }
+
 
 .datos-profesor {
     flex: 1;
@@ -3085,4 +3091,666 @@ footer {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+}
+
+/* Título principal de Advent */
+.titulo-advent {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(40px, 5vw, 65px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+    color: #111111;
+    margin: 0;
+}
+
+/* Subtítulo del portal */
+.subtitulo-portal {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(14px, 2vw, 19px);
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #222222;
+    margin: 8px 0 0;
+}
+/* Título principal ADVENT */
+.encabezado-advent {
+    width: 100%;
+    text-align: center;
+    margin: 20px auto 20px;
+}
+
+.titulo-advent {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 800;
+    letter-spacing: 3px;
+    line-height: 1;
+    color: #111111;
+    margin: 0;
+}
+
+/* Subtítulo Portal Estudiantil */
+.subtitulo-portal {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(16px, 2.5vw, 24px);
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #222222;
+    margin: 12px 0 0;
+}
+/* Alinear el logo con el encabezado ADVENT */
+header {
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    left: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+header .logo img {
+    width: 55px;
+    height: auto;
+    display: block;
+}
+/* CORRECCIÓN DEL LOGO */
+header {
+    position: relative;
+}
+
+header .logo {
+    position: static;
+    transform: none;
+    margin: 0;
+}
+
+header .logo img {
+    display: block;
+    width: 50px;
+    height: auto;
+}
+/* Tipografía de los textos de bienvenida */
+.inicio .bajada {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #302722;
+}
+
+/* Bienvenida de la página de inicio */
+.bienvenida-inicio {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto 30px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Frase principal */
+.titulo-bienvenida {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 800;
+    color: #A65E43;
+    line-height: 1.3;
+    margin: 0 0 14px;
+}
+
+/* Texto secundario */
+.texto-bienvenida {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #3A2B25;
+    margin: 0 auto 10px;
+}
+
+/* Invitación a explorar */
+.invitacion-bienvenida {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #80675A;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .bienvenida-inicio {
+        margin: 25px auto;
+        padding: 0 16px;
+    }
+
+    .texto-bienvenida {
+        font-size: 15px;
+    }
+
+    .invitacion-bienvenida {
+        font-size: 13px;
+    }
+}
+
+/* Botón de tres rayitas */
+.boton-menu {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 1001;
+    background: transparent;
+    color: #211a17;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Fondo oscuro al abrir el menú */
+.fondo-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.fondo-menu.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menú lateral */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    max-width: 85vw;
+    height: 100vh;
+    padding: 80px 25px 25px;
+    box-sizing: border-box;
+    background: #f5e9d9;
+    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.12);
+    transform: translateX(-110%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.menu-lateral.abierto {
+    transform: translateX(0);
+}
+
+.menu-lateral h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #a65e43;
+    margin: 0 0 18px;
+    font-size: 25px;
+}
+
+.menu-lateral a {
+    font-family: 'Montserrat', sans-serif;
+    color: #302722;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 13px 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.menu-lateral a:hover {
+    background: #ead8c5;
+}
+
+/* Evitar que el botón quede muy grande en celulares */
+@media (max-width: 600px) {
+    .boton-menu {
+        top: 12px;
+        left: 12px;
+        font-size: 28px;
+    }
+}
+/* Ocultar el logo pequeño del encabezado */
+header .logo {
+    display: none;
+}
+
+/* Ajustar el espacio debajo de Advent */
+.encabezado-advent {
+    margin-bottom: 5px;
+}
+
+/* Separar la bienvenida del título principal */
+.bienvenida-inicio {
+    margin-top: 20px;
+}
+/* Título de la especialidad */
+.titulo-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #302722;
+    margin-bottom: 10px;
+}
+
+/* Títulos principales dentro de cada especialidad */
+.titulo-seccion-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #302722;
+    margin: 30px auto 20px;
+    line-height: 1.4;
+}
+.titulo-seccion-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #302722;
+    margin: 30px auto 20px;
+    line-height: 1.4;
+}
+
+/* Títulos de las secciones de Informática */
+.titulo-seccion-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #302722;
+    line-height: 1.4;
+    margin: 30px auto 20px;
+}
+/* Título Introducción a la especialidad */
+
+.titulo-plan-estudios {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    color: #302722 !important;
+}
+/* Mismo estilo para Introducción y Plan de estudios */
+.titulo-introduccion {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    color: #302722 !important;
+    line-height: 1.4 !important;
+}
+
+/* Aclaración debajo del título Horarios */
+.aclaracion-horarios {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: #302722;
+    line-height: 1.5;
+    margin: -10px auto 25px;
+}
+
+/* Reducir el espacio entre los horarios de cada división */
+.horarios-especialidad h3 {
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+.horarios-especialidad .tabla-horarios-contenedor {
+    margin-bottom: 12px;
+}
+
+/* Ajustar el espacio entre tablas de horarios */
+.horarios-especialidad .tabla-horarios-contenedor {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.horarios-especialidad h3 {
+    margin-top: 14px !important;
+    margin-bottom: 8px !important;
+    padding-top: 0 !important;
+}
+
+/* Evitar espacio adicional al terminar cada tabla */
+.horarios-especialidad table {
+    margin-bottom: 0 !important;
+}
+/* Acercar un poco los horarios de cada división */
+.horarios-especialidad {
+    margin-top: 14px !important;
+    margin-bottom: 10px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.horarios-especialidad h3 {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+/* Agrandar un poquito los títulos de las divisiones */
+.horarios-especialidad h3 {
+    font-size: 25px !important;
+    font-weight: 700;
+}
+/* Título Profesores */
+.titulo-introduccion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #302722;
+    text-align: center;
+}
+/* Quitar la línea debajo de Profesores */
+.titulo-introduccion {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Mostrar únicamente el apartado seleccionado de Informática */
+#informatica .contenido-subseccion {
+    display: none;
+}
+
+#informatica .contenido-subseccion.activo {
+    display: block;
+}
+
+
+
+/* Mantener el diseño original del plan de estudios */
+#plan-informatica .plan-columnas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+}
+
+/* DISEÑO EXCLUSIVO DEL PLAN DE ESTUDIOS DE INFORMÁTICA */
+#plan-informatica .plan-informatica {
+    width: 100%;
+    margin-top: 0;
+}
+
+#plan-informatica .plan-columnas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    align-items: stretch;
+}
+
+#plan-informatica .anio-plan {
+    min-width: 0;
+    border-right: 2px solid #1d1c50;
+    padding-right: 12px;
+}
+
+#plan-informatica .anio-plan:last-child {
+    border-right: none;
+}
+
+#plan-informatica .anio-plan h3 {
+    text-align: center;
+}
+
+#plan-informatica .materias {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    #plan-informatica .plan-columnas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    #plan-informatica .plan-columnas {
+        grid-template-columns: 1fr;
+    }
+
+    #plan-informatica .anio-plan {
+        border-right: none;
+        border-bottom: 2px solid #1d1c50;
+        padding-bottom: 12px;
+    }
+}
+#plan-informatica {
+    display: flow-root;
+    padding-top: 80px;
+}
+
+
+/* ===== BOTONES DE SUBSECCIONES ===== */
+
+.menu-informatica {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 18px auto 25px;
+    width: 100%;
+}
+
+.menu-informatica button {
+    background-color: #fffaf5;
+    color: #382a23;
+    border: 1px solid #c9ad91;
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.menu-informatica button:hover {
+    background-color: #f5e7d8;
+    border-color: #a9896c;
+    box-shadow: 0 3px 8px rgba(56, 42, 35, 0.10);
+    transform: translateY(-1px);
+}
+
+.menu-informatica button.activo {
+    background-color: #fffaf5;
+    border: 2px solid #8a6b52;
+    color: #382a23;
+}
+
+.menu-informatica button:focus-visible {
+    outline: 2px solid #8a6b52;
+    outline-offset: 3px;
+}
+/* Mostrar mejor la cara de Villalba */
+.tarjeta-profesor img[src*="villalba.jpg"] {
+    object-position: center 20%;
+}
+
+.texto-profesores {
+    max-width: 100%;
+    margin: 20px auto 50px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #49382e;
+}
+
+.texto-profesores p {
+    margin: 8px 0;
+}
+
+.texto-profesores .aviso-profesores {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 14px;
+}
+
+/* ===== ESTILO DE LAS PLANIFICACIONES DE INFORMÁTICA ===== */
+
+/* Texto general de las planificaciones */
+.plan-fabiana,
+.plan-silvana,
+.plan-laura,
+.plan-miguel,
+.plan-profesor {
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #382a23;
+}
+
+/* Títulos de unidades, ejes y temas */
+.plan-fabiana h3,
+.plan-silvana h3,
+.plan-laura h3,
+.plan-miguel h3,
+.plan-profesor h3 {
+    font-family: inherit;
+    font-size: 21px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #b99a7c;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Separación entre los párrafos */
+.plan-fabiana p,
+.plan-silvana p,
+.plan-laura p,
+.plan-miguel p,
+.plan-profesor p {
+    margin: 0 0 16px;
+}
+
+/* ===================================
+   PLANIFICACIONES DE LOS PROFESORES
+=================================== */
+
+/* Tarjetas de cada materia */
+.resumen-materia {
+    margin: 30px 0;
+    padding: 28px 32px;
+    background-color: transparent;
+    border: none;
+    border-radius: 16px;
+    color: #382a23;
+    font-family: inherit;
+}
+
+/* Nombre de la materia: Lengua 4C, Lengua 5C, etc. */
+.resumen-materia h2 {
+    text-align: center;
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: 700;
+    color: #382a23;
+    margin: 0 0 8px;
+}
+
+/* Subtítulo: Resumen de la planificación */
+.resumen-materia h3 {
+    text-align: center;
+    font-family: inherit;
+    font-size: 21px;
+    font-weight: 600;
+    color: #604936;
+    margin: 0 0 28px;
+}
+
+/* Texto general de cada unidad */
+.resumen-materia p.contenido-pendiente {
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #382a23;
+    margin: 0 0 24px;
+}
+
+/* Título de cada unidad, antes del desarrollo */
+.resumen-materia p.contenido-pendiente::first-line {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #b99a7c;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .resumen-materia {
+        padding: 20px 16px;
+    }
+
+    .resumen-materia h2 {
+        font-size: 23px;
+    }
+
+    .resumen-materia h3 {
+        font-size: 19px;
+    }
+
+    .resumen-materia p.contenido-pendiente {
+        font-size: 17px;
+        line-height: 1.7;
+    }
+}
+
+/* ESTILO GENERAL DE LAS PLANIFICACIONES DE INFORMÁTICA */
+
+.resumen-materia {
+    font-family: Arial, sans-serif;
+    color: #352820;
+    line-height: 1.7;
+}
+
+/* Texto del desarrollo de cada unidad */
+.resumen-materia .contenido-pendiente {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+/* Títulos: Unidad 1, Unidad 2, Eje 1, etc. */
+.resumen-materia .titulo-unidad {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 5px;
+    color: #352820;
+}
+.resumen-materia .contenido-pendiente {
+    margin-bottom: 16px;
+    line-height: 1.8;
+    font-size: 18px;
 }
