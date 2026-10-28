@@ -390,7 +390,7 @@ nav a:hover {
 }
 
 
-.especialidad > h2 {
+.especialidad>h2 {
     font-size: 20px;
 
     font-weight: 400;
@@ -826,6 +826,7 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 /* ==========================================
    LIBRERÍA
    ========================================== */
@@ -1169,6 +1170,7 @@ footer {
     }
 
 }
+
 /* ==========================================
    PLAN DE ESTUDIO - INFORMÁTICA
    ========================================== */
@@ -1182,7 +1184,7 @@ footer {
 
 /* TÍTULO */
 
-.plan-informatica > h2 {
+.plan-informatica>h2 {
     font-size: 32px;
     color: #3c2b24;
     margin-bottom: 30px;
@@ -1372,6 +1374,7 @@ footer {
     }
 
 }
+
 /* SUBIR EL PLAN DE ESTUDIO */
 
 #informatica .plan-informatica {
@@ -1379,6 +1382,7 @@ footer {
     position: relative;
     top: -40px;
 }
+
 /* ==========================================
    PLAN DE ESTUDIO - CONSTRUCCIONES
    ========================================== */
@@ -1391,7 +1395,7 @@ footer {
 
 /* TÍTULO */
 
-.plan-construcciones > h2 {
+.plan-construcciones>h2 {
     font-size: 32px;
     color: #3c2b24;
     margin-bottom: 30px;
@@ -1416,6 +1420,7 @@ footer {
     }
 
 }
+
 /* ==========================================
    PLAN DE ESTUDIO - QUÍMICA
    ========================================== */
@@ -1425,7 +1430,7 @@ footer {
     margin-top: -30px;
 }
 
-.plan-quimica > h2 {
+.plan-quimica>h2 {
     font-size: 32px;
     color: #3c2b24;
     margin-bottom: 30px;
@@ -1448,6 +1453,7 @@ footer {
     }
 
 }
+
 /* =========================
    FOTOS DE LAS ESPECIALIDADES
 ========================= */
@@ -1481,6 +1487,7 @@ footer {
         linear-gradient(rgba(40, 30, 25, 0.20), rgba(40, 30, 25, 0.45)),
         url("img/construcciones.png");
 }
+
 /* =========================
    CUESTIONARIO VOCACIONAL
 ========================= */
@@ -1522,6 +1529,7 @@ footer {
 .boton-cuestionario:hover {
     background-color: #594238;
 }
+
 /* ==========================================
    CUESTIONARIO DE INTERESES VOCACIONALES
 ========================================== */
@@ -1655,7 +1663,7 @@ footer {
     transition: 0.2s;
 }
 
-.opciones-vocacionales input:checked + span {
+.opciones-vocacionales input:checked+span {
     background-color: #3f2c24;
     color: white;
     transform: scale(1.08);
@@ -1797,6 +1805,7 @@ footer {
         width: 90%;
     }
 }
+
 /* BOTÓN VOLVER DEL CUESTIONARIO */
 
 .boton-volver-cuestionario {
@@ -1820,6 +1829,7 @@ footer {
 .boton-volver-cuestionario:hover {
     text-decoration: underline;
 }
+
 /* ==========================================
    FORMULARIO DE COMENTARIOS
 ========================================== */
@@ -1915,6 +1925,7 @@ footer {
 .boton-subir-comentario:hover {
     background-color: #594238;
 }
+
 /* ==========================================
    RECONOCIMIENTOS
 ========================================== */
@@ -1984,6 +1995,7 @@ footer {
     border-radius: 15px;
     background-color: #ead8c5;
 }
+
 /* TARJETAS DE RECONOCIMIENTOS */
 
 .tarjeta-reconocimiento {
@@ -2016,6 +2028,7 @@ footer {
     text-align: left;
     border-radius: 0 0 20px 20px;
 }
+
 /* Snoopy del test vocacional */
 
 .acceso-cuestionario {
@@ -2042,6 +2055,7 @@ footer {
 .acceso-cuestionario img:hover {
     transform: scale(1.03);
 }
+
 /* =========================
    TARJETAS DE RECONOCIMIENTOS
 ========================= */
@@ -2078,6 +2092,7 @@ footer {
     font-size: 24px;
     color: #3f2c24;
 }
+
 /* =========================
    FOTOS DE RECONOCIMIENTOS
 ========================= */
@@ -2097,6 +2112,7 @@ footer {
     border-radius: 15px;
     display: block;
 }
+
 .foto-ggr1 {
     object-fit: cover;
     object-position: center top;
@@ -2123,6 +2139,7 @@ footer {
 .acceso-cuestionario-quimica:hover img {
     transform: scale(1.05);
 }
+
 .acceso-cuestionario-construcciones {
     position: absolute;
     right: 40px;
@@ -2136,9 +2153,11 @@ footer {
     height: auto;
     display: block;
 }
+
 .acceso-cuestionario-construcciones:hover img {
     transform: scale(1.03);
 }
+
 .lista-ocupacional {
     margin-top: 20px;
     margin-bottom: 130px;
@@ -2149,6 +2168,7 @@ footer {
     margin-bottom: 18px;
     line-height: 1.5;
 }
+
 /* =========================
    HORARIOS
    ========================= */
@@ -2184,6 +2204,7 @@ footer {
     table-layout: fixed;
     border-collapse: collapse;
 }
+
 .tabla-horarios th,
 .tabla-horarios td {
     box-sizing: border-box;
@@ -2223,9 +2244,10 @@ footer {
 }
 
 /* Separación entre el horario de 4.º y el de 5.º */
-.horarios-especialidad + .horarios-especialidad {
+.horarios-especialidad+.horarios-especialidad {
     margin-top: 100px;
 }
+
 /* =========================
    PROFESORES
    ========================= */
@@ -2321,6 +2343,7 @@ footer {
     }
 
 }
+
 /* =========================================
    HORARIOS - FORMATO IGUAL A LAS FOTOS
    ========================================= */
@@ -2395,6 +2418,7 @@ footer {
 .tabla-horarios .hora-doble span:first-child {
     border-bottom: 1px solid #4a3830;
 }
+
 .celda-salida-1250 {
     position: relative;
     height: 55px;
@@ -2410,6 +2434,7 @@ footer {
     bottom: 0;
     border-bottom: 1px solid #4a3830;
 }
+
 /* ================================
    ALINEACIÓN DE HORARIOS
    ================================ */
@@ -2460,6 +2485,7 @@ footer {
     font-weight: bold;
     font-style: italic;
 }
+
 /* =========================================
    6.º C - TARDE IGUAL A LA TABLA DE MAÑANA
    ========================================= */
@@ -2497,6 +2523,7 @@ footer {
     border: none !important;
     background: transparent !important;
 }
+
 /* ===== CORRECCIÓN HORARIO 6.º C ===== */
 
 #horario-6c {
@@ -2516,7 +2543,7 @@ footer {
 }
 
 /* Las dos tablas deben tener exactamente el mismo ancho */
-#horario-6c .tabla-horarios-contenedor + .tabla-horarios-contenedor {
+#horario-6c .tabla-horarios-contenedor+.tabla-horarios-contenedor {
     width: 100%;
 }
 
@@ -2538,6 +2565,7 @@ footer {
     border: none;
     background: transparent;
 }
+
 /* ==========================================
    PROFESORES - INFORMÁTICA
    ========================================== */
@@ -2569,6 +2597,7 @@ footer {
 #informatica .datos-profesor {
     flex: 1;
 }
+
 .lista-capacitado {
     margin-top: 15px;
     margin-bottom: 30px;
@@ -2579,6 +2608,7 @@ footer {
     margin-bottom: 15px;
     line-height: 1.5;
 }
+
 .linea-punteada {
     border: none;
     border-top: 2px dashed #3b2923;
@@ -2592,7 +2622,7 @@ footer {
     width: 100%;
 }
 
-.horario-quimica-b .materia-dividida + .materia-dividida {
+.horario-quimica-b .materia-dividida+.materia-dividida {
     border-top: 2px dashed #59473c;
     margin-top: 5px;
     padding-top: 8px;
@@ -2667,7 +2697,7 @@ footer {
     padding: 5px 0;
 }
 
-.horario-quimica-5b .materia-dividida + .materia-dividida {
+.horario-quimica-5b .materia-dividida+.materia-dividida {
     border-top: 1px dashed #59473c;
     margin-top: 3px;
     padding-top: 7px;
@@ -2753,7 +2783,7 @@ footer {
     padding: 5px 0;
 }
 
-.horario-quimica-6b .materia-dividida + .materia-dividida {
+.horario-quimica-6b .materia-dividida+.materia-dividida {
     border-top: 1px dashed #59473c;
     margin-top: 3px;
     padding-top: 7px;
@@ -2839,7 +2869,7 @@ footer {
     padding: 5px 0;
 }
 
-.horario-7b .materia-dividida + .materia-dividida {
+.horario-7b .materia-dividida+.materia-dividida {
     border-top: 1px dashed #59473c;
     margin-top: 3px;
     padding-top: 7px;
@@ -2855,6 +2885,7 @@ footer {
         padding: 7px 3px;
     }
 }
+
 /* Alineación de los perfiles de profesores */
 .resumen-materia {
     text-align: left;
@@ -2869,6 +2900,7 @@ footer {
     text-align: justify;
     line-height: 1.6;
 }
+
 /* Igualar el tamaño de los horarios de mañana y tarde */
 #construcciones table {
     width: 100%;
@@ -2884,6 +2916,7 @@ footer {
     text-align: center;
     vertical-align: middle;
 }
+
 /* ALINEAR MAÑANA Y TARDE - 4.º A CONSTRUCCIONES */
 #horario-4a-construcciones .tabla-horarios-contenedor {
     width: 100% !important;
@@ -2914,6 +2947,7 @@ footer {
     text-align: center;
     vertical-align: middle;
 }
+
 /* HORARIO 5.º A CONSTRUCCIONES */
 #horario-5a-construcciones .tabla-horarios-contenedor {
     width: 100%;
@@ -3045,6 +3079,7 @@ footer {
     border-top: 1px dashed #78685c;
     margin: 5px 0;
 }
+
 /* Horario 6.º A: mismo tamaño que 5.º A */
 #horario-6a-construcciones {
     width: 100%;
@@ -3069,6 +3104,7 @@ footer {
     table-layout: fixed;
     border-collapse: collapse;
 }
+
 /* Igualar el ancho de los horarios de Construcciones */
 #horario-5a-construcciones,
 #horario-6a-construcciones {
@@ -3113,6 +3149,7 @@ footer {
     color: #222222;
     margin: 8px 0 0;
 }
+
 /* Título principal ADVENT */
 .encabezado-advent {
     width: 100%;
@@ -3139,6 +3176,7 @@ footer {
     color: #222222;
     margin: 12px 0 0;
 }
+
 /* Alinear el logo con el encabezado ADVENT */
 header {
     position: relative;
@@ -3157,6 +3195,7 @@ header .logo img {
     height: auto;
     display: block;
 }
+
 /* CORRECCIÓN DEL LOGO */
 header {
     position: relative;
@@ -3173,6 +3212,7 @@ header .logo img {
     width: 50px;
     height: auto;
 }
+
 /* Tipografía de los textos de bienvenida */
 .inicio .bajada {
     font-family: 'Montserrat', sans-serif;
@@ -3321,6 +3361,7 @@ header .logo img {
         font-size: 28px;
     }
 }
+
 /* Ocultar el logo pequeño del encabezado */
 header .logo {
     display: none;
@@ -3335,6 +3376,7 @@ header .logo {
 .bienvenida-inicio {
     margin-top: 20px;
 }
+
 /* Título de la especialidad */
 .titulo-especialidad {
     font-family: 'Montserrat', sans-serif;
@@ -3356,6 +3398,7 @@ header .logo {
     margin: 30px auto 20px;
     line-height: 1.4;
 }
+
 .titulo-seccion-especialidad {
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
@@ -3376,6 +3419,7 @@ header .logo {
     line-height: 1.4;
     margin: 30px auto 20px;
 }
+
 /* Título Introducción a la especialidad */
 
 .titulo-plan-estudios {
@@ -3385,6 +3429,7 @@ header .logo {
     text-align: center !important;
     color: #302722 !important;
 }
+
 /* Mismo estilo para Introducción y Plan de estudios */
 .titulo-introduccion {
     font-family: 'Montserrat', sans-serif !important;
@@ -3432,6 +3477,7 @@ header .logo {
 .horarios-especialidad table {
     margin-bottom: 0 !important;
 }
+
 /* Acercar un poco los horarios de cada división */
 .horarios-especialidad {
     margin-top: 14px !important;
@@ -3444,11 +3490,13 @@ header .logo {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
 }
+
 /* Agrandar un poquito los títulos de las divisiones */
 .horarios-especialidad h3 {
     font-size: 25px !important;
     font-weight: 700;
 }
+
 /* Título Profesores */
 .titulo-introduccion {
     font-family: 'Montserrat', sans-serif;
@@ -3457,6 +3505,7 @@ header .logo {
     color: #302722;
     text-align: center;
 }
+
 /* Quitar la línea debajo de Profesores */
 .titulo-introduccion {
     border-bottom: none !important;
@@ -3537,6 +3586,7 @@ header .logo {
         padding-bottom: 12px;
     }
 }
+
 #plan-informatica {
     display: flow-root;
     padding-top: 80px;
@@ -3585,6 +3635,7 @@ header .logo {
     outline: 2px solid #8a6b52;
     outline-offset: 3px;
 }
+
 /* Mostrar mejor la cara de Villalba */
 .tarjeta-profesor img[src*="villalba.jpg"] {
     object-position: center 20%;
@@ -3694,13 +3745,23 @@ header .logo {
 }
 
 /* Título de cada unidad, antes del desarrollo */
-.resumen-materia p.contenido-pendiente::first-line {
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-color: #b99a7c;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+
+/* Texto general de cada unidad */
+.resumen-materia p.contenido-pendiente {
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #382a23;
+    font-weight: 400;
+    text-decoration: none;
+    margin: 0 0 24px;
 }
+
+/* El desarrollo no debe quedar subrayado */
+.resumen-materia p.contenido-pendiente br {
+    text-decoration: none;
+}
+
 
 /* Adaptación para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -3749,6 +3810,7 @@ header .logo {
     margin-bottom: 5px;
     color: #352820;
 }
+
 .resumen-materia .contenido-pendiente {
     margin-bottom: 16px;
     line-height: 1.8;
@@ -3782,12 +3844,12 @@ header .logo {
 }
 
 
-    /* Evita que el contenido se salga de la pantalla */
-    .especialidad {
-        width: 92%;
-        max-width: 100%;
-        padding: 10px 0 40px;
-    }
+/* Evita que el contenido se salga de la pantalla */
+.especialidad {
+    width: 92%;
+    max-width: 100%;
+    padding: 10px 0 40px;
+}
 
 }
 
@@ -3951,4 +4013,786 @@ header .logo {
         overflow-wrap: anywhere;
     }
 
+}
+
+
+/* =========================================
+   ESTILO UNIFICADO DE LAS PLANIFICACIONES
+========================================= */
+
+/* Texto general de las unidades: letra normal y sin subrayado */
+.resumen-materia p.contenido-pendiente {
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #382a23;
+    margin: 0 0 24px;
+}
+
+/* El título de la unidad queda en negrita y subrayado */
+/* Los títulos quedan en negrita */
+.resumen-materia p.contenido-pendiente strong,
+.resumen-materia p.contenido-pendiente b {
+    font-weight: 700 !important;
+}
+
+/* Solo se subrayan los títulos que tienen la etiqueta u */
+.resumen-materia p.contenido-pendiente strong u,
+.resumen-materia p.contenido-pendiente b u {
+    text-decoration: underline !important;
+}
+
+/* Subrayar solo cuando el título tenga la etiqueta <u> */
+.resumen-materia p.contenido-pendiente strong u,
+.resumen-materia p.contenido-pendiente b u {
+    text-decoration: underline !important;
+    text-decoration-color: #b99a7c;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* Títulos de materias y subtítulos */
+.resumen-materia h2 {
+    font-weight: 700;
+}
+
+.resumen-materia h3 {
+    font-weight: 600;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 768px) {
+    .resumen-materia p.contenido-pendiente {
+        font-size: 17px;
+        line-height: 1.7;
+    }
+}
+
+/* Formato definitivo de los títulos y textos de las unidades */
+.resumen-materia p.contenido-pendiente {
+    text-decoration: none !important;
+    font-weight: 400 !important;
+}
+
+.resumen-materia p.contenido-pendiente strong,
+.resumen-materia p.contenido-pendiente strong u {
+    font-weight: 700 !important;
+    text-decoration: underline !important;
+}
+
+/* Texto normal de la especialidad Química */
+#quimica .texto-especialidad {
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Los títulos de las secciones mantienen el formato del portal */
+#quimica h1,
+#quimica h2,
+#quimica h3 {
+    text-decoration: none;
+}
+
+/* Los enlaces conservan su formato propio */
+#quimica a {
+    text-decoration: none;
+}
+
+/* Navegación de las secciones de Química */
+#quimica .navegacion-secciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 30px auto;
+}
+
+#quimica .navegacion-secciones a {
+    display: inline-block;
+    text-decoration: none;
+    color: #3c2b24;
+    background-color: #fffaf5;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 12px 22px;
+    border: 1px solid #d8b99e;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+#quimica .navegacion-secciones a:hover {
+    background-color: #3c2b24;
+    color: #ffffff;
+}
+
+/* Navegación interna de Química */
+#quimica .contenido-quimica {
+    display: none;
+}
+
+#quimica .contenido-quimica.activa {
+    display: block;
+}
+
+#quimica .navegacion-secciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#quimica .navegacion-secciones button {
+    cursor: pointer;
+    padding: 10px 16px;
+}
+
+/* Botón de la sección seleccionada */
+#quimica .navegacion-secciones button.activo {
+    font-weight: bold;
+}
+
+/* Snoopy de la especialidad Química */
+#quimica .snoopy-vocacional {
+    position: absolute;
+    top: 300px;
+    right: 40px;
+    width: 200px;
+    height: auto;
+    z-index: 10;
+}
+
+/* Mantener Química como referencia de posición */
+#quimica .especialidad {
+    position: relative;
+}
+
+/* Posición de Snoopy en Química */
+#quimica .especialidad {
+    position: relative;
+}
+
+#quimica .snoopy-quimica {
+    position: absolute;
+    top: 200px;
+    right: 40px;
+    width: 200px;
+    height: auto;
+    z-index: 5;
+}
+
+/* Química: ubicación de Snoopy */
+#quimica .snoopy-quimica {
+    position: fixed;
+    width: 170px;
+    height: auto;
+    right: 35px;
+    top: 390px;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+/* Evitar que la imagen altere el texto */
+#quimica .contenido-quimica {
+    position: relative;
+}
+
+/* ==========================================
+   CORREGIR SUBRAYADO EN TARJETAS DE PROFESORES
+   ========================================== */
+
+.tarjeta-profesor,
+.tarjeta-profesor h3,
+.tarjeta-profesor p,
+.tarjeta-profesor strong,
+.tarjeta-profesor a,
+.tarjeta-profesor .datos-profesor,
+.tarjeta-profesor .datos-profesor * {
+    text-decoration: none !important;
+}
+
+/* Mantener el mismo aspecto al pasar el mouse */
+.tarjeta-profesor:hover,
+.tarjeta-profesor:hover h3,
+.tarjeta-profesor:hover p,
+.tarjeta-profesor:hover strong,
+.tarjeta-profesor:hover * {
+    text-decoration: none !important;
+}
+
+/* ==========================================
+   PLAN DE ESTUDIOS DE QUÍMICA
+   MISMO DISEÑO QUE INFORMÁTICA
+   ========================================== */
+
+#quimica #contenido-plan {
+    display: flow-root;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#quimica #contenido-plan .plan-quimica {
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    top: 0;
+    box-sizing: border-box;
+}
+
+/* Título centrado */
+#quimica #contenido-plan .plan-quimica > h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #302722;
+    margin: 0 0 30px;
+}
+
+/* Cuatro columnas como en Informática */
+#quimica #contenido-plan .plan-columnas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+/* Separación entre los años */
+#quimica #contenido-plan .anio-plan {
+    min-width: 0;
+    border-right: 2px solid #1d1c50;
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+
+#quimica #contenido-plan .anio-plan:last-child {
+    border-right: none;
+}
+
+/* Nombre de cada año */
+#quimica #contenido-plan .anio-plan h3 {
+    text-align: center;
+    color: #25213f;
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0 0 18px;
+}
+
+/* Cajas de materias */
+#quimica #contenido-plan .materias {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 12px;
+    color: #272727;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+/* Colores de las áreas */
+#quimica #contenido-plan .materias.humanistica {
+    background-color: #d2edf2;
+}
+
+#quimica #contenido-plan .materias.cientifico {
+    background-color: #ff7d83;
+}
+
+#quimica #contenido-plan .materias.tecnica {
+    background-color: #ffeca9;
+}
+
+#quimica #contenido-plan .materias.profesionalizante {
+    background-color: #81d77d;
+}
+
+#quimica #contenido-plan .materias.pastoral {
+    background-color: #d5a7df;
+}
+
+/* Adaptación a pantallas medianas */
+@media (max-width: 900px) {
+    #quimica #contenido-plan .plan-columnas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #quimica #contenido-plan .anio-plan:nth-child(2) {
+        border-right: none;
+    }
+}
+
+/* Adaptación a celulares */
+@media (max-width: 550px) {
+    #quimica #contenido-plan .plan-columnas {
+        grid-template-columns: 1fr;
+    }
+
+    #quimica #contenido-plan .anio-plan {
+        border-right: none;
+        border-bottom: 2px solid #1d1c50;
+        padding-right: 0;
+        padding-bottom: 12px;
+    }
+
+    #quimica #contenido-plan .anio-plan:last-child {
+        border-bottom: none;
+    }
+}
+
+
+
+/* CAMPO DE FORMACIÓN: MISMO FORMATO QUE INFORMÁTICA */
+#quimica #contenido-plan .referencia-plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 35px auto 0;
+    margin-top: 35px;
+    background-color: transparent;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+#quimica #contenido-plan .referencia-plan > span:first-child {
+    font-weight: 700;
+    background: transparent;
+    padding: 0;
+    white-space: nowrap;
+}
+
+#quimica #contenido-plan .referencia-plan > span.referencia {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   BOTONES DE QUÍMICA - MISMO DISEÑO QUE INFORMÁTICA
+   ========================================== */
+
+#quimica nav.navegacion-secciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 auto 30px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+#quimica nav.navegacion-secciones button,
+#quimica nav.navegacion-secciones a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 22px;
+    border: 1px solid #d8b99d;
+    border-radius: 17px;
+    background-color: #fffaf5;
+    color: #302722;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#quimica nav.navegacion-secciones button:hover,
+#quimica nav.navegacion-secciones a:hover {
+    background-color: #f8eee3;
+    border-color: #c9a486;
+    text-decoration: none;
+}
+
+#quimica nav.navegacion-secciones button.activo,
+#quimica nav.navegacion-secciones a.activo {
+    background-color: #fffaf5;
+    color: #302722;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+    #quimica nav.navegacion-secciones {
+        gap: 8px;
+    }
+
+    #quimica nav.navegacion-secciones button,
+    #quimica nav.navegacion-secciones a {
+        padding: 10px 14px;
+        font-size: 16px;
+    }
+}
+
+/* QUÍMICA: IGUALAR TIPOGRAFÍA Y TAMAÑOS A INFORMÁTICA */
+
+/* Título de Química: mismo estilo que Informática */
+#quimica .titulo-pagina,
+#quimica .titulo-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #302722;
+    margin-bottom: 10px;
+}
+/* Subtítulo de introducción */
+#quimica #introduccion-quimica,
+#quimica .contenido-quimica h2 {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #302722;
+}
+
+/* Texto de los párrafos */
+#quimica .contenido-quimica p,
+#quimica .contenido-quimica {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #302722;
+}
+
+/* Botones: misma letra y tamaño */
+#quimica nav.navegacion-secciones button,
+#quimica nav.navegacion-secciones a {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    padding: 12px 22px;
+    border-radius: 17px;
+    text-decoration: none;
+}
+
+/* Título y línea con la misma alineación */
+#quimica .titulo-pagina {
+    width: fit-content;
+    min-width: 390px;
+    border-bottom: 4px solid #302722;
+    padding-bottom: 8px;
+}
+
+
+
+/* =========================================================
+   QUÍMICA: IGUALAR TIPOGRAFÍA Y DISEÑO A INFORMÁTICA
+   Estos ajustes se agregan al final para prevalecer sobre
+   reglas anteriores sin borrar ni modificar otros estilos.
+   ========================================================= */
+
+/* Contenedor: misma base visual que la página de Informática */
+#quimica .especialidad {
+    width: 92%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 15px 0 70px;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #302722;
+}
+
+/* Botones de navegación: mismo tamaño, letra, borde y separación */
+#quimica nav.navegacion-secciones {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#quimica nav.navegacion-secciones button,
+#quimica nav.navegacion-secciones a {
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 10px 22px !important;
+    border: 1px solid #d8b99d !important;
+    border-radius: 17px !important;
+    background: #fffaf5 !important;
+    color: #302722 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+#quimica nav.navegacion-secciones button:hover,
+#quimica nav.navegacion-secciones a:hover {
+    background: #f8eee3 !important;
+    border-color: #c9a486 !important;
+    color: #302722 !important;
+}
+
+/* Título principal: misma tipografía, peso y tamaño que Informática */
+#quimica .titulo-pagina {
+    display: block;
+    width: 390px;
+    max-width: 100%;
+    min-width: 0;
+    margin: 20px 0 50px !important;
+    padding: 0 0 8px !important;
+    border-bottom: 4px solid #302722 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 52px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    text-transform: uppercase !important;
+    color: #302722 !important;
+}
+
+/* Subtítulos: mismo tamaño y negrita que los de Informática */
+#quimica .contenido-quimica h2,
+#quimica .contenido-quimica h3,
+#quimica #introduccion-quimica {
+    font-family: Arial, Helvetica, sans-serif !important;
+    color: #302722 !important;
+    text-decoration: none !important;
+}
+
+#quimica .contenido-quimica h2,
+#quimica #introduccion-quimica {
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+}
+
+#quimica .contenido-quimica h3 {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+}
+
+/* Texto y párrafos: misma letra, tamaño y espaciado */
+#quimica .contenido-quimica,
+#quimica .contenido-quimica p,
+#quimica .contenido-quimica li {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    color: #302722 !important;
+}
+
+/* Mantener los textos destacados en negrita */
+#quimica .contenido-quimica strong,
+#quimica .contenido-quimica b {
+    font-weight: 700 !important;
+}
+
+/* Snoopy en la misma zona superior derecha que en Informática */
+#quimica .snoopy-vocacional,
+#quimica .snoopy-quimica,
+#quimica .acceso-cuestionario-quimica {
+    position: absolute !important;
+    top: -150px !important;
+    right: -50px !important;
+    left: auto !important;
+    width: 170px !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+}
+
+#quimica .snoopy-vocacional,
+#quimica .snoopy-quimica {
+    height: auto !important;
+}
+
+#quimica .snoopy-vocacional img,
+#quimica .snoopy-quimica img,
+#quimica .acceso-cuestionario-quimica img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* La posición de Snoopy no debe desplazar el texto */
+#quimica .contenido-quimica {
+    position: relative;
+}
+
+/* Leyenda del campo de formación: formato compacto como Informática */
+#quimica #contenido-plan .referencia-plan {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 35px auto 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    color: #333 !important;
+}
+
+#quimica #contenido-plan .referencia-plan > span:first-child {
+    font-weight: 700 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    white-space: nowrap;
+}
+
+#quimica #contenido-plan .referencia-plan > span.referencia {
+    display: inline-block !important;
+    padding: 7px 12px !important;
+    border-radius: 7px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 800px) {
+    #quimica .especialidad {
+        width: 92%;
+    }
+
+    #quimica .titulo-pagina {
+        font-size: 42px !important;
+    }
+
+    #quimica nav.navegacion-secciones button,
+    #quimica nav.navegacion-secciones a {
+        font-size: 16px !important;
+        padding: 10px 14px !important;
+    }
+
+    #quimica .snoopy-vocacional,
+    #quimica .snoopy-quimica,
+    #quimica .acceso-cuestionario-quimica {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: 130px !important;
+        margin: 0 0 15px auto !important;
+    }
+
+    #quimica .contenido-quimica,
+    #quimica .contenido-quimica p,
+    #quimica .contenido-quimica li {
+        font-size: 17px !important;
+        line-height: 1.4 !important;
+    }
+
+    #quimica #contenido-plan .referencia-plan {
+        gap: 8px !important;
+    }
+}
+
+/* QUÍMICA: MISMA TIPOGRAFÍA QUE INFORMÁTICA */
+
+#quimica .titulo-introduccion,
+#quimica .titulo-subseccion {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    color: #302722;
+}
+
+/* Mantener los párrafos con la clase de texto de la especialidad */
+#quimica .texto-especialidad {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #302722;
+}
+
+/* SNOOPY DE QUÍMICA: POSICIÓN IGUAL A INFORMÁTICA */
+
+#quimica .especialidad {
+    position: relative;
+}
+
+#quimica .acceso-cuestionario-quimica {
+    position: absolute !important;
+    top: 150px !important;
+    right: 0 !important;
+    width: 175px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 20;
+    cursor: pointer;
+}
+
+#quimica .acceso-cuestionario-quimica img.snoopy-quimica {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
+@media (max-width: 700px) {
+    #quimica .acceso-cuestionario-quimica {
+        top: 125px !important;
+        right: 0 !important;
+        width: 100px !important;
+    }
+}
+
+#quimica .especialidad {
+    position: relative;
+}
+
+#quimica .acceso-cuestionario-quimica {
+    position: absolute !important;
+    top: 150px !important;
+    right: 40px !important;
+    width: 170px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10;
+}
+
+#quimica .acceso-cuestionario-quimica img {
+    display: block;
+    width: 200px !important;
+    height: auto !important;
 }
