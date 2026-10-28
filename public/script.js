@@ -1,34 +1,23 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Buscar todos los botones que permiten cambiar de sección
+    // NAVEGACIÓN ENTRE LAS SECCIONES PRINCIPALES
     const botonesSeccion = document.querySelectorAll("[data-seccion]");
-
-    // Buscar todas las secciones principales de la página
     const secciones = document.querySelectorAll(".seccion-pagina");
 
-    // Recorrer los botones
     botonesSeccion.forEach(function (boton) {
-
         boton.addEventListener("click", function (event) {
-
             event.preventDefault();
 
-            // Obtener el nombre de la sección que queremos abrir
             const nombreSeccion = boton.getAttribute("data-seccion");
-
-            // Obtener el lugar al que queremos desplazarnos, si existe
             const destinoScroll = boton.getAttribute("data-scroll-destino");
 
-            // Ocultar todas las secciones principales
             secciones.forEach(function (seccion) {
                 seccion.classList.remove("activa");
             });
 
-            // Buscar la sección que corresponde al botón
             const seccionMostrar = document.getElementById(nombreSeccion);
 
-            // Mostrar la sección elegida
             if (seccionMostrar) {
                 seccionMostrar.classList.add("activa");
             } else {
@@ -38,9 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Si el botón tiene un destino específico, ir a ese lugar
             if (destinoScroll) {
-
                 const destino = document.getElementById(destinoScroll);
 
                 if (destino) {
@@ -53,92 +40,177 @@ document.addEventListener("DOMContentLoaded", function () {
                         top: 0,
                         behavior: "smooth"
                     });
+
                     console.error(
                         "No se encontró el destino: " + destinoScroll
                     );
                 }
-
             } else {
-
-                // Si no hay destino, volver al inicio de la página
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
                 });
-
             }
-
         });
-
     });
 
-});
+    // MENÚ LATERAL
+    const botonMenu = document.getElementById("boton-menu");
+    const menuLateral = document.getElementById("menu-lateral");
+    const fondoMenu = document.getElementById("fondo-menu");
 
-const botonMenu = document.getElementById("boton-menu");
-const menuLateral = document.getElementById("menu-lateral");
-const fondoMenu = document.getElementById("fondo-menu");
-
-function cerrarMenu() {
-    menuLateral.classList.remove("abierto");
-    fondoMenu.classList.remove("visible");
-    botonMenu.setAttribute("aria-expanded", "false");
-}
-
-botonMenu.addEventListener("click", () => {
-    const estaAbierto = menuLateral.classList.toggle("abierto");
-
-    fondoMenu.classList.toggle("visible", estaAbierto);
-    botonMenu.setAttribute("aria-expanded", estaAbierto);
-});
-
-fondoMenu.addEventListener("click", cerrarMenu);
-
-menuLateral.querySelectorAll("a[data-seccion]").forEach(enlace => {
-    enlace.addEventListener("click", cerrarMenu);
-});
-
-
-
-/* MENÚ INTERNO DE INFORMÁTICA */
-document.querySelectorAll("#informatica [data-subseccion]").forEach(function (boton) {
-    boton.addEventListener("click", function () {
-        const destino = boton.getAttribute("data-subseccion");
-        const secciones = document.querySelectorAll(
-            "#informatica .contenido-subseccion"
-        );
-
-        secciones.forEach(function (seccion) {
-            seccion.classList.remove("activo");
-        });
-
-        const elegida = document.getElementById(destino);
-
-        if (elegida) {
-            elegida.classList.add("activo");
-        } else {
-            console.error("No se encontró la subsección:", destino);
+    function cerrarMenu() {
+        if (menuLateral) {
+            menuLateral.classList.remove("abierto");
         }
 
-        document.querySelectorAll("#informatica [data-subseccion]").forEach(function (otroBoton) {
-            otroBoton.classList.remove("activo");
+        if (fondoMenu) {
+            fondoMenu.classList.remove("visible");
+        }
+
+        if (botonMenu) {
+            botonMenu.setAttribute("aria-expanded", "false");
+        }
+    }
+
+    if (botonMenu && menuLateral && fondoMenu) {
+        botonMenu.addEventListener("click", function () {
+            const estaAbierto = menuLateral.classList.toggle("abierto");
+
+            fondoMenu.classList.toggle("visible", estaAbierto);
+            botonMenu.setAttribute("aria-expanded", String(estaAbierto));
         });
 
-        boton.classList.add("activo");
+        fondoMenu.addEventListener("click", cerrarMenu);
+
+        menuLateral.querySelectorAll("a[data-seccion]").forEach(function (enlace) {
+            enlace.addEventListener("click", cerrarMenu);
+        });
+    }
+
+    // MENÚ INTERNO DE INFORMÁTICA
+    document.querySelectorAll(
+        "#informatica [data-subseccion]"
+    ).forEach(function (boton) {
+        boton.addEventListener("click", function () {
+            const destino = boton.getAttribute("data-subseccion");
+
+            const subsecciones = document.querySelectorAll(
+                "#informatica .contenido-subseccion"
+            );
+
+            subsecciones.forEach(function (seccion) {
+                seccion.classList.remove("activo");
+            });
+
+            const elegida = document.getElementById(destino);
+
+            if (elegida && elegida.closest("#informatica")) {
+                elegida.classList.add("activo");
+            } else {
+                console.error("No se encontró la subsección:", destino);
+            }
+
+            document.querySelectorAll(
+                "#informatica [data-subseccion]"
+            ).forEach(function (otroBoton) {
+                otroBoton.classList.remove("activo");
+            });
+
+            boton.classList.add("activo");
+        });
     });
+
+    // PESTAÑAS INTERNAS DE QUÍMICA
+    configurarPestanasQuimica();
+
+    // DESTACAR TÍTULOS DE UNIDADES Y EJES
+    destacarTitulosUnidades();
 });
 
+
+
+
+/* ==========================================
+   PESTAÑAS DE QUÍMICA
+   ========================================== */
+
+(function () {
+    function configurarQuimica() {
+        const quimica = document.getElementById("quimica");
+
+        if (!quimica) return;
+
+        const botones = quimica.querySelectorAll("[data-quimica]");
+        const contenidos = quimica.querySelectorAll(".contenido-quimica");
+
+        if (!botones.length || !contenidos.length) {
+            console.error("No se encontraron las pestañas o los contenidos de Química.");
+            return;
+        }
+
+        function mostrar(nombre) {
+            const destino = document.getElementById("contenido-" + nombre);
+
+            // Verificar que el destino exista dentro de Química.
+            if (!destino || !quimica.contains(destino)) {
+                console.error("No se encontró la sección de Química:", nombre);
+                return;
+            }
+
+            // Ocultar todos los bloques y mostrar únicamente el elegido.
+            contenidos.forEach(function (bloque) {
+                const seleccionado = bloque === destino;
+
+                bloque.hidden = !seleccionado;
+                bloque.style.display = seleccionado ? "block" : "none";
+                bloque.classList.toggle("activa", seleccionado);
+            });
+
+            // Marcar el botón seleccionado.
+            botones.forEach(function (boton) {
+                boton.classList.toggle(
+                    "activo",
+                    boton.dataset.quimica === nombre
+                );
+            });
+        }
+
+        botones.forEach(function (boton) {
+            boton.addEventListener("click", function (evento) {
+                evento.preventDefault();
+                mostrar(boton.dataset.quimica);
+            });
+        });
+
+        // Mostrar Introducción al entrar a Química.
+        mostrar("introduccion");
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", configurarQuimica);
+    } else {
+        configurarQuimica();
+    }
+})();
+
+
+// DESTACAR LOS TÍTULOS DE UNIDADES Y EJES
 function destacarTitulosUnidades() {
-    document.querySelectorAll(".resumen-materia .contenido-pendiente").forEach(parrafo => {
+    document.querySelectorAll(
+        ".resumen-materia .contenido-pendiente"
+    ).forEach(function (parrafo) {
         if (parrafo.dataset.titulosMarcados === "true") return;
 
-        // Recorre el contenido del párrafo y conserva los saltos de línea.
         const lineas = parrafo.innerHTML.split(/<br\s*\/?>/i);
 
-        parrafo.innerHTML = lineas.map(linea => {
+        parrafo.innerHTML = lineas.map(function (linea) {
             const texto = linea.trim();
 
             if (/^(Unidad|Eje)\s+\d+[\.:]/i.test(texto)) {
-                return `<span class="titulo-unidad">${texto}</span>`;
+                return '<span class="titulo-unidad">' +
+                    texto +
+                    '</span>';
             }
 
             return linea;
@@ -147,6 +219,3 @@ function destacarTitulosUnidades() {
         parrafo.dataset.titulosMarcados = "true";
     });
 }
-
-document.addEventListener("DOMContentLoaded", destacarTitulosUnidades);
-
