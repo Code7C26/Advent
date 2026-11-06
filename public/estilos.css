@@ -4807,3 +4807,21 @@ header .logo {
     border-radius: 5px;
     line-height: 1.5;
 }
+/* Botón volver de las planificaciones */
+.boton-volver-profesor {
+    padding: 12px 22px;
+    border: 1px solid #d8b99d;
+    border-radius: 16px;
+    background-color: #fffaf5;
+    color: #29221f;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.boton-volver-profesor:hover {
+    border-color: #967052;
+    background-color: #f5e8da;
+}
