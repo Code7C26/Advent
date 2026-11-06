@@ -256,18 +256,24 @@ nav a:hover {
    ========================================== */
 
 .volver {
-    border: none;
-
-    background: transparent;
-
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #d6b99f;
+    border-radius: 18px;
+    background-color: #fffaf5;
     color: #3c2b24;
-
     cursor: pointer;
-
-    font-size: 13px;
-
+    font-size: 14px;
+    font-family: inherit;
     margin-bottom: 20px;
+    text-decoration: none;
+    transition: 0.3s;
 }
+
+.volver:hover {
+    background-color: #f2e1d0;
+    border-color: #927054;
+}}
 
 
 /* ==========================================
@@ -4824,4 +4830,11 @@ header .logo {
 .boton-volver-profesor:hover {
     border-color: #967052;
     background-color: #f5e8da;
+}
+.aclaracion-planificacion {
+    font-weight: normal !important;
+}
+
+.aclaracion-planificacion strong {
+    font-weight: normal !important;
 }
