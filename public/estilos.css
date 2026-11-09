@@ -4838,3 +4838,95 @@ header .logo {
 .aclaracion-planificacion strong {
     font-weight: normal !important;
 }
+/* BUSCADOR Y FILTROS DE PROFESORES */
+
+.filtros-profesores {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 900px;
+}
+
+.filtros-profesores input,
+.filtros-profesores select {
+    padding: 13px 18px;
+    border: 1px solid #d6b99f;
+    border-radius: 15px;
+    background-color: #fffaf5;
+    color: #3c2b24;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.filtros-profesores input {
+    width: 350px;
+}
+
+.filtros-profesores select {
+    min-width: 280px;
+}
+
+.filtros-profesores input:focus,
+.filtros-profesores select:focus {
+    border-color: #927054;
+}
+
+.tarjeta-profesor[hidden] {
+    display: none !important;
+}
+/* OCULTAR PROFESORES QUE NO COINCIDEN CON EL FILTRO */
+.tarjeta-profesor[hidden] {
+    display: none !important;
+}
+.frase-destacada {
+    font-weight: Montserrat, sans-serif;
+    box-sizing border-box;
+    color: rgb(166, 94, 67);
+    font-size: 29.448px
+}
+/* LOGOS PROYECTA Y ADVENT */
+
+.imagen-nosotras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 60px;
+    width: 100%;
+    margin: 40px auto;
+    background: transparent;
+}
+
+.logo-empresa,
+.logo-producto {
+    width: 300px !important;
+    height: 220px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.logo-empresa img,
+.logo-producto img {
+    width: 300px !important;
+    height: 220px !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain;
+    background: transparent;
+}
+/* Texto descriptivo de Construcciones */
+#construcciones .texto-especialidad {
+    font-weight: 400;
+}
+/* Lista de habilitaciones de Construcciones */
+#construcciones .lista-ocupacional li {
+    font-weight: 400;
+}
