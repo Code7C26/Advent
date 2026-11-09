@@ -121,15 +121,51 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // PESTAÑAS INTERNAS DE QUÍMICA
-    configurarPestanasQuimica();
 
     // DESTACAR TÍTULOS DE UNIDADES Y EJES
     destacarTitulosUnidades();
-});
+// FILTRO Y BUSCADOR DE PROFESORES
 
+const buscadorProfesores = document.getElementById("buscar-profesor");
+const filtroArea = document.getElementById("filtrar-area");
 
+const tarjetasProfesores = document.querySelectorAll(
+    "#informatica .contenedor-profesores .tarjeta-profesor"
+);
 
+if (buscadorProfesores && filtroArea) {
+
+    function filtrarProfesores() {
+        const texto = buscadorProfesores.value.trim()
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const areaSeleccionada = filtroArea.value;
+
+        tarjetasProfesores.forEach(function(tarjeta) {
+            const nombre = tarjeta.querySelector("h3")?.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "") || "";
+
+            const areas = (tarjeta.dataset.area || "").split(/\s+/);
+
+            const coincideNombre = nombre.includes(texto);
+            const coincideArea =
+                areaSeleccionada === "todos" ||
+                areas.includes(areaSeleccionada);
+
+            tarjeta.style.display =
+                coincideNombre && coincideArea ? "flex" : "none";
+        });
+    }
+
+    buscadorProfesores.addEventListener("input", filtrarProfesores);
+    filtroArea.addEventListener("change", filtrarProfesores);
+}
+
+}); // Cierre de DOMContentLoaded
 
 /* ==========================================
    PESTAÑAS DE QUÍMICA
@@ -194,7 +230,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 })();
 
+/* ==========================================
+   PESTAÑAS DE CONSTRUCCIONES
+   ========================================== */
 
+(function () {
+    function configurarConstrucciones() {
+        const construcciones = document.getElementById("construcciones");
+
+        if (!construcciones) return;
+
+        const botones = construcciones.querySelectorAll("[data-construcciones]");
+        const contenidos = construcciones.querySelectorAll(".contenido-construcciones");
+
+        if (!botones.length || !contenidos.length) {
+            console.error("No se encontraron las pestañas o los contenidos de Construcciones.");
+            return;
+        }
+
+        function mostrar(nombre) {
+            const destino = document.getElementById("contenido-construcciones-" + nombre);
+
+            if (!destino || !construcciones.contains(destino)) {
+                console.error("No se encontró la sección de Construcciones:", nombre);
+                return;
+            }
+
+            contenidos.forEach(function (bloque) {
+                const seleccionado = bloque === destino;
+
+                bloque.hidden = !seleccionado;
+                bloque.style.display = seleccionado ? "block" : "none";
+                bloque.classList.toggle("activa", seleccionado);
+            });
+
+            botones.forEach(function (boton) {
+                boton.classList.toggle(
+                    "activo",
+                    boton.dataset.construcciones === nombre
+                );
+            });
+        }
+
+        botones.forEach(function (boton) {
+            boton.addEventListener("click", function (evento) {
+                evento.preventDefault();
+                mostrar(boton.dataset.construcciones);
+            });
+        });
+
+        mostrar("introduccion");
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", configurarConstrucciones);
+    } else {
+        configurarConstrucciones();
+    }
+})();
 // DESTACAR LOS TÍTULOS DE UNIDADES Y EJES
 function destacarTitulosUnidades() {
     document.querySelectorAll(
