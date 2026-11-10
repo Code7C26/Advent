@@ -618,7 +618,48 @@ footer {
     margin: 0 auto;
     padding: 10px 0 60px;
 }
+/* ==========================================
+   TIPOGRAFÍA DE BIBLIOTECA
+   MISMO ESTILO QUE LIBRERÍA
+   ========================================== */
 
+#biblioteca {
+    font-family: 'Montserrat', sans-serif;
+    color: #173b32;
+}
+
+/* TÍTULO BIBLIOTECA */
+#biblioteca .titulo-biblioteca {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 62px;
+    font-weight: 700;
+    color: #173b32;
+}
+
+/* LÍNEA DEBAJO DEL TÍTULO */
+#biblioteca .linea-biblioteca {
+    background-color: #173b32;
+    height: 4px;
+}
+
+/* TODOS LOS TEXTOS */
+#biblioteca p,
+#biblioteca h2,
+#biblioteca h3,
+#biblioteca td,
+#biblioteca th,
+#biblioteca span,
+#biblioteca strong {
+    font-family: 'Montserrat', sans-serif;
+}
+/* TEXTO NORMAL DE BIBLIOTECA */
+#biblioteca p,
+#biblioteca td,
+#biblioteca th,
+#biblioteca span,
+#biblioteca li {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
 
 /* MENÚ */
 
@@ -4929,4 +4970,271 @@ header .logo {
 /* Lista de habilitaciones de Construcciones */
 #construcciones .lista-ocupacional li {
     font-weight: 400;
+}
+
+/* CORRECCIÓN: PLAN DE ESTUDIOS DE CONSTRUCCIONES */
+#construcciones #contenido-construcciones-plan .materias {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #272727;
+}
+
+/* LEYENDA DEL CAMPO DE FORMACIÓN - CONSTRUCCIONES */
+#construcciones #contenido-construcciones-plan .referencia-plan {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 35px auto 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    color: #333 !important;
+}
+
+#construcciones #contenido-construcciones-plan .referencia-plan > span:first-child {
+    font-weight: 700 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    white-space: nowrap;
+}
+
+#construcciones #contenido-construcciones-plan .referencia-plan > span.referencia {
+    display: inline-block !important;
+    padding: 7px 12px !important;
+    border-radius: 7px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap;
+}
+
+/* HORARIOS DE CONSTRUCCIONES: FORMATO IGUAL A INFORMÁTICA */
+
+/* Texto normal: nombres de profesores y demás contenido */
+#construcciones .horarios-especialidad .tabla-horarios td {
+    font-weight: 400 !important;
+}
+
+/* Materias en negrita */
+#construcciones .horarios-especialidad .tabla-horarios td strong {
+    font-weight: 700 !important;
+}
+
+/* Encabezados de los días */
+#construcciones .horarios-especialidad .tabla-horarios th {
+    font-weight: 700 !important;
+}
+
+/* Horarios laterales con letra normal */
+#construcciones .horarios-especialidad .tabla-horarios td.hora-lateral {
+    font-weight: 400 !important;
+}
+
+/* MAÑANA y TARDE */
+#construcciones .horarios-especialidad .tabla-horarios .titulo-turno td {
+    font-weight: 700 !important;
+    font-style: italic !important;
+}
+
+/* CORREGIR ALINEACIÓN DEL HORARIO 5.º A DE CONSTRUCCIONES */
+
+#horario-5a-construcciones {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 14px 0 10px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-5a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 0 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-5a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    box-sizing: border-box !important;
+}
+
+
+/* 6.º A CONSTRUCCIONES: MISMO FORMATO QUE 5.º A */
+
+#horario-6a-construcciones {
+    width: 100%;
+    max-width: 1170px;
+    margin: 30px auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    padding: 0;
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+#horario-6a-construcciones .tabla-horarios th,
+#horario-6a-construcciones .tabla-horarios td {
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px 5px;
+}
+
+/* Horas laterales sin bordes */
+#horario-6a-construcciones .tabla-horarios .hora-lateral {
+    width: 9%;
+    white-space: nowrap;
+    border: none !important;
+    background: transparent !important;
+    font-weight: 400;
+}
+
+/* MAÑANA y TARDE sin recuadro */
+#horario-6a-construcciones .tabla-horarios .titulo-turno td {
+    border: none !important;
+    background: transparent !important;
+    font-weight: 700;
+    font-style: italic;
+    padding: 12px;
+}
+
+/* Líneas punteadas internas */
+#horario-6a-construcciones .tabla-horarios .linea-punteada {
+    border: none;
+    border-top: 1px dashed #333;
+    margin: 5px 0;
+}
+/* 6.º A CONSTRUCCIONES: MISMO ANCHO Y ALINEACIÓN QUE 5.º A */
+
+#horario-6a-construcciones {
+    width: 100% !important;
+    max-width: 1170px !important;
+    margin: 30px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+/* ==========================================
+   TIPOGRAFÍA DE LA SECCIÓN LIBRERÍA
+   ========================================== */
+
+/* Título LIBRERÍA: estilo de INFORMÁTICA */
+.libreria-pagina .titulo-libreria {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+}
+
+/* Todos los demás textos de LIBRERÍA */
+.libreria-pagina p,
+.libreria-pagina h2,
+.libreria-pagina h3,
+.libreria-pagina li,
+.libreria-pagina span,
+.libreria-pagina button,
+.libreria-pagina td,
+.libreria-pagina th {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+/* TEXTOS NORMALES DE BIBLIOTECA */
+#biblioteca p,
+#biblioteca td,
+#biblioteca th,
+#biblioteca span,
+#biblioteca li {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 18px;
+}
+
+
+/* ORGANIZACIÓN DE LOS LOGOS DE VIANDAS */
+#viandas .tarjetas-contenido {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* TARJETAS SIN FONDO */
+#viandas .tarjeta-vianda {
+    background-color: transparent !important;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* TAMAÑO DE LOS LOGOS */
+#viandas .logo-vianda {
+    width: 100%;
+    max-width: 150px;
+    height: 120px;
+    object-fit: contain;
+}
+
+/* TABLETS */
+@media (max-width: 768px) {
+    #viandas .tarjetas-contenido {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CELULARES */
+@media (max-width: 480px) {
+    #viandas .tarjetas-contenido {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.descripcion-viandas {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: inherit;
 }
