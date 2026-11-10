@@ -166,6 +166,62 @@ if (buscadorProfesores && filtroArea) {
 }
 
 }); // Cierre de DOMContentLoaded
+// FILTRO Y BUSCADOR DE PROFESORES DE QUÍMICA
+
+const buscadorProfesoresQuimica = document.getElementById(
+    "buscar-profesor-quimica"
+);
+
+const filtroAreaQuimica = document.getElementById(
+    "filtrar-area-quimica"
+);
+
+const tarjetasProfesoresQuimica = document.querySelectorAll(
+    "#quimica #contenido-profesores .contenedor-profesores .tarjeta-profesor"
+);
+
+if (buscadorProfesoresQuimica && filtroAreaQuimica) {
+
+    function filtrarProfesoresQuimica() {
+
+        const texto = buscadorProfesoresQuimica.value.trim()
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const areaSeleccionada = filtroAreaQuimica.value;
+
+        tarjetasProfesoresQuimica.forEach(function(tarjeta) {
+
+            const nombre = tarjeta.querySelector("h3")?.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "") || "";
+
+            const areas = (tarjeta.dataset.area || "").split(/\s+/);
+
+            const coincideNombre = nombre.includes(texto);
+
+            const coincideArea =
+                areaSeleccionada === "todos" ||
+                areas.includes(areaSeleccionada);
+
+            tarjeta.style.display =
+                coincideNombre && coincideArea ? "flex" : "none";
+
+        });
+    }
+
+    buscadorProfesoresQuimica.addEventListener(
+        "input",
+        filtrarProfesoresQuimica
+    );
+
+    filtroAreaQuimica.addEventListener(
+        "change",
+        filtrarProfesoresQuimica
+    );
+}
 
 /* ==========================================
    PESTAÑAS DE QUÍMICA
