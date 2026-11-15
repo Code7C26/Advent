@@ -5382,3 +5382,52 @@ header .logo {
     background-color: #c9a78d;
     border-radius: 10px;
 }
+
+/* Espaciado entre los subtítulos de la UCC */
+.universidad-contenido h2 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+/* El primer subtítulo no necesita tanto espacio arriba */
+.universidad-contenido .universidad-presentacion h2 {
+    margin-top: 0;
+}
+
+/* Espacio entre párrafos */
+.universidad-contenido p {
+    margin-bottom: 10px;
+}
+
+/* Espacio entre los elementos de las listas */
+.universidad-contenido ul li {
+    margin-bottom: 12px;
+}
+.universidad-contenido h2 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.universidad-contenido .universidad-presentacion h2 {
+    margin-top: 0;
+}
+
+.universidad-contenido p {
+    margin-bottom: 10px;
+}
+
+.universidad-contenido ul li {
+    margin-bottom: 12px;
+}
+
+/* TARJETA DE UNIVERSIDAD - UTN */
+.tarjeta-universidad[data-seccion="utn"] {
+    background-color: #fffaf5;
+    border: 1px solid #e5c5a9;
+    border-radius: 20px;
+    padding: 38px 32px;
+    width: 100%;
+    min-height: 145px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition:
