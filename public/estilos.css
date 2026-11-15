@@ -5643,10 +5643,19 @@ body .encabezado-advent img.logo-advent {
 }
 
 .subtitulo {
+    display: block;
+    width: 100%;
+    text-align: center !important;
     font-family: 'Comfortaa', sans-serif;
     font-size: 26px;
     font-weight: 400;
     letter-spacing: 1px;
-    text-align: center;
-    margin: 0;
+    margin: 10px 0 0;
+    position: static;
+}
+.encabezado-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
