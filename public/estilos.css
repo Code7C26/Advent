@@ -13,11 +13,10 @@ html {
 }
 
 body {
-    background-color: #f6e9da;
+    background-color: #F29F70;
     color: #3c2b24;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* ==========================================
    HEADER
@@ -33,7 +32,7 @@ header {
 
     padding: 20px 50px;
 
-    background-color: #f6e9da;
+    background-color: #F29F70;
 }
 
 .logo img {
@@ -3280,7 +3279,7 @@ header .logo img {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(26px, 3vw, 36px);
     font-weight: 800;
-    color: #A65E43;
+    color: #85452F;
     line-height: 1.3;
     margin: 0 0 14px;
 }
@@ -5430,4 +5429,202 @@ header .logo {
     min-height: 145px;
     box-sizing: border-box;
     cursor: pointer;
-    transition:
+    transition: all 0.3s ease;
+}
+/* CORRECCIÓN DEL MENÚ LATERAL */
+
+#menu-lateral {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 80px 25px 25px !important;
+    background-color: #F29F70;
+    transform: translateX(-110%) !important;
+    z-index: 1000 !important;
+    gap: 8px;
+}
+
+#menu-lateral.abierto {
+    transform: translateX(0) !important;
+}
+
+#menu-lateral a {
+    display: block;
+    width: 100%;
+}
+
+/* BOTÓN DE LAS TRES RAYITAS */
+
+.boton-menu {
+    position: fixed !important;
+    top: 25px !important;
+    left: 25px !important;
+    z-index: 1001 !important;
+    font-size: 36px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    color: #211a17 !important;
+    cursor: pointer;
+}
+.logo-advent {
+    width: 150px !important;
+    max-width: 150px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+}
+/* TAMAÑO DEFINITIVO DEL LOGO ADVENT */
+body .encabezado-advent img.logo-advent {
+    width: 150px !important;
+    max-width: 150px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 20px auto 0 !important;
+}
+.encabezado-advent {
+    margin-bottom: 5px !important;
+}
+
+.bienvenida-inicio {
+    margin-top: 10px !important;
+}
+/* AJUSTE DE ESPACIOS DEL INICIO */
+
+/* Encabezado y logo */
+.encabezado-advent {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Tu Portal Estudiantil */
+.subtitulo-portal {
+    margin-top: 0 !important;
+}
+
+/* Texto de bienvenida y especialidades */
+.bienvenida-inicio {
+    margin-top: 5px !important;
+    margin-bottom: 20px !important;
+}
+/* SUBIR EL SUBTÍTULO */
+.subtitulo-portal {
+    position: relative !important;
+    top: -100px !important;
+}
+
+/* SUBIR TODA LA BIENVENIDA Y LAS ESPECIALIDADES */
+.bienvenida-inicio {
+    position: relative !important;
+    top: -100px !important;
+}
+.bienvenida-inicio {
+    margin-top: 0 !important;
+    position: relative;
+    top: -30px;
+}
+
+/* =====================================
+   NOTICIAS - DISEÑO SIMILAR A PROFESORES
+===================================== */
+
+#noticias .tarjetas-contenido {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#noticias .tarjeta-noticia {
+    all: unset;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 190px;
+    padding: 25px;
+    box-sizing: border-box;
+
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid #3b2923;
+    border-radius: 15px;
+
+    color: #30251f;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#noticias .tarjeta-noticia h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #30251f;
+}
+
+#noticias .tarjeta-noticia p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    color: #30251f;
+}
+
+#noticias .tarjeta-noticia:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 800px) {
+    #noticias .tarjetas-contenido {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* GALERÍA DE IMÁGENES CANSAT */
+
+.galeria-cansat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.galeria-cansat img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid #684b3d;
+    transition: transform 0.3s ease;
+}
+
+.galeria-cansat img:hover {
+    transform: scale(1.02);
+}
+
+/* CELULARES */
+
+@media (max-width: 700px) {
+    .galeria-cansat {
+        grid-template-columns: 1fr;
+    }
+}
+/* PRIMERA FOTO CANSAT EN FORMATO VERTICAL */
+
+.galeria-cansat img:first-child {
+    width: 75%;
+    height: 380px;
+    justify-self: center;
+    object-fit: contain;
+    background-color: transparent;
+    border-radius: 18px;
+}
