@@ -5659,3 +5659,111 @@ body .encabezado-advent img.logo-advent {
     align-items: center;
     width: 100%;
 }
+/* 6.º A CONSTRUCCIONES: IGUALAR EXACTAMENTE A 5.º A */
+
+#horario-6a-construcciones {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 14px 0 10px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    box-sizing: border-box !important;
+}
+/* HORARIO TARDE 6.º A: MISMO ANCHO QUE LA MAÑANA */
+
+#horario-6a-construcciones .tabla-tarde-6a {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-tarde-6a table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    margin: 0 !important;
+    border-collapse: collapse !important;
+}
+/* 7.º A CONSTRUCCIONES: MISMO ANCHO Y ALINEACIÓN QUE 6.º A */
+
+#horario-7a-construcciones {
+    width: 100% !important;
+    max-width: 1170px !important;
+    margin: 30px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+/* 7.º A: MISMAS DIMENSIONES QUE 6.º A */
+
+#horario-7a-construcciones {
+    width: 100% !important;
+    max-width: 1170px !important;
+    margin: 30px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+}
+/* 7.º A: quitar barra de desplazamiento horizontal */
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+}
