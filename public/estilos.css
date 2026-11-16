@@ -5767,3 +5767,9 @@ body .encabezado-advent img.logo-advent {
     max-width: 100% !important;
     table-layout: fixed !important;
 }
+/* RESTAURAR FONDO BEIGE */
+body,
+header,
+.menu-lateral {
+    background-color: #ead8c5 !important;
+}
