@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background-color: #ead8c5;
+    background-color: #F29F70;
     color: #3c2b24;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -32,7 +32,7 @@ header {
 
     padding: 20px 50px;
 
-    background-color: #ead8c5;
+    background-color: #F29F70;
 }
 
 .logo img {
@@ -5443,7 +5443,7 @@ header .logo {
     flex-direction: column !important;
     align-items: stretch !important;
     padding: 80px 25px 25px !important;
-    background-color: #ead8c5;
+    background-color: #F29F70;
     transform: translateX(-110%) !important;
     z-index: 1000 !important;
     gap: 8px;
@@ -5766,10 +5766,4 @@ body .encabezado-advent img.logo-advent {
     min-width: 0 !important;
     max-width: 100% !important;
     table-layout: fixed !important;
-}
-/* RESTAURAR FONDO BEIGE */
-body,
-header,
-.menu-lateral {
-    background-color: #ead8c5 !important;
 }
