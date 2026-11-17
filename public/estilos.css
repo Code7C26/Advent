@@ -13,7 +13,11 @@ html {
 }
 
 body {
-    background-color: #F29F70;
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #3c2b24;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -25,14 +29,11 @@ body {
 header {
     width: 100%;
     height: 90px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 20px 50px;
-
-    background-color: #F29F70;
+    background-color: transparent;
 }
 
 .logo img {
@@ -514,22 +515,9 @@ nav a:hover {
 }
 
 
-/* ==========================================
-   FOOTER
-   ========================================== */
-
 footer {
-    background-color: #3c2b24;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 20px;
-
-    margin-top: 40px;
+    display: none !important;
 }
-
 
 /* ==========================================
    CELULARES
@@ -1582,7 +1570,7 @@ footer {
     margin: 40px auto;
     padding: 40px;
     box-sizing: border-box;
-    background-color: #e2d1bd;
+    background-color: #ead8c5;
     border-radius: 25px;
 }
 
@@ -3483,12 +3471,20 @@ header .logo {
 }
 
 /* Aclaración debajo del título Horarios */
-.aclaracion-horarios {
+.horarios-especialidad .titulo-introduccion {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    color: #3c2b24 !important;
+}
+
+.horarios-especialidad .aclaracion-horarios {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
-    color: #302722;
+    color: #3c2b24;
     line-height: 1.5;
     margin: -10px auto 25px;
 }
@@ -5443,7 +5439,7 @@ header .logo {
     flex-direction: column !important;
     align-items: stretch !important;
     padding: 80px 25px 25px !important;
-    background-color: #F29F70;
+    background: url("img/fondo.jpg") center center / cover no-repeat !important;
     transform: translateX(-110%) !important;
     z-index: 1000 !important;
     gap: 8px;
@@ -5453,11 +5449,11 @@ header .logo {
     transform: translateX(0) !important;
 }
 
-#menu-lateral a {
-    display: block;
-    width: 100%;
+.menu-lateral a {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    color: #302722 !important;
 }
-
 /* BOTÓN DE LAS TRES RAYITAS */
 
 .boton-menu {
@@ -5766,4 +5762,147 @@ body .encabezado-advent img.logo-advent {
     min-width: 0 !important;
     max-width: 100% !important;
     table-layout: fixed !important;
+}
+
+/* TODO EL CUESTIONARIO DEL MISMO COLOR */
+.contenedor-cuestionario {
+    background-color: #F3E2C7 !important;
+}
+
+.instrucciones-vocacional {
+    background-color: #F3E2C7 !important;
+}
+
+.pregunta-vocacional {
+    background-color: #F3E2C7 !important;
+}
+
+/* RESULTADO DEL CUESTIONARIO */
+.resultado-contenido {
+    background-color: #F3E2C7 !important;
+}
+
+/* BOTÓN VOLVER DEL CUESTIONARIO */
+.volver {
+    display: inline-block;
+    background-color: #fffaf5 !important;
+    color: #302722 !important;
+    border: none !important;
+    border-radius: 18px !important;
+    padding: 14px 26px !important;
+    font-family: inherit !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.volver:hover {
+    background-color: #F3E2C7 !important;
+}
+
+/* TEXTO DESCRIPTIVO DE PROFESORES */
+#profesores-informatica .texto-profesores > p:not(.aviso-profesores) {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #3c2b24 !important;
+    line-height: 1.5 !important;
+    text-align: center;
+}
+
+/* AVISO IMPORTANTE */
+#profesores-informatica .aviso-profesores {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #3c2b24 !important;
+    text-align: center;
+}
+
+/* MISMA TIPOGRAFÍA PARA TODAS LAS TARJETAS DE PROFESORES */
+.tarjeta-profesor,
+.tarjeta-profesor .datos-profesor {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.tarjeta-profesor .datos-profesor h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 23px;
+    font-weight: 700;
+    color: #302722;
+}
+
+.tarjeta-profesor .datos-profesor p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 17px;
+    font-weight: 500;
+    color: #302722;
+    line-height: 1.5;
+}
+
+.tarjeta-profesor .datos-profesor strong {
+    font-weight: 700;
+}
+
+/* MISMA TIPOGRAFÍA PARA TODAS LAS PLANIFICACIONES */
+.resumen-materia {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.resumen-materia h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700;
+}
+
+.resumen-materia p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #3c2b24;
+}
+
+.resumen-materia strong {
+    font-weight: 700;
+}
+
+/* AJUSTE DE SNOOPY DE CONSTRUCCIONES EN CELULAR */
+@media screen and (max-width: 768px) {
+    .acceso-cuestionario-construcciones {
+        width: 85px !important;
+        right: 12px !important;
+        top: 150px !important;
+        z-index: 5 !important;
+    }
+
+    .acceso-cuestionario-construcciones img {
+        width: 85px !important;
+        height: auto !important;
+    }
+}
+/* SNOOPY DE INFORMÁTICA EN CELULAR */
+@media screen and (max-width: 768px) {
+
+    .acceso-cuestionario-informatica {
+        position: absolute !important;
+        top: 150px !important;
+        right: 12px !important;
+        width: 85px !important;
+        z-index: 5 !important;
+    }
+
+    .acceso-cuestionario-informatica button {
+        all: unset;
+        display: block;
+        width: 85px;
+        cursor: pointer;
+    }
+
+    .acceso-cuestionario-informatica img {
+        display: block;
+        width: 85px !important;
+        height: auto !important;
+    }
 }
