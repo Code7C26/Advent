@@ -13,11 +13,14 @@ html {
 }
 
 body {
-    background-color: #f6e9da;
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #3c2b24;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* ==========================================
    HEADER
@@ -26,14 +29,11 @@ body {
 header {
     width: 100%;
     height: 90px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 20px 50px;
-
-    background-color: #f6e9da;
+    background-color: transparent;
 }
 
 .logo img {
@@ -515,22 +515,9 @@ nav a:hover {
 }
 
 
-/* ==========================================
-   FOOTER
-   ========================================== */
-
 footer {
-    background-color: #3c2b24;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 20px;
-
-    margin-top: 40px;
+    display: none !important;
 }
-
 
 /* ==========================================
    CELULARES
@@ -1583,7 +1570,7 @@ footer {
     margin: 40px auto;
     padding: 40px;
     box-sizing: border-box;
-    background-color: #e2d1bd;
+    background-color: #ead8c5;
     border-radius: 25px;
 }
 
@@ -3280,7 +3267,7 @@ header .logo img {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(26px, 3vw, 36px);
     font-weight: 800;
-    color: #A65E43;
+    color: #85452F;
     line-height: 1.3;
     margin: 0 0 14px;
 }
@@ -3484,12 +3471,20 @@ header .logo {
 }
 
 /* Aclaración debajo del título Horarios */
-.aclaracion-horarios {
+.horarios-especialidad .titulo-introduccion {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    color: #3c2b24 !important;
+}
+
+.horarios-especialidad .aclaracion-horarios {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 500;
     text-align: center;
-    color: #302722;
+    color: #3c2b24;
     line-height: 1.5;
     margin: -10px auto 25px;
 }
@@ -5430,4 +5425,484 @@ header .logo {
     min-height: 145px;
     box-sizing: border-box;
     cursor: pointer;
-    transition:
+    transition: all 0.3s ease;
+}
+/* CORRECCIÓN DEL MENÚ LATERAL */
+
+#menu-lateral {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 80px 25px 25px !important;
+    background: url("img/fondo.jpg") center center / cover no-repeat !important;
+    transform: translateX(-110%) !important;
+    z-index: 1000 !important;
+    gap: 8px;
+}
+
+#menu-lateral.abierto {
+    transform: translateX(0) !important;
+}
+
+.menu-lateral a {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    color: #302722 !important;
+}
+/* BOTÓN DE LAS TRES RAYITAS */
+
+.boton-menu {
+    position: fixed !important;
+    top: 25px !important;
+    left: 25px !important;
+    z-index: 1001 !important;
+    font-size: 36px !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 5px 10px !important;
+    color: #211a17 !important;
+    cursor: pointer;
+}
+.logo-advent {
+    width: 150px !important;
+    max-width: 150px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 25px;
+}
+/* TAMAÑO DEFINITIVO DEL LOGO ADVENT */
+body .encabezado-advent img.logo-advent {
+    width: 150px !important;
+    max-width: 150px !important;
+    height: auto !important;
+    display: block !important;
+    margin: 20px auto 0 !important;
+}
+.encabezado-advent {
+    margin-bottom: 5px !important;
+}
+
+.bienvenida-inicio {
+    margin-top: 10px !important;
+}
+/* AJUSTE DE ESPACIOS DEL INICIO */
+
+/* Encabezado y logo */
+.encabezado-advent {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Tu Portal Estudiantil */
+.subtitulo-portal {
+    margin-top: 0 !important;
+}
+
+/* Texto de bienvenida y especialidades */
+.bienvenida-inicio {
+    margin-top: 5px !important;
+    margin-bottom: 20px !important;
+}
+/* SUBIR EL SUBTÍTULO */
+.subtitulo-portal {
+    position: relative !important;
+    top: -100px !important;
+}
+
+/* SUBIR TODA LA BIENVENIDA Y LAS ESPECIALIDADES */
+.bienvenida-inicio {
+    position: relative !important;
+    top: -100px !important;
+}
+.bienvenida-inicio {
+    margin-top: 0 !important;
+    position: relative;
+    top: -30px;
+}
+
+/* =====================================
+   NOTICIAS - DISEÑO SIMILAR A PROFESORES
+===================================== */
+
+#noticias .tarjetas-contenido {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#noticias .tarjeta-noticia {
+    all: unset;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    min-height: 190px;
+    padding: 25px;
+    box-sizing: border-box;
+
+    background-color: rgba(255, 255, 255, 0.35);
+    border: 1px solid #3b2923;
+    border-radius: 15px;
+
+    color: #30251f;
+    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#noticias .tarjeta-noticia h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    color: #30251f;
+}
+
+#noticias .tarjeta-noticia p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    color: #30251f;
+}
+
+#noticias .tarjeta-noticia:hover {
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 800px) {
+    #noticias .tarjetas-contenido {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* GALERÍA DE IMÁGENES CANSAT */
+
+.galeria-cansat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.galeria-cansat img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid #684b3d;
+    transition: transform 0.3s ease;
+}
+
+.galeria-cansat img:hover {
+    transform: scale(1.02);
+}
+
+/* CELULARES */
+
+@media (max-width: 700px) {
+    .galeria-cansat {
+        grid-template-columns: 1fr;
+    }
+}
+/* PRIMERA FOTO CANSAT EN FORMATO VERTICAL */
+
+.galeria-cansat img:first-child {
+    width: 75%;
+    height: 380px;
+    justify-self: center;
+    object-fit: contain;
+    background-color: transparent;
+    border-radius: 18px;
+}
+.encabezado-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-advent {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    display: block;
+    width: 100%;
+    text-align: center !important;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 10px 0 0;
+    position: static;
+}
+.encabezado-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+/* 6.º A CONSTRUCCIONES: IGUALAR EXACTAMENTE A 5.º A */
+
+#horario-6a-construcciones {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 14px 0 10px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    box-sizing: border-box !important;
+}
+/* HORARIO TARDE 6.º A: MISMO ANCHO QUE LA MAÑANA */
+
+#horario-6a-construcciones .tabla-tarde-6a {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-6a-construcciones .tabla-tarde-6a table {
+    display: table !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    margin: 0 !important;
+    border-collapse: collapse !important;
+}
+/* 7.º A CONSTRUCCIONES: MISMO ANCHO Y ALINEACIÓN QUE 6.º A */
+
+#horario-7a-construcciones {
+    width: 100% !important;
+    max-width: 1170px !important;
+    margin: 30px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse;
+}
+/* 7.º A: MISMAS DIMENSIONES QUE 6.º A */
+
+#horario-7a-construcciones {
+    width: 100% !important;
+    max-width: 1170px !important;
+    margin: 30px auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+}
+/* 7.º A: quitar barra de desplazamiento horizontal */
+#horario-7a-construcciones .tabla-horarios-contenedor {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
+
+#horario-7a-construcciones .tabla-horarios {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+}
+
+/* TODO EL CUESTIONARIO DEL MISMO COLOR */
+.contenedor-cuestionario {
+    background-color: #F3E2C7 !important;
+}
+
+.instrucciones-vocacional {
+    background-color: #F3E2C7 !important;
+}
+
+.pregunta-vocacional {
+    background-color: #F3E2C7 !important;
+}
+
+/* RESULTADO DEL CUESTIONARIO */
+.resultado-contenido {
+    background-color: #F3E2C7 !important;
+}
+
+/* BOTÓN VOLVER DEL CUESTIONARIO */
+.volver {
+    display: inline-block;
+    background-color: #fffaf5 !important;
+    color: #302722 !important;
+    border: none !important;
+    border-radius: 18px !important;
+    padding: 14px 26px !important;
+    font-family: inherit !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.volver:hover {
+    background-color: #F3E2C7 !important;
+}
+
+/* TEXTO DESCRIPTIVO DE PROFESORES */
+#profesores-informatica .texto-profesores > p:not(.aviso-profesores) {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #3c2b24 !important;
+    line-height: 1.5 !important;
+    text-align: center;
+}
+
+/* AVISO IMPORTANTE */
+#profesores-informatica .aviso-profesores {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #3c2b24 !important;
+    text-align: center;
+}
+
+/* MISMA TIPOGRAFÍA PARA TODAS LAS TARJETAS DE PROFESORES */
+.tarjeta-profesor,
+.tarjeta-profesor .datos-profesor {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.tarjeta-profesor .datos-profesor h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 23px;
+    font-weight: 700;
+    color: #302722;
+}
+
+.tarjeta-profesor .datos-profesor p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 17px;
+    font-weight: 500;
+    color: #302722;
+    line-height: 1.5;
+}
+
+.tarjeta-profesor .datos-profesor strong {
+    font-weight: 700;
+}
+
+/* MISMA TIPOGRAFÍA PARA TODAS LAS PLANIFICACIONES */
+.resumen-materia {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.resumen-materia h2 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700;
+}
+
+.resumen-materia p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #3c2b24;
+}
+
+.resumen-materia strong {
+    font-weight: 700;
+}
+
+/* AJUSTE DE SNOOPY DE CONSTRUCCIONES EN CELULAR */
+@media screen and (max-width: 768px) {
+    .acceso-cuestionario-construcciones {
+        width: 85px !important;
+        right: 12px !important;
+        top: 150px !important;
+        z-index: 5 !important;
+    }
+
+    .acceso-cuestionario-construcciones img {
+        width: 85px !important;
+        height: auto !important;
+    }
+}
+/* SNOOPY DE INFORMÁTICA EN CELULAR */
+@media screen and (max-width: 768px) {
+
+    .acceso-cuestionario-informatica {
+        position: absolute !important;
+        top: 150px !important;
+        right: 12px !important;
+        width: 85px !important;
+        z-index: 5 !important;
+    }
+
+    .acceso-cuestionario-informatica button {
+        all: unset;
+        display: block;
+        width: 85px;
+        cursor: pointer;
+    }
+
+    .acceso-cuestionario-informatica img {
+        display: block;
+        width: 85px !important;
+        height: auto !important;
+    }
+}
