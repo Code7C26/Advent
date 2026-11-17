@@ -6018,5 +6018,233 @@
         renderReconocimientosGrid();
         renderNoticiasGrid();
     </script>
+    <!-- ========================================================= -->
+<!-- MASCOTA ANIMADA ADVENT (ESTILOS + PERSONAJE + SCRIPT)     -->
+<!-- Pegar todo este bloque justo antes de cerrar </body>      -->
+<!-- ========================================================= -->
+<style>
+    #advent-mascot {
+        position: fixed;
+        bottom: 20px;
+        left: 40px;
+        width: 95px;
+        height: auto;
+        z-index: 45;
+        cursor: pointer;
+        user-select: none;
+        transition: filter 0.25s ease;
+        filter: drop-shadow(0 8px 14px rgba(45, 36, 36, 0.16));
+    }
+
+    #advent-mascot:hover {
+        filter: drop-shadow(0 12px 20px rgba(196, 43, 52, 0.28));
+    }
+
+    #mascot-bubble {
+        position: fixed;
+        background: #FFFBF7;
+        color: #2D2424;
+        border: 1.5px solid rgba(196, 43, 52, 0.25);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        z-index: 46;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        white-space: nowrap;
+    }
+
+    #mascot-bubble.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @keyframes mascotWalkBounce {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-6px) rotate(-2deg); }
+        75% { transform: translateY(-6px) rotate(2deg); }
+    }
+
+    @keyframes mascotWaveThumb {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-14deg); }
+    }
+
+    @keyframes mascotBlink {
+        0%, 94%, 100% { transform: scaleY(1); }
+        97% { transform: scaleY(0.1); }
+    }
+
+    .mascot-walking #mascot-body {
+        animation: mascotWalkBounce 0.55s ease-in-out infinite;
+        transform-origin: center bottom;
+    }
+
+    #mascot-thumb-arm {
+        transform-origin: 68px 132px;
+        animation: mascotWaveThumb 1.8s ease-in-out infinite;
+    }
+
+    #mascot-eyes {
+        transform-origin: 110px 85px;
+        animation: mascotBlink 4s infinite;
+    }
+</style>
+
+<div id="mascot-bubble">¡Hola! 👋</div>
+
+<div id="advent-mascot" title="¡Hacé clic para saludar!" aria-label="Mascota estudiantil ADVENT">
+    <svg viewBox="0 0 210 285" class="w-full h-auto overflow-visible" xmlns="http://www.w3.org/2000/svg">
+        <g id="mascot-body">
+            <!-- Cabello trasero -->
+            <path d="M52 85 C46 135, 48 182, 65 194 C95 202, 145 202, 165 190 C178 175, 178 125, 170 85 Z" fill="#5A331D" stroke="#2D1A10" stroke-width="4" stroke-linejoin="round"/>
+
+            <!-- Piernas y medias -->
+            <rect x="82" y="205" width="16" height="24" fill="#F4C5A8" stroke="#2D1A10" stroke-width="3.5"/>
+            <rect x="118" y="205" width="16" height="24" fill="#F4C5A8" stroke="#2D1A10" stroke-width="3.5"/>
+            <rect x="81" y="222" width="18" height="28" fill="#1F2E5A" stroke="#2D1A10" stroke-width="3.5"/>
+            <rect x="117" y="222" width="18" height="28" fill="#1F2E5A" stroke="#2D1A10" stroke-width="3.5"/>
+
+            <!-- Zapatos escolares -->
+            <path d="M68 258 C68 247, 82 245, 99 247 L101 262 C86 265, 68 265, 68 258 Z" fill="#2A2B30" stroke="#18181B" stroke-width="3.5"/>
+            <path d="M116 247 C133 245, 147 247, 147 258 C147 265, 129 265, 114 262 Z" fill="#2A2B30" stroke="#18181B" stroke-width="3.5"/>
+
+            <!-- Pollera tableada azul -->
+            <path d="M74 170 L142 170 L152 208 C128 214, 88 214, 64 208 Z" fill="#1F2E5A" stroke="#2D1A10" stroke-width="4" stroke-linejoin="round"/>
+            <line x1="90" y1="172" x2="86" y2="211" stroke="#141E3D" stroke-width="3"/>
+            <line x1="108" y1="172" x2="108" y2="212" stroke="#141E3D" stroke-width="3"/>
+            <line x1="126" y1="172" x2="130" y2="211" stroke="#141E3D" stroke-width="3"/>
+
+            <!-- Brazo derecho en la cintura -->
+            <path d="M138 134 C156 140, 162 158, 142 168" fill="none" stroke="#F4C5A8" stroke-width="13" stroke-linecap="round"/>
+            <path d="M138 134 C156 140, 162 158, 142 168" fill="none" stroke="#2D1A10" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Torso / Chomba blanca -->
+            <path d="M74 126 L142 126 L144 172 L72 172 Z" fill="#FFFFFF" stroke="#2D1A10" stroke-width="4" stroke-linejoin="round"/>
+            <!-- Cuello chomba y botones -->
+            <polygon points="94,126 108,138 122,126" fill="#E5E7EB" stroke="#2D1A10" stroke-width="3"/>
+            <circle cx="108" cy="144" r="2" fill="#6B7280"/>
+            <circle cx="108" cy="151" r="2" fill="#6B7280"/>
+            <!-- Escudo del colegio -->
+            <path d="M120 140 L134 140 L134 151 C134 156, 127 159, 127 159 C127 159, 120 156, 120 151 Z" fill="#FFFFFF" stroke="#C42B34" stroke-width="2.2"/>
+            <line x1="127" y1="142" x2="127" y2="156" stroke="#2D1A10" stroke-width="1.8"/>
+            <line x1="122" y1="146" x2="132" y2="146" stroke="#2D1A10" stroke-width="1.8"/>
+
+            <!-- Brazo izquierdo con pulgar arriba -->
+            <g id="mascot-thumb-arm">
+                <path d="M74 134 L44 146 L36 126" fill="none" stroke="#F4C5A8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M74 134 L44 146 L36 126" fill="none" stroke="#2D1A10" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="24" y="114" width="18" height="20" rx="8" fill="#F4C5A8" stroke="#2D1A10" stroke-width="3.5"/>
+                <path d="M33 114 L33 101 C33 97, 40 97, 40 102 L40 114" fill="#F4C5A8" stroke="#2D1A10" stroke-width="3.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- Cabeza y rostro -->
+            <path d="M62 76 C62 42, 158 42, 158 76 C158 112, 136 128, 110 128 C84 128, 62 112, 62 76 Z" fill="#F4C5A8" stroke="#2D1A10" stroke-width="4"/>
+
+            <!-- Flequillo / Cabello frontal -->
+            <path d="M58 84 C54 42, 86 24, 122 28 C156 32, 172 58, 166 94 C162 72, 146 56, 126 52 C104 66, 76 74, 58 84 Z" fill="#5A331D" stroke="#2D1A10" stroke-width="4" stroke-linejoin="round"/>
+
+            <!-- Cejas, ojos, nariz y sonrisa -->
+            <path d="M80 65 Q88 61 95 65" fill="none" stroke="#2D1A10" stroke-width="3" stroke-linecap="round"/>
+            <path d="M124 65 Q132 61 139 65" fill="none" stroke="#2D1A10" stroke-width="3" stroke-linecap="round"/>
+
+            <g id="mascot-eyes">
+                <circle cx="88" cy="83" r="9.5" fill="#2D1A10"/>
+                <circle cx="85" cy="80" r="3" fill="#FFFFFF"/>
+                <circle cx="131" cy="83" r="9.5" fill="#2D1A10"/>
+                <circle cx="128" cy="80" r="3" fill="#FFFFFF"/>
+            </g>
+
+            <path d="M108 92 Q103 97 109 100" fill="none" stroke="#2D1A10" stroke-width="3" stroke-linecap="round"/>
+            <path d="M97 108 Q110 117 122 108" fill="none" stroke="#2D1A10" stroke-width="3.2" stroke-linecap="round"/>
+        </g>
+    </svg>
+</div>
+
+<script>
+    (function initAdventMascot() {
+        const mascot = document.getElementById('advent-mascot');
+        const bubble = document.getElementById('mascot-bubble');
+        if (!mascot || !bubble) return;
+
+        let posX = 40;
+        let posY = 20;
+        let targetX = window.innerWidth - 160;
+        let targetY = 20;
+        let facingLeft = false;
+        let isPaused = false;
+
+        const phrases = [
+            '¡Hola! 👋',
+            '¡Bienvenido a ADVENT!',
+            '¿Ya viste las especialidades?',
+            '¡Éxitos en tu cursado! ✨'
+        ];
+
+        function showMascotMessage(customText) {
+            const msg = customText || phrases[Math.floor(Math.random() * phrases.length)];
+            bubble.textContent = msg;
+            const rect = mascot.getBoundingClientRect();
+            bubble.style.left = `${Math.min(Math.max(12, rect.left - 10), window.innerWidth - 190)}px`;
+            bubble.style.top = `${Math.max(12, rect.top - 38)}px`;
+            bubble.classList.add('show');
+            setTimeout(() => bubble.classList.remove('show'), 2600);
+        }
+
+        function pickNewDestination() {
+            const maxX = Math.max(60, window.innerWidth - 120);
+            const maxY = Math.max(40, window.innerHeight - 170);
+            targetX = Math.floor(Math.random() * maxX);
+            targetY = Math.random() < 0.7 ? 20 : Math.floor(Math.random() * maxY);
+        }
+
+        mascot.addEventListener('click', () => {
+            isPaused = true;
+            mascot.classList.remove('mascot-walking');
+            showMascotMessage('¡Hola! ¿En qué te ayudo? 😊');
+            setTimeout(() => {
+                isPaused = false;
+                pickNewDestination();
+            }, 2400);
+        });
+
+        function animateStep() {
+            if (!isPaused) {
+                const dx = targetX - posX;
+                const dy = targetY - posY;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < 6) {
+                    mascot.classList.remove('mascot-walking');
+                    isPaused = true;
+                    if (Math.random() < 0.45) showMascotMessage();
+                    setTimeout(() => {
+                        isPaused = false;
+                        pickNewDestination();
+                    }, 1800 + Math.random() * 1500);
+                } else {
+                    mascot.classList.add('mascot-walking');
+                    const speed = 1.6;
+                    posX += (dx / dist) * speed;
+                    posY += (dy / dist) * speed;
+                    facingLeft = dx < 0;
+                }
+            }
+
+            mascot.style.left = `${posX}px`;
+            mascot.style.bottom = `${posY}px`;
+            mascot.style.transform = facingLeft ? 'scaleX(-1)' : 'scaleX(1)';
+
+            requestAnimationFrame(animateStep);
+        }
+
+        pickNewDestination();
+        requestAnimationFrame(animateStep);
+    })();
+</script>
 </body>
 </html>
