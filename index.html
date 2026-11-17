@@ -6175,5 +6175,293 @@
         });
     })();
 </script>
+
+<!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
+    <section id="cuestionario-vocab-view" class="hidden mb-16">
+        <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+            
+            <button onclick="openBibliotecaView()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
+                <span>← Volver a Biblioteca</span>
+            </button>
+
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
+                <p class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
+            </div>
+
+            <!-- Formulario de Datos Obligatorios -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
+                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
+                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
+                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                </div>
+            </div>
+
+            <!-- Instrucciones -->
+            <div class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+                <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
+                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
+                    Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta[cite: 3]<br>
+                    <strong>I (2 puntos)</strong> = Me es indiferente[cite: 3]<br>
+                    <strong>A (3 puntos)</strong> = Me agrada / me gusta[cite: 3]
+                </p>
+            </div>
+
+            <!-- Contenedor dinámico de las 106 preguntas -->
+            <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
+                <div id="preguntas-container" class="space-y-6 mb-10">
+                    <!-- Se inyectan mediante JavaScript -->
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                        Calcular Puntajes por Área →
+                    </button>
+                </div>
+            </form>
+
+            <!-- Contenedor de Resultados (Oculto al inicio) -->
+            <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+                <h3 class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
+                <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
+                
+                <h4 class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
+                    <!-- Puntajes detallados por área -->
+                </div>
+
+                <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
+                    <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
+    <script>
+        const preguntasVocacionales = [
+            "Trabajar resolviendo cálculos físicos y matemáticos[cite: 3]",
+            "Investigar el nivel de los precios[cite: 3]",
+            "Aprender estilos de pintura artística[cite: 3]",
+            "Hacer esculturas[cite: 3]",
+            "Trabaja en estudios jurídicos[cite: 3]",
+            "Estudiar derecho Constitucional[cite: 3]",
+            "Aprender a interpretar radiografías[cite: 3]",
+            "Asesorar a estudiantes sobre orientación vocacional[cite: 3]",
+            "Reparar la dentadura de una persona[cite: 3]",
+            "Trabajar con equipos electrónicos[cite: 3]",
+            "Estudiar los ecosistemas de una región[cite: 3]",
+            "Organizar la producción de una industria química[cite: 3]",
+            "Aprender a diseñar y decorar ambientes[cite: 3]",
+            "Realizar cálculos físicos matemáticos de estructuras[cite: 3]",
+            "Resolver ejercicios matemáticos[cite: 3]",
+            "Planificar actividades administrativas de una empresa[cite: 3]",
+            "Realizar una crítica a una obra literaria y cinematográfica[cite: 3]",
+            "Conocer técnicas y materiales de dibujo artístico[cite: 3]",
+            "Enseñar contenidos matemáticos[cite: 3]",
+            "Exponer casos jurídicos en audiencias o juicios[cite: 3]",
+            "Aprender sobre causas y tratamientos de enfermedades[cite: 3]",
+            "Trabajar en centros médicos[cite: 3]",
+            "Armar y reparar computadoras[cite: 3]",
+            "Diseñar páginas web[cite: 3]",
+            "Planificar la construcción de obras fluviales y marítimas[cite: 3]",
+            "Supervisar obras en construcción[cite: 3]",
+            "Aprender a realizar pronósticos meteorológicos[cite: 3]",
+            "Realizar análisis químicos[cite: 3]",
+            "Investigar centros y movimientos sísmicos[cite: 3]",
+            "Aprender anatomía[cite: 3]",
+            "Evaluar daños de viviendas y edificios[cite: 3]",
+            "Construir puentes[cite: 3]",
+            "Investigar sobre diferentes enfermedades mentales[cite: 3]",
+            "Ayudar a fortalecer músculos en una persona[cite: 3]",
+            "Llevar adelante pago de impuestos de otras personas[cite: 3]",
+            "Asesorar financieramente a empresas[cite: 3]",
+            "Aprender a tomar fotografías[cite: 3]",
+            "Crear música con software[cite: 3]",
+            "Analizar las condiciones y habitat de vida de una familia[cite: 3]",
+            "Tomar declaración a personas acusadas de un delito[cite: 3]",
+            "Diseñar juegos electrónicos[cite: 3]",
+            "Realizar edición de música y videos[cite: 3]",
+            "Aprender el proceso de formación de sustancias[cite: 3]",
+            "Realizar análisis químicos de productos industriales[cite: 3]",
+            "Evaluar el estado de conexiones eléctricas[cite: 3]",
+            "Asesorar a empresas constructoras[cite: 3]",
+            "Investigar dónde se almacena información tecnológica[cite: 3]",
+            "Reconocer los diferentes programas informáticos[cite: 3]",
+            "Elaborar dietas para pacientes[cite: 3]",
+            "Trabajar en un banco[cite: 3]",
+            "Analizar temas de comercio internacional[cite: 3]",
+            "Enseñar a niños[cite: 3]",
+            "Analizar problemáticas sociales[cite: 3]",
+            "Musicalizar obras teatrales[cite: 3]",
+            "Realizar artesanías[cite: 3]",
+            "Ayudar a personas enfermas[cite: 3]",
+            "Ayudar a personas con problemas emocionales[cite: 3]",
+            "Investigar sobre nuevas aplicaciones tecnológicas[cite: 3]",
+            "Producir programas televisivos[cite: 3]",
+            "Realizar experimentos para desarrollar productos curativos[cite: 3]",
+            "Analizar formulas científicas[cite: 3]",
+            "Investigar índice de precios[cite: 3]",
+            "Organizar una empresa[cite: 3]",
+            "Supervisar las condiciones laborales de una empresa[cite: 3]",
+            "Investigar acontecimientos históricos[cite: 3]",
+            "Leer partituras[cite: 3]",
+            "Organizar conciertos musicales[cite: 3]",
+            "Trabajar en laboratorios[cite: 3]",
+            "Investigar el movimiento de los átomos[cite: 3]",
+            "Diseñar y controlar planos de una casa[cite: 3]",
+            "Trabajar con elementos de geometría[cite: 3]",
+            "Cuidar a personas con capacidades especiales[cite: 3]",
+            "Ayudar a niños con problemas de aprendizaje[cite: 3]",
+            "Aprender a realizar guiones con audiovisuales[cite: 3]",
+            "Diseñar ropa[cite: 3]",
+            "Diseñar un sistema operativo informática[cite: 3]",
+            "Realizar diagnóstico de autos por computadoras[cite: 3]",
+            "Diseñar amueblamientos para una casa[cite: 3]",
+            "Investigar sobre materiales ecológicos para la construcción de viviendas[cite: 3]",
+            "Llevar adelante el pago de sueldo de trabajadores[cite: 3]",
+            "Realizar el seguimiento contable de una empresa o comercio[cite: 3]",
+            "Realizar una pintura mural[cite: 3]",
+            "Tocar en una banda musical[cite: 3]",
+            "Realizar notas periodísticas para una radio[cite: 3]",
+            "Organizar las relaciones públicas de una empresa[cite: 3]",
+            "Conocer sobre redes informáticas[cite: 3]",
+            "Analizar logaritmos[cite: 3]",
+            "Conocer los componentes químicos de un alimento[cite: 3]",
+            "Experimentar con reactivos químicos[cite: 3]",
+            "Diseñar un avión[cite: 3]",
+            "Diseñar obras de ingeniería[cite: 3]",
+            "Programar Computadoras[cite: 3]",
+            "Diseñar el prototipo de una maquina[cite: 3]",
+            "Curar animales[cite: 3]",
+            "Socorrer emergencias médicas[cite: 3]",
+            "Conocer y viajar por distintos lugares del mundo[cite: 3]",
+            "Enseñar deportes[cite: 3]",
+            "Conocer diferentes drogas y sus efectos[cite: 3]",
+            "Experimentar para descubrir nuevas variedades de vegetales[cite: 3]",
+            "Conocer y realizar cálculos estructurales de una vivienda[cite: 3]",
+            "Realizar el diseño de donde ubicar viviendas en una ciudad[cite: 3]",
+            "Asesorar a personas sobre inversiones financieras[cite: 3]",
+            "Aprender algebra[cite: 3]",
+            "Investigar sobre las propiedades de diferentes metales[cite: 3]",
+            "Asesorar sobre el cuidado de los vegetales[cite: 3]"
+        ];
+
+        // Renderizar dinámicamente las 106 preguntas
+        function inicializarPreguntas() {
+            const container = document.getElementById('preguntas-container');
+            if (!container) return;
+            
+            container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
+                const num = index + 1;
+                return `
+                    <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${pregunta}</p>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <label title="Desagrada (1 pt)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="D" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
+                            </label>
+                            <label title="Indiferente (2 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="I" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
+                            </label>
+                            <label title="Agrada (3 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="A" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        document.addEventListener('DOMContentLoaded', inicializarPreguntas);
+
+        function openCuestionarioView() {
+            hideAllViews();
+            document.getElementById('cuestionario-vocab-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Validación estricta y procesamiento de puntajes según el documento oficial
+        function procesarCuestionario(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('quest-nombre').value.trim();
+            const apellido = document.getElementById('quest-apellido').value.trim();
+            const curso = document.getElementById('quest-curso').value.trim();
+
+            if (!nombre || !apellido || !curso) {
+                alert('Por favor, completá obligatoriamente tu Nombre, Apellido y Curso.');
+                return;
+            }
+
+            // Validar que todas las 106 preguntas estén contestadas
+            let respuestas = {};
+            for (let i = 1; i <= 106; i++) {
+                const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
+                if (!seleccion) {
+                    alert(`Te falta responder la pregunta número ${i}. ¡Todas son obligatorias!`);
+                    const el = document.querySelector(`input[name="p_${i}"]`);
+                    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+                const val = seleccion.value;
+                respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
+            }
+
+            // Agrupación oficial de áreas e ítems según el documento[cite: 3]
+            const areasDef = {
+                "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
+                "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
+                "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
+                "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
+                "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
+                "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
+                "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
+            };
+
+            let totalesArea = {};
+            let maxPuntaje = -1;
+            let mejoresAreas = [];
+
+            for (let area in areasDef) {
+                let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+                totalesArea[area] = suma;
+                if (suma > maxPuntaje) {
+                    maxPuntaje = suma;
+                    mejoresAreas = [area];
+                } else if (suma === maxPuntaje) {
+                    mejoresAreas.push(area);
+                }
+            }
+
+            // Mostrar resultados en pantalla
+            document.getElementById('res-alumno').textContent = `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`;
+            
+            const grid = document.getElementById('res-puntajes-grid');
+            grid.innerHTML = Object.entries(totalesArea).map(([area, ptos]) => `
+                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                    <span class="font-bold text-xs text-[#2D2424]">${area}</span>
+                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} puntos</span>
+                </div>
+            `).join('');
+
+            document.getElementById('res-mayor-area').textContent = `Las 2 áreas (o áreas principales) con mayor puntaje son: ${mejoresAreas.join(' y ')}`;
+            
+            document.getElementById('resultados-container').classList.remove('hidden');
+            document.getElementById('resultados-container').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
