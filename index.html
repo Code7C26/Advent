@@ -173,18 +173,7 @@
                 <!-- Logo geométrico ADVENT estático + Botón circular ES / IN -->
                 <div class="flex items-center gap-3 shrink-0">
                     <div aria-label="ADVENT" class="inline-flex items-center py-0.5 select-none">
-                        <svg class="h-10 sm:h-11 w-auto text-black" viewBox="0 0 132 100" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <!-- Letra 'a' geométrica gruesa con corte horizontal izquierdo y arco inferior -->
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
-                                fill="currentColor" />
-                            <!-- Texto vertical 'advent' rotado 90° antihorario con la altura exacta de la 'a' -->
-                            <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
-                                font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800"
-                                font-size="25.5" letter-spacing="-0.4" textLength="84"
-                                lengthAdjust="spacingAndGlyphs">advent</text>
-                        </svg>
+                        <img src="imagen/logo-advent.png" alt="ADVENT" class="h-10 sm:h-11 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
                     </div>
 
                     <!-- Botón circular de cambio de idioma (ES = Español / IN = Inglés) -->
@@ -1156,14 +1145,7 @@
         <footer
             class="bg-cream rounded-[2rem] px-7 py-5 border border-tomato/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#5C4E4E]">
             <div aria-label="ADVENT" class="inline-flex items-center select-none">
-                <svg class="h-8 w-auto text-black" viewBox="0 0 132 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
-                        fill="currentColor" />
-                    <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
-                        font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5"
-                        letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
-                </svg>
+                <img src="imagen/logo-advent.png" alt="ADVENT" class="h-8 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
             </div>
 
             <p id="footer-copy" class="text-xs text-[#7A6B6B]">© 2026 ADVENT • Portal Estudiantil</p>
@@ -1172,6 +1154,11 @@
 
     <!-- LÓGICA DE NAVEGACIÓN, IDIOMAS (ES / IN), UNIVERSIDADES, VIANDAS, LIBRERÍA, BIBLIOTECA, RECONOCIMIENTOS Y ESPECIALIDADES -->
     <script>
+        function smartImg(basePath, alt, classes = 'w-full h-full object-cover', fallbackHtml = '') {
+            const safeFallback = (fallbackHtml || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, ' ');
+            return `<img src="${basePath}.jpg" alt="${alt}" class="${classes}" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='${basePath}.jpeg';}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='${basePath}.png';}else{this.outerHTML='${safeFallback}';}">`;
+        }
+
         lucide.createIcons();
 
         // Estado global de idioma: 'es' (botón dice ES) | 'en' (botón dice IN)
@@ -4280,6 +4267,13 @@
         }
 
         function openNoticiaDetail(noticiaId, shouldScroll = true) {
+            const cansatPhotos = [
+                { base: 'imagen/cansat1', es: 'Equipo CanSat Galaxy 046', en: 'CanSat Galaxy 046 Team' },
+                { base: 'imagen/cansat2', es: 'Desarrollo y pruebas del satélite', en: 'Satellite development and testing' },
+                { base: 'imagen/cansat3', es: 'Presentación institucional', en: 'School presentation' },
+                { base: 'imagen/cansat4', es: 'Lanzamiento y misión CanSat', en: 'CanSat launch and mission' }
+            ];
+
             const item = noticiasData.find(n => n.id === noticiaId);
             if (!item) return;
             activeNoticiaId = noticiaId;
@@ -4298,6 +4292,23 @@
                         </div>
                     </div>
                 `).join('');
+
+                
+                const cansatGalleryHtml = item.id === 'cansat-galaxy-046' ? `
+                    <div class="mt-8">
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#2D2424] mb-5">${t.notPhotosTitle}</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            ${cansatPhotos.map(cp => `
+                                <div class="bg-cream rounded-[1.5rem] p-3.5 border border-tomato/12 shadow-2xs">
+                                    <div class="rounded-xl overflow-hidden mb-2.5 h-52">
+                                        ${smartImg(cp.base, cp[currentLang], 'w-full h-full object-cover', '')}
+                                    </div>
+                                    <p class="text-xs font-semibold text-[#5C4E4E] text-center">${cp[currentLang]}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : '';
 
                 const photosHtml = item.photos ? `
                     <div class="mt-8">
@@ -4318,6 +4329,7 @@
                         ${membersHtml}
                     </div>
                     ${photosHtml}
+                    ${cansatGalleryHtml}
                 `;
             } else {
                 const paragraphsHtml = (item.paragraphs[currentLang] || []).map(p => `
@@ -4447,12 +4459,44 @@
         function renderViandasGrid() {
             const t = i18n[currentLang];
             const grid = document.getElementById('viandas-cards-grid');
+            const viandasPhotoMap = {
+                'alta-palta': 'imagen/comidas/apalta',
+                'axion-spot': 'imagen/comidas/axion',
+                'bites': 'imagen/comidas/bites',
+                'bar-catalunya': 'imagen/comidas/dcatalina',
+                'delirios': 'imagen/comidas/delirios',
+                'della-casa': 'imagen/comidas/dellacasa',
+                'el-buen-sabor': 'imagen/comidas/elbuensabor',
+                'el-hornito-salteagueno': 'imagen/comidas/elhornito',
+                'don-francisco': 'imagen/comidas/francisco',
+                'san-fco': 'imagen/comidas/francisco',
+                'la-colonia': 'imagen/comidas/lacolonia',
+                'la-flamenca': 'imagen/comidas/lafilomena',
+                'la-granjita': 'imagen/comidas/lagranjita',
+                'maiki': 'imagen/comidas/maiki',
+                'maja-morena': 'imagen/comidas/majamorena',
+                'monkey': 'imagen/comidas/monkey',
+                'natural-chef': 'imagen/comidas/natural',
+                'nova-sushi': 'imagen/comidas/nova',
+                'pizza-box': 'imagen/comidas/pbox',
+                'pepernero': 'imagen/comidas/pepenero',
+                'polo': 'imagen/comidas/polo',
+                'pizza-quick': 'imagen/comidas/quick',
+                'sake-sushi': 'imagen/comidas/sake',
+                'shell': 'imagen/comidas/shell',
+                'solo-pizza': 'imagen/comidas/spizzas',
+                'cumaná': 'imagen/comidas/tentate',
+                'tutti-calzoni': 'imagen/comidas/tutticalzoni',
+                'virrey': 'imagen/comidas/virrey',
+                'wonder': 'imagen/comidas/wonder'
+            };
+
             if (!grid) return;
 
             grid.innerHTML = viandasData.map(place => `
                 <button type="button" onclick="openViandaDetail('${place.id}')" class="group bg-white rounded-[1.75rem] p-5 border border-tomato/12 hover:border-tomato card-hover flex flex-col items-center text-center shadow-2xs cursor-pointer">
-                    <div class="w-24 h-24 rounded-2xl ${place.badgeBg} flex items-center justify-center p-3 mb-4 shadow-xs group-hover:scale-105 transition-transform">
-                        ${place.logoHtml}
+                    <div class="w-24 h-24 rounded-2xl ${place.badgeBg} flex items-center justify-center p-2 mb-4 shadow-xs group-hover:scale-105 transition-transform overflow-hidden">
+                        ${viandasPhotoMap[place.id] ? smartImg(viandasPhotoMap[place.id], place.name, 'w-full h-full object-contain rounded-xl', place.logoHtml) : place.logoHtml}
                     </div>
                     <h3 class="font-serif text-lg sm:text-xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2 leading-snug">
                         ${place.name}
@@ -4580,10 +4624,12 @@
         // Renderizar tarjetas fijas de Biblioteca
         function renderBibliotecaResources() {
             const grid = document.getElementById('biblioteca-resources-grid');
-            grid.innerHTML = bibliotecaResources.map(item => `
+            const bibliotecaPhotos = ['imagen/BIB1', 'imagen/BIB4', 'imagen/BIB5', 'imagen/BIB6', 'imagen/BIB7'];
+
+            grid.innerHTML = bibliotecaResources.map((item, idx) => `
                 <div class="bg-white rounded-[1.75rem] p-4 border border-tomato/12 flex flex-col items-center text-center shadow-2xs select-none">
-                    <div class="w-full rounded-2xl ${item.bgClass} p-3 flex items-center justify-center overflow-hidden mb-3.5">
-                        ${item.svg}
+                    <div class="w-full rounded-2xl ${item.bgClass} p-2 flex items-center justify-center overflow-hidden mb-3.5">
+                        ${bibliotecaPhotos[idx] ? smartImg(bibliotecaPhotos[idx], item.title[currentLang], 'w-full h-36 object-cover rounded-xl', item.svg) : item.svg}
                     </div>
                     <h4 class="font-serif font-bold text-base text-[#2D2424] leading-snug mb-1.5">${item.title[currentLang]}</h4>
                     <span class="inline-block text-[11px] font-bold px-3 py-1 rounded-full ${item.badgeClass}">${item.condition[currentLang]}</span>
@@ -4606,11 +4652,26 @@
         // Renderizar los 3 botones de Reconocimientos
         function renderReconocimientosGrid() {
             const grid = document.getElementById('reconocimientos-cards-grid');
+            const reconocimientosPhotosMap = {
+                'joaquin-decara': {
+                    cover: 'imagen/JD1',
+                    gallery: ['imagen/JD1', 'imagen/JD3', 'imagen/JD4', 'imagen/JD5', 'imagen/JD6', 'imagen/JD7', 'imagen/JD21']
+                },
+                'felipe-gonzalez-rivero': {
+                    cover: 'imagen/FGR1',
+                    gallery: ['imagen/FGR1', 'imagen/FGR2', 'imagen/FGR3', 'imagen/FGR4', 'imagen/FGR5', 'imagen/FGR6', 'imagen/FGR7']
+                },
+                'guillermina-gonzalez-rivero': {
+                    cover: 'imagen/GGR1',
+                    gallery: ['imagen/GGR1', 'imagen/GGR2', 'imagen/GGR3', 'imagen/GGR4', 'imagen/GGR5']
+                }
+            };
+
             grid.innerHTML = reconocimientosData.map(person => `
                 <button type="button" onclick="openReconocimientoDetail('${person.id}')" class="group bg-white rounded-[2rem] p-4 border ${person.borderClass} card-hover flex flex-col items-center text-center shadow-2xs cursor-pointer">
                     <div class="w-full rounded-[1.35rem] overflow-hidden mb-4 bg-cream">
                         <div class="group-hover:scale-[1.03] transition-transform duration-300">
-                            ${person.coverSvg}
+                            ${(reconocimientosPhotosMap[person.id] && reconocimientosPhotosMap[person.id].cover) ? smartImg(reconocimientosPhotosMap[person.id].cover, person.cardName, 'w-full h-48 object-cover', person.coverSvg) : person.coverSvg}
                         </div>
                     </div>
                     <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors pb-2">
@@ -4689,14 +4750,16 @@
         function renderLibreriaProducts() {
             const t = i18n[currentLang];
             const grid = document.getElementById('libreria-products-grid');
+            const libreriaMainPhotos = ['imagen/LIB9', 'imagen/LIB8', 'imagen/LIB7', 'imagen/LIB12', 'imagen/LIB14', 'imagen/LIB10'];
+
             grid.innerHTML = libreriaProducts.map((prod, index) => {
                 const productTitle = prod.title[currentLang];
 
                 return `
                     <button type="button" onclick="handleLibreriaProductClick(${index})" class="w-full group bg-white rounded-[1.75rem] p-4 border border-tomato/12 hover:border-olive card-hover flex flex-col justify-between text-center cursor-pointer">
                         <div class="w-full">
-                            <div class="rounded-2xl ${prod.bgClass} p-3 flex items-center justify-center overflow-hidden mb-4 group-hover:scale-[1.02] transition-transform">
-                                ${prod.svg}
+                            <div class="rounded-2xl ${prod.bgClass} p-2 flex items-center justify-center overflow-hidden mb-4 group-hover:scale-[1.02] transition-transform">
+                                ${libreriaMainPhotos[index] ? smartImg(libreriaMainPhotos[index], productTitle, 'w-full h-32 object-cover rounded-xl', prod.svg) : prod.svg}
                             </div>
                             <div class="px-2">
                                 <h3 class="font-serif font-bold text-lg text-[#2D2424] group-hover:text-tomato transition-colors leading-snug">${productTitle}</h3>
@@ -5017,6 +5080,35 @@
         function renderInformaticaProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('inf-profesores-grid');
+            const profesorPhotoMap = {
+                'Antonella Argüello': 'imagen/profesores/arguello',
+                'Paula Buoni': 'imagen/profesores/buoni',
+                'Gustavo Cabral': 'imagen/profesores/cabral',
+                'Marcia Coria': 'imagen/profesores/coria',
+                'Mauro Cuello': 'imagen/profesores/cuello',
+                'Laura Farías': 'imagen/profesores/farias',
+                'Mara Ferrari': 'imagen/profesores/ferrari',
+                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
+                'Gabriela Luna': 'imagen/profesores/luna',
+                'Federico Maidana': 'imagen/profesores/maidana',
+                'Cynthia Manías': 'imagen/profesores/manias',
+                'Nelson Marmol': 'imagen/profesores/marmol',
+                'Miguel Martín': 'imagen/profesores/martin',
+                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
+                'Jorge Mira': 'imagen/profesores/mira',
+                'Gladys Miranda': 'imagen/profesores/miranda',
+                'Lucía Oyola': 'imagen/profesores/oyola',
+                'Bibiana Picchio': 'imagen/profesores/picchio',
+                'Tamara Piccinni': 'imagen/profesores/piccinni',
+                'Fernando Piñero': 'imagen/profesores/pinero',
+                'Fabiana Roja': 'imagen/profesores/roja',
+                'Cecilia Scaglia': 'imagen/profesores/scaglia',
+                'Alejandro Sosa': 'imagen/profesores/sosa',
+                'María Torres': 'imagen/profesores/torres',
+                'Víctor Vella': 'imagen/profesores/vella',
+                'Emanuel Villalba': 'imagen/profesores/villalba'
+            };
+
             if (!grid) return;
 
             const query = infTeacherSearch.trim().toLowerCase();
@@ -5038,11 +5130,8 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-blush/15 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
-                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
-                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
-                            </svg>
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
+                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -5423,6 +5512,35 @@
         function renderQuimicaProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('quim-profesores-grid');
+            const profesorPhotoMap = {
+                'Antonella Argüello': 'imagen/profesores/arguello',
+                'Paula Buoni': 'imagen/profesores/buoni',
+                'Gustavo Cabral': 'imagen/profesores/cabral',
+                'Marcia Coria': 'imagen/profesores/coria',
+                'Mauro Cuello': 'imagen/profesores/cuello',
+                'Laura Farías': 'imagen/profesores/farias',
+                'Mara Ferrari': 'imagen/profesores/ferrari',
+                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
+                'Gabriela Luna': 'imagen/profesores/luna',
+                'Federico Maidana': 'imagen/profesores/maidana',
+                'Cynthia Manías': 'imagen/profesores/manias',
+                'Nelson Marmol': 'imagen/profesores/marmol',
+                'Miguel Martín': 'imagen/profesores/martin',
+                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
+                'Jorge Mira': 'imagen/profesores/mira',
+                'Gladys Miranda': 'imagen/profesores/miranda',
+                'Lucía Oyola': 'imagen/profesores/oyola',
+                'Bibiana Picchio': 'imagen/profesores/picchio',
+                'Tamara Piccinni': 'imagen/profesores/piccinni',
+                'Fernando Piñero': 'imagen/profesores/pinero',
+                'Fabiana Roja': 'imagen/profesores/roja',
+                'Cecilia Scaglia': 'imagen/profesores/scaglia',
+                'Alejandro Sosa': 'imagen/profesores/sosa',
+                'María Torres': 'imagen/profesores/torres',
+                'Víctor Vella': 'imagen/profesores/vella',
+                'Emanuel Villalba': 'imagen/profesores/villalba'
+            };
+
             if (!grid) return;
 
             const query = quimTeacherSearch.trim().toLowerCase();
@@ -5444,11 +5562,8 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-princeton/20 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
-                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
-                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
-                            </svg>
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
+                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -5831,6 +5946,35 @@
         function renderConstruccionesProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('const-profesores-grid');
+            const profesorPhotoMap = {
+                'Antonella Argüello': 'imagen/profesores/arguello',
+                'Paula Buoni': 'imagen/profesores/buoni',
+                'Gustavo Cabral': 'imagen/profesores/cabral',
+                'Marcia Coria': 'imagen/profesores/coria',
+                'Mauro Cuello': 'imagen/profesores/cuello',
+                'Laura Farías': 'imagen/profesores/farias',
+                'Mara Ferrari': 'imagen/profesores/ferrari',
+                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
+                'Gabriela Luna': 'imagen/profesores/luna',
+                'Federico Maidana': 'imagen/profesores/maidana',
+                'Cynthia Manías': 'imagen/profesores/manias',
+                'Nelson Marmol': 'imagen/profesores/marmol',
+                'Miguel Martín': 'imagen/profesores/martin',
+                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
+                'Jorge Mira': 'imagen/profesores/mira',
+                'Gladys Miranda': 'imagen/profesores/miranda',
+                'Lucía Oyola': 'imagen/profesores/oyola',
+                'Bibiana Picchio': 'imagen/profesores/picchio',
+                'Tamara Piccinni': 'imagen/profesores/piccinni',
+                'Fernando Piñero': 'imagen/profesores/pinero',
+                'Fabiana Roja': 'imagen/profesores/roja',
+                'Cecilia Scaglia': 'imagen/profesores/scaglia',
+                'Alejandro Sosa': 'imagen/profesores/sosa',
+                'María Torres': 'imagen/profesores/torres',
+                'Víctor Vella': 'imagen/profesores/vella',
+                'Emanuel Villalba': 'imagen/profesores/villalba'
+            };
+
             if (!grid) return;
 
             const query = constTeacherSearch.trim().toLowerCase();
@@ -5852,11 +5996,8 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-olive/20 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
-                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
-                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
-                            </svg>
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
+                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -7070,6 +7211,10 @@
                     if (container) {
                         container.innerHTML = `
                             <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
+                                <div class="flex flex-wrap items-center gap-6 mb-6 pb-5 border-b border-blush/15">
+                                    <img src="imagen/logo-advent.png" alt="ADVENT" class="h-14 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
+                                    <img src="imagen/logo-proyecta.png" alt="Proyecta" class="h-14 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-proyecta.jpg';}">
+                                </div>
                                 <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
                                 <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
                             </div>
