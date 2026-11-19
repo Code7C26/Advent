@@ -173,7 +173,18 @@
                 <!-- Logo geométrico ADVENT estático + Botón circular ES / IN -->
                 <div class="flex items-center gap-3 shrink-0">
                     <div aria-label="ADVENT" class="inline-flex items-center py-0.5 select-none">
-                        <img src="imagen/logo-advent.png" alt="ADVENT" class="h-10 sm:h-11 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
+                        <svg class="h-10 sm:h-11 w-auto text-black" viewBox="0 0 132 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Letra 'a' geométrica gruesa con corte horizontal izquierdo y arco inferior -->
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
+                                fill="currentColor" />
+                            <!-- Texto vertical 'advent' rotado 90° antihorario con la altura exacta de la 'a' -->
+                            <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
+                                font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800"
+                                font-size="25.5" letter-spacing="-0.4" textLength="84"
+                                lengthAdjust="spacingAndGlyphs">advent</text>
+                        </svg>
                     </div>
 
                     <!-- Botón circular de cambio de idioma (ES = Español / IN = Inglés) -->
@@ -271,7 +282,12 @@
                     </div>
 
                     <div class="flex items-end justify-between gap-4">
-                        <a href="#empresa" onclick="openEmpresaPage(event); return false;" class="inline-flex items-center gap-2.5 bg-tomato hover:bg-[#a6222a] text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0">
+                        
+                        <<<<<<< HEAD
+                        <a href="#empresa" onclick="openEmpresaPage(); return false;" ...>
+                        =======
+                        <a href="#especialidades" onclick="showMainPortal('especialidades'); return false;" ...>
+                        >>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
                             <span id="hero-cta">Nuestra empresa →</span>
                         </a>
 
@@ -626,17 +642,27 @@
                     <span>← Volver</span>
                 </button>
 
-                <div class="flex items-center gap-3 mb-3">
-                    <h2 id="lib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">
-                        Librería</h2>
-                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
-                        aria-hidden="true">
-                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                    </svg>
-                </div>
-                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
+                <div class="flex items-center gap-3">
+    <h2 id="lib-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Librería</h2>
+    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+    </svg>
+</div>
+<div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- Tarjeta / columna de Salvador -->
+    <div class="lg:col-span-4 bg-white rounded-[1.75rem] p-5 border border-tomato/15 shadow-2xs text-center">
+        <div class="w-32 h-32 mx-auto rounded-2xl overflow-hidden mb-3 bg-softpink/40">
+            <img src="imagen/LIB1_3.jpg" alt="Salvador" class="w-full h-full object-cover object-top rounded-full">
+        </div>
+        <h3 class="font-serif text-xl font-bold text-[#2D2424]">Salvador</h3>
+    </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- Resto de la sección de Librería -->
+    <div class="lg:col-span-8">
+        <!-- Acá pegá el resto del contenido que tenías para Librería -->
+    </div>
+</div>
                     <!-- Columna Izquierda: Perfil y Datos de Salvador -->
                     <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
                         <div class="flex flex-col items-center text-center mb-6">
@@ -1145,7 +1171,14 @@
         <footer
             class="bg-cream rounded-[2rem] px-7 py-5 border border-tomato/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#5C4E4E]">
             <div aria-label="ADVENT" class="inline-flex items-center select-none">
-                <img src="imagen/logo-advent.png" alt="ADVENT" class="h-8 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
+                <svg class="h-8 w-auto text-black" viewBox="0 0 132 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
+                        fill="currentColor" />
+                    <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
+                        font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5"
+                        letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
+                </svg>
             </div>
 
             <p id="footer-copy" class="text-xs text-[#7A6B6B]">© 2026 ADVENT • Portal Estudiantil</p>
@@ -1154,11 +1187,6 @@
 
     <!-- LÓGICA DE NAVEGACIÓN, IDIOMAS (ES / IN), UNIVERSIDADES, VIANDAS, LIBRERÍA, BIBLIOTECA, RECONOCIMIENTOS Y ESPECIALIDADES -->
     <script>
-        function smartImg(basePath, alt, classes = 'w-full h-full object-cover', fallbackHtml = '') {
-            const safeFallback = (fallbackHtml || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;').replace(/\n/g, ' ');
-            return `<img src="${basePath}.jpg" alt="${alt}" class="${classes}" loading="lazy" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='${basePath}.jpeg';}else if(this.dataset.t==='1'){this.dataset.t='2';this.src='${basePath}.png';}else{this.outerHTML='${safeFallback}';}">`;
-        }
-
         lucide.createIcons();
 
         // Estado global de idioma: 'es' (botón dice ES) | 'en' (botón dice IN)
@@ -4189,28 +4217,17 @@
         }
 
         function hideAllViews() {
-            const viewIds = [
-                'main-portal-view',
-                'universidades-view',
-                'viandas-view',
-                'libreria-view',
-                'biblioteca-view',
-                'reconocimientos-view',
-                'informatica-view',
-                'quimica-view',
-                'construcciones-view',
-                'noticias-view',
-                'subpage-view',
-                'cuestionario-view',
-                'cuestionario-vocab-view',
-                'empresa-view'
-            ];
-            viewIds.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
-            });
-            const footer = document.querySelector('footer');
-            if (footer) footer.classList.remove('hidden');
+            document.getElementById('main-portal-view').classList.add('hidden');
+            document.getElementById('universidades-view').classList.add('hidden');
+            document.getElementById('viandas-view').classList.add('hidden');
+            document.getElementById('libreria-view').classList.add('hidden');
+            document.getElementById('biblioteca-view').classList.add('hidden');
+            document.getElementById('reconocimientos-view').classList.add('hidden');
+            document.getElementById('informatica-view').classList.add('hidden');
+            document.getElementById('quimica-view').classList.add('hidden');
+            document.getElementById('construcciones-view').classList.add('hidden');
+            document.getElementById('noticias-view').classList.add('hidden');
+            document.getElementById('subpage-view').classList.add('hidden');
         }
 
         function closeMobileMenu() {
@@ -4267,13 +4284,6 @@
         }
 
         function openNoticiaDetail(noticiaId, shouldScroll = true) {
-            const cansatPhotos = [
-                { base: 'imagen/cansat1', es: 'Equipo CanSat Galaxy 046', en: 'CanSat Galaxy 046 Team' },
-                { base: 'imagen/cansat2', es: 'Desarrollo y pruebas del satélite', en: 'Satellite development and testing' },
-                { base: 'imagen/cansat3', es: 'Presentación institucional', en: 'School presentation' },
-                { base: 'imagen/cansat4', es: 'Lanzamiento y misión CanSat', en: 'CanSat launch and mission' }
-            ];
-
             const item = noticiasData.find(n => n.id === noticiaId);
             if (!item) return;
             activeNoticiaId = noticiaId;
@@ -4292,23 +4302,6 @@
                         </div>
                     </div>
                 `).join('');
-
-                
-                const cansatGalleryHtml = item.id === 'cansat-galaxy-046' ? `
-                    <div class="mt-8">
-                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#2D2424] mb-5">${t.notPhotosTitle}</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                            ${cansatPhotos.map(cp => `
-                                <div class="bg-cream rounded-[1.5rem] p-3.5 border border-tomato/12 shadow-2xs">
-                                    <div class="rounded-xl overflow-hidden mb-2.5 h-52">
-                                        ${smartImg(cp.base, cp[currentLang], 'w-full h-full object-cover', '')}
-                                    </div>
-                                    <p class="text-xs font-semibold text-[#5C4E4E] text-center">${cp[currentLang]}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                ` : '';
 
                 const photosHtml = item.photos ? `
                     <div class="mt-8">
@@ -4329,7 +4322,6 @@
                         ${membersHtml}
                     </div>
                     ${photosHtml}
-                    ${cansatGalleryHtml}
                 `;
             } else {
                 const paragraphsHtml = (item.paragraphs[currentLang] || []).map(p => `
@@ -4459,44 +4451,12 @@
         function renderViandasGrid() {
             const t = i18n[currentLang];
             const grid = document.getElementById('viandas-cards-grid');
-            const viandasPhotoMap = {
-                'alta-palta': 'imagen/comidas/apalta',
-                'axion-spot': 'imagen/comidas/axion',
-                'bites': 'imagen/comidas/bites',
-                'bar-catalunya': 'imagen/comidas/dcatalina',
-                'delirios': 'imagen/comidas/delirios',
-                'della-casa': 'imagen/comidas/dellacasa',
-                'el-buen-sabor': 'imagen/comidas/elbuensabor',
-                'el-hornito-salteagueno': 'imagen/comidas/elhornito',
-                'don-francisco': 'imagen/comidas/francisco',
-                'san-fco': 'imagen/comidas/francisco',
-                'la-colonia': 'imagen/comidas/lacolonia',
-                'la-flamenca': 'imagen/comidas/lafilomena',
-                'la-granjita': 'imagen/comidas/lagranjita',
-                'maiki': 'imagen/comidas/maiki',
-                'maja-morena': 'imagen/comidas/majamorena',
-                'monkey': 'imagen/comidas/monkey',
-                'natural-chef': 'imagen/comidas/natural',
-                'nova-sushi': 'imagen/comidas/nova',
-                'pizza-box': 'imagen/comidas/pbox',
-                'pepernero': 'imagen/comidas/pepenero',
-                'polo': 'imagen/comidas/polo',
-                'pizza-quick': 'imagen/comidas/quick',
-                'sake-sushi': 'imagen/comidas/sake',
-                'shell': 'imagen/comidas/shell',
-                'solo-pizza': 'imagen/comidas/spizzas',
-                'cumaná': 'imagen/comidas/tentate',
-                'tutti-calzoni': 'imagen/comidas/tutticalzoni',
-                'virrey': 'imagen/comidas/virrey',
-                'wonder': 'imagen/comidas/wonder'
-            };
-
             if (!grid) return;
 
             grid.innerHTML = viandasData.map(place => `
                 <button type="button" onclick="openViandaDetail('${place.id}')" class="group bg-white rounded-[1.75rem] p-5 border border-tomato/12 hover:border-tomato card-hover flex flex-col items-center text-center shadow-2xs cursor-pointer">
-                    <div class="w-24 h-24 rounded-2xl ${place.badgeBg} flex items-center justify-center p-2 mb-4 shadow-xs group-hover:scale-105 transition-transform overflow-hidden">
-                        ${viandasPhotoMap[place.id] ? smartImg(viandasPhotoMap[place.id], place.name, 'w-full h-full object-contain rounded-xl', place.logoHtml) : place.logoHtml}
+                    <div class="w-24 h-24 rounded-2xl ${place.badgeBg} flex items-center justify-center p-3 mb-4 shadow-xs group-hover:scale-105 transition-transform">
+                        ${place.logoHtml}
                     </div>
                     <h3 class="font-serif text-lg sm:text-xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2 leading-snug">
                         ${place.name}
@@ -4624,12 +4584,10 @@
         // Renderizar tarjetas fijas de Biblioteca
         function renderBibliotecaResources() {
             const grid = document.getElementById('biblioteca-resources-grid');
-            const bibliotecaPhotos = ['imagen/BIB1', 'imagen/BIB4', 'imagen/BIB5', 'imagen/BIB6', 'imagen/BIB7'];
-
-            grid.innerHTML = bibliotecaResources.map((item, idx) => `
+            grid.innerHTML = bibliotecaResources.map(item => `
                 <div class="bg-white rounded-[1.75rem] p-4 border border-tomato/12 flex flex-col items-center text-center shadow-2xs select-none">
-                    <div class="w-full rounded-2xl ${item.bgClass} p-2 flex items-center justify-center overflow-hidden mb-3.5">
-                        ${bibliotecaPhotos[idx] ? smartImg(bibliotecaPhotos[idx], item.title[currentLang], 'w-full h-36 object-cover rounded-xl', item.svg) : item.svg}
+                    <div class="w-full rounded-2xl ${item.bgClass} p-3 flex items-center justify-center overflow-hidden mb-3.5">
+                        ${item.svg}
                     </div>
                     <h4 class="font-serif font-bold text-base text-[#2D2424] leading-snug mb-1.5">${item.title[currentLang]}</h4>
                     <span class="inline-block text-[11px] font-bold px-3 py-1 rounded-full ${item.badgeClass}">${item.condition[currentLang]}</span>
@@ -4652,26 +4610,11 @@
         // Renderizar los 3 botones de Reconocimientos
         function renderReconocimientosGrid() {
             const grid = document.getElementById('reconocimientos-cards-grid');
-            const reconocimientosPhotosMap = {
-                'joaquin-decara': {
-                    cover: 'imagen/JD1',
-                    gallery: ['imagen/JD1', 'imagen/JD3', 'imagen/JD4', 'imagen/JD5', 'imagen/JD6', 'imagen/JD7', 'imagen/JD21']
-                },
-                'felipe-gonzalez-rivero': {
-                    cover: 'imagen/FGR1',
-                    gallery: ['imagen/FGR1', 'imagen/FGR2', 'imagen/FGR3', 'imagen/FGR4', 'imagen/FGR5', 'imagen/FGR6', 'imagen/FGR7']
-                },
-                'guillermina-gonzalez-rivero': {
-                    cover: 'imagen/GGR1',
-                    gallery: ['imagen/GGR1', 'imagen/GGR2', 'imagen/GGR3', 'imagen/GGR4', 'imagen/GGR5']
-                }
-            };
-
             grid.innerHTML = reconocimientosData.map(person => `
                 <button type="button" onclick="openReconocimientoDetail('${person.id}')" class="group bg-white rounded-[2rem] p-4 border ${person.borderClass} card-hover flex flex-col items-center text-center shadow-2xs cursor-pointer">
                     <div class="w-full rounded-[1.35rem] overflow-hidden mb-4 bg-cream">
                         <div class="group-hover:scale-[1.03] transition-transform duration-300">
-                            ${(reconocimientosPhotosMap[person.id] && reconocimientosPhotosMap[person.id].cover) ? smartImg(reconocimientosPhotosMap[person.id].cover, person.cardName, 'w-full h-48 object-cover', person.coverSvg) : person.coverSvg}
+                            ${person.coverSvg}
                         </div>
                     </div>
                     <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors pb-2">
@@ -4750,16 +4693,14 @@
         function renderLibreriaProducts() {
             const t = i18n[currentLang];
             const grid = document.getElementById('libreria-products-grid');
-            const libreriaMainPhotos = ['imagen/LIB9', 'imagen/LIB8', 'imagen/LIB7', 'imagen/LIB12', 'imagen/LIB14', 'imagen/LIB10'];
-
             grid.innerHTML = libreriaProducts.map((prod, index) => {
                 const productTitle = prod.title[currentLang];
 
                 return `
                     <button type="button" onclick="handleLibreriaProductClick(${index})" class="w-full group bg-white rounded-[1.75rem] p-4 border border-tomato/12 hover:border-olive card-hover flex flex-col justify-between text-center cursor-pointer">
                         <div class="w-full">
-                            <div class="rounded-2xl ${prod.bgClass} p-2 flex items-center justify-center overflow-hidden mb-4 group-hover:scale-[1.02] transition-transform">
-                                ${libreriaMainPhotos[index] ? smartImg(libreriaMainPhotos[index], productTitle, 'w-full h-32 object-cover rounded-xl', prod.svg) : prod.svg}
+                            <div class="rounded-2xl ${prod.bgClass} p-3 flex items-center justify-center overflow-hidden mb-4 group-hover:scale-[1.02] transition-transform">
+                                ${prod.svg}
                             </div>
                             <div class="px-2">
                                 <h3 class="font-serif font-bold text-lg text-[#2D2424] group-hover:text-tomato transition-colors leading-snug">${productTitle}</h3>
@@ -5080,35 +5021,6 @@
         function renderInformaticaProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('inf-profesores-grid');
-            const profesorPhotoMap = {
-                'Antonella Argüello': 'imagen/profesores/arguello',
-                'Paula Buoni': 'imagen/profesores/buoni',
-                'Gustavo Cabral': 'imagen/profesores/cabral',
-                'Marcia Coria': 'imagen/profesores/coria',
-                'Mauro Cuello': 'imagen/profesores/cuello',
-                'Laura Farías': 'imagen/profesores/farias',
-                'Mara Ferrari': 'imagen/profesores/ferrari',
-                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
-                'Gabriela Luna': 'imagen/profesores/luna',
-                'Federico Maidana': 'imagen/profesores/maidana',
-                'Cynthia Manías': 'imagen/profesores/manias',
-                'Nelson Marmol': 'imagen/profesores/marmol',
-                'Miguel Martín': 'imagen/profesores/martin',
-                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
-                'Jorge Mira': 'imagen/profesores/mira',
-                'Gladys Miranda': 'imagen/profesores/miranda',
-                'Lucía Oyola': 'imagen/profesores/oyola',
-                'Bibiana Picchio': 'imagen/profesores/picchio',
-                'Tamara Piccinni': 'imagen/profesores/piccinni',
-                'Fernando Piñero': 'imagen/profesores/pinero',
-                'Fabiana Roja': 'imagen/profesores/roja',
-                'Cecilia Scaglia': 'imagen/profesores/scaglia',
-                'Alejandro Sosa': 'imagen/profesores/sosa',
-                'María Torres': 'imagen/profesores/torres',
-                'Víctor Vella': 'imagen/profesores/vella',
-                'Emanuel Villalba': 'imagen/profesores/villalba'
-            };
-
             if (!grid) return;
 
             const query = infTeacherSearch.trim().toLowerCase();
@@ -5130,8 +5042,11 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-blush/15 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
-                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
+                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
+                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
+                            </svg>
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -5512,35 +5427,6 @@
         function renderQuimicaProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('quim-profesores-grid');
-            const profesorPhotoMap = {
-                'Antonella Argüello': 'imagen/profesores/arguello',
-                'Paula Buoni': 'imagen/profesores/buoni',
-                'Gustavo Cabral': 'imagen/profesores/cabral',
-                'Marcia Coria': 'imagen/profesores/coria',
-                'Mauro Cuello': 'imagen/profesores/cuello',
-                'Laura Farías': 'imagen/profesores/farias',
-                'Mara Ferrari': 'imagen/profesores/ferrari',
-                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
-                'Gabriela Luna': 'imagen/profesores/luna',
-                'Federico Maidana': 'imagen/profesores/maidana',
-                'Cynthia Manías': 'imagen/profesores/manias',
-                'Nelson Marmol': 'imagen/profesores/marmol',
-                'Miguel Martín': 'imagen/profesores/martin',
-                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
-                'Jorge Mira': 'imagen/profesores/mira',
-                'Gladys Miranda': 'imagen/profesores/miranda',
-                'Lucía Oyola': 'imagen/profesores/oyola',
-                'Bibiana Picchio': 'imagen/profesores/picchio',
-                'Tamara Piccinni': 'imagen/profesores/piccinni',
-                'Fernando Piñero': 'imagen/profesores/pinero',
-                'Fabiana Roja': 'imagen/profesores/roja',
-                'Cecilia Scaglia': 'imagen/profesores/scaglia',
-                'Alejandro Sosa': 'imagen/profesores/sosa',
-                'María Torres': 'imagen/profesores/torres',
-                'Víctor Vella': 'imagen/profesores/vella',
-                'Emanuel Villalba': 'imagen/profesores/villalba'
-            };
-
             if (!grid) return;
 
             const query = quimTeacherSearch.trim().toLowerCase();
@@ -5562,8 +5448,11 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-princeton/20 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
-                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
+                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
+                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
+                            </svg>
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -5946,35 +5835,6 @@
         function renderConstruccionesProfesoresList() {
             const prof = i18n[currentLang].infProfesores;
             const grid = document.getElementById('const-profesores-grid');
-            const profesorPhotoMap = {
-                'Antonella Argüello': 'imagen/profesores/arguello',
-                'Paula Buoni': 'imagen/profesores/buoni',
-                'Gustavo Cabral': 'imagen/profesores/cabral',
-                'Marcia Coria': 'imagen/profesores/coria',
-                'Mauro Cuello': 'imagen/profesores/cuello',
-                'Laura Farías': 'imagen/profesores/farias',
-                'Mara Ferrari': 'imagen/profesores/ferrari',
-                'Daniela Jacquelín': 'imagen/profesores/jacquelin',
-                'Gabriela Luna': 'imagen/profesores/luna',
-                'Federico Maidana': 'imagen/profesores/maidana',
-                'Cynthia Manías': 'imagen/profesores/manias',
-                'Nelson Marmol': 'imagen/profesores/marmol',
-                'Miguel Martín': 'imagen/profesores/martin',
-                'Maximiliano Slakonra': 'imagen/profesores/maxisliakonis',
-                'Jorge Mira': 'imagen/profesores/mira',
-                'Gladys Miranda': 'imagen/profesores/miranda',
-                'Lucía Oyola': 'imagen/profesores/oyola',
-                'Bibiana Picchio': 'imagen/profesores/picchio',
-                'Tamara Piccinni': 'imagen/profesores/piccinni',
-                'Fernando Piñero': 'imagen/profesores/pinero',
-                'Fabiana Roja': 'imagen/profesores/roja',
-                'Cecilia Scaglia': 'imagen/profesores/scaglia',
-                'Alejandro Sosa': 'imagen/profesores/sosa',
-                'María Torres': 'imagen/profesores/torres',
-                'Víctor Vella': 'imagen/profesores/vella',
-                'Emanuel Villalba': 'imagen/profesores/villalba'
-            };
-
             if (!grid) return;
 
             const query = constTeacherSearch.trim().toLowerCase();
@@ -5996,8 +5856,11 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-olive/20 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0 overflow-hidden">
-                            ${profesorPhotoMap[p.name] ? smartImg(profesorPhotoMap[p.name], p.name, 'w-full h-full object-cover', '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>') : '<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg"><circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/><path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/></svg>'}
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
+                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
+                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
+                            </svg>
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -6493,57 +6356,263 @@
         }
 
         @keyframes mascotGentleIdle {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-    </style>
 
-    <!-- Mascota Fija en la esquina inferior derecha -->
-    <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
+<!-- Mascota Fija en la esquina inferior derecha -->
+<div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
+    <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
+    <div id="advent-mascot">
+        <!-- Asegurate de que el nombre coincida con tu archivo de imagen (ej: nena.jpg o nena.jpeg) -->
+        <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
+    </div>
+</div>
+
+<!-- SECCIÓN: CUESTIONARIO ADVENT (Se abre al hacer clic en la nena) -->
+<section id="cuestionario-view" class="hidden mb-16">
+    <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl">
+        <button type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+            <span>← Volver al inicio</span>
+        </button>
+
+        <div class="max-w-3xl mb-8">
+            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 bg-softpink text-tomato">Sección Interactiva</span>
+            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight mb-3">Cuestionario ADVENT</h2>
+            <div class="h-1 w-28 bg-tomato/20 rounded-full mb-4"></div>
+            <p class="text-base text-[#4A3F3F] leading-relaxed">
+                Poné a prueba tus conocimientos sobre el portal, las especialidades técnicas y tu futuro profesional. ¡Completá las preguntas guiado por nuestra mascota!
+            </p>
+        </div>
+
+        <div class="bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/15 shadow-2xs space-y-6">
+            <div class="space-y-4">
+                <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                    <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">1. ¿Cuántos años de formación técnica integral ofrece ADVENT?</h3>
+                    <div class="space-y-2 text-sm text-[#4A3F3F]">
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="a" class="accent-tomato"> 3 años</label>
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="b" class="accent-tomato"> 5 años</label>
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="c" class="accent-tomato"> 7 años de formación</label>
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                    <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">2. ¿Cuál de las siguientes orientaciones forma parte de las especialidades técnicas?</h3>
+                    <div class="space-y-2 text-sm text-[#4A3F3F]">
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="a" class="accent-tomato"> Informática, Química y Construcciones</label>
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="b" class="accent-tomato"> Astronomía y Aviación</label>
+                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="c" class="accent-tomato"> Biología Marina</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 flex items-center justify-between border-t border-tomato/10">
+                <button type="button" onclick="alert('¡Cuestionario enviado con éxito! Gracias por participar en ADVENT.')" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-colors cursor-pointer shadow-md">
+                    Enviar respuestas
+                </button>
+                <span class="text-xs font-semibold text-[#7A6B6B]">Orientación Educativa 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function openCuestionarioView() {
+    if (typeof hideAllViews === 'function') hideAllViews();
+    const view = document.getElementById('cuestionario-vocab-view');
+    if (view) view.classList.remove('hidden');
+    if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
+    if (typeof traducirCuestionarioUI === 'function') traducirCuestionarioUI();
+    const footer = document.querySelector('footer');
+    if (footer) footer.classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+(function initFixedMascotButton() {
+    const container = document.getElementById('advent-mascot-container');
+    if (!container) return;
+
+    let touchTimeout;
+
+    container.addEventListener('touchstart', () => {
+        container.classList.add('active-touch');
+        clearTimeout(touchTimeout);
+        touchTimeout = setTimeout(() => {
+            container.classList.remove('active-touch');
+        }, 2500);
+    }, { passive: true });
+
+    container.addEventListener('click', () => {
+        openCuestionarioView();
+    });
+
+    container.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openCuestionarioView();
+        }
+    });
+
+    </script>
+    <!-- Mascota Fija en la esquina inferior derecha --!>
+    <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT"
+        title="¡Hacer cuestionario!">
         <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
         <div id="advent-mascot">
+            <!-- Asegurate de que el nombre coincida con tu archivo de imagen (ej: nena.jpg o nena.jpeg) -->
             <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
         </div>
     </div>
 
-    <!-- ================= SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
-    <section id="cuestionario-vocab-view" class="hidden mb-16">
-        <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+    <!-- SECCIÓN: CUESTIONARIO ADVENT (Se abre al hacer clic en la nena) -->
+    <section id="cuestionario-view" class="hidden mb-16">
+        <div
+            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl">
+            <button type="button" onclick="showMainPortal('inicio')"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                <span>← Volver al inicio</span>
+            </button>
 
-            <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')"
+            <div class="max-w-3xl mb-8">
+                <span
+                    class="inline-block text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 bg-softpink text-tomato">Sección
+                    Interactiva</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight mb-3">Cuestionario
+                    ADVENT</h2>
+                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-4"></div>
+                <p class="text-base text-[#4A3F3F] leading-relaxed">
+                    Poné a prueba tus conocimientos sobre el portal, las especialidades técnicas y tu futuro
+                    profesional. ¡Completá las preguntas guiado por nuestra mascota!
+                </p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/15 shadow-2xs space-y-6">
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">1. ¿Cuántos años de formación
+                            técnica integral ofrece ADVENT?</h3>
+                        <div class="space-y-2 text-sm text-[#4A3F3F]">
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="a" class="accent-tomato"> 3 años</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="b" class="accent-tomato"> 5 años</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="c" class="accent-tomato"> 7 años de formación</label>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">2. ¿Cuál de las siguientes
+                            orientaciones forma parte de las especialidades técnicas?</h3>
+                        <div class="space-y-2 text-sm text-[#4A3F3F]">
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="a" class="accent-tomato"> Informática, Química y Construcciones</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="b" class="accent-tomato"> Astronomía y Aviación</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="c" class="accent-tomato"> Biología Marina</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex items-center justify-between border-t border-tomato/10">
+                    <button type="button"
+                        onclick="alert('¡Cuestionario enviado con éxito! Gracias por participar en ADVENT.')"
+                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-colors cursor-pointer shadow-md">
+                        Enviar respuestas
+                    </button>
+                    <span class="text-xs font-semibold text-[#7A6B6B]">Orientación Educativa 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openCuestionarioView() {
+            if (typeof hideAllViews === 'function') hideAllViews();
+            const view = document.getElementById('cuestionario-view');
+            if (view) view.classList.remove('hidden');
+            if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        (function initFixedMascotButton() {
+            const container = document.getElementById('advent-mascot-container');
+            if (!container) return;
+
+            let touchTimeout;
+
+            // Soporte táctil para celulares/tablets: al apoyar el dedo muestra el cartelito
+            container.addEventListener('touchstart', () => {
+                container.classList.add('active-touch');
+                clearTimeout(touchTimeout);
+                touchTimeout = setTimeout(() => {
+                    container.classList.remove('active-touch');
+                }, 2500);
+            }, { passive: true });
+
+            // Al hacer clic o tocar, abre la vista del cuestionario
+            container.addEventListener('click', () => {
+                openCuestionarioView();
+            });
+
+            // Accesibilidad con teclado (Enter o Espacio)
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openCuestionarioView();
+                }
+            });
+        })();
+    </script>
+
+    <!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
+    <section id="cuestionario-vocab-view" class="hidden mb-16">
+        <div
+            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+
+            <button onclick="showMainPortal('inicio')"
                 class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
                 <span>← Volver</span>
             </button>
 
             <div class="text-center mb-10">
-                <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
-                <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de
+                    Intereses Vocacionales</h2>
+                <p class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para
+                    calcular tu puntaje en cada orientación.</p>
             </div>
 
             <!-- Formulario de Datos Obligatorios -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
                 <div>
-                    <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
-                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre
+                        *</label>
+                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
                 </div>
                 <div>
-                    <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
-                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido
+                        *</label>
+                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
                 </div>
                 <div>
-                    <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
-                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso
+                        *</label>
+                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
                 </div>
             </div>
 
             <!-- Instrucciones -->
-            <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+            <div class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
                 <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
                 <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
                     Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
-                    <strong>I (2 puntos)</strong> = Me es indiferente<br>
-                    <strong>A (3 puntos)</strong> = Me agrada / me gusta
+                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta[cite: 3]<br>
+                    <strong>I (2 puntos)</strong> = Me es indiferente[cite: 3]<br>
+                    <strong>A (3 puntos)</strong> = Me agrada / me gusta[cite: 3]
                 </p>
             </div>
 
@@ -6554,18 +6623,21 @@
                 </div>
 
                 <div class="text-center">
-                    <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                    <button type="submit"
+                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
                         Calcular Puntajes por Área →
                     </button>
                 </div>
             </form>
 
             <!-- Contenedor de Resultados (Oculto al inicio) -->
-            <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
-                <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
+            <div id="resultados-container"
+                class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+                <h3 class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario
+                    Vocacional!</h3>
                 <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
-                
-                <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+
+                <h4 class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
                     <!-- Puntajes detallados por área -->
                 </div>
@@ -6574,38 +6646,74 @@
                     <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
                 </div>
             </div>
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
 
+        <div class="text-center mb-10">
+            <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
+            <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
         </div>
-    </section>
 
-    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
-    <script>
-        (function initFixedMascotButton() {
-            const container = document.getElementById('advent-mascot-container');
-            if (!container) return;
+<<<<<<< HEAD
+        <!-- Formulario de Datos Obligatorios -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+            <div>
+                <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
+                <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+            <div>
+                <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
+                <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+            <div>
+                <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
+                <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+        </div>
 
-            let touchTimeout;
+        <!-- Instrucciones -->
+        <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+            <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
+            <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
+                Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
+                <strong>I (2 puntos)</strong> = Me es indiferente<br>
+                <strong>A (3 puntos)</strong> = Me agrada / me gusta
+            </p>
+        </div>
 
-            container.addEventListener('touchstart', () => {
-                container.classList.add('active-touch');
-                clearTimeout(touchTimeout);
-                touchTimeout = setTimeout(() => {
-                    container.classList.remove('active-touch');
-                }, 2500);
-            }, { passive: true });
+        <!-- Contenedor dinámico de las 106 preguntas -->
+        <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
+            <div id="preguntas-container" class="space-y-6 mb-10">
+                <!-- Se inyectan mediante JavaScript -->
+            </div>
 
-            container.addEventListener('click', () => {
-                openCuestionarioView();
-            });
+            <div class="text-center">
+                <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                    Calcular Puntajes por Área →
+                </button>
+            </div>
+        </form>
 
-            container.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openCuestionarioView();
-                }
-            });
-        })();
+        <!-- Contenedor de Resultados (Oculto al inicio) -->
+        <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+            <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
+            <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
+            
+            <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
+                <!-- Puntajes detallados por área -->
+            </div>
 
+            <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
+                <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
+<script>
     const preguntasVocacionales = [
         { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
         { es: "Investigar el nivel de los precios", en: "Investigating price levels" },
@@ -6793,149 +6901,301 @@
         }
     };
 
-        let ultimoResultadoCuestionario = null;
+    let ultimoResultadoCuestionario = null;
 
+    function inicializarPreguntas() {
+        const container = document.getElementById('preguntas-container');
+        if (!container) return;
+
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        // Guardar respuestas seleccionadas antes de re-renderizar
+        const seleccionadas = {};
+        for (let i = 1; i <= preguntasVocacionales.length; i++) {
+            const checked = container.querySelector(`input[name="p_${i}"]:checked`);
+            if (checked) seleccionadas[i] = checked.value;
+        }
+
+        container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
+            const num = index + 1;
+            const textoPregunta = pregunta[lang] || pregunta.es;
+            const valSel = seleccionadas[num] || '';
+
+            return `
+                <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${textoPregunta}</p>
+                    <div class="flex items-center gap-3 shrink-0">
+                        <label title="${qt.optTitles.D}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="D" ${valSel === 'D' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
+                        </label>
+                        <label title="${qt.optTitles.I}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="I" ${valSel === 'I' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
+                        </label>
+                        <label title="${qt.optTitles.A}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
+                        </label>
+=======
+    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
+    <script>
+        const preguntasVocacionales = [
+            "Trabajar resolviendo cálculos físicos y matemáticos",
+            "Investigar el nivel de los precops",
+            "Aprender estilos de pintura artística",
+            "Hacer esculturas",
+            "Trabaja en estudios jurídicos",
+            "Estudiar derecho Constitucional",
+            "Aprender a interpretar radiografías",
+            "Asesorar a estudiantes sobre orientación vocacional",
+            "Reparar la dentadura de una persona",
+            "Trabajar con equipos electrónicos",
+            "Estudiar los ecosistemas de una región",
+            "Organizar la producción de una industria química",
+            "Aprender a diseñar y decorar ambientes",
+            "Realizar cálculos físicos matemáticos de estructuras",
+            "Resolver ejercicios matemáticos",
+            "Planificar actividades administrativas de una empresa",
+            "Realizar una crítica a una obra literaria y cinematográfica",
+            "Conocer técnicas y materiales de dibujo artístico",
+            "Enseñar contenidos matemáticos",
+            "Exponer casos jurídicos en audiencias o juicios",
+            "Aprender sobre causas y tratamientos de enfermedades",
+            "Trabajar en centros médicos",
+            "Armar y reparar computadoras",
+            "Diseñar páginas web",
+            "Planificar la construcción de obras fluviales y marítimas",
+            "Supervisar obras en construcción",
+            "Aprender a realizar pronósticos metereológicos",
+            "Realizar análisis químicos",
+            "Investigar centros y movimientos sísmicos",
+            "Aprender anatomía",
+            "Evaluar daños de viviendas y edificios",
+            "Aprender anatomía",
+            "Evaluar daños de viviendas y edificios",
+            "Construir puentes",
+            "Investigar sobre diferentes enfermedades mentales",
+            "Ayudar a fortalecer músculos en una persona",
+            "Llevar adelante pago de impuestos de otras personas",
+            "Asesorar financieramente a empresas",
+            "Aprender a tomar fotografías",
+            "Crear música con software",
+            "Analizar las condiciones y habitat de vida de una familia",
+            "Tomar declaración a personas acusadas de un delito",
+            "Diseñar juegos electrónicos",
+            "Realizar edición de música y videos",
+            "Aprender el proceso de formación de sustancias",
+            "Realizar análisis químicos de productos industriales",
+            "Evaluar el estado de conexiones eléctricas",
+            "Asesorar a empresas constructoras",
+            "Investigar donde se almacena información tecnológica",
+            "Reconocer los diferentes programas informáticos",
+            "Elaborar dietas para pacientes",
+            "Trabajar en un banco",
+            "Analizar temas de comercio internacional",
+            "Enseñar a niños",
+            "Analizar problemáticas sociales",
+            "Musicalizar obras teatrales",
+            "Realizar artesanías",
+            "Ayudar a personas enfermas",
+            "Ayudar a personas con problemas emocionales",
+            "Investigar sobre nuevas aplicaciones tecnológicas",
+            "Producir programas televisivos",
+            "Realizar experimentos para desarrollar productos curativos",
+            "Analizar fórmulas científicas",
+            "Investigar índice de precios",
+            "Organizar una empresa",
+            "Supervisar las condiciones laborales de una empresa",
+            "Investigar conocimientos históricos",
+            "Leer partituras",
+            "Organizar conciertos musicales",
+            "Trabajar en laboratorios",
+            "Investigar el movimiento de los átomos",
+            "Diseñar y controlar planos de una casa",
+            "Trabajar con elementos de geometría",
+            "Cuidar a personas con capacidades especiales",
+            "Ayudar a niños con problemas de aprendizaje",
+            "Aprender a realizar guiones audiovisuales",
+            "Diseñar ropa",
+            "Diseñar un sistema operativo informática",
+            "Realizar diagnóstico de autos por computadoras",
+            "Diseñar amueblamientos para una casa",
+            "Investigar sobre materiales ecológicos para la construcción de viviendas",
+            "Llevar adelante el pago de sueldo de trabajadores",
+            "Realizar el seguimiento contable de una empresa o comercio",
+            "Llevar adelante el pago de sueldo de trabajadores",
+            "Tocar en una banda musical",
+            "Realizar notas periodísticas para una radio",
+            "Organizar las relaciones públicas de una empresa",
+            "Conocer sobre redes informáticas",
+            "Analizar logaritmos",
+            "Conocer los componentes químicos de un alimento",
+            "Experimentar con reactivos químicos",
+            "Diseñar un avión",
+            "Diseñar obras de ingeniería",
+            "Programar computadoras",
+            "Diseñar el prototipo de una máquina",
+            "Curar animales",
+            "Socorrer emergencias médicas",
+            "Conocer y viajar por distintos lugsares del mundo",
+            "Enseñar deportes",
+            "Conocer diferentes drogas y sus efectos",
+            "Experimentar para descubrir nuevas variedades de vegetales",
+            "Conocer y realizar cálculos estructurales de una vivienda",
+            "Realizar el diseño de donde ubicar viviendas en una ciudad",
+            "Asesorar a personas sobre inversiones financieras",
+            "Aprender álgebra",
+            "Investigar sobre las propiedades de diferentes metales",
+            "Asesorar sobre el cuidado de vegetales",
+        ];
+
+        // Renderizar dinámicamente las 106 preguntas
         function inicializarPreguntas() {
             const container = document.getElementById('preguntas-container');
             if (!container) return;
 
-            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-            const qt = questText[lang];
-
-            const seleccionadas = {};
-            for (let i = 1; i <= preguntasVocacionales.length; i++) {
-                const checked = container.querySelector(`input[name="p_${i}"]:checked`);
-                if (checked) seleccionadas[i] = checked.value;
-            }
-
             container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
                 const num = index + 1;
-                const textoPregunta = pregunta[lang] || pregunta.es;
-                const valSel = seleccionadas[num] || '';
-
                 return `
                     <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${textoPregunta}</p>
+                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${pregunta}</p>
                         <div class="flex items-center gap-3 shrink-0">
-                            <label title="${qt.optTitles.D}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="D" ${valSel === 'D' ? 'checked' : ''} class="sr-only peer" required>
+                            <label title="Desagrada (1 pt)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="D" class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
                             </label>
-                            <label title="${qt.optTitles.I}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="I" ${valSel === 'I' ? 'checked' : ''} class="sr-only peer" required>
+                            <label title="Indiferente (2 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="I" class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
                             </label>
-                            <label title="${qt.optTitles.A}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
+                            <label title="Agrada (3 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="A" class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
                             </label>
                         </div>
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
                     </div>
-                `;
-            }).join('');
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderResultadosCuestionario() {
+        if (!ultimoResultadoCuestionario) return;
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+        const { nombre, apellido, curso, totalesArea, mejoresAreas } = ultimoResultadoCuestionario;
+
+        document.getElementById('res-title').textContent = qt.resTitle;
+        document.getElementById('res-alumno').textContent = qt.resAlumno(nombre, apellido, curso);
+        document.getElementById('res-subtitle').textContent = qt.resSubtitle;
+
+        const grid = document.getElementById('res-puntajes-grid');
+        grid.innerHTML = Object.entries(totalesArea).map(([areaKey, ptos]) => {
+            const areaLabel = qt.areas[areaKey] || areaKey;
+            return `
+                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                    <span class="font-bold text-xs text-[#2D2424]">${areaLabel}</span>
+                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} ${qt.pointsSuffix}</span>
+                </div>
+            `;
+        }).join('');
+
+        const mejoresTraducidas = mejoresAreas.map(k => qt.areas[k] || k);
+        const joiner = lang === 'en' ? ' and ' : ' y ';
+        document.getElementById('res-mayor-area').textContent = qt.resMayorArea(mejoresTraducidas.join(joiner));
+    }
+
+    function traducirCuestionarioUI() {
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        const backBtn = document.querySelector('#quest-back-btn span');
+        if (backBtn) backBtn.textContent = qt.back;
+
+        const titleEl = document.getElementById('quest-title');
+        if (titleEl) titleEl.textContent = qt.title;
+
+        const subEl = document.getElementById('quest-subtitle');
+        if (subEl) subEl.textContent = qt.subtitle;
+
+        const lNombre = document.getElementById('quest-label-nombre');
+        if (lNombre) lNombre.textContent = qt.labelNombre;
+        const iNombre = document.getElementById('quest-nombre');
+        if (iNombre) iNombre.placeholder = qt.placeholderNombre;
+
+        const lApellido = document.getElementById('quest-label-apellido');
+        if (lApellido) lApellido.textContent = qt.labelApellido;
+        const iApellido = document.getElementById('quest-apellido');
+        if (iApellido) iApellido.placeholder = qt.placeholderApellido;
+
+        const lCurso = document.getElementById('quest-label-curso');
+        if (lCurso) lCurso.textContent = qt.labelCurso;
+        const iCurso = document.getElementById('quest-curso');
+        if (iCurso) iCurso.placeholder = qt.placeholderCurso;
+
+        const instEl = document.getElementById('quest-instructions');
+        if (instEl) {
+            instEl.innerHTML = `
+                <h3 class="font-serif font-bold text-lg text-tomato mb-2">${qt.instructionsTitle}</h3>
+                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">${qt.instructionsBody}</p>
+            `;
         }
 
-        function renderResultadosCuestionario() {
-            if (!ultimoResultadoCuestionario) return;
-            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-            const qt = questText[lang];
-            const { nombre, apellido, curso, totalesArea, mejoresAreas } = ultimoResultadoCuestionario;
+        const submitBtn = document.getElementById('quest-submit-btn');
+        if (submitBtn) submitBtn.textContent = qt.submitBtn;
 
-            document.getElementById('res-title').textContent = qt.resTitle;
-            document.getElementById('res-alumno').textContent = qt.resAlumno(nombre, apellido, curso);
-            document.getElementById('res-subtitle').textContent = qt.resSubtitle;
+        inicializarPreguntas();
+        renderResultadosCuestionario();
+    }
 
-            const grid = document.getElementById('res-puntajes-grid');
-            grid.innerHTML = Object.entries(totalesArea).map(([areaKey, ptos]) => {
-                const areaLabel = qt.areas[areaKey] || areaKey;
-                return `
-                    <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
-                        <span class="font-bold text-xs text-[#2D2424]">${areaLabel}</span>
-                        <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} ${qt.pointsSuffix}</span>
-                    </div>
-                `;
-            }).join('');
+    document.addEventListener('DOMContentLoaded', traducirCuestionarioUI);
 
-            const mejoresTraducidas = mejoresAreas.map(k => qt.areas[k] || k);
-            const joiner = lang === 'en' ? ' and ' : ' y ';
-            document.getElementById('res-mayor-area').textContent = qt.resMayorArea(mejoresTraducidas.join(joiner));
+    function openCuestionarioView() {
+    hideAllViews();
+    document.getElementById('cuestionario-vocab-view').classList.remove('hidden');
+    const footer = document.querySelector('footer');
+    if (footer) footer.classList.add('hidden');
+    traducirCuestionarioUI();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+    function procesarCuestionario(event) {
+        event.preventDefault();
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        const nombre = document.getElementById('quest-nombre').value.trim();
+        const apellido = document.getElementById('quest-apellido').value.trim();
+        const curso = document.getElementById('quest-curso').value.trim();
+
+        if (!nombre || !apellido || !curso) {
+            alert(qt.alertMissingData);
+            return;
         }
 
-        function traducirCuestionarioUI() {
-            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-            const qt = questText[lang];
-
-            const backBtn = document.querySelector('#quest-back-btn span');
-            if (backBtn) backBtn.textContent = qt.back;
-
-            const titleEl = document.getElementById('quest-title');
-            if (titleEl) titleEl.textContent = qt.title;
-
-            const subEl = document.getElementById('quest-subtitle');
-            if (subEl) subEl.textContent = qt.subtitle;
-
-            const lNombre = document.getElementById('quest-label-nombre');
-            if (lNombre) lNombre.textContent = qt.labelNombre;
-            const iNombre = document.getElementById('quest-nombre');
-            if (iNombre) iNombre.placeholder = qt.placeholderNombre;
-
-            const lApellido = document.getElementById('quest-label-apellido');
-            if (lApellido) lApellido.textContent = qt.labelApellido;
-            const iApellido = document.getElementById('quest-apellido');
-            if (iApellido) iApellido.placeholder = qt.placeholderApellido;
-
-            const lCurso = document.getElementById('quest-label-curso');
-            if (lCurso) lCurso.textContent = qt.labelCurso;
-            const iCurso = document.getElementById('quest-curso');
-            if (iCurso) iCurso.placeholder = qt.placeholderCurso;
-
-            const instEl = document.getElementById('quest-instructions');
-            if (instEl) {
-                instEl.innerHTML = `
-                    <h3 class="font-serif font-bold text-lg text-tomato mb-2">${qt.instructionsTitle}</h3>
-                    <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">${qt.instructionsBody}</p>
-                `;
-            }
-
-            const submitBtn = document.getElementById('quest-submit-btn');
-            if (submitBtn) submitBtn.textContent = qt.submitBtn;
-
-            inicializarPreguntas();
-            renderResultadosCuestionario();
-        }
-
-        document.addEventListener('DOMContentLoaded', traducirCuestionarioUI);
-
-        function openCuestionarioView() {
-            if (typeof hideAllViews === 'function') hideAllViews();
-            const view = document.getElementById('cuestionario-vocab-view');
-            if (view) view.classList.remove('hidden');
-            if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
-            const footer = document.querySelector('footer');
-            if (footer) footer.classList.add('hidden');
-            traducirCuestionarioUI();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function procesarCuestionario(event) {
-            event.preventDefault();
-            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-            const qt = questText[lang];
-
-            const nombre = document.getElementById('quest-nombre').value.trim();
-            const apellido = document.getElementById('quest-apellido').value.trim();
-            const curso = document.getElementById('quest-curso').value.trim();
-
-            if (!nombre || !apellido || !curso) {
-                alert(qt.alertMissingData);
+        let respuestas = {};
+        for (let i = 1; i <= 106; i++) {
+            const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
+            if (!seleccion) {
+                alert(qt.alertMissingQuestion(i));
+                const el = document.querySelector(`input[name="p_${i}"]`);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
+<<<<<<< HEAD
+            const val = seleccion.value;
+            respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
+=======
 
-            const respuestas = {};
+            // Validar que todas las 106 preguntas estén contestadas
+            let respuestas = {};
             for (let i = 1; i <= 106; i++) {
                 const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
                 if (!seleccion) {
-                    alert(qt.alertMissingQuestion(i));
+                    alert(`Te falta responder la pregunta número ${i}. ¡Todas son obligatorias!`);
                     const el = document.querySelector(`input[name="p_${i}"]`);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
@@ -6944,6 +7204,7 @@
                 respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
             }
 
+            // Agrupación oficial de áreas e ítems según el documento[cite: 3]
             const areasDef = {
                 "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
                 "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
@@ -6954,12 +7215,12 @@
                 "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
             };
 
-            const totalesArea = {};
+            let totalesArea = {};
             let maxPuntaje = -1;
             let mejoresAreas = [];
 
-            for (const area in areasDef) {
-                const suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+            for (let area in areasDef) {
+                let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
                 totalesArea[area] = suma;
                 if (suma > maxPuntaje) {
                     maxPuntaje = suma;
@@ -6969,14 +7230,58 @@
                 }
             }
 
-            ultimoResultadoCuestionario = { nombre, apellido, curso, totalesArea, mejoresAreas };
-            renderResultadosCuestionario();
+            // Mostrar resultados en pantalla
+            document.getElementById('res-alumno').textContent = `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`;
 
-            const resBox = document.getElementById('resultados-container');
-            resBox.classList.remove('hidden');
-            resBox.scrollIntoView({ behavior: 'smooth' });
+            const grid = document.getElementById('res-puntajes-grid');
+            grid.innerHTML = Object.entries(totalesArea).map(([area, ptos]) => `
+                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                    <span class="font-bold text-xs text-[#2D2424]">${area}</span>
+                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} puntos</span>
+                </div>
+            `).join('');
+
+            document.getElementById('res-mayor-area').textContent = `Las 2 áreas (o áreas principales) con mayor puntaje son: ${mejoresAreas.join(' y ')}`;
+
+            document.getElementById('resultados-container').classList.remove('hidden');
+            document.getElementById('resultados-container').scrollIntoView({ behavior: 'smooth' });
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
         }
-    </script>
+
+        const areasDef = {
+            "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
+            "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
+            "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
+            "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
+            "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
+            "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
+            "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
+        };
+
+        let totalesArea = {};
+        let maxPuntaje = -1;
+        let mejoresAreas = [];
+
+        for (let area in areasDef) {
+            let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+            totalesArea[area] = suma;
+            if (suma > maxPuntaje) {
+                maxPuntaje = suma;
+                mejoresAreas = [area];
+            } else if (suma === maxPuntaje) {
+                mejoresAreas.push(area);
+            }
+        }
+
+        ultimoResultadoCuestionario = { nombre, apellido, curso, totalesArea, mejoresAreas };
+        renderResultadosCuestionario();
+
+        const resBox = document.getElementById('resultados-container');
+        resBox.classList.remove('hidden');
+        resBox.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
     <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
         <section id="empresa-view" class="hidden mb-16">
             <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
@@ -7211,10 +7516,6 @@
                     if (container) {
                         container.innerHTML = `
                             <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
-                                <div class="flex flex-wrap items-center gap-6 mb-6 pb-5 border-b border-blush/15">
-                                    <img src="imagen/logo-advent.png" alt="ADVENT" class="h-14 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-advent.jpg';}">
-                                    <img src="imagen/logo-proyecta.png" alt="Proyecta" class="h-14 w-auto object-contain" onerror="if(!this.dataset.t){this.dataset.t='1';this.src='imagen/logo-proyecta.jpg';}">
-                                </div>
                                 <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
                                 <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
                             </div>
@@ -7372,6 +7673,276 @@
 
     setInterval(aplicarLinks, 300);
 })();
+</script>
+
+<!-- MODAL OCULTO DEL CUESTIONARIO (SOLO SE ABRE AL TOCAR A LA NENA) -->
+<div id="quiz-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D2424]/50 backdrop-blur-xs" onclick="if(event.target === this) closeQuizModal()">
+    <div class="bg-cream rounded-[2rem] max-w-lg w-full p-6 sm:p-8 border border-tomato/15 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <button type="button" onclick="closeQuizModal()" aria-label="Cerrar" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white flex items-center justify-center transition-colors cursor-pointer">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <span id="quiz-badge" class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-softpink text-blush mb-2">
+            Orientación Vocacional
+        </span>
+        <h3 id="quiz-title" class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-2">
+            ¿Qué especialidad es para vos?
+        </h3>
+        <p id="quiz-subtitle" class="text-xs sm:text-sm text-[#5C4E4E] mb-6">
+            Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.
+        </p>
+
+        <form id="quiz-form" onsubmit="submitQuiz(event)" class="space-y-5">
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q1" class="text-sm font-bold text-[#2D2424] mb-2.5">1. ¿Qué actividad disfrutás más?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q1-a">Programar, armar computadoras o configurar redes.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q1-b">Hacer experimentos en laboratorio y analizar sustancias.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q1-c">Diseñar planos, maquetas y proyectos arquitectónicos.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q2" class="text-sm font-bold text-[#2D2424] mb-2.5">2. ¿En qué ambiente te gustaría trabajar en el futuro?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q2-a">En empresas tecnológicas, soporte IT o desarrollo de software.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q2-b">En industrias alimentarias, farmacéuticas o control ambiental.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q2-c">En estudios de arquitectura, obras civiles o topografía.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q3" class="text-sm font-bold text-[#2D2424] mb-2.5">3. ¿Qué herramienta preferís usar?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q3-a">Código, servidores y hardware.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q3-b">Microscopios, reactivos y tubos de ensayo.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q3-c">AutoCAD, escuadras y cálculo estructural.</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="quiz-submit-btn" type="submit" class="w-full bg-tomato hover:bg-[#a6222a] text-white text-xs sm:text-sm font-bold uppercase tracking-wider py-3.5 rounded-full transition-colors cursor-pointer shadow-xs">
+                Ver mi resultado
+            </button>
+        </form>
+
+        <div id="quiz-result-box" class="hidden mt-5 bg-white rounded-2xl p-5 border border-olive/30 text-center">
+            <span id="quiz-result-label" class="block text-[11px] font-extrabold uppercase tracking-wider text-olive mb-1">Tu especialidad ideal es</span>
+            <h4 id="quiz-result-title" class="font-serif text-2xl font-bold text-tomato mb-2"></h4>
+            <p id="quiz-result-desc" class="text-xs sm:text-sm text-[#4A3F3F] mb-4"></p>
+            <div class="flex flex-wrap justify-center gap-2.5">
+                <button id="quiz-go-spec-btn" type="button" class="bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
+                    Ir a la especialidad →
+                </button>
+                <button id="quiz-reset-btn" type="button" onclick="resetQuiz()" class="bg-softpink hover:bg-tomato text-tomato hover:text-white text-xs font-bold px-4 py-2.5 rounded-full transition-colors cursor-pointer">
+                    Volver a hacer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const quizTranslations = {
+    es: {
+        bubble: '¡Hacé el test!',
+        badge: 'Orientación Vocacional',
+        title: '¿Qué especialidad es para vos?',
+        subtitle: 'Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.',
+        q1: '1. ¿Qué actividad disfrutás más?',
+        q1a: 'Programar, armar computadoras o configurar redes.',
+        q1b: 'Hacer experimentos en laboratorio y analizar sustancias.',
+        q1c: 'Diseñar planos, maquetas y proyectos arquitectónicos.',
+        q2: '2. ¿En qué ambiente te gustaría trabajar en el futuro?',
+        q2a: 'En empresas tecnológicas, soporte IT o desarrollo de software.',
+        q2b: 'En industrias alimentarias, farmacéuticas o control ambiental.',
+        q2c: 'En estudios de arquitectura, obras civiles o topografía.',
+        q3: '3. ¿Qué herramienta preferís usar?',
+        q3a: 'Código, servidores y hardware.',
+        q3b: 'Microscopios, reactivos y tubos de ensayo.',
+        q3c: 'AutoCAD, escuadras y cálculo estructural.',
+        submitBtn: 'Ver mi resultado',
+        resultLabel: 'Tu especialidad ideal es',
+        goSpecBtn: 'Ir a la especialidad →',
+        resetBtn: 'Volver a hacer',
+        results: {
+            informatica: {
+                title: 'Informática',
+                desc: 'Tenés perfil tecnológico y analítico. Te vas a destacar en programación, redes, hardware y sistemas.'
+            },
+            quimica: {
+                title: 'Química',
+                desc: 'Tenés curiosidad científica y precisión. El laboratorio, los procesos industriales y el análisis son lo tuyo.'
+            },
+            construcciones: {
+                title: 'Construcciones',
+                desc: 'Tenés visión espacial y creativa. El diseño arquitectónico, las estructuras y la dirección de obra van con vos.'
+            }
+        }
+    },
+    en: {
+        bubble: 'Take the quiz!',
+        badge: 'Career Guidance',
+        title: 'Which specialty is right for you?',
+        subtitle: 'Answer these quick questions to find out which ADVENT technical track best matches your interests.',
+        q1: '1. Which activity do you enjoy the most?',
+        q1a: 'Coding, building computers, or setting up networks.',
+        q1b: 'Running lab experiments and analyzing substances.',
+        q1c: 'Designing blueprints, scale models, and architectural projects.',
+        q2: '2. What work environment appeals to you most?',
+        q2a: 'Tech companies, IT support, or software development.',
+        q2b: 'Food, pharmaceutical, or environmental control industries.',
+        q2c: 'Architecture firms, civil works, or land surveying.',
+        q3: '3. Which tool do you prefer to work with?',
+        q3a: 'Code, servers, and hardware.',
+        q3b: 'Microscopes, reagents, and test tubes.',
+        q3c: 'AutoCAD, drafting squares, and structural calculations.',
+        submitBtn: 'See my result',
+        resultLabel: 'Your ideal specialty is',
+        goSpecBtn: 'Go to specialty →',
+        resetBtn: 'Retake quiz',
+        results: {
+            informatica: {
+                title: 'Computer Science',
+                desc: 'You have an analytical, tech-driven profile. You will thrive in programming, networking, hardware, and systems.'
+            },
+            quimica: {
+                title: 'Chemistry',
+                desc: 'You have scientific curiosity and precision. Lab work, industrial processes, and chemical analysis are a great fit.'
+            },
+            construcciones: {
+                title: 'Construction',
+                desc: 'You have spatial vision and creativity. Architectural design, structures, and site management match your strengths.'
+            }
+        }
+    }
+};
+
+let lastQuizWinner = null;
+
+function getActiveQuizLang() {
+    if (typeof currentLang !== 'undefined' && quizTranslations[currentLang]) return currentLang;
+    const htmlLang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+    return quizTranslations[htmlLang] ? htmlLang : 'es';
+}
+
+function openQuizModal() {
+    applyQuizLanguage();
+    const modal = document.getElementById('quiz-modal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function closeQuizModal() {
+    const modal = document.getElementById('quiz-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+function resetQuiz() {
+    const form = document.getElementById('quiz-form');
+    const resultBox = document.getElementById('quiz-result-box');
+    if (form) form.reset();
+    if (resultBox) resultBox.classList.add('hidden');
+    lastQuizWinner = null;
+}
+
+function submitQuiz(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const counts = { informatica: 0, quimica: 0, construcciones: 0 };
+
+    for (const val of formData.values()) {
+        if (counts[val] !== undefined) counts[val]++;
+    }
+
+    lastQuizWinner = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
+    renderQuizResult();
+}
+
+function renderQuizResult() {
+    if (!lastQuizWinner) return;
+    const q = quizTranslations[getActiveQuizLang()];
+    const res = q.results[lastQuizWinner];
+
+    document.getElementById('quiz-result-label').textContent = q.resultLabel;
+    document.getElementById('quiz-result-title').textContent = res.title;
+    document.getElementById('quiz-result-desc').textContent = res.desc;
+
+    const goBtn = document.getElementById('quiz-go-spec-btn');
+    goBtn.textContent = q.goSpecBtn;
+    goBtn.onclick = () => {
+        closeQuizModal();
+        if (typeof openSpecialtyPage === 'function') {
+            openSpecialtyPage(lastQuizWinner);
+        }
+    };
+
+    document.getElementById('quiz-reset-btn').textContent = q.resetBtn;
+    document.getElementById('quiz-result-box').classList.remove('hidden');
+}
+
+function applyQuizLanguage() {
+    const q = quizTranslations[getActiveQuizLang()];
+    const setTxt = (id, txt) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = txt;
+    };
+
+    setTxt('mascot-bubble-text', q.bubble);
+    setTxt('quiz-badge', q.badge);
+    setTxt('quiz-title', q.title);
+    setTxt('quiz-subtitle', q.subtitle);
+    setTxt('quiz-q1', q.q1);
+    setTxt('quiz-q1-a', q.q1a);
+    setTxt('quiz-q1-b', q.q1b);
+    setTxt('quiz-q1-c', q.q1c);
+    setTxt('quiz-q2', q.q2);
+    setTxt('quiz-q2-a', q.q2a);
+    setTxt('quiz-q2-b', q.q2b);
+    setTxt('quiz-q2-c', q.q2c);
+    setTxt('quiz-q3', q.q3);
+    setTxt('quiz-q3-a', q.q3a);
+    setTxt('quiz-q3-b', q.q3b);
+    setTxt('quiz-q3-c', q.q3c);
+    setTxt('quiz-submit-btn', q.submitBtn);
+
+    if (lastQuizWinner) renderQuizResult();
+}
+
+// Sincroniza automáticamente el idioma del test cuando cambia el idioma de la página
+document.addEventListener('DOMContentLoaded', applyQuizLanguage);
+const langObserver = new MutationObserver(applyQuizLanguage);
+langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 </script>
 </body>
 
