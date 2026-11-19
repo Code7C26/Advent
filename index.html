@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADVENT — Portal Estudiantil</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Fraunces para títulos editoriales + Plus Jakarta Sans para interfaz limpia -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -47,12 +50,16 @@
         }
 
         @keyframes floatAurora {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0px, 0px) scale(1);
             }
+
             33% {
                 transform: translate(24px, -28px) scale(1.05);
             }
+
             66% {
                 transform: translate(-18px, 18px) scale(0.96);
             }
@@ -67,20 +74,30 @@
             animation: floatAurora 16s ease-in-out infinite;
         }
 
-        .aurora-delay-1 { animation-delay: -4s; }
-        .aurora-delay-2 { animation-delay: -8s; }
-        .aurora-delay-3 { animation-delay: -12s; }
+        .aurora-delay-1 {
+            animation-delay: -4s;
+        }
+
+        .aurora-delay-2 {
+            animation-delay: -8s;
+        }
+
+        .aurora-delay-3 {
+            animation-delay: -12s;
+        }
 
         /* Transiciones suaves en tarjetas interactivas */
         .card-hover {
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
         }
+
         .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 18px 36px -14px rgba(196, 43, 52, 0.12);
         }
     </style>
 </head>
+
 <body class="font-sans antialiased relative selection:bg-softpink selection:text-tomato">
 
     <!-- AURORAS DE LUZ CIRCULARES EN EL FONDO BLANCO -->
@@ -93,15 +110,19 @@
     </div>
 
     <!-- NOTIFICACIÓN FLOTANTE PARA COPIAR ALIAS O MENSAJES -->
-    <div id="copy-toast" class="fixed bottom-6 right-6 z-50 hidden bg-[#2D2424] text-white text-xs font-semibold px-4 py-3 rounded-full shadow-lg flex items-center gap-2">
+    <div id="copy-toast"
+        class="fixed bottom-6 right-6 z-50 hidden bg-[#2D2424] text-white text-xs font-semibold px-4 py-3 rounded-full shadow-lg flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-olive"></span>
         <span id="copy-toast-text">Alias copiado: salvamelo</span>
     </div>
 
     <!-- MODAL DE CONSULTA WHATSAPP PARA LIBRERÍA -->
-    <div id="wa-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D2424]/45 backdrop-blur-xs" onclick="if(event.target === this) closeWaModal()">
+    <div id="wa-modal"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D2424]/45 backdrop-blur-xs"
+        onclick="if(event.target === this) closeWaModal()">
         <div class="bg-cream rounded-[2rem] max-w-md w-full p-6 sm:p-8 border border-tomato/15 shadow-2xl relative">
-            <button type="button" onclick="closeWaModal()" aria-label="Cerrar" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white flex items-center justify-center transition-colors cursor-pointer">
+            <button type="button" onclick="closeWaModal()" aria-label="Cerrar"
+                class="absolute top-5 right-5 w-9 h-9 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white flex items-center justify-center transition-colors cursor-pointer">
                 <i data-lucide="x" class="w-4 h-4"></i>
             </button>
 
@@ -110,24 +131,31 @@
                     <i data-lucide="message-circle" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <span id="wa-modal-badge" class="text-[11px] font-bold uppercase tracking-wider text-blush block">Consulta rápida • Salvador</span>
-                    <h3 id="wa-modal-product" class="font-serif text-xl font-bold text-[#2D2424] leading-tight">Lapiceras</h3>
+                    <span id="wa-modal-badge"
+                        class="text-[11px] font-bold uppercase tracking-wider text-blush block">Consulta rápida •
+                        Salvador</span>
+                    <h3 id="wa-modal-product" class="font-serif text-xl font-bold text-[#2D2424] leading-tight">
+                        Lapiceras</h3>
                 </div>
             </div>
 
             <p id="wa-modal-phone" class="text-xs font-semibold text-[#6E5D5D] mb-3">WhatsApp: 3547 570898</p>
 
             <div class="bg-white rounded-2xl p-4 border border-blush/15 mb-5">
-                <span id="wa-modal-msg-label" class="block text-[10px] font-bold uppercase tracking-wider text-tomato mb-1">Mensaje automático</span>
+                <span id="wa-modal-msg-label"
+                    class="block text-[10px] font-bold uppercase tracking-wider text-tomato mb-1">Mensaje
+                    automático</span>
                 <p id="wa-modal-message" class="text-sm text-[#2D2424] leading-relaxed select-all"></p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-2.5">
-                <a id="wa-modal-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-5 py-3.5 rounded-full transition-colors shadow-2xs">
+                <a id="wa-modal-direct-link" href="#" target="_blank" rel="noopener noreferrer"
+                    class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-5 py-3.5 rounded-full transition-colors shadow-2xs">
                     <i data-lucide="external-link" class="w-4 h-4"></i>
                     <span id="wa-modal-open-label">Abrir WhatsApp</span>
                 </a>
-                <button type="button" onclick="copyWaModalMessage()" class="inline-flex items-center justify-center gap-2 bg-softpink hover:bg-tomato text-tomato hover:text-white text-xs font-bold px-5 py-3.5 rounded-full transition-colors cursor-pointer">
+                <button type="button" onclick="copyWaModalMessage()"
+                    class="inline-flex items-center justify-center gap-2 bg-softpink hover:bg-tomato text-tomato hover:text-white text-xs font-bold px-5 py-3.5 rounded-full transition-colors cursor-pointer">
                     <i data-lucide="copy" class="w-4 h-4"></i>
                     <span id="wa-modal-copy-label">Copiar mensaje</span>
                 </button>
@@ -139,53 +167,91 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-5">
 
         <!-- BARRA DE NAVEGACIÓN -->
-        <header class="bg-white/80 backdrop-blur-md border border-[#C42B34]/10 rounded-full px-5 sm:px-7 py-3 mb-8 shadow-2xs sticky top-4 z-40">
+        <header
+            class="bg-white/80 backdrop-blur-md border border-[#C42B34]/10 rounded-full px-5 sm:px-7 py-3 mb-8 shadow-2xs sticky top-4 z-40">
             <div class="flex items-center justify-between gap-4">
                 <!-- Logo geométrico ADVENT estático + Botón circular ES / IN -->
                 <div class="flex items-center gap-3 shrink-0">
                     <div aria-label="ADVENT" class="inline-flex items-center py-0.5 select-none">
-                        <svg class="h-10 sm:h-11 w-auto text-black" viewBox="0 0 132 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="h-10 sm:h-11 w-auto text-black" viewBox="0 0 132 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <!-- Letra 'a' geométrica gruesa con corte horizontal izquierdo y arco inferior -->
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z" fill="currentColor"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
+                                fill="currentColor" />
                             <!-- Texto vertical 'advent' rotado 90° antihorario con la altura exacta de la 'a' -->
-                            <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5" letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
+                            <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
+                                font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800"
+                                font-size="25.5" letter-spacing="-0.4" textLength="84"
+                                lengthAdjust="spacingAndGlyphs">advent</text>
                         </svg>
                     </div>
 
                     <!-- Botón circular de cambio de idioma (ES = Español / IN = Inglés) -->
-                    <button id="lang-toggle-btn" type="button" onclick="toggleLanguage()" title="Cambiar idioma / Switch language" aria-label="Cambiar idioma" class="w-9 h-9 rounded-full bg-softpink hover:bg-tomato text-tomato hover:text-white border border-tomato/20 font-extrabold text-xs tracking-wider flex items-center justify-center transition-all shadow-2xs cursor-pointer select-none">
+                    <button id="lang-toggle-btn" type="button" onclick="toggleLanguage()"
+                        title="Cambiar idioma / Switch language" aria-label="Cambiar idioma"
+                        class="w-9 h-9 rounded-full bg-softpink hover:bg-tomato text-tomato hover:text-white border border-tomato/20 font-extrabold text-xs tracking-wider flex items-center justify-center transition-all shadow-2xs cursor-pointer select-none">
                         ES
                     </button>
                 </div>
 
                 <!-- Enlaces de Navegación Desktop (8 opciones) -->
-                <nav id="desktop-nav" class="hidden xl:flex items-center gap-5 text-[13px] font-semibold text-[#4A3F3F]">
-                    <a href="#inicio" data-nav="inicio" onclick="showMainPortal('inicio'); return false;" class="text-tomato border-b-2 border-tomato pb-0.5 transition-colors">Inicio</a>
-                    <a href="#viandas" data-nav="viandas" onclick="openViandasView(); return false;" class="hover:text-tomato transition-colors">Viandas</a>
-                    <a href="#libreria" data-nav="libreria" onclick="openLibreriaView(); return false;" class="hover:text-tomato transition-colors">Librería</a>
-                    <a href="#biblioteca" data-nav="biblioteca" onclick="openBibliotecaView(); return false;" class="hover:text-tomato transition-colors">Biblioteca</a>
-                    <a href="#especialidades" data-nav="especialidades" onclick="showMainPortal('especialidades'); return false;" class="hover:text-tomato transition-colors">Especialidades</a>
-                    <a href="#universidades" data-nav="universidades" onclick="openUniversidadesView(); return false;" class="hover:text-tomato transition-colors">Universidades</a>
-                    <a href="#reconocimientos" data-nav="reconocimientos" onclick="openReconocimientosView(); return false;" class="hover:text-tomato transition-colors">Reconocimientos</a>
-                    <a href="#noticias" data-nav="noticias" onclick="openNoticiasView(); return false;" class="hover:text-tomato transition-colors">Noticias</a>
+                <nav id="desktop-nav"
+                    class="hidden xl:flex items-center gap-5 text-[13px] font-semibold text-[#4A3F3F]">
+                    <a href="#inicio" data-nav="inicio" onclick="showMainPortal('inicio'); return false;"
+                        class="text-tomato border-b-2 border-tomato pb-0.5 transition-colors">Inicio</a>
+                    <a href="#viandas" data-nav="viandas" onclick="openViandasView(); return false;"
+                        class="hover:text-tomato transition-colors">Viandas</a>
+                    <a href="#libreria" data-nav="libreria" onclick="openLibreriaView(); return false;"
+                        class="hover:text-tomato transition-colors">Librería</a>
+                    <a href="#biblioteca" data-nav="biblioteca" onclick="openBibliotecaView(); return false;"
+                        class="hover:text-tomato transition-colors">Biblioteca</a>
+                    <a href="#especialidades" data-nav="especialidades"
+                        onclick="showMainPortal('especialidades'); return false;"
+                        class="hover:text-tomato transition-colors">Especialidades</a>
+                    <a href="#universidades" data-nav="universidades" onclick="openUniversidadesView(); return false;"
+                        class="hover:text-tomato transition-colors">Universidades</a>
+                    <a href="#reconocimientos" data-nav="reconocimientos"
+                        onclick="openReconocimientosView(); return false;"
+                        class="hover:text-tomato transition-colors">Reconocimientos</a>
+                    <a href="#noticias" data-nav="noticias" onclick="openNoticiasView(); return false;"
+                        class="hover:text-tomato transition-colors">Noticias</a>
                 </nav>
 
                 <!-- Botón Menú Móvil / Tablet -->
-                <button id="mobile-menu-btn" aria-label="Abrir menú" class="xl:hidden p-2.5 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white transition-colors">
+                <button id="mobile-menu-btn" aria-label="Abrir menú"
+                    class="xl:hidden p-2.5 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white transition-colors">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
 
             <!-- Menú desplegable móvil / tablet -->
-            <div id="mobile-menu" class="hidden xl:hidden pt-4 pb-2 mt-3 border-t border-tomato/10 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
-                <a href="#inicio" data-mobile-nav="inicio" onclick="closeMobileMenu(); showMainPortal('inicio'); return false;" class="px-3.5 py-2.5 rounded-2xl bg-softpink/70 text-tomato">Inicio</a>
-                <a href="#viandas" data-mobile-nav="viandas" onclick="closeMobileMenu(); openViandasView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Viandas</a>
-                <a href="#libreria" data-mobile-nav="libreria" onclick="closeMobileMenu(); openLibreriaView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Librería</a>
-                <a href="#biblioteca" data-mobile-nav="biblioteca" onclick="closeMobileMenu(); openBibliotecaView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Biblioteca</a>
-                <a href="#especialidades" data-mobile-nav="especialidades" onclick="closeMobileMenu(); showMainPortal('especialidades'); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Especialidades</a>
-                <a href="#universidades" data-mobile-nav="universidades" onclick="closeMobileMenu(); openUniversidadesView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Universidades</a>
-                <a href="#reconocimientos" data-mobile-nav="reconocimientos" onclick="closeMobileMenu(); openReconocimientosView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Reconocimientos</a>
-                <a href="#noticias" data-mobile-nav="noticias" onclick="closeMobileMenu(); openNoticiasView(); return false;" class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Noticias</a>
+            <div id="mobile-menu"
+                class="hidden xl:hidden pt-4 pb-2 mt-3 border-t border-tomato/10 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold">
+                <a href="#inicio" data-mobile-nav="inicio"
+                    onclick="closeMobileMenu(); showMainPortal('inicio'); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl bg-softpink/70 text-tomato">Inicio</a>
+                <a href="#viandas" data-mobile-nav="viandas"
+                    onclick="closeMobileMenu(); openViandasView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Viandas</a>
+                <a href="#libreria" data-mobile-nav="libreria"
+                    onclick="closeMobileMenu(); openLibreriaView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Librería</a>
+                <a href="#biblioteca" data-mobile-nav="biblioteca"
+                    onclick="closeMobileMenu(); openBibliotecaView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Biblioteca</a>
+                <a href="#especialidades" data-mobile-nav="especialidades"
+                    onclick="closeMobileMenu(); showMainPortal('especialidades'); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Especialidades</a>
+                <a href="#universidades" data-mobile-nav="universidades"
+                    onclick="closeMobileMenu(); openUniversidadesView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Universidades</a>
+                <a href="#reconocimientos" data-mobile-nav="reconocimientos"
+                    onclick="closeMobileMenu(); openReconocimientosView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Reconocimientos</a>
+                <a href="#noticias" data-mobile-nav="noticias"
+                    onclick="closeMobileMenu(); openNoticiasView(); return false;"
+                    class="px-3.5 py-2.5 rounded-2xl hover:bg-softpink/40 text-[#4A3F3F]">Noticias</a>
             </div>
         </header>
 
@@ -194,26 +260,34 @@
 
             <!-- SECCIÓN HERO ASIMÉTRICA -->
             <section id="inicio" class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-16">
-                
+
                 <!-- Bloque Izquierdo: Tarjeta Crema Suave con Tipografía Editorial -->
-                <div class="lg:col-span-6 bg-cream/95 backdrop-blur-xs rounded-[2rem] p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden border border-tomato/12">
+                <div
+                    class="lg:col-span-6 bg-cream/95 backdrop-blur-xs rounded-[2rem] p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden border border-tomato/12">
                     <div class="flex justify-end">
                         <svg class="w-8 h-8 text-tomato" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
 
                     <div class="my-6 sm:my-8">
-                        <h1 id="hero-title" class="font-serif text-4xl sm:text-5xl xl:text-[56px] font-bold text-tomato leading-[1.06] tracking-tight mb-5">
+                        <h1 id="hero-title"
+                            class="font-serif text-4xl sm:text-5xl xl:text-[56px] font-bold text-tomato leading-[1.06] tracking-tight mb-5">
                             Formación técnica con propósito y futuro
                         </h1>
                         <p id="hero-desc" class="text-[#4A3F3F] text-base sm:text-lg max-w-md leading-relaxed">
-                            Bienvenido a <strong>ADVENT</strong>. Una propuesta educativa integral pensada para potenciar tus habilidades técnicas y proyectar tu camino universitario.
+                            Bienvenido a <strong>ADVENT</strong>. Una propuesta educativa integral pensada para
+                            potenciar tus habilidades técnicas y proyectar tu camino universitario.
                         </p>
                     </div>
 
                     <div class="flex items-end justify-between gap-4">
+<<<<<<< HEAD
                         <a href="#empresa" onclick="openEmpresaPage(); return false;" class="inline-flex items-center gap-2.5 bg-tomato hover:bg-[#a6222a] text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0">
+=======
+                        <a href="#especialidades" onclick="showMainPortal('especialidades'); return false;"
+                            class="inline-flex items-center gap-2.5 bg-tomato hover:bg-[#a6222a] text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg">
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
                             <span id="hero-cta">Nuestra empresa →</span>
                         </a>
 
@@ -233,32 +307,49 @@
                 </div>
 
                 <!-- Bloque Derecho: Fondo Rosado Pálido con 3 Indicadores Editoriales -->
-                <div class="lg:col-span-6 bg-softpink/90 backdrop-blur-xs rounded-[2rem] p-8 sm:p-11 border border-blush/15 flex flex-col justify-center relative overflow-hidden">
-                    <div class="absolute -right-12 -top-12 w-52 h-52 rounded-full bg-vanilla/60 blur-2xl pointer-events-none"></div>
-                    <div class="absolute -left-10 -bottom-10 w-44 h-44 rounded-full bg-white/60 blur-2xl pointer-events-none"></div>
+                <div
+                    class="lg:col-span-6 bg-softpink/90 backdrop-blur-xs rounded-[2rem] p-8 sm:p-11 border border-blush/15 flex flex-col justify-center relative overflow-hidden">
+                    <div
+                        class="absolute -right-12 -top-12 w-52 h-52 rounded-full bg-vanilla/60 blur-2xl pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute -left-10 -bottom-10 w-44 h-44 rounded-full bg-white/60 blur-2xl pointer-events-none">
+                    </div>
 
                     <div class="relative z-10 grid grid-cols-1 gap-4">
                         <!-- Indicador 1: 3 Especialidades -->
-                        <div class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
-                            <span id="metric-1" class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">3 Especialidades</span>
-                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <div
+                            class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
+                            <span id="metric-1"
+                                class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">3
+                                Especialidades</span>
+                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true">
+                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                             </svg>
                         </div>
 
                         <!-- Indicador 2: 7 Años Formación -->
-                        <div class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
-                            <span id="metric-2" class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">7 Años Formación</span>
-                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <div
+                            class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
+                            <span id="metric-2"
+                                class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">7 Años
+                                Formación</span>
+                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true">
+                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                             </svg>
                         </div>
 
                         <!-- Indicador 3: 100% Práctica -->
-                        <div class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
-                            <span id="metric-3" class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">100% Práctica</span>
-                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <div
+                            class="bg-white/90 rounded-[1.5rem] px-6 py-5 border border-blush/15 flex items-center justify-between shadow-2xs">
+                            <span id="metric-3"
+                                class="font-serif font-semibold text-3xl md:text-4xl text-blush leading-tight">100%
+                                Práctica</span>
+                            <svg class="w-5 h-5 text-blush/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true">
+                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                             </svg>
                         </div>
                     </div>
@@ -270,27 +361,36 @@
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                     <div>
                         <div class="flex items-center gap-2.5 mb-2">
-                            <svg class="w-6 h-6 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                            <svg class="w-6 h-6 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true">
+                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                             </svg>
-                            <h2 id="spec-section-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Nuestras Especialidades</h2>
+                            <h2 id="spec-section-title"
+                                class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Nuestras
+                                Especialidades</h2>
                         </div>
-                        <p id="spec-section-sub" class="text-sm sm:text-base text-[#5C4E4E]">Seleccioná una especialidad para ingresar a su sección</p>
+                        <p id="spec-section-sub" class="text-sm sm:text-base text-[#5C4E4E]">Seleccioná una especialidad
+                            para ingresar a su sección</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Tarjeta 1: Informática -->
-                    <button type="button" onclick="openSpecialtyPage('informatica')" class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-blush/15 hover:border-blush card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
+                    <button type="button" onclick="openSpecialtyPage('informatica')"
+                        class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-blush/15 hover:border-blush card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-2xl bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
                                 <i data-lucide="cpu" class="w-6 h-6"></i>
                             </div>
                             <span class="text-xs font-bold bg-softpink text-blush px-3 py-1 rounded-full">01</span>
                         </div>
                         <div class="mt-6">
-                            <h3 id="spec-card-1-title" class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">Informática</h3>
-                            <div class="mt-3 pt-3 border-t border-blush/15 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-blush">
+                            <h3 id="spec-card-1-title"
+                                class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">
+                                Informática</h3>
+                            <div
+                                class="mt-3 pt-3 border-t border-blush/15 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-blush">
                                 <span id="spec-enter-1">Ingresar</span>
                                 <span class="group-hover:translate-x-1 transition-transform">→</span>
                             </div>
@@ -298,16 +398,21 @@
                     </button>
 
                     <!-- Tarjeta 2: Química -->
-                    <button type="button" onclick="openSpecialtyPage('quimica')" class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
+                    <button type="button" onclick="openSpecialtyPage('quimica')"
+                        class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-2xl bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
                                 <i data-lucide="flask-conical" class="w-6 h-6"></i>
                             </div>
                             <span class="text-xs font-bold bg-vanilla text-[#9A5812] px-3 py-1 rounded-full">02</span>
                         </div>
                         <div class="mt-6">
-                            <h3 id="spec-card-2-title" class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">Química</h3>
-                            <div class="mt-3 pt-3 border-t border-princeton/20 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#9A5812]">
+                            <h3 id="spec-card-2-title"
+                                class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">
+                                Química</h3>
+                            <div
+                                class="mt-3 pt-3 border-t border-princeton/20 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#9A5812]">
                                 <span id="spec-enter-2">Ingresar</span>
                                 <span class="group-hover:translate-x-1 transition-transform">→</span>
                             </div>
@@ -315,16 +420,21 @@
                     </button>
 
                     <!-- Tarjeta 3: Construcciones -->
-                    <button type="button" onclick="openSpecialtyPage('construcciones')" class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
+                    <button type="button" onclick="openSpecialtyPage('construcciones')"
+                        class="text-left group bg-cream/95 rounded-[2rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[190px] cursor-pointer">
                         <div class="flex items-center justify-between">
-                            <div class="w-12 h-12 rounded-2xl bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
                                 <i data-lucide="compass" class="w-6 h-6"></i>
                             </div>
                             <span class="text-xs font-bold bg-olive/15 text-olive px-3 py-1 rounded-full">03</span>
                         </div>
                         <div class="mt-6">
-                            <h3 id="spec-card-3-title" class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">Construcciones</h3>
-                            <div class="mt-3 pt-3 border-t border-olive/20 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-olive">
+                            <h3 id="spec-card-3-title"
+                                class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors">
+                                Construcciones</h3>
+                            <div
+                                class="mt-3 pt-3 border-t border-olive/20 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-olive">
                                 <span id="spec-enter-3">Ingresar</span>
                                 <span class="group-hover:translate-x-1 transition-transform">→</span>
                             </div>
@@ -338,46 +448,63 @@
                 <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-8 sm:p-12 border border-tomato/12">
                     <div class="max-w-2xl mb-8">
                         <div class="flex items-center gap-2.5 mb-2">
-                            <svg class="w-6 h-6 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                            <svg class="w-6 h-6 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true">
+                                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                             </svg>
-                            <h2 id="uni-section-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Proyectá tu camino en Córdoba</h2>
+                            <h2 id="uni-section-title"
+                                class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Proyectá tu
+                                camino en Córdoba</h2>
                         </div>
-                        <p id="uni-section-sub" class="text-sm sm:text-base text-[#5C4E4E]">Conocé las principales instituciones universitarias de la provincia de Córdoba para continuar tu formación superior.</p>
+                        <p id="uni-section-sub" class="text-sm sm:text-base text-[#5C4E4E]">Conocé las principales
+                            instituciones universitarias de la provincia de Córdoba para continuar tu formación
+                            superior.</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- UCC -->
-                        <button type="button" onclick="openUniversidadDetail('ucc')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('ucc')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="font-serif text-3xl font-bold text-olive">UCC</span>
-                                <span class="w-9 h-9 rounded-full bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="book-open" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-ucc-sub" class="text-sm font-semibold text-[#4A3F3F] group-hover:text-olive transition-colors">Universidad Católica de Córdoba</p>
+                            <p id="uni-ucc-sub"
+                                class="text-sm font-semibold text-[#4A3F3F] group-hover:text-olive transition-colors">
+                                Universidad Católica de Córdoba</p>
                         </button>
 
                         <!-- UNC -->
-                        <button type="button" onclick="openUniversidadDetail('unc')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-blush/15 hover:border-tomato card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('unc')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-blush/15 hover:border-tomato card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="font-serif text-3xl font-bold text-tomato">UNC</span>
-                                <span class="w-9 h-9 rounded-full bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-unc-sub" class="text-sm font-semibold text-[#4A3F3F] group-hover:text-tomato transition-colors">Universidad Nacional de Córdoba</p>
+                            <p id="uni-unc-sub"
+                                class="text-sm font-semibold text-[#4A3F3F] group-hover:text-tomato transition-colors">
+                                Universidad Nacional de Córdoba</p>
                         </button>
 
                         <!-- UTN -->
-                        <button type="button" onclick="openUniversidadDetail('utn')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('utn')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[160px] cursor-pointer">
                             <div class="flex items-center justify-between mb-4">
                                 <span class="font-serif text-3xl font-bold text-princeton">UTN</span>
-                                <span class="w-9 h-9 rounded-full bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="landmark" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-utn-sub" class="text-sm font-semibold text-[#4A3F3F] group-hover:text-princeton transition-colors">Universidad Tecnológica Nacional</p>
+                            <p id="uni-utn-sub"
+                                class="text-sm font-semibold text-[#4A3F3F] group-hover:text-princeton transition-colors">
+                                Universidad Tecnológica Nacional</p>
                         </button>
                     </div>
                 </div>
@@ -386,60 +513,78 @@
 
         <!-- VISTA DE UNIVERSIDADES (GRILLA UCC, UNC, UTN + DETALLE COMPLETO) -->
         <section id="universidades-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
                 <!-- Vista Principal: Tarjetas UCC, UNC, UTN -->
                 <div id="universidades-grid-container">
-                    <button id="uni-home-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <button id="uni-home-btn" type="button" onclick="showMainPortal('inicio')"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                         <span>← Volver</span>
                     </button>
 
                     <div class="flex items-center gap-3 mb-3">
-                        <h2 id="uni-view-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Universidades</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="uni-view-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Universidades
+                        </h2>
+                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
                     <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
                         <!-- UCC -->
-                        <button type="button" onclick="openUniversidadDetail('ucc')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('ucc')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-olive/20 hover:border-olive card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="font-serif text-3xl font-bold text-olive">UCC</span>
-                                <span class="w-9 h-9 rounded-full bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-olive/15 text-olive flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="book-open" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-grid-ucc-sub" class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-olive transition-colors">Universidad Católica de Córdoba</p>
+                            <p id="uni-grid-ucc-sub"
+                                class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-olive transition-colors">
+                                Universidad Católica de Córdoba</p>
                         </button>
 
                         <!-- UNC -->
-                        <button type="button" onclick="openUniversidadDetail('unc')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-blush/15 hover:border-tomato card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('unc')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-blush/15 hover:border-tomato card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="font-serif text-3xl font-bold text-tomato">UNC</span>
-                                <span class="w-9 h-9 rounded-full bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-softpink text-blush flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="graduation-cap" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-grid-unc-sub" class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-tomato transition-colors">Universidad Nacional de Córdoba</p>
+                            <p id="uni-grid-unc-sub"
+                                class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-tomato transition-colors">
+                                Universidad Nacional de Córdoba</p>
                         </button>
 
                         <!-- UTN -->
-                        <button type="button" onclick="openUniversidadDetail('utn')" class="text-left group bg-white rounded-[1.75rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
+                        <button type="button" onclick="openUniversidadDetail('utn')"
+                            class="text-left group bg-white rounded-[1.75rem] p-7 border border-princeton/20 hover:border-princeton card-hover flex flex-col justify-between min-h-[150px] shadow-2xs cursor-pointer">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="font-serif text-3xl font-bold text-princeton">UTN</span>
-                                <span class="w-9 h-9 rounded-full bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
+                                <span
+                                    class="w-9 h-9 rounded-full bg-vanilla text-[#9A5812] flex items-center justify-center group-hover:scale-105 transition-transform">
                                     <i data-lucide="landmark" class="w-4 h-4"></i>
                                 </span>
                             </div>
-                            <p id="uni-grid-utn-sub" class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-princeton transition-colors">Universidad Tecnológica Nacional</p>
+                            <p id="uni-grid-utn-sub"
+                                class="text-sm sm:text-base font-semibold text-[#4A3F3F] group-hover:text-princeton transition-colors">
+                                Universidad Tecnológica Nacional</p>
                         </button>
                     </div>
                 </div>
 
                 <!-- Vista Detallada de cada Universidad -->
                 <div id="universidad-detail-container" class="hidden">
-                    <button id="uni-detail-back-btn" type="button" onclick="openUniversidadesView()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                    <button id="uni-detail-back-btn" type="button" onclick="openUniversidadesView()"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
                         <span>← Volver</span>
                     </button>
                     <div id="universidad-detail-content">
@@ -451,28 +596,34 @@
 
         <!-- VISTA DE VIANDAS (GRILLA DE LOCALES + DETALLE INTERACTIVO) -->
         <section id="viandas-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
                 <!-- Contenedor Grilla Principal -->
                 <div id="viandas-grid-container">
                     <div class="flex items-center gap-3 mb-3">
-                        <h2 id="viandas-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Viandas</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="viandas-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Viandas</h2>
+                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
                     <div class="h-1 w-28 bg-tomato/20 rounded-full mb-5"></div>
                     <p id="viandas-main-sub" class="text-sm sm:text-base text-[#5C4E4E] max-w-2xl mb-9">
-                        En esta sección podés encontrar diferentes opciones para almorzar. Tocá cada opción y conocé más.
+                        En esta sección podés encontrar diferentes opciones para almorzar. Tocá cada opción y conocé
+                        más.
                     </p>
 
-                    <div id="viandas-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                    <div id="viandas-cards-grid"
+                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                         <!-- Renderizado dinámicamente por JS -->
                     </div>
                 </div>
 
                 <!-- Contenedor Detalle de Local -->
                 <div id="vianda-detail-container" class="hidden">
-                    <button id="viandas-back-btn" type="button" onclick="closeViandaDetail()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                    <button id="viandas-back-btn" type="button" onclick="closeViandaDetail()"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
                         <span>← Volver a Viandas</span>
                     </button>
                     <div id="vianda-detail-content">
@@ -484,15 +635,19 @@
 
         <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + 6 ARTÍCULOS CON WHATSAPP) -->
         <section id="libreria-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <button id="lib-back-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+                <button id="lib-back-btn" type="button" onclick="showMainPortal('inicio')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                     <span>← Volver</span>
                 </button>
 
                 <div class="flex items-center gap-3 mb-3">
-                    <h2 id="lib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Librería</h2>
-                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                    <h2 id="lib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">
+                        Librería</h2>
+                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                        aria-hidden="true">
+                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                     </svg>
                 </div>
                 <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
@@ -501,20 +656,32 @@
                     <!-- Columna Izquierda: Perfil y Datos de Salvador -->
                     <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
                         <div class="flex flex-col items-center text-center mb-6">
-                            <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
+                            <div
+                                class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
                                 <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Salvador">
-                                        <rect width="160" height="160" fill="#FCE8EC"/>
-                                        <path d="M28 160C28 131 48 116 80 116C112 116 132 131 132 160H28Z" fill="#2F4A47"/>
-                                        <rect x="69" y="95" width="22" height="26" rx="10" fill="#E6B496"/>
-                                        <path d="M47 62C47 39 61 26 80 26C99 26 113 39 113 62C113 69 111 75 108 79H52C49 75 47 69 47 62Z" fill="#231D1D"/>
-                                        <path d="M53 59C53 44 64 35 80 35C96 35 107 44 107 59V76C107 93 95 105 80 105C65 105 53 93 53 76V59Z" fill="#F0C2A2"/>
-                                        <path d="M53 73C53 93 65 106 80 106C95 106 107 93 107 73H101C101 86 92 94 80 94C68 94 59 86 59 73H53Z" fill="#2A2222"/>
-                                        <path d="M68 82C73 79 87 79 92 82" stroke="#2A2222" stroke-width="3.5" stroke-linecap="round"/>
-                                        <circle cx="67" cy="61" r="3" fill="#231D1D"/>
-                                        <circle cx="93" cy="61" r="3" fill="#231D1D"/>
-                                        <path d="M60 54C64 52 70 52 73 54" stroke="#231D1D" stroke-width="2.5" stroke-linecap="round"/>
-                                        <path d="M87 54C90 52 96 52 100 54" stroke="#231D1D" stroke-width="2.5" stroke-linecap="round"/>
+                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                        aria-label="Salvador">
+                                        <rect width="160" height="160" fill="#FCE8EC" />
+                                        <path d="M28 160C28 131 48 116 80 116C112 116 132 131 132 160H28Z"
+                                            fill="#2F4A47" />
+                                        <rect x="69" y="95" width="22" height="26" rx="10" fill="#E6B496" />
+                                        <path
+                                            d="M47 62C47 39 61 26 80 26C99 26 113 39 113 62C113 69 111 75 108 79H52C49 75 47 69 47 62Z"
+                                            fill="#231D1D" />
+                                        <path
+                                            d="M53 59C53 44 64 35 80 35C96 35 107 44 107 59V76C107 93 95 105 80 105C65 105 53 93 53 76V59Z"
+                                            fill="#F0C2A2" />
+                                        <path
+                                            d="M53 73C53 93 65 106 80 106C95 106 107 93 107 73H101C101 86 92 94 80 94C68 94 59 86 59 73H53Z"
+                                            fill="#2A2222" />
+                                        <path d="M68 82C73 79 87 79 92 82" stroke="#2A2222" stroke-width="3.5"
+                                            stroke-linecap="round" />
+                                        <circle cx="67" cy="61" r="3" fill="#231D1D" />
+                                        <circle cx="93" cy="61" r="3" fill="#231D1D" />
+                                        <path d="M60 54C64 52 70 52 73 54" stroke="#231D1D" stroke-width="2.5"
+                                            stroke-linecap="round" />
+                                        <path d="M87 54C90 52 96 52 100 54" stroke="#231D1D" stroke-width="2.5"
+                                            stroke-linecap="round" />
                                     </svg>
                                 </div>
                             </div>
@@ -523,25 +690,34 @@
                         <div class="space-y-3 text-sm text-[#4A3F3F] mb-6">
                             <p><strong id="lib-label-name" class="text-[#2D2424]">Nombre</strong>: Salvador</p>
                             <p><strong id="lib-label-phone" class="text-[#2D2424]">Teléfono</strong>: 3547 570898</p>
-                            <div class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
-                                <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span class="font-mono font-bold text-tomato">salvamelo</span></p>
-                                <button type="button" onclick="copyAlias()" class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
+                            <div
+                                class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
+                                <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span
+                                        class="font-mono font-bold text-tomato">salvamelo</span></p>
+                                <button type="button" onclick="copyAlias()"
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
                                     <span id="lib-copy-label">Copiar</span>
                                 </button>
                             </div>
                             <div class="pt-2">
-                                <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:</p>
-                                <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y muchos más.</p>
-                                <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a color, stickers, entre otros.</p>
+                                <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:
+                                </p>
+                                <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y
+                                    muchos más.</p>
+                                <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a
+                                    color, stickers, entre otros.</p>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap gap-2.5">
-                            <a href="tel:3547570898" class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                            <a href="tel:3547570898"
+                                class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
                                 <i data-lucide="phone" class="w-4 h-4"></i>
                                 <span id="lib-call-btn">Llamar</span>
                             </a>
-                            <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898" target="_blank" rel="noopener noreferrer" class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                            <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898"
+                                target="_blank" rel="noopener noreferrer"
+                                class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
                                 <i data-lucide="message-circle" class="w-4 h-4"></i>
                                 <span>WhatsApp</span>
                             </a>
@@ -549,7 +725,8 @@
                     </div>
 
                     <!-- Columna Derecha: Grilla de 6 Artículos -->
-                    <div id="libreria-products-grid" class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                    <div id="libreria-products-grid"
+                        class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                         <!-- Renderizado dinámicamente por JS -->
                     </div>
                 </div>
@@ -558,16 +735,20 @@
 
         <!-- VISTA DE BIBLIOTECA (BIBLIOTECARIOS + TABLA DE HORARIOS + 5 RECURSOS FIJOS) -->
         <section id="biblioteca-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <button id="bib-back-btn" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+                <button id="bib-back-btn" onclick="showMainPortal('inicio')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span id="bib-back-label">Volver al inicio</span>
                 </button>
 
                 <div class="flex items-center gap-3 mb-3">
-                    <h2 id="bib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Biblioteca</h2>
-                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                    <h2 id="bib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">
+                        Biblioteca</h2>
+                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                        aria-hidden="true">
+                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                     </svg>
                 </div>
                 <div class="h-1 w-28 bg-tomato/20 rounded-full mb-10"></div>
@@ -576,56 +757,82 @@
                     <!-- Columna Izquierda: Dos Bibliotecarios lado a lado -->
                     <div class="lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-5">
                         <!-- Bibliotecario 1: Matías Vivas -->
-                        <div class="bg-white rounded-[1.75rem] p-5 border border-blush/15 flex flex-col items-center text-center shadow-2xs select-none">
-                            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs">
+                        <div
+                            class="bg-white rounded-[1.75rem] p-5 border border-blush/15 flex flex-col items-center text-center shadow-2xs select-none">
+                            <div
+                                class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs">
                                 <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Matías Vivas">
-                                        <rect width="160" height="160" fill="#FCE8EC"/>
-                                        <rect x="16" y="24" width="22" height="115" rx="4" fill="#F3D0D8"/>
-                                        <rect x="122" y="28" width="22" height="110" rx="4" fill="#F3D0D8"/>
-                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z" fill="#232B2E"/>
-                                        <polygon points="68,118 80,132 92,118" fill="#FFFFFF"/>
-                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E8B89A"/>
-                                        <path d="M48 64C48 41 62 28 80 28C98 28 112 41 112 64C112 70 110 76 107 80H53C50 76 48 70 48 64Z" fill="#262020"/>
-                                        <path d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z" fill="#F2C6A8"/>
-                                        <circle cx="67" cy="63" r="3" fill="#231D1D"/>
-                                        <circle cx="93" cy="63" r="3" fill="#231D1D"/>
-                                        <path d="M60 56C64 54 70 54 73 56" stroke="#262020" stroke-width="2.5" stroke-linecap="round"/>
-                                        <path d="M87 56C90 54 96 54 100 56" stroke="#262020" stroke-width="2.5" stroke-linecap="round"/>
-                                        <path d="M69 83C74 89 86 89 91 83" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                        aria-label="Matías Vivas">
+                                        <rect width="160" height="160" fill="#FCE8EC" />
+                                        <rect x="16" y="24" width="22" height="115" rx="4" fill="#F3D0D8" />
+                                        <rect x="122" y="28" width="22" height="110" rx="4" fill="#F3D0D8" />
+                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
+                                            fill="#232B2E" />
+                                        <polygon points="68,118 80,132 92,118" fill="#FFFFFF" />
+                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E8B89A" />
+                                        <path
+                                            d="M48 64C48 41 62 28 80 28C98 28 112 41 112 64C112 70 110 76 107 80H53C50 76 48 70 48 64Z"
+                                            fill="#262020" />
+                                        <path
+                                            d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
+                                            fill="#F2C6A8" />
+                                        <circle cx="67" cy="63" r="3" fill="#231D1D" />
+                                        <circle cx="93" cy="63" r="3" fill="#231D1D" />
+                                        <path d="M60 56C64 54 70 54 73 56" stroke="#262020" stroke-width="2.5"
+                                            stroke-linecap="round" />
+                                        <path d="M87 56C90 54 96 54 100 56" stroke="#262020" stroke-width="2.5"
+                                            stroke-linecap="round" />
+                                        <path d="M69 83C74 89 86 89 91 83" stroke="#FFFFFF" stroke-width="3"
+                                            stroke-linecap="round" />
                                     </svg>
                                 </div>
                             </div>
-                            <span id="bib-role-1" class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
+                            <span id="bib-role-1"
+                                class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
                                 NOMBRE Y APELLIDO:
                             </span>
                             <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Matías Vivas</p>
                         </div>
 
                         <!-- Bibliotecario 2: Víctor Vella -->
-                        <div class="bg-white rounded-[1.75rem] p-5 border border-olive/20 flex flex-col items-center text-center shadow-2xs select-none">
-                            <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-olive via-vanilla to-princeton mb-4 shadow-xs">
+                        <div
+                            class="bg-white rounded-[1.75rem] p-5 border border-olive/20 flex flex-col items-center text-center shadow-2xs select-none">
+                            <div
+                                class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-olive via-vanilla to-princeton mb-4 shadow-xs">
                                 <div class="w-full h-full rounded-full overflow-hidden bg-vanilla/40">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-label="Víctor Vella">
-                                        <rect width="160" height="160" fill="#FCE9AB" fill-opacity="0.45"/>
-                                        <rect x="20" y="22" width="120" height="62" rx="8" fill="#FFFFFF" fill-opacity="0.7"/>
-                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z" fill="#4A5256"/>
-                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E3B193"/>
-                                        <path d="M48 64C48 42 62 30 80 30C98 30 112 42 112 64C112 70 110 75 107 79H53C50 75 48 70 48 64Z" fill="#3B3535"/>
-                                        <path d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z" fill="#EBC0A3"/>
-                                        <rect x="57" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D" stroke-width="2.2"/>
-                                        <rect x="84" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D" stroke-width="2.2"/>
-                                        <line x1="76" y1="62" x2="84" y2="62" stroke="#231D1D" stroke-width="2.2"/>
-                                        <circle cx="66.5" cy="63" r="2.5" fill="#231D1D"/>
-                                        <circle cx="93.5" cy="63" r="2.5" fill="#231D1D"/>
-                                        <path d="M70 83C74 88 86 88 90 83" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round"/>
-                                        <ellipse cx="95" cy="136" rx="14" ry="16" fill="#5C3D2E"/>
-                                        <ellipse cx="95" cy="122" rx="12" ry="4" fill="#9E9820"/>
-                                        <line x1="99" y1="122" x2="112" y2="105" stroke="#D4D4D4" stroke-width="3" stroke-linecap="round"/>
+                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
+                                        aria-label="Víctor Vella">
+                                        <rect width="160" height="160" fill="#FCE9AB" fill-opacity="0.45" />
+                                        <rect x="20" y="22" width="120" height="62" rx="8" fill="#FFFFFF"
+                                            fill-opacity="0.7" />
+                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
+                                            fill="#4A5256" />
+                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E3B193" />
+                                        <path
+                                            d="M48 64C48 42 62 30 80 30C98 30 112 42 112 64C112 70 110 75 107 79H53C50 75 48 70 48 64Z"
+                                            fill="#3B3535" />
+                                        <path
+                                            d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
+                                            fill="#EBC0A3" />
+                                        <rect x="57" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
+                                            stroke-width="2.2" />
+                                        <rect x="84" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
+                                            stroke-width="2.2" />
+                                        <line x1="76" y1="62" x2="84" y2="62" stroke="#231D1D" stroke-width="2.2" />
+                                        <circle cx="66.5" cy="63" r="2.5" fill="#231D1D" />
+                                        <circle cx="93.5" cy="63" r="2.5" fill="#231D1D" />
+                                        <path d="M70 83C74 88 86 88 90 83" stroke="#FFFFFF" stroke-width="2.8"
+                                            stroke-linecap="round" />
+                                        <ellipse cx="95" cy="136" rx="14" ry="16" fill="#5C3D2E" />
+                                        <ellipse cx="95" cy="122" rx="12" ry="4" fill="#9E9820" />
+                                        <line x1="99" y1="122" x2="112" y2="105" stroke="#D4D4D4" stroke-width="3"
+                                            stroke-linecap="round" />
                                     </svg>
                                 </div>
                             </div>
-                            <span id="bib-role-2" class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
+                            <span id="bib-role-2"
+                                class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
                                 NOMBRE Y APELLIDO:
                             </span>
                             <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Víctor Vella</p>
@@ -634,7 +841,8 @@
 
                     <!-- Columna Derecha: Tabla de Horarios -->
                     <div class="lg:col-span-7">
-                        <h3 id="bib-schedule-title" class="font-serif text-2xl sm:text-3xl font-bold text-tomato text-center tracking-wide uppercase mb-4">
+                        <h3 id="bib-schedule-title"
+                            class="font-serif text-2xl sm:text-3xl font-bold text-tomato text-center tracking-wide uppercase mb-4">
                             HORARIOS
                         </h3>
 
@@ -642,34 +850,55 @@
                             <div class="overflow-x-auto">
                                 <table class="w-full text-center border-collapse min-w-[540px]">
                                     <thead>
-                                        <tr class="bg-softpink/75 text-tomato text-xs font-extrabold uppercase tracking-wider">
-                                            <th id="bib-th-shift" class="py-3.5 px-3 border-b border-r border-tomato/12">TURNO</th>
-                                            <th id="bib-th-mon" class="py-3.5 px-3 border-b border-r border-tomato/12">LUNES</th>
-                                            <th id="bib-th-tue" class="py-3.5 px-3 border-b border-r border-tomato/12">MARTES</th>
-                                            <th id="bib-th-wed" class="py-3.5 px-3 border-b border-r border-tomato/12">MIÉRCOLES</th>
-                                            <th id="bib-th-thu" class="py-3.5 px-3 border-b border-r border-tomato/12">JUEVES</th>
-                                            <th id="bib-th-fri" class="py-3.5 px-3 border-b border-tomato/12">VIERNES</th>
+                                        <tr
+                                            class="bg-softpink/75 text-tomato text-xs font-extrabold uppercase tracking-wider">
+                                            <th id="bib-th-shift"
+                                                class="py-3.5 px-3 border-b border-r border-tomato/12">TURNO</th>
+                                            <th id="bib-th-mon" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                                LUNES</th>
+                                            <th id="bib-th-tue" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                                MARTES</th>
+                                            <th id="bib-th-wed" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                                MIÉRCOLES</th>
+                                            <th id="bib-th-thu" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                                JUEVES</th>
+                                            <th id="bib-th-fri" class="py-3.5 px-3 border-b border-tomato/12">VIERNES
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody class="text-xs sm:text-[13px] font-bold text-[#2D2424]">
                                         <tr class="border-b border-tomato/12">
-                                            <td id="bib-row-morning" class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
+                                            <td id="bib-row-morning"
+                                                class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
                                                 MAÑANA
                                             </td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
+                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                                VÍCTOR<br>VELLA</td>
+                                            <td
+                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                                MATÍAS<br>VIVAS</td>
+                                            <td
+                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                                MATÍAS<br>VIVAS</td>
+                                            <td
+                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                                MATÍAS<br>VIVAS</td>
                                             <td class="py-5 px-3 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
                                         </tr>
                                         <tr>
-                                            <td id="bib-row-afternoon" class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
+                                            <td id="bib-row-afternoon"
+                                                class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
                                                 TARDE
                                             </td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
+                                            <td
+                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                                MATÍAS<br>VIVAS</td>
+                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                                VÍCTOR<br>VELLA</td>
+                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                                VÍCTOR<br>VELLA</td>
+                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                                VÍCTOR<br>VELLA</td>
                                             <td class="py-5 px-3 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
                                         </tr>
                                     </tbody>
@@ -680,7 +909,8 @@
                 </div>
 
                 <!-- Fila Inferior: 5 Imágenes Fijas -->
-                <div id="biblioteca-resources-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 select-none">
+                <div id="biblioteca-resources-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 select-none">
                     <!-- Renderizado estáticamente por JS -->
                 </div>
             </div>
@@ -688,17 +918,22 @@
 
         <!-- VISTA DE RECONOCIMIENTOS (3 BOTONES DE ESTUDIANTES + PERFIL INDIVIDUAL CON FOTOS) -->
         <section id="reconocimientos-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
                 <div id="reconocimientos-grid-container">
-                    <button id="rec-home-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <button id="rec-home-btn" type="button" onclick="showMainPortal('inicio')"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                         <i data-lucide="arrow-left" class="w-4 h-4"></i>
                         <span id="rec-home-label">Volver al inicio</span>
                     </button>
 
                     <div class="flex items-center gap-3 mb-3">
-                        <h2 id="rec-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Reconocimientos</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="rec-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Reconocimientos
+                        </h2>
+                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
                     <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
@@ -709,7 +944,8 @@
                 </div>
 
                 <div id="reconocimiento-detail-container" class="hidden">
-                    <button id="rec-back-btn" type="button" onclick="closeReconocimientoDetail()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                    <button id="rec-back-btn" type="button" onclick="closeReconocimientoDetail()"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
                         <span>← Volver a Reconocimientos</span>
                     </button>
                     <div id="reconocimiento-detail-content">
@@ -721,28 +957,39 @@
 
         <!-- VISTA COMPLETA DE ESPECIALIDAD: INFORMÁTICA (5 PESTAÑAS INTERACTIVAS) -->
         <section id="informatica-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
                 <!-- Botón Volver -->
-                <button id="inf-back-btn" type="button" onclick="showMainPortal('especialidades')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                <button id="inf-back-btn" type="button" onclick="showMainPortal('especialidades')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                     <span>← Volver</span>
                 </button>
 
                 <!-- Encabezado + Barra de 5 Pestañas -->
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
                     <div class="flex items-center gap-3">
-                        <h2 id="inf-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">INFORMÁTICA</h2>
-                        <svg class="w-7 h-7 text-blush shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="inf-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">
+                            INFORMÁTICA</h2>
+                        <svg class="w-7 h-7 text-blush shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
 
                     <!-- Navegación de 5 pestañas -->
                     <div id="inf-tabs-bar" class="flex flex-wrap items-center gap-2">
-                        <button type="button" data-inf-tab="introduccion" onclick="switchInformaticaTab('introduccion')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
-                        <button type="button" data-inf-tab="plan" onclick="switchInformaticaTab('plan')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Plan de estudios</button>
-                        <button type="button" data-inf-tab="horarios" onclick="switchInformaticaTab('horarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Horarios</button>
-                        <button type="button" data-inf-tab="profesores" onclick="switchInformaticaTab('profesores')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Profesores</button>
-                        <button type="button" data-inf-tab="comentarios" onclick="switchInformaticaTab('comentarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Comentarios</button>
+                        <button type="button" data-inf-tab="introduccion" onclick="switchInformaticaTab('introduccion')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
+                        <button type="button" data-inf-tab="plan" onclick="switchInformaticaTab('plan')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Plan
+                            de estudios</button>
+                        <button type="button" data-inf-tab="horarios" onclick="switchInformaticaTab('horarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Horarios</button>
+                        <button type="button" data-inf-tab="profesores" onclick="switchInformaticaTab('profesores')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Profesores</button>
+                        <button type="button" data-inf-tab="comentarios" onclick="switchInformaticaTab('comentarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-blush/20 hover:border-tomato">Comentarios</button>
                     </div>
                 </div>
                 <div class="h-1 w-full bg-blush/15 rounded-full mb-8"></div>
@@ -756,28 +1003,39 @@
 
         <!-- VISTA COMPLETA DE ESPECIALIDAD: QUÍMICA (5 PESTAÑAS INTERACTIVAS) -->
         <section id="quimica-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-princeton/20 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-princeton/20 relative overflow-hidden">
                 <!-- Botón Volver -->
-                <button id="quim-back-btn" type="button" onclick="showMainPortal('especialidades')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                <button id="quim-back-btn" type="button" onclick="showMainPortal('especialidades')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                     <span>← Volver</span>
                 </button>
 
                 <!-- Encabezado + Barra de 5 Pestañas -->
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
                     <div class="flex items-center gap-3">
-                        <h2 id="quim-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">QUÍMICA</h2>
-                        <svg class="w-7 h-7 text-princeton shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="quim-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">
+                            QUÍMICA</h2>
+                        <svg class="w-7 h-7 text-princeton shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
 
                     <!-- Navegación de 5 pestañas -->
                     <div id="quim-tabs-bar" class="flex flex-wrap items-center gap-2">
-                        <button type="button" data-quim-tab="introduccion" onclick="switchQuimicaTab('introduccion')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
-                        <button type="button" data-quim-tab="plan" onclick="switchQuimicaTab('plan')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Plan de estudios</button>
-                        <button type="button" data-quim-tab="horarios" onclick="switchQuimicaTab('horarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Horarios</button>
-                        <button type="button" data-quim-tab="profesores" onclick="switchQuimicaTab('profesores')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Profesores</button>
-                        <button type="button" data-quim-tab="comentarios" onclick="switchQuimicaTab('comentarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Comentarios</button>
+                        <button type="button" data-quim-tab="introduccion" onclick="switchQuimicaTab('introduccion')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
+                        <button type="button" data-quim-tab="plan" onclick="switchQuimicaTab('plan')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Plan
+                            de estudios</button>
+                        <button type="button" data-quim-tab="horarios" onclick="switchQuimicaTab('horarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Horarios</button>
+                        <button type="button" data-quim-tab="profesores" onclick="switchQuimicaTab('profesores')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Profesores</button>
+                        <button type="button" data-quim-tab="comentarios" onclick="switchQuimicaTab('comentarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-princeton/25 hover:border-tomato">Comentarios</button>
                     </div>
                 </div>
                 <div class="h-1 w-full bg-princeton/18 rounded-full mb-8"></div>
@@ -791,28 +1049,42 @@
 
         <!-- VISTA COMPLETA DE ESPECIALIDAD: CONSTRUCCIONES (5 PESTAÑAS INTERACTIVAS) -->
         <section id="construcciones-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-olive/25 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-olive/25 relative overflow-hidden">
                 <!-- Botón Volver -->
-                <button id="const-back-btn" type="button" onclick="showMainPortal('especialidades')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                <button id="const-back-btn" type="button" onclick="showMainPortal('especialidades')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                     <span>← Volver</span>
                 </button>
 
                 <!-- Encabezado + Barra de 5 Pestañas -->
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
                     <div class="flex items-center gap-3">
-                        <h2 id="const-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">CONSTRUCCIONES</h2>
-                        <svg class="w-7 h-7 text-olive shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="const-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">
+                            CONSTRUCCIONES</h2>
+                        <svg class="w-7 h-7 text-olive shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
 
                     <!-- Navegación de 5 pestañas -->
                     <div id="const-tabs-bar" class="flex flex-wrap items-center gap-2">
-                        <button type="button" data-const-tab="introduccion" onclick="switchConstruccionesTab('introduccion')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
-                        <button type="button" data-const-tab="plan" onclick="switchConstruccionesTab('plan')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Plan de estudios</button>
-                        <button type="button" data-const-tab="horarios" onclick="switchConstruccionesTab('horarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Horarios</button>
-                        <button type="button" data-const-tab="profesores" onclick="switchConstruccionesTab('profesores')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Profesores</button>
-                        <button type="button" data-const-tab="comentarios" onclick="switchConstruccionesTab('comentarios')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Comentarios</button>
+                        <button type="button" data-const-tab="introduccion"
+                            onclick="switchConstruccionesTab('introduccion')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Introducción</button>
+                        <button type="button" data-const-tab="plan" onclick="switchConstruccionesTab('plan')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Plan
+                            de estudios</button>
+                        <button type="button" data-const-tab="horarios" onclick="switchConstruccionesTab('horarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Horarios</button>
+                        <button type="button" data-const-tab="profesores"
+                            onclick="switchConstruccionesTab('profesores')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Profesores</button>
+                        <button type="button" data-const-tab="comentarios"
+                            onclick="switchConstruccionesTab('comentarios')"
+                            class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-white text-[#4A3F3F] border border-olive/25 hover:border-tomato">Comentarios</button>
                     </div>
                 </div>
                 <div class="h-1 w-full bg-olive/20 rounded-full mb-8"></div>
@@ -826,17 +1098,21 @@
 
         <!-- VISTA DE NOTICIAS (5 TARJETAS + DETALLE INTERACTIVO CON CANSAT GALAXY 046) -->
         <section id="noticias-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+            <div
+                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
                 <!-- Contenedor Grilla de Noticias -->
                 <div id="noticias-grid-container">
-                    <button id="not-home-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <button id="not-home-btn" type="button" onclick="showMainPortal('inicio')"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
                         <span>← Volver</span>
                     </button>
 
                     <div class="flex items-center gap-3 mb-3">
-                        <h2 id="not-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Noticias</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        <h2 id="not-main-title"
+                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Noticias</h2>
+                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                         </svg>
                     </div>
                     <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
@@ -848,7 +1124,8 @@
 
                 <!-- Contenedor Detalle de cada Noticia -->
                 <div id="noticia-detail-container" class="hidden">
-                    <button id="not-detail-back-btn" type="button" onclick="closeNoticiaDetail()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                    <button id="not-detail-back-btn" type="button" onclick="closeNoticiaDetail()"
+                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
                         <span>← Volver</span>
                     </button>
                     <div id="noticia-detail-content">
@@ -861,16 +1138,19 @@
         <!-- VISTA DEDICADA PARA OTRAS SECCIONES -->
         <section id="subpage-view" class="hidden mb-16">
             <div class="bg-cream/95 rounded-[2.25rem] p-8 sm:p-12 border border-tomato/15 relative overflow-hidden">
-                <button onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2 rounded-full transition-colors mb-6 cursor-pointer">
+                <button onclick="showMainPortal('inicio')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2 rounded-full transition-colors mb-6 cursor-pointer">
                     <i data-lucide="arrow-left" class="w-4 h-4"></i>
                     <span id="subpage-back-label">Volver al inicio</span>
                 </button>
 
                 <div class="max-w-2xl">
-                    <span id="subpage-badge" class="inline-block text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3"></span>
+                    <span id="subpage-badge"
+                        class="inline-block text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3"></span>
                     <h2 id="subpage-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato mb-4"></h2>
                     <p id="subpage-description" class="text-base text-[#4A3F3F] leading-relaxed mb-8"></p>
-                    <div id="subpage-note" class="p-6 rounded-2xl bg-white border border-tomato/10 text-sm text-[#6E5D5D]">
+                    <div id="subpage-note"
+                        class="p-6 rounded-2xl bg-white border border-tomato/10 text-sm text-[#6E5D5D]">
                         Espacio reservado para el contenido y perfil técnico de esta sección.
                     </div>
                 </div>
@@ -878,11 +1158,16 @@
         </section>
 
         <!-- FOOTER MINIMALISTA -->
-        <footer class="bg-cream rounded-[2rem] px-7 py-5 border border-tomato/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#5C4E4E]">
+        <footer
+            class="bg-cream rounded-[2rem] px-7 py-5 border border-tomato/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#5C4E4E]">
             <div aria-label="ADVENT" class="inline-flex items-center select-none">
                 <svg class="h-8 w-auto text-black" viewBox="0 0 132 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z" fill="currentColor"/>
-                    <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5" letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
+                        fill="currentColor" />
+                    <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
+                        font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5"
+                        letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
                 </svg>
             </div>
 
@@ -2282,7 +2567,12 @@
 
         // Datos completos de los 31 Profesores de Informática
         const informaticaProfesoresData = [
-            { name: 'Fabiana Roja', gender: 'F', subjects: ['Lengua 4C.', 'Lengua 5C.', 'Lengua 6C.'], areas: ['humanistica'] },
+            {
+                name: 'Fabiana Roja', 
+                gender: 'F', 
+                photo: 'img/profesores/roja.jpg',
+                subjects: ['Lengua 4C.', 'Lengua 5C.', 'Lengua 6C.'], 
+                areas: ['humanistica'] },
             { name: 'Silvana Siab', gender: 'F', subjects: ['Biología 4C.'], areas: ['humanistica'] },
             { name: 'Laura Farías', gender: 'F', subjects: ['Matemática 4C.', 'Matemática 5C.'], areas: ['cientifica'] },
             { name: 'Miguel Martín', gender: 'M', subjects: ['Laboratorio de Aplicaciones 4C.', 'Sistemas y Organizaciones 5C.', 'Laboratorio de Aplicaciones II 6C.', 'Bases de Datos 6C.'], areas: ['tecnica'] },
@@ -3430,7 +3720,7 @@
                         }
                     },
                     {
-                        name: 'Felipe Virgo',
+                        name: 'Felipe Virga',
                         course: '7C',
                         paragraphs: {
                             es: [
@@ -3452,7 +3742,7 @@
                         }
                     },
                     {
-                        name: 'Alan Tablal Aguirre',
+                        name: 'Alan Tahiel Aguirre',
                         course: '7B',
                         paragraphs: {
                             es: [
@@ -3488,7 +3778,7 @@
                         }
                     },
                     {
-                        name: 'Lucas Gauna',
+                        name: 'Lucca Gremo',
                         course: '7C',
                         paragraphs: {
                             es: [
@@ -5999,68 +6289,65 @@
         renderNoticiasGrid();
     </script>
 
-<!-- ========================================================= -->
-<!-- MASCOTA FIJA INFERIOR DERECHA + CUESTIONARIO ADVENT       -->
-<!-- Reemplazá el bloque anterior por este antes de </body>    -->
-<!-- ========================================================= -->
-<style>
-    #advent-mascot-container {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        z-index: 45;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        cursor: pointer;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-    }
+    <!-- ========================================================= -->
+    <!-- MASCOTA FIJA INFERIOR DERECHA + CUESTIONARIO ADVENT       -->
+    <!-- Reemplazá el bloque anterior por este antes de </body>    -->
+    <!-- ========================================================= -->
+    <style>
+        #advent-mascot-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 45;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-    #mascot-bubble {
-        background: #FFFBF7;
-        color: #C42B34;
-        border: 1.5px solid rgba(196, 43, 52, 0.3);
-        padding: 8px 16px;
-        border-radius: 999px;
-        font-size: 13px;
-        font-weight: 800;
-        box-shadow: 0 8px 20px rgba(45, 36, 36, 0.14);
-        margin-bottom: 10px;
-        white-space: nowrap;
-        opacity: 0;
-        transform: translateY(8px) scale(0.95);
-        pointer-events: none;
-        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+        #mascot-bubble {
+            background: #FFFBF7;
+            color: #C42B34;
+            border: 1.5px solid rgba(196, 43, 52, 0.3);
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(45, 36, 36, 0.14);
+            margin-bottom: 10px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateY(8px) scale(0.95);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-    /* Se muestra al pasar el mouse (hover) o al tocar con el dedo (.active-touch) */
-    #advent-mascot-container:hover #mascot-bubble,
-    #advent-mascot-container.active-touch #mascot-bubble {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+        /* Se muestra al pasar el mouse (hover) o al tocar con el dedo (.active-touch) */
+        #advent-mascot-container:hover #mascot-bubble,
+        #advent-mascot-container.active-touch #mascot-bubble {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
 
-    #advent-mascot {
-        width: 105px;
-        height: auto;
-        filter: drop-shadow(0 8px 16px rgba(45, 36, 36, 0.22));
-        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
-        animation: mascotGentleIdle 3.2s ease-in-out infinite;
-    }
+        #advent-mascot {
+            width: 105px;
+            height: auto;
+            filter: drop-shadow(0 8px 16px rgba(45, 36, 36, 0.22));
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+            animation: mascotGentleIdle 3.2s ease-in-out infinite;
+        }
 
-    #advent-mascot-container:hover #advent-mascot,
-    #advent-mascot-container.active-touch #advent-mascot {
-        transform: scale(1.07) translateY(-4px);
-        filter: drop-shadow(0 12px 22px rgba(196, 43, 52, 0.35));
-    }
+        #advent-mascot-container:hover #advent-mascot,
+        #advent-mascot-container.active-touch #advent-mascot {
+            transform: scale(1.07) translateY(-4px);
+            filter: drop-shadow(0 12px 22px rgba(196, 43, 52, 0.35));
+        }
 
-    @keyframes mascotGentleIdle {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-    }
-</style>
+        @keyframes mascotGentleIdle {
 
+<<<<<<< HEAD
 <!-- Mascota Fija en la esquina inferior derecha -->
 <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
     <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
@@ -6153,11 +6440,14 @@
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 openCuestionarioView();
+=======
+            0%,
+            100% {
+                transform: translateY(0px);
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
             }
-        });
-    })();
-</script>
 
+<<<<<<< HEAD
 <!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
 <section id="cuestionario-vocab-view" class="hidden mb-16">
     <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
@@ -6165,12 +6455,216 @@
         <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
             <span>← Volver</span>
         </button>
+=======
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+
+    <!-- Mascota Fija en la esquina inferior derecha -->
+    <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT"
+        title="¡Hacer cuestionario!">
+        <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
+        <div id="advent-mascot">
+            <!-- Asegurate de que el nombre coincida con tu archivo de imagen (ej: nena.jpg o nena.jpeg) -->
+            <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
+        </div>
+    </div>
+
+    <!-- SECCIÓN: CUESTIONARIO ADVENT (Se abre al hacer clic en la nena) -->
+    <section id="cuestionario-view" class="hidden mb-16">
+        <div
+            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl">
+            <button type="button" onclick="showMainPortal('inicio')"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                <span>← Volver al inicio</span>
+            </button>
+
+            <div class="max-w-3xl mb-8">
+                <span
+                    class="inline-block text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 bg-softpink text-tomato">Sección
+                    Interactiva</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight mb-3">Cuestionario
+                    ADVENT</h2>
+                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-4"></div>
+                <p class="text-base text-[#4A3F3F] leading-relaxed">
+                    Poné a prueba tus conocimientos sobre el portal, las especialidades técnicas y tu futuro
+                    profesional. ¡Completá las preguntas guiado por nuestra mascota!
+                </p>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/15 shadow-2xs space-y-6">
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">1. ¿Cuántos años de formación
+                            técnica integral ofrece ADVENT?</h3>
+                        <div class="space-y-2 text-sm text-[#4A3F3F]">
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="a" class="accent-tomato"> 3 años</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="b" class="accent-tomato"> 5 años</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
+                                    value="c" class="accent-tomato"> 7 años de formación</label>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
+                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">2. ¿Cuál de las siguientes
+                            orientaciones forma parte de las especialidades técnicas?</h3>
+                        <div class="space-y-2 text-sm text-[#4A3F3F]">
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="a" class="accent-tomato"> Informática, Química y Construcciones</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="b" class="accent-tomato"> Astronomía y Aviación</label>
+                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
+                                    value="c" class="accent-tomato"> Biología Marina</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex items-center justify-between border-t border-tomato/10">
+                    <button type="button"
+                        onclick="alert('¡Cuestionario enviado con éxito! Gracias por participar en ADVENT.')"
+                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-colors cursor-pointer shadow-md">
+                        Enviar respuestas
+                    </button>
+                    <span class="text-xs font-semibold text-[#7A6B6B]">Orientación Educativa 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function openCuestionarioView() {
+            if (typeof hideAllViews === 'function') hideAllViews();
+            const view = document.getElementById('cuestionario-view');
+            if (view) view.classList.remove('hidden');
+            if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        (function initFixedMascotButton() {
+            const container = document.getElementById('advent-mascot-container');
+            if (!container) return;
+
+            let touchTimeout;
+
+            // Soporte táctil para celulares/tablets: al apoyar el dedo muestra el cartelito
+            container.addEventListener('touchstart', () => {
+                container.classList.add('active-touch');
+                clearTimeout(touchTimeout);
+                touchTimeout = setTimeout(() => {
+                    container.classList.remove('active-touch');
+                }, 2500);
+            }, { passive: true });
+
+            // Al hacer clic o tocar, abre la vista del cuestionario
+            container.addEventListener('click', () => {
+                openCuestionarioView();
+            });
+
+            // Accesibilidad con teclado (Enter o Espacio)
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openCuestionarioView();
+                }
+            });
+        })();
+    </script>
+
+    <!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
+    <section id="cuestionario-vocab-view" class="hidden mb-16">
+        <div
+            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+
+            <button onclick="showMainPortal('inicio')"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
+                <span>← Volver</span>
+            </button>
+
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de
+                    Intereses Vocacionales</h2>
+                <p class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para
+                    calcular tu puntaje en cada orientación.</p>
+            </div>
+
+            <!-- Formulario de Datos Obligatorios -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre
+                        *</label>
+                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido
+                        *</label>
+                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
+                </div>
+                <div>
+                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso
+                        *</label>
+                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A"
+                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
+                        required>
+                </div>
+            </div>
+
+            <!-- Instrucciones -->
+            <div class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+                <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
+                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
+                    Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta[cite: 3]<br>
+                    <strong>I (2 puntos)</strong> = Me es indiferente[cite: 3]<br>
+                    <strong>A (3 puntos)</strong> = Me agrada / me gusta[cite: 3]
+                </p>
+            </div>
+
+            <!-- Contenedor dinámico de las 106 preguntas -->
+            <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
+                <div id="preguntas-container" class="space-y-6 mb-10">
+                    <!-- Se inyectan mediante JavaScript -->
+                </div>
+
+                <div class="text-center">
+                    <button type="submit"
+                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                        Calcular Puntajes por Área →
+                    </button>
+                </div>
+            </form>
+
+            <!-- Contenedor de Resultados (Oculto al inicio) -->
+            <div id="resultados-container"
+                class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+                <h3 class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario
+                    Vocacional!</h3>
+                <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
+
+                <h4 class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
+                    <!-- Puntajes detallados por área -->
+                </div>
+
+                <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
+                    <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
+                </div>
+            </div>
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
 
         <div class="text-center mb-10">
             <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
             <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
         </div>
 
+<<<<<<< HEAD
         <!-- Formulario de Datos Obligatorios -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
             <div>
@@ -6455,6 +6949,144 @@
                             <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
                             <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
                         </label>
+=======
+    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
+    <script>
+        const preguntasVocacionales = [
+            "Trabajar resolviendo cálculos físicos y matemáticos",
+            "Investigar el nivel de los precops",
+            "Aprender estilos de pintura artística",
+            "Hacer esculturas",
+            "Trabaja en estudios jurídicos",
+            "Estudiar derecho Constitucional",
+            "Aprender a interpretar radiografías",
+            "Asesorar a estudiantes sobre orientación vocacional",
+            "Reparar la dentadura de una persona",
+            "Trabajar con equipos electrónicos",
+            "Estudiar los ecosistemas de una región",
+            "Organizar la producción de una industria química",
+            "Aprender a diseñar y decorar ambientes",
+            "Realizar cálculos físicos matemáticos de estructuras",
+            "Resolver ejercicios matemáticos",
+            "Planificar actividades administrativas de una empresa",
+            "Realizar una crítica a una obra literaria y cinematográfica",
+            "Conocer técnicas y materiales de dibujo artístico",
+            "Enseñar contenidos matemáticos",
+            "Exponer casos jurídicos en audiencias o juicios",
+            "Aprender sobre causas y tratamientos de enfermedades",
+            "Trabajar en centros médicos",
+            "Armar y reparar computadoras",
+            "Diseñar páginas web",
+            "Planificar la construcción de obras fluviales y marítimas",
+            "Supervisar obras en construcción",
+            "Aprender a realizar pronósticos metereológicos",
+            "Realizar análisis químicos",
+            "Investigar centros y movimientos sísmicos",
+            "Aprender anatomía",
+            "Evaluar daños de viviendas y edificios",
+            "Aprender anatomía",
+            "Evaluar daños de viviendas y edificios",
+            "Construir puentes",
+            "Investigar sobre diferentes enfermedades mentales",
+            "Ayudar a fortalecer músculos en una persona",
+            "Llevar adelante pago de impuestos de otras personas",
+            "Asesorar financieramente a empresas",
+            "Aprender a tomar fotografías",
+            "Crear música con software",
+            "Analizar las condiciones y habitat de vida de una familia",
+            "Tomar declaración a personas acusadas de un delito",
+            "Diseñar juegos electrónicos",
+            "Realizar edición de música y videos",
+            "Aprender el proceso de formación de sustancias",
+            "Realizar análisis químicos de productos industriales",
+            "Evaluar el estado de conexiones eléctricas",
+            "Asesorar a empresas constructoras",
+            "Investigar donde se almacena información tecnológica",
+            "Reconocer los diferentes programas informáticos",
+            "Elaborar dietas para pacientes",
+            "Trabajar en un banco",
+            "Analizar temas de comercio internacional",
+            "Enseñar a niños",
+            "Analizar problemáticas sociales",
+            "Musicalizar obras teatrales",
+            "Realizar artesanías",
+            "Ayudar a personas enfermas",
+            "Ayudar a personas con problemas emocionales",
+            "Investigar sobre nuevas aplicaciones tecnológicas",
+            "Producir programas televisivos",
+            "Realizar experimentos para desarrollar productos curativos",
+            "Analizar fórmulas científicas",
+            "Investigar índice de precios",
+            "Organizar una empresa",
+            "Supervisar las condiciones laborales de una empresa",
+            "Investigar conocimientos históricos",
+            "Leer partituras",
+            "Organizar conciertos musicales",
+            "Trabajar en laboratorios",
+            "Investigar el movimiento de los átomos",
+            "Diseñar y controlar planos de una casa",
+            "Trabajar con elementos de geometría",
+            "Cuidar a personas con capacidades especiales",
+            "Ayudar a niños con problemas de aprendizaje",
+            "Aprender a realizar guiones audiovisuales",
+            "Diseñar ropa",
+            "Diseñar un sistema operativo informática",
+            "Realizar diagnóstico de autos por computadoras",
+            "Diseñar amueblamientos para una casa",
+            "Investigar sobre materiales ecológicos para la construcción de viviendas",
+            "Llevar adelante el pago de sueldo de trabajadores",
+            "Realizar el seguimiento contable de una empresa o comercio",
+            "Llevar adelante el pago de sueldo de trabajadores",
+            "Tocar en una banda musical",
+            "Realizar notas periodísticas para una radio",
+            "Organizar las relaciones públicas de una empresa",
+            "Conocer sobre redes informáticas",
+            "Analizar logaritmos",
+            "Conocer los componentes químicos de un alimento",
+            "Experimentar con reactivos químicos",
+            "Diseñar un avión",
+            "Diseñar obras de ingeniería",
+            "Programar computadoras",
+            "Diseñar el prototipo de una máquina",
+            "Curar animales",
+            "Socorrer emergencias médicas",
+            "Conocer y viajar por distintos lugsares del mundo",
+            "Enseñar deportes",
+            "Conocer diferentes drogas y sus efectos",
+            "Experimentar para descubrir nuevas variedades de vegetales",
+            "Conocer y realizar cálculos estructurales de una vivienda",
+            "Realizar el diseño de donde ubicar viviendas en una ciudad",
+            "Asesorar a personas sobre inversiones financieras",
+            "Aprender álgebra",
+            "Investigar sobre las propiedades de diferentes metales",
+            "Asesorar sobre el cuidado de vegetales",
+        ];
+
+        // Renderizar dinámicamente las 106 preguntas
+        function inicializarPreguntas() {
+            const container = document.getElementById('preguntas-container');
+            if (!container) return;
+
+            container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
+                const num = index + 1;
+                return `
+                    <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${pregunta}</p>
+                        <div class="flex items-center gap-3 shrink-0">
+                            <label title="Desagrada (1 pt)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="D" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
+                            </label>
+                            <label title="Indiferente (2 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="I" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
+                            </label>
+                            <label title="Agrada (3 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="A" class="sr-only peer" required>
+                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
+                            </label>
+                        </div>
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
                     </div>
                 </div>
             `;
@@ -6564,8 +7196,67 @@
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
+<<<<<<< HEAD
             const val = seleccion.value;
             respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
+=======
+
+            // Validar que todas las 106 preguntas estén contestadas
+            let respuestas = {};
+            for (let i = 1; i <= 106; i++) {
+                const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
+                if (!seleccion) {
+                    alert(`Te falta responder la pregunta número ${i}. ¡Todas son obligatorias!`);
+                    const el = document.querySelector(`input[name="p_${i}"]`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return;
+                }
+                const val = seleccion.value;
+                respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
+            }
+
+            // Agrupación oficial de áreas e ítems según el documento[cite: 3]
+            const areasDef = {
+                "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
+                "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
+                "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
+                "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
+                "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
+                "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
+                "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
+            };
+
+            let totalesArea = {};
+            let maxPuntaje = -1;
+            let mejoresAreas = [];
+
+            for (let area in areasDef) {
+                let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+                totalesArea[area] = suma;
+                if (suma > maxPuntaje) {
+                    maxPuntaje = suma;
+                    mejoresAreas = [area];
+                } else if (suma === maxPuntaje) {
+                    mejoresAreas.push(area);
+                }
+            }
+
+            // Mostrar resultados en pantalla
+            document.getElementById('res-alumno').textContent = `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`;
+
+            const grid = document.getElementById('res-puntajes-grid');
+            grid.innerHTML = Object.entries(totalesArea).map(([area, ptos]) => `
+                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                    <span class="font-bold text-xs text-[#2D2424]">${area}</span>
+                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} puntos</span>
+                </div>
+            `).join('');
+
+            document.getElementById('res-mayor-area').textContent = `Las 2 áreas (o áreas principales) con mayor puntaje son: ${mejoresAreas.join(' y ')}`;
+
+            document.getElementById('resultados-container').classList.remove('hidden');
+            document.getElementById('resultados-container').scrollIntoView({ behavior: 'smooth' });
+>>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
         }
 
         const areasDef = {
@@ -7265,4 +7956,5 @@ const langObserver = new MutationObserver(applyQuizLanguage);
 langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 </script>
 </body>
+
 </html>
