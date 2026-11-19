@@ -213,7 +213,7 @@
                     </div>
 
                     <div class="flex items-end justify-between gap-4">
-                        <a href="#especialidades" onclick="showMainPortal('especialidades'); return false;" class="inline-flex items-center gap-2.5 bg-tomato hover:bg-[#a6222a] text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg">
+                        <a href="#empresa" onclick="openEmpresaPage(); return false;" class="inline-flex items-center gap-2.5 bg-tomato hover:bg-[#a6222a] text-white font-semibold text-sm sm:text-base px-7 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0">
                             <span id="hero-cta">Nuestra empresa →</span>
                         </a>
 
@@ -1439,9 +1439,6 @@
                             paragraphs: [
                                 'Para consultar carreras, fechas de inscripción, cursillos de ingreso y planes de estudio actualizados, podés visitar el portal oficial de la universidad.'
                             ],
-                            links: [
-                                { label: 'Visitar sitio oficial de la UNC', url: 'https://www.unc.edu.ar/' }
-                            ]
                         }
                     ],
                     en: [
@@ -1476,9 +1473,6 @@
                             paragraphs: [
                                 'To check degree programs, enrollment dates, entrance courses, and updated curricula, visit the official university website.'
                             ],
-                            links: [
-                                { label: 'Visit official UNC website', url: 'https://www.unc.edu.ar/' }
-                            ]
                         }
                     ]
                 }
@@ -1554,9 +1548,6 @@
                             paragraphs: [
                                 'Para consultar las carreras disponibles, los requisitos de ingreso, los planes de estudio, las modalidades de cursado y las fechas de inscripción, se puede acceder al sitio oficial de la Facultad Regional Córdoba.'
                             ],
-                            links: [
-                                { label: 'Visitar sitio oficial de la UTN Córdoba', url: 'https://www.frc.utn.edu.ar/' }
-                            ]
                         },
                         {
                             heading: 'Oportunidades para egresados de escuelas técnicas',
@@ -1565,9 +1556,6 @@
                                 'Según el título secundario técnico obtenido y la Tecnicatura Universitaria elegida, existe la posibilidad de que algunas materias sean reconocidas, facilitando la continuidad de los estudios superiores.',
                                 'Este reconocimiento depende de los requisitos y las condiciones establecidas por la universidad. Por eso, es importante consultar previamente cuáles son las materias que pueden homologarse.'
                             ],
-                            links: [
-                                { label: 'Consultar homologación para escuelas técnicas', url: 'https://www.frc.utn.edu.ar/' }
-                            ]
                         }
                     ],
                     en: [
@@ -1631,9 +1619,6 @@
                             paragraphs: [
                                 'To check available programs, admission requirements, curricula, study modalities, and enrollment dates, you can access the official website of the Córdoba Regional Faculty.'
                             ],
-                            links: [
-                                { label: 'Visit official UTN Córdoba website', url: 'https://www.frc.utn.edu.ar/' }
-                            ]
                         },
                         {
                             heading: 'Opportunities for technical school graduates',
@@ -1642,9 +1627,6 @@
                                 'Depending on the technical high school diploma earned and the chosen University Associate Degree, certain subjects may be credited, facilitating continuity in higher education.',
                                 'This credit recognition depends on the requirements and conditions established by the university, so it is important to check beforehand which courses qualify for equivalency.'
                             ],
-                            links: [
-                                { label: 'Check course equivalency for technical schools', url: 'https://www.frc.utn.edu.ar/' }
-                            ]
                         }
                     ]
                 }
@@ -1691,9 +1673,6 @@
                             paragraphs: [
                                 'Para conocer las carreras disponibles, los requisitos de ingreso, planes de estudio y fechas de inscripción, se puede consultar el sitio oficial de la universidad.'
                             ],
-                            links: [
-                                { label: 'Visitar sitio oficial de la UCC', url: 'https://www.ucc.edu.ar/' }
-                            ]
                         },
                         {
                             heading: 'Convenios con Instituto El Obraje',
@@ -1734,9 +1713,6 @@
                             paragraphs: [
                                 'To check available degree programs, admission requirements, curricula, and enrollment dates, you can visit the official university website.'
                             ],
-                            links: [
-                                { label: 'Visit official UCC website', url: 'https://www.ucc.edu.ar/' }
-                            ]
                         },
                         {
                             heading: 'Agreements with Instituto El Obraje',
@@ -4135,7 +4111,7 @@
                 const links = sec.links ? `
                     <div class="mt-4 flex flex-wrap gap-3">
                         ${sec.links.map(l => `
-                            <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors">
+                            <a href="${l.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="relative z-20 inline-flex items-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
                                 <span>${l.label}</span>
                                 <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
                             </a>
@@ -5855,6 +5831,10 @@
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             applyLanguage();
+
+            if (typeof traducirCuestionarioUI === 'function') {
+    traducirCuestionarioUI();
+}
         }
 
         function applyLanguage() {
@@ -6144,6 +6124,8 @@
         if (view) view.classList.remove('hidden');
         if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        const footer = document.querySelector('footer');
+        if (footer) footer.classList.remove('hidden');
     }
 
     (function initFixedMascotButton() {
@@ -6177,291 +6159,1110 @@
 </script>
 
 <!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
-    <section id="cuestionario-vocab-view" class="hidden mb-16">
-        <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
-            
-            <button onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
-                <span>← Volver</span>
-            </button>
+<section id="cuestionario-vocab-view" class="hidden mb-16">
+    <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+        
+        <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
+            <span>← Volver</span>
+        </button>
 
-            <div class="text-center mb-10">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
-                <p class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
-            </div>
-
-            <!-- Formulario de Datos Obligatorios -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
-                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                </div>
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
-                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                </div>
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
-                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                </div>
-            </div>
-
-            <!-- Instrucciones -->
-            <div class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
-                <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
-                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
-                    Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta[cite: 3]<br>
-                    <strong>I (2 puntos)</strong> = Me es indiferente[cite: 3]<br>
-                    <strong>A (3 puntos)</strong> = Me agrada / me gusta[cite: 3]
-                </p>
-            </div>
-
-            <!-- Contenedor dinámico de las 106 preguntas -->
-            <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
-                <div id="preguntas-container" class="space-y-6 mb-10">
-                    <!-- Se inyectan mediante JavaScript -->
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
-                        Calcular Puntajes por Área →
-                    </button>
-                </div>
-            </form>
-
-            <!-- Contenedor de Resultados (Oculto al inicio) -->
-            <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
-                <h3 class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
-                <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
-                
-                <h4 class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
-                    <!-- Puntajes detallados por área -->
-                </div>
-
-                <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
-                    <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
-                </div>
-            </div>
-
+        <div class="text-center mb-10">
+            <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
+            <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
         </div>
-    </section>
 
-    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
-    <script>
-        const preguntasVocacionales = [
-            "Trabajar resolviendo cálculos físicos y matemáticos[cite: 3]",
-            "Investigar el nivel de los precios[cite: 3]",
-            "Aprender estilos de pintura artística[cite: 3]",
-            "Hacer esculturas[cite: 3]",
-            "Trabaja en estudios jurídicos[cite: 3]",
-            "Estudiar derecho Constitucional[cite: 3]",
-            "Aprender a interpretar radiografías[cite: 3]",
-            "Asesorar a estudiantes sobre orientación vocacional[cite: 3]",
-            "Reparar la dentadura de una persona[cite: 3]",
-            "Trabajar con equipos electrónicos[cite: 3]",
-            "Estudiar los ecosistemas de una región[cite: 3]",
-            "Organizar la producción de una industria química[cite: 3]",
-            "Aprender a diseñar y decorar ambientes[cite: 3]",
-            "Realizar cálculos físicos matemáticos de estructuras[cite: 3]",
-            "Resolver ejercicios matemáticos[cite: 3]",
-            "Planificar actividades administrativas de una empresa[cite: 3]",
-            "Realizar una crítica a una obra literaria y cinematográfica[cite: 3]",
-            "Conocer técnicas y materiales de dibujo artístico[cite: 3]",
-            "Enseñar contenidos matemáticos[cite: 3]",
-            "Exponer casos jurídicos en audiencias o juicios[cite: 3]",
-            "Aprender sobre causas y tratamientos de enfermedades[cite: 3]",
-            "Trabajar en centros médicos[cite: 3]",
-            "Armar y reparar computadoras[cite: 3]",
-            "Diseñar páginas web[cite: 3]",
-            "Planificar la construcción de obras fluviales y marítimas[cite: 3]",
-            "Supervisar obras en construcción[cite: 3]",
-            "Aprender a realizar pronósticos meteorológicos[cite: 3]",
-            "Realizar análisis químicos[cite: 3]",
-            "Investigar centros y movimientos sísmicos[cite: 3]",
-            "Aprender anatomía[cite: 3]",
-            "Evaluar daños de viviendas y edificios[cite: 3]",
-            "Construir puentes[cite: 3]",
-            "Investigar sobre diferentes enfermedades mentales[cite: 3]",
-            "Ayudar a fortalecer músculos en una persona[cite: 3]",
-            "Llevar adelante pago de impuestos de otras personas[cite: 3]",
-            "Asesorar financieramente a empresas[cite: 3]",
-            "Aprender a tomar fotografías[cite: 3]",
-            "Crear música con software[cite: 3]",
-            "Analizar las condiciones y habitat de vida de una familia[cite: 3]",
-            "Tomar declaración a personas acusadas de un delito[cite: 3]",
-            "Diseñar juegos electrónicos[cite: 3]",
-            "Realizar edición de música y videos[cite: 3]",
-            "Aprender el proceso de formación de sustancias[cite: 3]",
-            "Realizar análisis químicos de productos industriales[cite: 3]",
-            "Evaluar el estado de conexiones eléctricas[cite: 3]",
-            "Asesorar a empresas constructoras[cite: 3]",
-            "Investigar dónde se almacena información tecnológica[cite: 3]",
-            "Reconocer los diferentes programas informáticos[cite: 3]",
-            "Elaborar dietas para pacientes[cite: 3]",
-            "Trabajar en un banco[cite: 3]",
-            "Analizar temas de comercio internacional[cite: 3]",
-            "Enseñar a niños[cite: 3]",
-            "Analizar problemáticas sociales[cite: 3]",
-            "Musicalizar obras teatrales[cite: 3]",
-            "Realizar artesanías[cite: 3]",
-            "Ayudar a personas enfermas[cite: 3]",
-            "Ayudar a personas con problemas emocionales[cite: 3]",
-            "Investigar sobre nuevas aplicaciones tecnológicas[cite: 3]",
-            "Producir programas televisivos[cite: 3]",
-            "Realizar experimentos para desarrollar productos curativos[cite: 3]",
-            "Analizar formulas científicas[cite: 3]",
-            "Investigar índice de precios[cite: 3]",
-            "Organizar una empresa[cite: 3]",
-            "Supervisar las condiciones laborales de una empresa[cite: 3]",
-            "Investigar acontecimientos históricos[cite: 3]",
-            "Leer partituras[cite: 3]",
-            "Organizar conciertos musicales[cite: 3]",
-            "Trabajar en laboratorios[cite: 3]",
-            "Investigar el movimiento de los átomos[cite: 3]",
-            "Diseñar y controlar planos de una casa[cite: 3]",
-            "Trabajar con elementos de geometría[cite: 3]",
-            "Cuidar a personas con capacidades especiales[cite: 3]",
-            "Ayudar a niños con problemas de aprendizaje[cite: 3]",
-            "Aprender a realizar guiones con audiovisuales[cite: 3]",
-            "Diseñar ropa[cite: 3]",
-            "Diseñar un sistema operativo informática[cite: 3]",
-            "Realizar diagnóstico de autos por computadoras[cite: 3]",
-            "Diseñar amueblamientos para una casa[cite: 3]",
-            "Investigar sobre materiales ecológicos para la construcción de viviendas[cite: 3]",
-            "Llevar adelante el pago de sueldo de trabajadores[cite: 3]",
-            "Realizar el seguimiento contable de una empresa o comercio[cite: 3]",
-            "Realizar una pintura mural[cite: 3]",
-            "Tocar en una banda musical[cite: 3]",
-            "Realizar notas periodísticas para una radio[cite: 3]",
-            "Organizar las relaciones públicas de una empresa[cite: 3]",
-            "Conocer sobre redes informáticas[cite: 3]",
-            "Analizar logaritmos[cite: 3]",
-            "Conocer los componentes químicos de un alimento[cite: 3]",
-            "Experimentar con reactivos químicos[cite: 3]",
-            "Diseñar un avión[cite: 3]",
-            "Diseñar obras de ingeniería[cite: 3]",
-            "Programar Computadoras[cite: 3]",
-            "Diseñar el prototipo de una maquina[cite: 3]",
-            "Curar animales[cite: 3]",
-            "Socorrer emergencias médicas[cite: 3]",
-            "Conocer y viajar por distintos lugares del mundo[cite: 3]",
-            "Enseñar deportes[cite: 3]",
-            "Conocer diferentes drogas y sus efectos[cite: 3]",
-            "Experimentar para descubrir nuevas variedades de vegetales[cite: 3]",
-            "Conocer y realizar cálculos estructurales de una vivienda[cite: 3]",
-            "Realizar el diseño de donde ubicar viviendas en una ciudad[cite: 3]",
-            "Asesorar a personas sobre inversiones financieras[cite: 3]",
-            "Aprender algebra[cite: 3]",
-            "Investigar sobre las propiedades de diferentes metales[cite: 3]",
-            "Asesorar sobre el cuidado de los vegetales[cite: 3]"
-        ];
+        <!-- Formulario de Datos Obligatorios -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+            <div>
+                <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
+                <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+            <div>
+                <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
+                <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+            <div>
+                <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
+                <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+            </div>
+        </div>
 
-        // Renderizar dinámicamente las 106 preguntas
-        function inicializarPreguntas() {
-            const container = document.getElementById('preguntas-container');
-            if (!container) return;
+        <!-- Instrucciones -->
+        <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+            <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
+            <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
+                Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
+                <strong>I (2 puntos)</strong> = Me es indiferente<br>
+                <strong>A (3 puntos)</strong> = Me agrada / me gusta
+            </p>
+        </div>
+
+        <!-- Contenedor dinámico de las 106 preguntas -->
+        <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
+            <div id="preguntas-container" class="space-y-6 mb-10">
+                <!-- Se inyectan mediante JavaScript -->
+            </div>
+
+            <div class="text-center">
+                <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                    Calcular Puntajes por Área →
+                </button>
+            </div>
+        </form>
+
+        <!-- Contenedor de Resultados (Oculto al inicio) -->
+        <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+            <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
+            <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
             
-            container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
-                const num = index + 1;
-                return `
-                    <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${pregunta}</p>
-                        <div class="flex items-center gap-3 shrink-0">
-                            <label title="Desagrada (1 pt)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="D" class="sr-only peer" required>
-                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
-                            </label>
-                            <label title="Indiferente (2 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="I" class="sr-only peer" required>
-                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
-                            </label>
-                            <label title="Agrada (3 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="A" class="sr-only peer" required>
-                                <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
-                            </label>
-                        </div>
+            <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
+                <!-- Puntajes detallados por área -->
+            </div>
+
+            <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
+                <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
+<script>
+    const preguntasVocacionales = [
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar el nivel de los precios", en: "Investigating price levels" },
+        { es: "Aprender estilos de pintura artística", en: "Learning artistic painting styles" },
+        { es: "Hacer esculturas", en: "Making sculptures" },
+        { es: "Trabaja en estudios jurídicos", en: "Working in law firms" },
+        { es: "Estudiar derecho Constitucional", en: "Studying Constitutional Law" },
+        { es: "Aprender a interpretar radiografías", en: "Learning to read X-rays" },
+        { es: "Asesorar a estudiantes sobre orientación vocacional", en: "Advising students on vocational guidance" },
+        { es: "Reparar la dentadura de una persona", en: "Fixing a person's teeth" },
+        { es: "Trabajar con equipos electrónicos", en: "Working with electronic equipment" },
+        { es: "Estudiar los ecosistemas de una región", en: "Studying the ecosystems of a region" },
+        { es: "Organizar la producción de una industria química", en: "Organizing production in a chemical industry" },
+        { es: "Aprender a diseñar y decorar ambientes", en: "Learning to design and decorate spaces" },
+        { es: "Realizar cálculos físicos matemáticos de estructuras", en: "Performing physical and mathematical calculations for structures" },
+        { es: "Resolver ejercicios matemáticos", en: "Solving math exercises" },
+        { es: "Planificar actividades administrativas de una empresa", en: "Planning administrative activities for a company" },
+        { es: "Realizar una crítica a una obra literaria y cinematográfica", en: "Writing a critique of a literary and film work" },
+        { es: "Conocer técnicas y materiales de dibujo artístico", en: "Learning artistic drawing techniques and materials" },
+        { es: "Enseñar contenidos matemáticos", en: "Teaching math topics" },
+        { es: "Exponer casos jurídicos en audiencias o juicios", en: "Presenting legal cases in hearings or trials" },
+        { es: "Aprender sobre causas y tratamientos de enfermedades", en: "Learning about causes and treatments of illnesses" },
+        { es: "Trabajar en centros médicos", en: "Working in medical centers" },
+        { es: "Armar y reparar computadoras", en: "Assembling and repairing computers" },
+        { es: "Diseñar páginas web", en: "Designing web pages" },
+        { es: "Planificar la construcción de obras fluviales y marítimas", en: "Planning the construction of river and marine works" },
+        { es: "Supervisar obras en construcción", en: "Supervising construction sites" },
+        { es: "Aprender a realizar pronósticos meteorológicos", en: "Learning to make weather forecasts" },
+        { es: "Realizar análisis químicos", en: "Performing chemical analyses" },
+        { es: "Investigar centros y movimientos sísmicos", en: "Researching seismic centers and movements" },
+        { es: "Aprender anatomía", en: "Learning anatomy" },
+        { es: "Evaluar daños de viviendas y edificios", en: "Assessing damage to homes and buildings" },
+        { es: "Construir puentes", en: "Building bridges" },
+        { es: "Investigar sobre diferentes enfermedades mentales", en: "Researching different mental illnesses" },
+        { es: "Ayudar a fortalecer músculos en una persona", en: "Helping strengthen a person's muscles" },
+        { es: "Llevar adelante pago de impuestos de otras personas", en: "Handling tax payments for other people" },
+        { es: "Asesorar financieramente a empresas", en: "Providing financial advice to companies" },
+        { es: "Aprender a tomar fotografías", en: "Learning how to take photographs" },
+        { es: "Crear música con software", en: "Creating music with software" },
+        { es: "Analizar las condiciones y habitat de vida de una familia", en: "Analyzing a family's living conditions and habitat" },
+        { es: "Tomar declaración a personas acusadas de un delito", en: "Taking statements from people accused of a crime" },
+        { es: "Diseñar juegos electrónicos", en: "Designing video games" },
+        { es: "Realizar edición de música y videos", en: "Editing music and videos" },
+        { es: "Aprender el proceso de formación de sustancias", en: "Learning how substances are formed" },
+        { es: "Realizar análisis químicos de productos industriales", en: "Performing chemical analyses of industrial products" },
+        { es: "Evaluar el estado de conexiones eléctricas", en: "Evaluating the condition of electrical connections" },
+        { es: "Asesorar a empresas constructoras", en: "Advising construction companies" },
+        { es: "Investigar dónde se almacena información tecnológica", en: "Researching where technological information is stored" },
+        { es: "Reconocer los diferentes programas informáticos", en: "Identifying different computer software programs" },
+        { es: "Elaborar dietas para pacientes", en: "Creating meal plans for patients" },
+        { es: "Trabajar en un banco", en: "Working at a bank" },
+        { es: "Analizar temas de comercio internacional", en: "Analyzing international trade topics" },
+        { es: "Enseñar a niños", en: "Teaching children" },
+        { es: "Analizar problemáticas sociales", en: "Analyzing social issues" },
+        { es: "Musicalizar obras teatrales", en: "Composing music for theater plays" },
+        { es: "Realizar artesanías", en: "Making crafts" },
+        { es: "Ayudar a personas enfermas", en: "Helping sick people" },
+        { es: "Ayudar a personas con problemas emocionales", en: "Helping people with emotional issues" },
+        { es: "Investigar sobre nuevas aplicaciones tecnológicas", en: "Researching new technological applications" },
+        { es: "Producir programas televisivos", en: "Producing television shows" },
+        { es: "Realizar experimentos para desarrollar productos curativos", en: "Running experiments to develop medicinal products" },
+        { es: "Analizar formulas científicas", en: "Analyzing scientific formulas" },
+        { es: "Investigar índice de precios", en: "Researching price indexes" },
+        { es: "Organizar una empresa", en: "Organizing a business" },
+        { es: "Supervisar las condiciones laborales de una empresa", en: "Supervising working conditions in a company" },
+        { es: "Investigar acontecimientos históricos", en: "Researching historical events" },
+        { es: "Leer partituras", en: "Reading sheet music" },
+        { es: "Organizar conciertos musicales", en: "Organizing music concerts" },
+        { es: "Trabajar en laboratorios", en: "Working in laboratories" },
+        { es: "Investigar el movimiento de los átomos", en: "Researching the movement of atoms" },
+        { es: "Diseñar y controlar planos de una casa", en: "Designing and reviewing house blueprints" },
+        { es: "Trabajar con elementos de geometría", en: "Working with geometry tools" },
+        { es: "Cuidar a personas con capacidades especiales", en: "Caring for people with special needs" },
+        { es: "Ayudar a niños con problemas de aprendizaje", en: "Helping children with learning difficulties" },
+        { es: "Aprender a realizar guiones con audiovisuales", en: "Learning to write audiovisual scripts" },
+        { es: "Diseñar ropa", en: "Designing clothing" },
+        { es: "Diseñar un sistema operativo informática", en: "Designing a computer operating system" },
+        { es: "Realizar diagnóstico de autos por computadoras", en: "Running computer diagnostics on cars" },
+        { es: "Diseñar amueblamientos para una casa", en: "Designing home furniture" },
+        { es: "Investigar sobre materiales ecológicos para la construcción de viviendas", en: "Researching eco-friendly materials for housing construction" },
+        { es: "Llevar adelante el pago de sueldo de trabajadores", en: "Managing payroll and wage payments for workers" },
+        { es: "Realizar el seguimiento contable de una empresa o comercio", en: "Handling accounting tracking for a business or store" },
+        { es: "Realizar una pintura mural", en: "Painting a mural" },
+        { es: "Tocar en una banda musical", en: "Playing in a music band" },
+        { es: "Realizar notas periodísticas para una radio", en: "Writing news stories for a radio station" },
+        { es: "Organizar las relaciones públicas de una empresa", en: "Organizing public relations for a company" },
+        { es: "Conocer sobre redes informáticas", en: "Learning about computer networks" },
+        { es: "Analizar logaritmos", en: "Analyzing logarithms" },
+        { es: "Conocer los componentes químicos de un alimento", en: "Learning the chemical components of a food" },
+        { es: "Experimentar con reactivos químicos", en: "Experimenting with chemical reagents" },
+        { es: "Diseñar un avión", en: "Designing an airplane" },
+        { es: "Diseñar obras de ingeniería", en: "Designing engineering projects" },
+        { es: "Programar Computadoras", en: "Programming computers" },
+        { es: "Diseñar el prototipo de una maquina", en: "Designing a machine prototype" },
+        { es: "Curar animales", en: "Treating animals" },
+        { es: "Socorrer emergencias médicas", en: "Responding to medical emergencies" },
+        { es: "Conocer y viajar por distintos lugares del mundo", en: "Traveling to and exploring different places around the world" },
+        { es: "Enseñar deportes", en: "Teaching sports" },
+        { es: "Conocer diferentes drogas y sus efectos", en: "Learning about different drugs and their effects" },
+        { es: "Experimentar para descubrir nuevas variedades de vegetales", en: "Experimenting to discover new plant varieties" },
+        { es: "Conocer y realizar cálculos estructurales de una vivienda", en: "Learning and performing structural calculations for a home" },
+        { es: "Realizar el diseño de donde ubicar viviendas en una ciudad", en: "Planning where to locate housing within a city" },
+        { es: "Asesorar a personas sobre inversiones financieras", en: "Advising people on financial investments" },
+        { es: "Aprender algebra", en: "Learning algebra" },
+        { es: "Investigar sobre las propiedades de diferentes metales", en: "Researching the properties of different metals" },
+        { es: "Asesorar sobre el cuidado de los vegetales", en: "Advising on plant care" }
+    ];
+
+    const questText = {
+        es: {
+            back: "← Volver",
+            title: "Cuestionario de Intereses Vocacionales",
+            subtitle: "Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.",
+            labelNombre: "Nombre *",
+            placeholderNombre: "Ingresá tu nombre",
+            labelApellido: "Apellido *",
+            placeholderApellido: "Ingresá tu apellido",
+            labelCurso: "Curso *",
+            placeholderCurso: "Ejemplo: 3° A",
+            instructionsTitle: "¿Cómo responder?",
+            instructionsBody: `Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
+                <strong>I (2 puntos)</strong> = Me es indiferente<br>
+                <strong>A (3 puntos)</strong> = Me agrada / me gusta`,
+            optTitles: {
+                D: "Desagrada (1 pt)",
+                I: "Indiferente (2 pts)",
+                A: "Agrada (3 pts)"
+            },
+            submitBtn: "Calcular Puntajes por Área →",
+            alertMissingData: "Por favor, completá obligatoriamente tu Nombre, Apellido y Curso.",
+            alertMissingQuestion: (num) => `Te falta responder la pregunta número ${num}. ¡Todas son obligatorias!`,
+            resTitle: "¡Resultados del Cuestionario Vocacional!",
+            resAlumno: (nombre, apellido, curso) => `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`,
+            resSubtitle: "Puntaje obtenido en cada orientación:",
+            pointsSuffix: "puntos",
+            resMayorArea: (areas) => `Las 2 áreas (o áreas principales) con mayor puntaje son: ${areas}`,
+            areas: {
+                "ECONÓMICA": "ECONÓMICA",
+                "MUSICAL / ARTÍSTICA": "MUSICAL / ARTÍSTICA",
+                "HUMANISTA": "HUMANISTA",
+                "ASISTENCIAL": "ASISTENCIAL",
+                "DISEÑO / CONSTRUCCIÓN": "DISEÑO / CONSTRUCCIÓN",
+                "TECNOLÓGICA / INFORMÁTICA": "TECNOLÓGICA / INFORMÁTICA",
+                "NATURALES / QUÍMICA": "NATURALES / QUÍMICA"
+            }
+        },
+        en: {
+            back: "← Back",
+            title: "Vocational Interests Questionnaire",
+            subtitle: "Fill in your details and answer all statements to calculate your score in each track.",
+            labelNombre: "First Name *",
+            placeholderNombre: "Enter your first name",
+            labelApellido: "Last Name *",
+            placeholderApellido: "Enter your last name",
+            labelCurso: "Grade / Class *",
+            placeholderCurso: "Example: 3° A",
+            instructionsTitle: "How to answer?",
+            instructionsBody: `Read each statement and choose one required option:<br>
+                <strong>D (1 point)</strong> = Dislike / I don't like it<br>
+                <strong>I (2 points)</strong> = Indifferent / Neutral<br>
+                <strong>A (3 points)</strong> = Like / I enjoy it`,
+            optTitles: {
+                D: "Dislike (1 pt)",
+                I: "Indifferent (2 pts)",
+                A: "Like (3 pts)"
+            },
+            submitBtn: "Calculate Scores by Area →",
+            alertMissingData: "Please fill in your First Name, Last Name, and Grade/Class.",
+            alertMissingQuestion: (num) => `You haven't answered question number ${num}. All questions are required!`,
+            resTitle: "Vocational Questionnaire Results!",
+            resAlumno: (nombre, apellido, curso) => `Student: ${nombre} ${apellido} — Class: ${curso}`,
+            resSubtitle: "Score obtained in each area:",
+            pointsSuffix: "points",
+            resMayorArea: (areas) => `The top area(s) with the highest score are: ${areas}`,
+            areas: {
+                "ECONÓMICA": "ECONOMIC / BUSINESS",
+                "MUSICAL / ARTÍSTICA": "MUSICAL / ARTISTIC",
+                "HUMANISTA": "HUMANITIES",
+                "ASISTENCIAL": "CARE / HEALTH ASSISTANCE",
+                "DISEÑO / CONSTRUCCIÓN": "DESIGN / CONSTRUCTION",
+                "TECNOLÓGICA / INFORMÁTICA": "TECHNOLOGY / COMPUTER SCIENCE",
+                "NATURALES / QUÍMICA": "NATURAL SCIENCES / CHEMISTRY"
+            }
+        }
+    };
+
+    let ultimoResultadoCuestionario = null;
+
+    function inicializarPreguntas() {
+        const container = document.getElementById('preguntas-container');
+        if (!container) return;
+
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        // Guardar respuestas seleccionadas antes de re-renderizar
+        const seleccionadas = {};
+        for (let i = 1; i <= preguntasVocacionales.length; i++) {
+            const checked = container.querySelector(`input[name="p_${i}"]:checked`);
+            if (checked) seleccionadas[i] = checked.value;
+        }
+
+        container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
+            const num = index + 1;
+            const textoPregunta = pregunta[lang] || pregunta.es;
+            const valSel = seleccionadas[num] || '';
+
+            return `
+                <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${textoPregunta}</p>
+                    <div class="flex items-center gap-3 shrink-0">
+                        <label title="${qt.optTitles.D}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="D" ${valSel === 'D' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
+                        </label>
+                        <label title="${qt.optTitles.I}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="I" ${valSel === 'I' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
+                        </label>
+                        <label title="${qt.optTitles.A}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                            <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
+                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
+                        </label>
                     </div>
-                `;
-            }).join('');
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderResultadosCuestionario() {
+        if (!ultimoResultadoCuestionario) return;
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+        const { nombre, apellido, curso, totalesArea, mejoresAreas } = ultimoResultadoCuestionario;
+
+        document.getElementById('res-title').textContent = qt.resTitle;
+        document.getElementById('res-alumno').textContent = qt.resAlumno(nombre, apellido, curso);
+        document.getElementById('res-subtitle').textContent = qt.resSubtitle;
+
+        const grid = document.getElementById('res-puntajes-grid');
+        grid.innerHTML = Object.entries(totalesArea).map(([areaKey, ptos]) => {
+            const areaLabel = qt.areas[areaKey] || areaKey;
+            return `
+                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                    <span class="font-bold text-xs text-[#2D2424]">${areaLabel}</span>
+                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} ${qt.pointsSuffix}</span>
+                </div>
+            `;
+        }).join('');
+
+        const mejoresTraducidas = mejoresAreas.map(k => qt.areas[k] || k);
+        const joiner = lang === 'en' ? ' and ' : ' y ';
+        document.getElementById('res-mayor-area').textContent = qt.resMayorArea(mejoresTraducidas.join(joiner));
+    }
+
+    function traducirCuestionarioUI() {
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        const backBtn = document.querySelector('#quest-back-btn span');
+        if (backBtn) backBtn.textContent = qt.back;
+
+        const titleEl = document.getElementById('quest-title');
+        if (titleEl) titleEl.textContent = qt.title;
+
+        const subEl = document.getElementById('quest-subtitle');
+        if (subEl) subEl.textContent = qt.subtitle;
+
+        const lNombre = document.getElementById('quest-label-nombre');
+        if (lNombre) lNombre.textContent = qt.labelNombre;
+        const iNombre = document.getElementById('quest-nombre');
+        if (iNombre) iNombre.placeholder = qt.placeholderNombre;
+
+        const lApellido = document.getElementById('quest-label-apellido');
+        if (lApellido) lApellido.textContent = qt.labelApellido;
+        const iApellido = document.getElementById('quest-apellido');
+        if (iApellido) iApellido.placeholder = qt.placeholderApellido;
+
+        const lCurso = document.getElementById('quest-label-curso');
+        if (lCurso) lCurso.textContent = qt.labelCurso;
+        const iCurso = document.getElementById('quest-curso');
+        if (iCurso) iCurso.placeholder = qt.placeholderCurso;
+
+        const instEl = document.getElementById('quest-instructions');
+        if (instEl) {
+            instEl.innerHTML = `
+                <h3 class="font-serif font-bold text-lg text-tomato mb-2">${qt.instructionsTitle}</h3>
+                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">${qt.instructionsBody}</p>
+            `;
         }
-        document.addEventListener('DOMContentLoaded', inicializarPreguntas);
 
-        function openCuestionarioView() {
-            hideAllViews();
-            document.getElementById('cuestionario-vocab-view').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        const submitBtn = document.getElementById('quest-submit-btn');
+        if (submitBtn) submitBtn.textContent = qt.submitBtn;
+
+        inicializarPreguntas();
+        renderResultadosCuestionario();
+    }
+
+    document.addEventListener('DOMContentLoaded', traducirCuestionarioUI);
+
+    function openCuestionarioView() {
+    hideAllViews();
+    document.getElementById('cuestionario-vocab-view').classList.remove('hidden');
+    const footer = document.querySelector('footer');
+    if (footer) footer.classList.add('hidden');
+    traducirCuestionarioUI();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+    function procesarCuestionario(event) {
+        event.preventDefault();
+        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+        const qt = questText[lang];
+
+        const nombre = document.getElementById('quest-nombre').value.trim();
+        const apellido = document.getElementById('quest-apellido').value.trim();
+        const curso = document.getElementById('quest-curso').value.trim();
+
+        if (!nombre || !apellido || !curso) {
+            alert(qt.alertMissingData);
+            return;
         }
 
-        // Validación estricta y procesamiento de puntajes según el documento oficial
-        function procesarCuestionario(event) {
-            event.preventDefault();
-
-            const nombre = document.getElementById('quest-nombre').value.trim();
-            const apellido = document.getElementById('quest-apellido').value.trim();
-            const curso = document.getElementById('quest-curso').value.trim();
-
-            if (!nombre || !apellido || !curso) {
-                alert('Por favor, completá obligatoriamente tu Nombre, Apellido y Curso.');
+        let respuestas = {};
+        for (let i = 1; i <= 106; i++) {
+            const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
+            if (!seleccion) {
+                alert(qt.alertMissingQuestion(i));
+                const el = document.querySelector(`input[name="p_${i}"]`);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
-
-            // Validar que todas las 106 preguntas estén contestadas
-            let respuestas = {};
-            for (let i = 1; i <= 106; i++) {
-                const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
-                if (!seleccion) {
-                    alert(`Te falta responder la pregunta número ${i}. ¡Todas son obligatorias!`);
-                    const el = document.querySelector(`input[name="p_${i}"]`);
-                    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return;
-                }
-                const val = seleccion.value;
-                respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
-            }
-
-            // Agrupación oficial de áreas e ítems según el documento[cite: 3]
-            const areasDef = {
-                "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
-                "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
-                "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
-                "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
-                "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
-                "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
-                "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
-            };
-
-            let totalesArea = {};
-            let maxPuntaje = -1;
-            let mejoresAreas = [];
-
-            for (let area in areasDef) {
-                let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
-                totalesArea[area] = suma;
-                if (suma > maxPuntaje) {
-                    maxPuntaje = suma;
-                    mejoresAreas = [area];
-                } else if (suma === maxPuntaje) {
-                    mejoresAreas.push(area);
-                }
-            }
-
-            // Mostrar resultados en pantalla
-            document.getElementById('res-alumno').textContent = `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`;
-            
-            const grid = document.getElementById('res-puntajes-grid');
-            grid.innerHTML = Object.entries(totalesArea).map(([area, ptos]) => `
-                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
-                    <span class="font-bold text-xs text-[#2D2424]">${area}</span>
-                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} puntos</span>
-                </div>
-            `).join('');
-
-            document.getElementById('res-mayor-area').textContent = `Las 2 áreas (o áreas principales) con mayor puntaje son: ${mejoresAreas.join(' y ')}`;
-            
-            document.getElementById('resultados-container').classList.remove('hidden');
-            document.getElementById('resultados-container').scrollIntoView({ behavior: 'smooth' });
+            const val = seleccion.value;
+            respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
         }
-    </script>
+
+        const areasDef = {
+            "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
+            "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
+            "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
+            "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
+            "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
+            "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
+            "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
+        };
+
+        let totalesArea = {};
+        let maxPuntaje = -1;
+        let mejoresAreas = [];
+
+        for (let area in areasDef) {
+            let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+            totalesArea[area] = suma;
+            if (suma > maxPuntaje) {
+                maxPuntaje = suma;
+                mejoresAreas = [area];
+            } else if (suma === maxPuntaje) {
+                mejoresAreas.push(area);
+            }
+        }
+
+        ultimoResultadoCuestionario = { nombre, apellido, curso, totalesArea, mejoresAreas };
+        renderResultadosCuestionario();
+
+        const resBox = document.getElementById('resultados-container');
+        resBox.classList.remove('hidden');
+        resBox.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+    <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
+        <section id="empresa-view" class="hidden mb-16">
+            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
+                <button id="emp-back-btn" type="button" onclick="volverDesdeEmpresa()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <span>← VOLVER</span>
+                </button>
+
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
+                    <div class="flex items-center gap-3">
+                        <h2 id="emp-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">NUESTRA EMPRESA</h2>
+                        <svg class="w-7 h-7 text-blush shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        </svg>
+                    </div>
+
+                    <div id="emp-tabs-bar" class="flex flex-wrap items-center gap-2">
+                        <button type="button" data-emp-tab="quienes" onclick="switchEmpresaTab('quienes')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Quiénes somos</button>
+                    </div>
+                </div>
+                <div class="h-1 w-full bg-blush/15 rounded-full mb-8"></div>
+
+                <div id="empresa-tab-content"></div>
+            </div>
+        </section>
+
+        <script>
+            (function () {
+                let isEmpresaOpen = false;
+                let isTranslatingNow = false;
+
+                // 1) Diccionario ampliable: agregá acá cualquier frase exacta (cuestionarios, botones, etc.)
+                const paresTraduccion = [
+                    // Navegación y botones generales
+                    ['Inicio', 'Home'],
+                    ['Especialidades', 'Specialties'],
+                    ['Universidades', 'Universities'],
+                    ['Viandas', 'Meals'],
+                    ['Librería', 'Stationery'],
+                    ['Biblioteca', 'Library'],
+                    ['Reconocimientos', 'Awards'],
+                    ['Noticias', 'News'],
+                    ['Nuestra empresa', 'Our Company'],
+                    ['Nuestra empresa →', 'Our Company →'],
+                    ['← VOLVER', '← BACK'],
+                    ['← Volver', '← Back'],
+                    ['Volver', 'Back'],
+                    ['Siguiente', 'Next'],
+                    ['Anterior', 'Previous'],
+                    ['Enviar', 'Submit'],
+                    ['Guardar', 'Save'],
+                    ['Reiniciar', 'Reset'],
+                    ['Comenzar', 'Start'],
+                    ['Ver más', 'See more'],
+                    ['Cerrar', 'Close'],
+                    ['Buscar', 'Search'],
+                    ['Filtrar', 'Filter'],
+                    ['Todos', 'All'],
+
+                    // Especialidades y pestañas típicas
+                    ['Informática', 'Computer Science'],
+                    ['Química', 'Chemistry'],
+                    ['Construcciones', 'Construction'],
+                    ['Introducción', 'Introduction'],
+                    ['Plan de estudios', 'Curriculum'],
+                    ['Horarios', 'Schedules'],
+                    ['Profesores', 'Teachers'],
+                    ['Comentarios', 'Comments'],
+                    ['Cuestionario', 'Quiz'],
+                    ['Pregunta', 'Question'],
+                    ['Respuestas', 'Answers'],
+                    ['Resultado', 'Result'],
+                    ['Resultados', 'Results'],
+                    ['Puntaje', 'Score'],
+                    ['Correcto', 'Correct'],
+                    ['Incorrecto', 'Incorrect'],
+                    ['Portal Estudiantil', 'Student Portal'],
+
+                    // Vista Nuestra empresa
+                    ['NUESTRA EMPRESA', 'OUR COMPANY'],
+                    ['Quiénes somos', 'Who we are'],
+                    ['Escribí acá la historia, identidad y origen de la empresa.', 'Write your company story, identity, and origin here.']
+                ];
+
+                const esToEn = new Map();
+                const enToEs = new Map();
+                paresTraduccion.forEach(([es, en]) => {
+                    esToEn.set(es.trim(), en);
+                    enToEs.set(en.trim(), es);
+                });
+
+                function getTargetLang() {
+                    if (typeof currentLang !== 'undefined' && (currentLang === 'es' || currentLang === 'en')) {
+                        return currentLang;
+                    }
+                    const btn = document.getElementById('lang-toggle-btn');
+                    const txt = (btn ? btn.textContent : '').trim().toUpperCase();
+                    // Si el botón muestra "IN" / "EN", puede indicar idioma actual o destino según tu lógica
+                    return document.documentElement.lang === 'en' ? 'en' : 'es';
+                }
+
+                function translatePhrase(text, targetLang) {
+                    if (!text || typeof text !== 'string') return text;
+                    const match = text.match(/^(\s*)([\s\S]*?)(\s*)$/);
+                    if (!match) return text;
+                    const [, leading, core, trailing] = match;
+                    if (!core) return text;
+
+                    const map = targetLang === 'en' ? esToEn : enToEs;
+                    if (map.has(core)) {
+                        return `${leading}${map.get(core)}${trailing}`;
+                    }
+                    return text;
+                }
+
+                function translateAttributes(el, targetLang) {
+                    ['placeholder', 'title', 'aria-label', 'alt'].forEach(attr => {
+                        if (!el.hasAttribute(attr)) return;
+                        const val = el.getAttribute(attr);
+                        if (!el.dataset['orig_' + attr]) {
+                            el.dataset['orig_' + attr] = val;
+                        }
+                        const translated = translatePhrase(val, targetLang);
+                        if (translated !== val) {
+                            el.setAttribute(attr, translated);
+                        }
+                    });
+                }
+
+                window.traducirTodoElDOM = function (forcedLang) {
+                    if (isTranslatingNow) return;
+                    isTranslatingNow = true;
+
+                    try {
+                        const targetLang = forcedLang || getTargetLang();
+                        document.documentElement.lang = targetLang === 'en' ? 'en' : 'es';
+
+                        // 1) Si existen funciones de renderizado del portal, refrescar vistas dinámicas
+                        if (typeof applyLanguage === 'function') {
+                            try { applyLanguage(); } catch (_) {}
+                        }
+                        if (isEmpresaOpen) {
+                            window.switchEmpresaTab();
+                        }
+
+                        // 2) Traducir atributos en todos los elementos
+                        document.querySelectorAll('*').forEach(el => {
+                            if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+                            translateAttributes(el, targetLang);
+                        });
+
+                        // 3) Traducir nodos de texto (incluye cuestionarios, preguntas, opciones y etiquetas)
+                        const walker = document.createTreeWalker(
+                            document.body,
+                            NodeFilter.SHOW_TEXT,
+                            {
+                                acceptNode(node) {
+                                    const parent = node.parentElement;
+                                    if (!parent) return NodeFilter.FILTER_REJECT;
+                                    if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT'].includes(parent.tagName)) {
+                                        return NodeFilter.FILTER_REJECT;
+                                    }
+                                    if (!node.nodeValue || !node.nodeValue.trim()) {
+                                        return NodeFilter.FILTER_SKIP;
+                                    }
+                                    return NodeFilter.FILTER_ACCEPT;
+                                }
+                            }
+                        );
+
+                        let currentNode;
+                        while ((currentNode = walker.nextNode())) {
+                            const updated = translatePhrase(currentNode.nodeValue, targetLang);
+                            if (updated !== currentNode.nodeValue) {
+                                currentNode.nodeValue = updated;
+                            }
+                        }
+                    } finally {
+                        isTranslatingNow = false;
+                    }
+                };
+
+                // Registrar pares extra en el diccionario desde cualquier parte de tu código
+                window.agregarTraducciones = function (listaPares) {
+                    if (!Array.isArray(listaPares)) return;
+                    listaPares.forEach(([es, en]) => {
+                        if (es && en) {
+                            esToEn.set(es.trim(), en);
+                            enToEs.set(en.trim(), es);
+                        }
+                    });
+                    window.traducirTodoElDOM();
+                };
+
+                // --- Vista Nuestra Empresa ---
+                const empresaI18n = {
+                    es: {
+                        back: '← VOLVER',
+                        title: 'NUESTRA EMPRESA',
+                        tabLabel: 'Quiénes somos',
+                        heading: 'Quiénes somos',
+                        body: 'Escribí acá la historia, identidad y origen de la empresa.'
+                    },
+                    en: {
+                        back: '← BACK',
+                        title: 'OUR COMPANY',
+                        tabLabel: 'Who we are',
+                        heading: 'Who we are',
+                        body: 'Write your company story, identity, and origin here.'
+                    }
+                };
+
+                function setFooterVisible(visible) {
+                    const footer = document.querySelector('footer');
+                    if (footer) footer.classList.toggle('hidden', !visible);
+                }
+
+                window.switchEmpresaTab = function () {
+                    const lang = typeof currentLang !== 'undefined' ? currentLang : getTargetLang();
+                    const t = empresaI18n[lang] || empresaI18n.es;
+
+                    const backBtn = document.getElementById('emp-back-btn');
+                    const mainTitle = document.getElementById('emp-main-title');
+                    const tabBtn = document.querySelector('#emp-tabs-bar button[data-emp-tab="quienes"]');
+                    const container = document.getElementById('empresa-tab-content');
+
+                    if (backBtn) backBtn.innerHTML = `<span>${t.back}</span>`;
+                    if (mainTitle) mainTitle.textContent = t.title;
+                    if (tabBtn) {
+                        tabBtn.textContent = t.tabLabel;
+                        tabBtn.className = 'px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs';
+                    }
+                    if (container) {
+                        container.innerHTML = `
+                            <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
+                                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
+                                <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
+                            </div>
+                        `;
+                    }
+                };
+
+                window.openEmpresaPage = function (event) {
+                    if (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    isEmpresaOpen = true;
+
+                    document.querySelectorAll('main, section[id$="-view"]').forEach(el => {
+                        el.classList.add('hidden');
+                    });
+                    setFooterVisible(false);
+
+                    const empView = document.getElementById('empresa-view');
+                    if (empView) empView.classList.remove('hidden');
+
+                    if (typeof setActiveNav === 'function') setActiveNav('inicio');
+                    window.switchEmpresaTab();
+                    window.traducirTodoElDOM();
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return false;
+                };
+
+                window.volverDesdeEmpresa = function () {
+                    isEmpresaOpen = false;
+                    const empView = document.getElementById('empresa-view');
+                    if (empView) empView.classList.add('hidden');
+                    setFooterVisible(true);
+                    if (typeof showMainPortal === 'function') {
+                        showMainPortal('inicio');
+                    } else {
+                        const mainView = document.getElementById('main-portal-view');
+                        if (mainView) mainView.classList.remove('hidden');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                    window.traducirTodoElDOM();
+                };
+
+                const heroCtaSpan = document.getElementById('hero-cta');
+                const heroCtaLink = heroCtaSpan ? heroCtaSpan.closest('a') : null;
+                if (heroCtaLink && heroCtaSpan) {
+                    if (!heroCtaSpan.textContent.trim()) {
+                        heroCtaSpan.textContent = 'Nuestra empresa →';
+                    }
+                    heroCtaLink.removeAttribute('onclick');
+                    heroCtaLink.setAttribute('href', '#empresa');
+                    heroCtaLink.addEventListener('click', window.openEmpresaPage, true);
+                }
+
+                // Al hacer clic en el botón de idioma, esperar a que corra tu toggleLanguage y traducir todo
+                const langToggleBtn = document.getElementById('lang-toggle-btn');
+                if (langToggleBtn) {
+                    langToggleBtn.addEventListener('click', () => {
+                        setTimeout(() => {
+                            window.traducirTodoElDOM();
+                        }, 10);
+                    });
+                }
+
+                // Observar cambios dinámicos (por ejemplo al abrir un cuestionario o cambiar pestañas)
+                const observer = new MutationObserver(() => {
+                    if (!isTranslatingNow) {
+                        clearTimeout(window.__adventTranslateTimer);
+                        window.__adventTranslateTimer = setTimeout(() => {
+                            window.traducirTodoElDOM();
+                        }, 30);
+                    }
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+
+                // Ocultar #empresa-view si se abre cualquier otra vista
+                document.addEventListener('click', (e) => {
+                    const trigger = e.target.closest('a, button');
+                    if (!trigger || trigger.closest('#empresa-view') || trigger === heroCtaLink) return;
+                    const fn = trigger.getAttribute('onclick') || '';
+                    if (
+                        fn.includes('showMainPortal') ||
+                        fn.includes('openViandasView') ||
+                        fn.includes('openLibreriaView') ||
+                        fn.includes('openBibliotecaView') ||
+                        fn.includes('openSpecialtyPage') ||
+                        fn.includes('openUniversidadesView') ||
+                        fn.includes('openReconocimientosView') ||
+                        fn.includes('openNoticiasView')
+                    ) {
+                        isEmpresaOpen = false;
+                        setFooterVisible(true);
+                        const empView = document.getElementById('empresa-view');
+                        if (empView) empView.classList.add('hidden');
+                    }
+                });
+            })();
+        </script>
+        <script>
+(function () {
+    const URLS_UNI = {
+        ucc: 'https://www.ucc.edu.ar',
+        unc: 'https://www.unc.edu.ar',
+        utn: 'https://www.frc.utn.edu.ar'
+    };
+
+    function getUrlActual() {
+        const cont = document.getElementById('universidades-view') || document.body;
+        const txt = (cont.innerText || '').toLowerCase();
+        if (txt.includes('católica') || txt.includes('ucc')) return URLS_UNI.ucc;
+        if (txt.includes('nacional de córdoba') || txt.includes('nacional de cordoba') || txt.includes('unc')) return URLS_UNI.unc;
+        if (txt.includes('tecnológica') || txt.includes('tecnologica') || txt.includes('utn')) return URLS_UNI.utn;
+        return '';
+    }
+
+    function aplicarLinks() {
+        const url = getUrlActual();
+        if (!url) return;
+
+        const cont = document.getElementById('universidades-view') || document.body;
+        cont.querySelectorAll('a, button').forEach(el => {
+            const t = (el.textContent || '').trim().toLowerCase();
+            if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
+
+            el.setAttribute('href', url);
+            el.setAttribute('target', '_blank');
+            el.setAttribute('rel', 'noopener noreferrer');
+            el.removeAttribute('onclick');
+            el.style.cursor = 'pointer';
+        });
+    }
+
+    // Al hacer clic en el botón, abrir en pestaña nueva; si el navegador la bloquea, navegar directo
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('#universidades-view a, #universidades-view button, a, button');
+        if (!btn) return;
+        const t = (btn.textContent || '').trim().toLowerCase();
+        if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
+
+        const url = btn.getAttribute('href') && btn.getAttribute('href').startsWith('http')
+            ? btn.getAttribute('href')
+            : getUrlActual();
+
+        if (!url) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        const nuevaPestana = window.open(url, '_blank', 'noopener,noreferrer');
+        if (!nuevaPestana || nuevaPestana.closed || typeof nuevaPestana.closed === 'undefined') {
+            window.location.href = url;
+        }
+    }, true);
+
+    setInterval(aplicarLinks, 300);
+})();
+</script>
+
+<!-- MODAL OCULTO DEL CUESTIONARIO (SOLO SE ABRE AL TOCAR A LA NENA) -->
+<div id="quiz-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D2424]/50 backdrop-blur-xs" onclick="if(event.target === this) closeQuizModal()">
+    <div class="bg-cream rounded-[2rem] max-w-lg w-full p-6 sm:p-8 border border-tomato/15 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <button type="button" onclick="closeQuizModal()" aria-label="Cerrar" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white flex items-center justify-center transition-colors cursor-pointer">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <span id="quiz-badge" class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-softpink text-blush mb-2">
+            Orientación Vocacional
+        </span>
+        <h3 id="quiz-title" class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-2">
+            ¿Qué especialidad es para vos?
+        </h3>
+        <p id="quiz-subtitle" class="text-xs sm:text-sm text-[#5C4E4E] mb-6">
+            Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.
+        </p>
+
+        <form id="quiz-form" onsubmit="submitQuiz(event)" class="space-y-5">
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q1" class="text-sm font-bold text-[#2D2424] mb-2.5">1. ¿Qué actividad disfrutás más?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q1-a">Programar, armar computadoras o configurar redes.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q1-b">Hacer experimentos en laboratorio y analizar sustancias.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q1" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q1-c">Diseñar planos, maquetas y proyectos arquitectónicos.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q2" class="text-sm font-bold text-[#2D2424] mb-2.5">2. ¿En qué ambiente te gustaría trabajar en el futuro?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q2-a">En empresas tecnológicas, soporte IT o desarrollo de software.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q2-b">En industrias alimentarias, farmacéuticas o control ambiental.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q2" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q2-c">En estudios de arquitectura, obras civiles o topografía.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-4 border border-blush/15">
+                <p id="quiz-q3" class="text-sm font-bold text-[#2D2424] mb-2.5">3. ¿Qué herramienta preferís usar?</p>
+                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="informatica" required class="accent-[#C42B34]">
+                        <span id="quiz-q3-a">Código, servidores y hardware.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="quimica" class="accent-[#C42B34]">
+                        <span id="quiz-q3-b">Microscopios, reactivos y tubos de ensayo.</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 cursor-pointer">
+                        <input type="radio" name="q3" value="construcciones" class="accent-[#C42B34]">
+                        <span id="quiz-q3-c">AutoCAD, escuadras y cálculo estructural.</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="quiz-submit-btn" type="submit" class="w-full bg-tomato hover:bg-[#a6222a] text-white text-xs sm:text-sm font-bold uppercase tracking-wider py-3.5 rounded-full transition-colors cursor-pointer shadow-xs">
+                Ver mi resultado
+            </button>
+        </form>
+
+        <div id="quiz-result-box" class="hidden mt-5 bg-white rounded-2xl p-5 border border-olive/30 text-center">
+            <span id="quiz-result-label" class="block text-[11px] font-extrabold uppercase tracking-wider text-olive mb-1">Tu especialidad ideal es</span>
+            <h4 id="quiz-result-title" class="font-serif text-2xl font-bold text-tomato mb-2"></h4>
+            <p id="quiz-result-desc" class="text-xs sm:text-sm text-[#4A3F3F] mb-4"></p>
+            <div class="flex flex-wrap justify-center gap-2.5">
+                <button id="quiz-go-spec-btn" type="button" class="bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
+                    Ir a la especialidad →
+                </button>
+                <button id="quiz-reset-btn" type="button" onclick="resetQuiz()" class="bg-softpink hover:bg-tomato text-tomato hover:text-white text-xs font-bold px-4 py-2.5 rounded-full transition-colors cursor-pointer">
+                    Volver a hacer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const quizTranslations = {
+    es: {
+        bubble: '¡Hacé el test!',
+        badge: 'Orientación Vocacional',
+        title: '¿Qué especialidad es para vos?',
+        subtitle: 'Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.',
+        q1: '1. ¿Qué actividad disfrutás más?',
+        q1a: 'Programar, armar computadoras o configurar redes.',
+        q1b: 'Hacer experimentos en laboratorio y analizar sustancias.',
+        q1c: 'Diseñar planos, maquetas y proyectos arquitectónicos.',
+        q2: '2. ¿En qué ambiente te gustaría trabajar en el futuro?',
+        q2a: 'En empresas tecnológicas, soporte IT o desarrollo de software.',
+        q2b: 'En industrias alimentarias, farmacéuticas o control ambiental.',
+        q2c: 'En estudios de arquitectura, obras civiles o topografía.',
+        q3: '3. ¿Qué herramienta preferís usar?',
+        q3a: 'Código, servidores y hardware.',
+        q3b: 'Microscopios, reactivos y tubos de ensayo.',
+        q3c: 'AutoCAD, escuadras y cálculo estructural.',
+        submitBtn: 'Ver mi resultado',
+        resultLabel: 'Tu especialidad ideal es',
+        goSpecBtn: 'Ir a la especialidad →',
+        resetBtn: 'Volver a hacer',
+        results: {
+            informatica: {
+                title: 'Informática',
+                desc: 'Tenés perfil tecnológico y analítico. Te vas a destacar en programación, redes, hardware y sistemas.'
+            },
+            quimica: {
+                title: 'Química',
+                desc: 'Tenés curiosidad científica y precisión. El laboratorio, los procesos industriales y el análisis son lo tuyo.'
+            },
+            construcciones: {
+                title: 'Construcciones',
+                desc: 'Tenés visión espacial y creativa. El diseño arquitectónico, las estructuras y la dirección de obra van con vos.'
+            }
+        }
+    },
+    en: {
+        bubble: 'Take the quiz!',
+        badge: 'Career Guidance',
+        title: 'Which specialty is right for you?',
+        subtitle: 'Answer these quick questions to find out which ADVENT technical track best matches your interests.',
+        q1: '1. Which activity do you enjoy the most?',
+        q1a: 'Coding, building computers, or setting up networks.',
+        q1b: 'Running lab experiments and analyzing substances.',
+        q1c: 'Designing blueprints, scale models, and architectural projects.',
+        q2: '2. What work environment appeals to you most?',
+        q2a: 'Tech companies, IT support, or software development.',
+        q2b: 'Food, pharmaceutical, or environmental control industries.',
+        q2c: 'Architecture firms, civil works, or land surveying.',
+        q3: '3. Which tool do you prefer to work with?',
+        q3a: 'Code, servers, and hardware.',
+        q3b: 'Microscopes, reagents, and test tubes.',
+        q3c: 'AutoCAD, drafting squares, and structural calculations.',
+        submitBtn: 'See my result',
+        resultLabel: 'Your ideal specialty is',
+        goSpecBtn: 'Go to specialty →',
+        resetBtn: 'Retake quiz',
+        results: {
+            informatica: {
+                title: 'Computer Science',
+                desc: 'You have an analytical, tech-driven profile. You will thrive in programming, networking, hardware, and systems.'
+            },
+            quimica: {
+                title: 'Chemistry',
+                desc: 'You have scientific curiosity and precision. Lab work, industrial processes, and chemical analysis are a great fit.'
+            },
+            construcciones: {
+                title: 'Construction',
+                desc: 'You have spatial vision and creativity. Architectural design, structures, and site management match your strengths.'
+            }
+        }
+    }
+};
+
+let lastQuizWinner = null;
+
+function getActiveQuizLang() {
+    if (typeof currentLang !== 'undefined' && quizTranslations[currentLang]) return currentLang;
+    const htmlLang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
+    return quizTranslations[htmlLang] ? htmlLang : 'es';
+}
+
+function openQuizModal() {
+    applyQuizLanguage();
+    const modal = document.getElementById('quiz-modal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function closeQuizModal() {
+    const modal = document.getElementById('quiz-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+function resetQuiz() {
+    const form = document.getElementById('quiz-form');
+    const resultBox = document.getElementById('quiz-result-box');
+    if (form) form.reset();
+    if (resultBox) resultBox.classList.add('hidden');
+    lastQuizWinner = null;
+}
+
+function submitQuiz(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const counts = { informatica: 0, quimica: 0, construcciones: 0 };
+
+    for (const val of formData.values()) {
+        if (counts[val] !== undefined) counts[val]++;
+    }
+
+    lastQuizWinner = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
+    renderQuizResult();
+}
+
+function renderQuizResult() {
+    if (!lastQuizWinner) return;
+    const q = quizTranslations[getActiveQuizLang()];
+    const res = q.results[lastQuizWinner];
+
+    document.getElementById('quiz-result-label').textContent = q.resultLabel;
+    document.getElementById('quiz-result-title').textContent = res.title;
+    document.getElementById('quiz-result-desc').textContent = res.desc;
+
+    const goBtn = document.getElementById('quiz-go-spec-btn');
+    goBtn.textContent = q.goSpecBtn;
+    goBtn.onclick = () => {
+        closeQuizModal();
+        if (typeof openSpecialtyPage === 'function') {
+            openSpecialtyPage(lastQuizWinner);
+        }
+    };
+
+    document.getElementById('quiz-reset-btn').textContent = q.resetBtn;
+    document.getElementById('quiz-result-box').classList.remove('hidden');
+}
+
+function applyQuizLanguage() {
+    const q = quizTranslations[getActiveQuizLang()];
+    const setTxt = (id, txt) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = txt;
+    };
+
+    setTxt('mascot-bubble-text', q.bubble);
+    setTxt('quiz-badge', q.badge);
+    setTxt('quiz-title', q.title);
+    setTxt('quiz-subtitle', q.subtitle);
+    setTxt('quiz-q1', q.q1);
+    setTxt('quiz-q1-a', q.q1a);
+    setTxt('quiz-q1-b', q.q1b);
+    setTxt('quiz-q1-c', q.q1c);
+    setTxt('quiz-q2', q.q2);
+    setTxt('quiz-q2-a', q.q2a);
+    setTxt('quiz-q2-b', q.q2b);
+    setTxt('quiz-q2-c', q.q2c);
+    setTxt('quiz-q3', q.q3);
+    setTxt('quiz-q3-a', q.q3a);
+    setTxt('quiz-q3-b', q.q3b);
+    setTxt('quiz-q3-c', q.q3c);
+    setTxt('quiz-submit-btn', q.submitBtn);
+
+    if (lastQuizWinner) renderQuizResult();
+}
+
+// Sincroniza automáticamente el idioma del test cuando cambia el idioma de la página
+document.addEventListener('DOMContentLoaded', applyQuizLanguage);
+const langObserver = new MutationObserver(applyQuizLanguage);
+langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+</script>
 </body>
 </html>
