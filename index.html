@@ -7429,12 +7429,17 @@
                 return text;
             }
 
+         function toCamelAttrKey(attr) {
+                return 'orig' + attr.replace(/(^|-)([a-z])/g, (_, __, ch) => ch.toUpperCase());
+            }
+
             function translateAttributes(el, targetLang) {
                 ['placeholder', 'title', 'aria-label', 'alt'].forEach(attr => {
                     if (!el.hasAttribute(attr)) return;
                     const val = el.getAttribute(attr);
-                    if (!el.dataset['orig_' + attr]) {
-                        el.dataset['orig_' + attr] = val;
+                    const key = toCamelAttrKey(attr);
+                    if (!el.dataset[key]) {
+                        el.dataset[key] = val;
                     }
                     const translated = translatePhrase(val, targetLang);
                     if (translated !== val) {
@@ -7442,42 +7447,6 @@
                     }
                 });
             }
-
-            window.traducirTodoElDOM = function (forcedLang) {
-                if (isTranslatingNow) return;
-                isTranslatingNow = true;
-
-                try {
-                    const targetLang = forcedLang || getTargetLang();
-                    document.documentElement.lang = targetLang === 'en' ? 'en' : 'es';
-
-                    if (isEmpresaOpen) {
-                        window.switchEmpresaTab();
-                    }
-
-                    document.querySelectorAll('*').forEach(el => {
-                        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
-                        translateAttributes(el, targetLang);
-                    });
-
-                    const walker = document.createTreeWalker(
-                        document.body,
-                        NodeFilter.SHOW_TEXT,
-                        {
-                            acceptNode(node) {
-                                const parent = node.parentElement;
-                                if (!parent) return NodeFilter.FILTER_REJECT;
-                                if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT'].includes(parent.tagName)) {
-                                    return NodeFilter.FILTER_REJECT;
-                                }
-                                if (!node.nodeValue || !node.nodeValue.trim()) {
-                                    return NodeFilter.FILTER_SKIP;
-                                }
-                                return NodeFilter.FILTER_ACCEPT;
-                            }
-                        }
-                    );
-
                     let currentNode;
                     while ((currentNode = walker.nextNode())) {
                         const updated = translatePhrase(currentNode.nodeValue, targetLang);
