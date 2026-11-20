@@ -283,11 +283,8 @@
 
                     <div class="flex items-end justify-between gap-4">
                         
-                        <<<<<<< HEAD
-                        <a href="#empresa" onclick="openEmpresaPage(); return false;" ...>
-                        =======
-                        <a href="#especialidades" onclick="showMainPortal('especialidades'); return false;" ...>
-                        >>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
+                        <a href="#empresa" onclick="openEmpresaPage(event); return false;"
+                            class="inline-flex items-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full transition-colors shadow-2xs cursor-pointer">
                             <span id="hero-cta">Nuestra empresa →</span>
                         </a>
 
@@ -650,96 +647,55 @@
 </div>
 <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- Tarjeta / columna de Salvador -->
-    <div class="lg:col-span-4 bg-white rounded-[1.75rem] p-5 border border-tomato/15 shadow-2xs text-center">
-        <div class="w-32 h-32 mx-auto rounded-2xl overflow-hidden mb-3 bg-softpink/40">
-            <img src="imagen/LIB1_3.jpg" alt="Salvador" class="w-full h-full object-cover object-top rounded-full">
+    <!-- Columna Izquierda: Perfil y Datos de Salvador -->
+    <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
+        <div class="flex flex-col items-center text-center mb-6">
+            <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
+                <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
+                    <img src="imagen/LIB1_3.jpg" alt="Salvador" class="w-full h-full object-cover object-top">
+                </div>
+            </div>
         </div>
-        <h3 class="font-serif text-xl font-bold text-[#2D2424]">Salvador</h3>
+
+        <div class="space-y-3 text-sm text-[#4A3F3F] mb-6">
+            <p><strong id="lib-label-name" class="text-[#2D2424]">Nombre</strong>: Salvador</p>
+            <p><strong id="lib-label-phone" class="text-[#2D2424]">Teléfono</strong>: 3547 570898</p>
+            <div class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
+                <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span
+                        class="font-mono font-bold text-tomato">salvamelo</span></p>
+                <button type="button" onclick="copyAlias()"
+                    class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
+                    <span id="lib-copy-label">Copiar</span>
+                </button>
+            </div>
+            <div class="pt-2">
+                <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:</p>
+                <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y muchos más.</p>
+                <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a color, stickers, entre otros.</p>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2.5">
+            <a href="tel:3547570898"
+                class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+                <span id="lib-call-btn">Llamar</span>
+            </a>
+            <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898"
+                target="_blank" rel="noopener noreferrer"
+                class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>WhatsApp</span>
+            </a>
+        </div>
     </div>
 
-    <!-- Resto de la sección de Librería -->
-    <div class="lg:col-span-8">
-        <!-- Acá pegá el resto del contenido que tenías para Librería -->
+    <!-- Columna Derecha: Grilla de 6 Artículos -->
+    <div id="libreria-products-grid"
+        class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <!-- Renderizado dinámicamente por JS -->
     </div>
 </div>
-                    <!-- Columna Izquierda: Perfil y Datos de Salvador -->
-                    <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
-                        <div class="flex flex-col items-center text-center mb-6">
-                            <div
-                                class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
-                                <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                        aria-label="Salvador">
-                                        <rect width="160" height="160" fill="#FCE8EC" />
-                                        <path d="M28 160C28 131 48 116 80 116C112 116 132 131 132 160H28Z"
-                                            fill="#2F4A47" />
-                                        <rect x="69" y="95" width="22" height="26" rx="10" fill="#E6B496" />
-                                        <path
-                                            d="M47 62C47 39 61 26 80 26C99 26 113 39 113 62C113 69 111 75 108 79H52C49 75 47 69 47 62Z"
-                                            fill="#231D1D" />
-                                        <path
-                                            d="M53 59C53 44 64 35 80 35C96 35 107 44 107 59V76C107 93 95 105 80 105C65 105 53 93 53 76V59Z"
-                                            fill="#F0C2A2" />
-                                        <path
-                                            d="M53 73C53 93 65 106 80 106C95 106 107 93 107 73H101C101 86 92 94 80 94C68 94 59 86 59 73H53Z"
-                                            fill="#2A2222" />
-                                        <path d="M68 82C73 79 87 79 92 82" stroke="#2A2222" stroke-width="3.5"
-                                            stroke-linecap="round" />
-                                        <circle cx="67" cy="61" r="3" fill="#231D1D" />
-                                        <circle cx="93" cy="61" r="3" fill="#231D1D" />
-                                        <path d="M60 54C64 52 70 52 73 54" stroke="#231D1D" stroke-width="2.5"
-                                            stroke-linecap="round" />
-                                        <path d="M87 54C90 52 96 52 100 54" stroke="#231D1D" stroke-width="2.5"
-                                            stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-3 text-sm text-[#4A3F3F] mb-6">
-                            <p><strong id="lib-label-name" class="text-[#2D2424]">Nombre</strong>: Salvador</p>
-                            <p><strong id="lib-label-phone" class="text-[#2D2424]">Teléfono</strong>: 3547 570898</p>
-                            <div
-                                class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
-                                <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span
-                                        class="font-mono font-bold text-tomato">salvamelo</span></p>
-                                <button type="button" onclick="copyAlias()"
-                                    class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
-                                    <span id="lib-copy-label">Copiar</span>
-                                </button>
-                            </div>
-                            <div class="pt-2">
-                                <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:
-                                </p>
-                                <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y
-                                    muchos más.</p>
-                                <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a
-                                    color, stickers, entre otros.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2.5">
-                            <a href="tel:3547570898"
-                                class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
-                                <i data-lucide="phone" class="w-4 h-4"></i>
-                                <span id="lib-call-btn">Llamar</span>
-                            </a>
-                            <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898"
-                                target="_blank" rel="noopener noreferrer"
-                                class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
-                                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                <span>WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Columna Derecha: Grilla de 6 Artículos -->
-                    <div id="libreria-products-grid"
-                        class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1164,6 +1120,101 @@
                         Espacio reservado para el contenido y perfil técnico de esta sección.
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- VISTA COMPLETA: CUESTIONARIO DE INTERESES VOCACIONALES (106 PREGUNTAS) -->
+        <section id="cuestionario-vocab-view" class="hidden mb-16">
+            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
+                <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
+                    <span>← Volver</span>
+                </button>
+
+                <div class="text-center mb-10">
+                    <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
+                    <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
+                </div>
+
+                <!-- Formulario de Datos Obligatorios -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                    <div>
+                        <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
+                        <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    </div>
+                    <div>
+                        <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
+                        <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    </div>
+                    <div>
+                        <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
+                        <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
+                    </div>
+                </div>
+
+                <!-- Instrucciones -->
+                <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
+                    <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
+                    <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
+                        Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                        <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
+                        <strong>I (2 puntos)</strong> = Me es indiferente<br>
+                        <strong>A (3 puntos)</strong> = Me agrada / me gusta
+                    </p>
+                </div>
+
+                <!-- Contenedor dinámico de las 106 preguntas -->
+                <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
+                    <div id="preguntas-container" class="space-y-6 mb-10">
+                        <!-- Se inyectan mediante JavaScript -->
+                    </div>
+
+                    <div class="text-center">
+                        <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
+                            Calcular Puntajes por Área →
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Contenedor de Resultados (Oculto al inicio) -->
+                <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
+                    <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
+                    <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
+
+                    <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
+                        <!-- Puntajes detallados por área -->
+                    </div>
+
+                    <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
+                        <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
+        <section id="empresa-view" class="hidden mb-16">
+            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
+                <button id="emp-back-btn" type="button" onclick="volverDesdeEmpresa()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <span>← VOLVER</span>
+                </button>
+
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
+                    <div class="flex items-center gap-3">
+                        <h2 id="emp-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">NUESTRA EMPRESA</h2>
+                        <svg class="w-7 h-7 text-blush shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                        </svg>
+                    </div>
+
+                    <div id="emp-tabs-bar" class="flex flex-wrap items-center gap-2">
+                        <button type="button" data-emp-tab="quienes" onclick="switchEmpresaTab('quienes')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Quiénes somos</button>
+                    </div>
+                </div>
+                <div class="h-1 w-full bg-blush/15 rounded-full mb-8"></div>
+
+                <div id="empresa-tab-content"></div>
             </div>
         </section>
 
@@ -4228,6 +4279,10 @@
             document.getElementById('construcciones-view').classList.add('hidden');
             document.getElementById('noticias-view').classList.add('hidden');
             document.getElementById('subpage-view').classList.add('hidden');
+            const vocabView = document.getElementById('cuestionario-vocab-view');
+            if (vocabView) vocabView.classList.add('hidden');
+            const empView = document.getElementById('empresa-view');
+            if (empView) empView.classList.add('hidden');
         }
 
         function closeMobileMenu() {
@@ -6097,6 +6152,8 @@
             activeUniversidadId = null;
             activeNoticiaId = null;
             hideAllViews();
+            const footerEl = document.querySelector('footer');
+            if (footerEl) footerEl.classList.remove('hidden');
             document.getElementById('main-portal-view').classList.remove('hidden');
             setActiveNav(anchorId || 'inicio');
 
@@ -6299,9 +6356,9 @@
         renderNoticiasGrid();
     </script>
 
+
     <!-- ========================================================= -->
     <!-- MASCOTA FIJA INFERIOR DERECHA + CUESTIONARIO ADVENT       -->
-    <!-- Reemplazá el bloque anterior por este antes de </body>    -->
     <!-- ========================================================= -->
     <style>
         #advent-mascot-container {
@@ -6334,7 +6391,6 @@
             transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Se muestra al pasar el mouse (hover) o al tocar con el dedo (.active-touch) */
         #advent-mascot-container:hover #mascot-bubble,
         #advent-mascot-container.active-touch #mascot-bubble {
             opacity: 1;
@@ -6356,365 +6412,22 @@
         }
 
         @keyframes mascotGentleIdle {
-
-<!-- Mascota Fija en la esquina inferior derecha -->
-<div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
-    <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
-    <div id="advent-mascot">
-        <!-- Asegurate de que el nombre coincida con tu archivo de imagen (ej: nena.jpg o nena.jpeg) -->
-        <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
-    </div>
-</div>
-
-<!-- SECCIÓN: CUESTIONARIO ADVENT (Se abre al hacer clic en la nena) -->
-<section id="cuestionario-view" class="hidden mb-16">
-    <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl">
-        <button type="button" onclick="showMainPortal('inicio')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
-            <span>← Volver al inicio</span>
-        </button>
-
-        <div class="max-w-3xl mb-8">
-            <span class="inline-block text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 bg-softpink text-tomato">Sección Interactiva</span>
-            <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight mb-3">Cuestionario ADVENT</h2>
-            <div class="h-1 w-28 bg-tomato/20 rounded-full mb-4"></div>
-            <p class="text-base text-[#4A3F3F] leading-relaxed">
-                Poné a prueba tus conocimientos sobre el portal, las especialidades técnicas y tu futuro profesional. ¡Completá las preguntas guiado por nuestra mascota!
-            </p>
-        </div>
-
-        <div class="bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/15 shadow-2xs space-y-6">
-            <div class="space-y-4">
-                <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
-                    <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">1. ¿Cuántos años de formación técnica integral ofrece ADVENT?</h3>
-                    <div class="space-y-2 text-sm text-[#4A3F3F]">
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="a" class="accent-tomato"> 3 años</label>
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="b" class="accent-tomato"> 5 años</label>
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1" value="c" class="accent-tomato"> 7 años de formación</label>
-                    </div>
-                </div>
-
-                <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
-                    <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">2. ¿Cuál de las siguientes orientaciones forma parte de las especialidades técnicas?</h3>
-                    <div class="space-y-2 text-sm text-[#4A3F3F]">
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="a" class="accent-tomato"> Informática, Química y Construcciones</label>
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="b" class="accent-tomato"> Astronomía y Aviación</label>
-                        <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2" value="c" class="accent-tomato"> Biología Marina</label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-4 flex items-center justify-between border-t border-tomato/10">
-                <button type="button" onclick="alert('¡Cuestionario enviado con éxito! Gracias por participar en ADVENT.')" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-colors cursor-pointer shadow-md">
-                    Enviar respuestas
-                </button>
-                <span class="text-xs font-semibold text-[#7A6B6B]">Orientación Educativa 2026</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-function openCuestionarioView() {
-    if (typeof hideAllViews === 'function') hideAllViews();
-    const view = document.getElementById('cuestionario-vocab-view');
-    if (view) view.classList.remove('hidden');
-    if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
-    if (typeof traducirCuestionarioUI === 'function') traducirCuestionarioUI();
-    const footer = document.querySelector('footer');
-    if (footer) footer.classList.add('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-(function initFixedMascotButton() {
-    const container = document.getElementById('advent-mascot-container');
-    if (!container) return;
-
-    let touchTimeout;
-
-    container.addEventListener('touchstart', () => {
-        container.classList.add('active-touch');
-        clearTimeout(touchTimeout);
-        touchTimeout = setTimeout(() => {
-            container.classList.remove('active-touch');
-        }, 2500);
-    }, { passive: true });
-
-    container.addEventListener('click', () => {
-        openCuestionarioView();
-    });
-
-    container.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            openCuestionarioView();
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
         }
-    });
+    </style>
 
-    </script>
-    <!-- Mascota Fija en la esquina inferior derecha --!>
-    <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT"
-        title="¡Hacer cuestionario!">
+    <!-- Mascota Fija en la esquina inferior derecha -->
+    <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
         <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
         <div id="advent-mascot">
-            <!-- Asegurate de que el nombre coincida con tu archivo de imagen (ej: nena.jpg o nena.jpeg) -->
             <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
         </div>
     </div>
 
-    <!-- SECCIÓN: CUESTIONARIO ADVENT (Se abre al hacer clic en la nena) -->
-    <section id="cuestionario-view" class="hidden mb-16">
-        <div
-            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl">
-            <button type="button" onclick="showMainPortal('inicio')"
-                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
-                <span>← Volver al inicio</span>
-            </button>
-
-            <div class="max-w-3xl mb-8">
-                <span
-                    class="inline-block text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 bg-softpink text-tomato">Sección
-                    Interactiva</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight mb-3">Cuestionario
-                    ADVENT</h2>
-                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-4"></div>
-                <p class="text-base text-[#4A3F3F] leading-relaxed">
-                    Poné a prueba tus conocimientos sobre el portal, las especialidades técnicas y tu futuro
-                    profesional. ¡Completá las preguntas guiado por nuestra mascota!
-                </p>
-            </div>
-
-            <div class="bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/15 shadow-2xs space-y-6">
-                <div class="space-y-4">
-                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
-                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">1. ¿Cuántos años de formación
-                            técnica integral ofrece ADVENT?</h3>
-                        <div class="space-y-2 text-sm text-[#4A3F3F]">
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
-                                    value="a" class="accent-tomato"> 3 años</label>
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
-                                    value="b" class="accent-tomato"> 5 años</label>
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p1"
-                                    value="c" class="accent-tomato"> 7 años de formación</label>
-                        </div>
-                    </div>
-
-                    <div class="p-5 rounded-2xl bg-cream border border-tomato/10">
-                        <h3 class="font-serif text-lg font-bold text-[#2D2424] mb-2">2. ¿Cuál de las siguientes
-                            orientaciones forma parte de las especialidades técnicas?</h3>
-                        <div class="space-y-2 text-sm text-[#4A3F3F]">
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
-                                    value="a" class="accent-tomato"> Informática, Química y Construcciones</label>
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
-                                    value="b" class="accent-tomato"> Astronomía y Aviación</label>
-                            <label class="flex items-center gap-2.5 cursor-pointer"><input type="radio" name="p2"
-                                    value="c" class="accent-tomato"> Biología Marina</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-4 flex items-center justify-between border-t border-tomato/10">
-                    <button type="button"
-                        onclick="alert('¡Cuestionario enviado con éxito! Gracias por participar en ADVENT.')"
-                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full transition-colors cursor-pointer shadow-md">
-                        Enviar respuestas
-                    </button>
-                    <span class="text-xs font-semibold text-[#7A6B6B]">Orientación Educativa 2026</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
     <script>
-        function openCuestionarioView() {
-            if (typeof hideAllViews === 'function') hideAllViews();
-            const view = document.getElementById('cuestionario-view');
-            if (view) view.classList.remove('hidden');
-            if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        (function initFixedMascotButton() {
-            const container = document.getElementById('advent-mascot-container');
-            if (!container) return;
-
-            let touchTimeout;
-
-            // Soporte táctil para celulares/tablets: al apoyar el dedo muestra el cartelito
-            container.addEventListener('touchstart', () => {
-                container.classList.add('active-touch');
-                clearTimeout(touchTimeout);
-                touchTimeout = setTimeout(() => {
-                    container.classList.remove('active-touch');
-                }, 2500);
-            }, { passive: true });
-
-            // Al hacer clic o tocar, abre la vista del cuestionario
-            container.addEventListener('click', () => {
-                openCuestionarioView();
-            });
-
-            // Accesibilidad con teclado (Enter o Espacio)
-            container.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openCuestionarioView();
-                }
-            });
-        })();
-    </script>
-
-    <!-- ================= NUEVA SECCIÓN DEL CUESTIONARIO (VISTA COMPLETA CON LAS 106 PREGUNTAS Y CÁLCULO POR ÁREAS) ================= -->
-    <section id="cuestionario-vocab-view" class="hidden mb-16">
-        <div
-            class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
-
-            <button onclick="showMainPortal('inicio')"
-                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
-                <span>← Volver</span>
-            </button>
-
-            <div class="text-center mb-10">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de
-                    Intereses Vocacionales</h2>
-                <p class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para
-                    calcular tu puntaje en cada orientación.</p>
-            </div>
-
-            <!-- Formulario de Datos Obligatorios -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre
-                        *</label>
-                    <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre"
-                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
-                        required>
-                </div>
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido
-                        *</label>
-                    <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido"
-                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
-                        required>
-                </div>
-                <div>
-                    <label class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso
-                        *</label>
-                    <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A"
-                        class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs"
-                        required>
-                </div>
-            </div>
-
-            <!-- Instrucciones -->
-            <div class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
-                <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
-                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
-                    Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta[cite: 3]<br>
-                    <strong>I (2 puntos)</strong> = Me es indiferente[cite: 3]<br>
-                    <strong>A (3 puntos)</strong> = Me agrada / me gusta[cite: 3]
-                </p>
-            </div>
-
-            <!-- Contenedor dinámico de las 106 preguntas -->
-            <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
-                <div id="preguntas-container" class="space-y-6 mb-10">
-                    <!-- Se inyectan mediante JavaScript -->
-                </div>
-
-                <div class="text-center">
-                    <button type="submit"
-                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
-                        Calcular Puntajes por Área →
-                    </button>
-                </div>
-            </form>
-
-            <!-- Contenedor de Resultados (Oculto al inicio) -->
-            <div id="resultados-container"
-                class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
-                <h3 class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario
-                    Vocacional!</h3>
-                <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
-
-                <h4 class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
-                    <!-- Puntajes detallados por área -->
-                </div>
-
-                <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
-                    <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
-                </div>
-            </div>
->>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
-
-        <div class="text-center mb-10">
-            <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
-            <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
-        </div>
-
-<<<<<<< HEAD
-        <!-- Formulario de Datos Obligatorios -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-            <div>
-                <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
-                <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-            </div>
-            <div>
-                <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
-                <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-            </div>
-            <div>
-                <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
-                <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-            </div>
-        </div>
-
-        <!-- Instrucciones -->
-        <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
-            <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
-            <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
-                Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
-                <strong>I (2 puntos)</strong> = Me es indiferente<br>
-                <strong>A (3 puntos)</strong> = Me agrada / me gusta
-            </p>
-        </div>
-
-        <!-- Contenedor dinámico de las 106 preguntas -->
-        <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
-            <div id="preguntas-container" class="space-y-6 mb-10">
-                <!-- Se inyectan mediante JavaScript -->
-            </div>
-
-            <div class="text-center">
-                <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
-                    Calcular Puntajes por Área →
-                </button>
-            </div>
-        </form>
-
-        <!-- Contenedor de Resultados (Oculto al inicio) -->
-        <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
-            <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
-            <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
-            
-            <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
-                <!-- Puntajes detallados por área -->
-            </div>
-
-            <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
-                <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
-<script>
-    const preguntasVocacionales = [
+        const preguntasVocacionales = [
         { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
         { es: "Investigar el nivel de los precios", en: "Investigating price levels" },
         { es: "Aprender estilos de pintura artística", en: "Learning artistic painting styles" },
@@ -6822,380 +6535,234 @@ function openCuestionarioView() {
         { es: "Asesorar sobre el cuidado de los vegetales", en: "Advising on plant care" }
     ];
 
-    const questText = {
-        es: {
-            back: "← Volver",
-            title: "Cuestionario de Intereses Vocacionales",
-            subtitle: "Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.",
-            labelNombre: "Nombre *",
-            placeholderNombre: "Ingresá tu nombre",
-            labelApellido: "Apellido *",
-            placeholderApellido: "Ingresá tu apellido",
-            labelCurso: "Curso *",
-            placeholderCurso: "Ejemplo: 3° A",
-            instructionsTitle: "¿Cómo responder?",
-            instructionsBody: `Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
-                <strong>I (2 puntos)</strong> = Me es indiferente<br>
-                <strong>A (3 puntos)</strong> = Me agrada / me gusta`,
-            optTitles: {
-                D: "Desagrada (1 pt)",
-                I: "Indiferente (2 pts)",
-                A: "Agrada (3 pts)"
+        const questText = {
+            es: {
+                bubble: "¡Hacer cuestionario! ✨",
+                back: "← Volver",
+                title: "Cuestionario de Intereses Vocacionales",
+                subtitle: "Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.",
+                labelNombre: "Nombre *",
+                placeholderNombre: "Ingresá tu nombre",
+                labelApellido: "Apellido *",
+                placeholderApellido: "Ingresá tu apellido",
+                labelCurso: "Curso *",
+                placeholderCurso: "Ejemplo: 3° A",
+                instructionsTitle: "¿Cómo responder?",
+                instructionsBody: `Leé cada afirmación y elegí una sola opción obligatoria:<br>
+                    <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
+                    <strong>I (2 puntos)</strong> = Me es indiferente<br>
+                    <strong>A (3 puntos)</strong> = Me agrada / me gusta`,
+                optTitles: {
+                    D: "Desagrada (1 pt)",
+                    I: "Indiferente (2 pts)",
+                    A: "Agrada (3 pts)"
+                },
+                submitBtn: "Calcular Puntajes por Área →",
+                alertMissingData: "Por favor, completá obligatoriamente tu Nombre, Apellido y Curso.",
+                alertMissingQuestion: (num) => `Te falta responder la pregunta número ${num}. ¡Todas son obligatorias!`,
+                resTitle: "¡Resultados del Cuestionario Vocacional!",
+                resAlumno: (nombre, apellido, curso) => `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`,
+                resSubtitle: "Puntaje obtenido en cada orientación:",
+                pointsSuffix: "puntos",
+                resMayorArea: (areas) => `Las 2 áreas (o áreas principales) con mayor puntaje son: ${areas}`,
+                areas: {
+                    "ECONÓMICA": "ECONÓMICA",
+                    "MUSICAL / ARTÍSTICA": "MUSICAL / ARTÍSTICA",
+                    "HUMANISTA": "HUMANISTA",
+                    "ASISTENCIAL": "ASISTENCIAL",
+                    "DISEÑO / CONSTRUCCIÓN": "DISEÑO / CONSTRUCCIÓN",
+                    "TECNOLÓGICA / INFORMÁTICA": "TECNOLÓGICA / INFORMÁTICA",
+                    "NATURALES / QUÍMICA": "NATURALES / QUÍMICA"
+                }
             },
-            submitBtn: "Calcular Puntajes por Área →",
-            alertMissingData: "Por favor, completá obligatoriamente tu Nombre, Apellido y Curso.",
-            alertMissingQuestion: (num) => `Te falta responder la pregunta número ${num}. ¡Todas son obligatorias!`,
-            resTitle: "¡Resultados del Cuestionario Vocacional!",
-            resAlumno: (nombre, apellido, curso) => `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`,
-            resSubtitle: "Puntaje obtenido en cada orientación:",
-            pointsSuffix: "puntos",
-            resMayorArea: (areas) => `Las 2 áreas (o áreas principales) con mayor puntaje son: ${areas}`,
-            areas: {
-                "ECONÓMICA": "ECONÓMICA",
-                "MUSICAL / ARTÍSTICA": "MUSICAL / ARTÍSTICA",
-                "HUMANISTA": "HUMANISTA",
-                "ASISTENCIAL": "ASISTENCIAL",
-                "DISEÑO / CONSTRUCCIÓN": "DISEÑO / CONSTRUCCIÓN",
-                "TECNOLÓGICA / INFORMÁTICA": "TECNOLÓGICA / INFORMÁTICA",
-                "NATURALES / QUÍMICA": "NATURALES / QUÍMICA"
+            en: {
+                bubble: "Take the quiz! ✨",
+                back: "← Back",
+                title: "Vocational Interests Questionnaire",
+                subtitle: "Fill in your details and answer all statements to calculate your score in each track.",
+                labelNombre: "First Name *",
+                placeholderNombre: "Enter your first name",
+                labelApellido: "Last Name *",
+                placeholderApellido: "Enter your last name",
+                labelCurso: "Grade / Class *",
+                placeholderCurso: "Example: 3° A",
+                instructionsTitle: "How to answer?",
+                instructionsBody: `Read each statement and choose one required option:<br>
+                    <strong>D (1 point)</strong> = Dislike / I don't like it<br>
+                    <strong>I (2 points)</strong> = Indifferent / Neutral<br>
+                    <strong>A (3 points)</strong> = Like / I enjoy it`,
+                optTitles: {
+                    D: "Dislike (1 pt)",
+                    I: "Indifferent (2 pts)",
+                    A: "Like (3 pts)"
+                },
+                submitBtn: "Calculate Scores by Area →",
+                alertMissingData: "Please fill in your First Name, Last Name, and Grade/Class.",
+                alertMissingQuestion: (num) => `You haven't answered question number ${num}. All questions are required!`,
+                resTitle: "Vocational Questionnaire Results!",
+                resAlumno: (nombre, apellido, curso) => `Student: ${nombre} ${apellido} — Class: ${curso}`,
+                resSubtitle: "Score obtained in each area:",
+                pointsSuffix: "points",
+                resMayorArea: (areas) => `The top area(s) with the highest score are: ${areas}`,
+                areas: {
+                    "ECONÓMICA": "ECONOMIC / BUSINESS",
+                    "MUSICAL / ARTÍSTICA": "MUSICAL / ARTISTIC",
+                    "HUMANISTA": "HUMANITIES",
+                    "ASISTENCIAL": "CARE / HEALTH ASSISTANCE",
+                    "DISEÑO / CONSTRUCCIÓN": "DESIGN / CONSTRUCTION",
+                    "TECNOLÓGICA / INFORMÁTICA": "TECHNOLOGY / COMPUTER SCIENCE",
+                    "NATURALES / QUÍMICA": "NATURAL SCIENCES / CHEMISTRY"
+                }
             }
-        },
-        en: {
-            back: "← Back",
-            title: "Vocational Interests Questionnaire",
-            subtitle: "Fill in your details and answer all statements to calculate your score in each track.",
-            labelNombre: "First Name *",
-            placeholderNombre: "Enter your first name",
-            labelApellido: "Last Name *",
-            placeholderApellido: "Enter your last name",
-            labelCurso: "Grade / Class *",
-            placeholderCurso: "Example: 3° A",
-            instructionsTitle: "How to answer?",
-            instructionsBody: `Read each statement and choose one required option:<br>
-                <strong>D (1 point)</strong> = Dislike / I don't like it<br>
-                <strong>I (2 points)</strong> = Indifferent / Neutral<br>
-                <strong>A (3 points)</strong> = Like / I enjoy it`,
-            optTitles: {
-                D: "Dislike (1 pt)",
-                I: "Indifferent (2 pts)",
-                A: "Like (3 pts)"
-            },
-            submitBtn: "Calculate Scores by Area →",
-            alertMissingData: "Please fill in your First Name, Last Name, and Grade/Class.",
-            alertMissingQuestion: (num) => `You haven't answered question number ${num}. All questions are required!`,
-            resTitle: "Vocational Questionnaire Results!",
-            resAlumno: (nombre, apellido, curso) => `Student: ${nombre} ${apellido} — Class: ${curso}`,
-            resSubtitle: "Score obtained in each area:",
-            pointsSuffix: "points",
-            resMayorArea: (areas) => `The top area(s) with the highest score are: ${areas}`,
-            areas: {
-                "ECONÓMICA": "ECONOMIC / BUSINESS",
-                "MUSICAL / ARTÍSTICA": "MUSICAL / ARTISTIC",
-                "HUMANISTA": "HUMANITIES",
-                "ASISTENCIAL": "CARE / HEALTH ASSISTANCE",
-                "DISEÑO / CONSTRUCCIÓN": "DESIGN / CONSTRUCTION",
-                "TECNOLÓGICA / INFORMÁTICA": "TECHNOLOGY / COMPUTER SCIENCE",
-                "NATURALES / QUÍMICA": "NATURAL SCIENCES / CHEMISTRY"
-            }
-        }
-    };
+        };
 
-    let ultimoResultadoCuestionario = null;
+        let ultimoResultadoCuestionario = null;
 
-    function inicializarPreguntas() {
-        const container = document.getElementById('preguntas-container');
-        if (!container) return;
-
-        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-        const qt = questText[lang];
-
-        // Guardar respuestas seleccionadas antes de re-renderizar
-        const seleccionadas = {};
-        for (let i = 1; i <= preguntasVocacionales.length; i++) {
-            const checked = container.querySelector(`input[name="p_${i}"]:checked`);
-            if (checked) seleccionadas[i] = checked.value;
-        }
-
-        container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
-            const num = index + 1;
-            const textoPregunta = pregunta[lang] || pregunta.es;
-            const valSel = seleccionadas[num] || '';
-
-            return `
-                <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${textoPregunta}</p>
-                    <div class="flex items-center gap-3 shrink-0">
-                        <label title="${qt.optTitles.D}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                            <input type="radio" name="p_${num}" value="D" ${valSel === 'D' ? 'checked' : ''} class="sr-only peer" required>
-                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
-                        </label>
-                        <label title="${qt.optTitles.I}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                            <input type="radio" name="p_${num}" value="I" ${valSel === 'I' ? 'checked' : ''} class="sr-only peer" required>
-                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
-                        </label>
-                        <label title="${qt.optTitles.A}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                            <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
-                            <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
-                        </label>
-=======
-    <!-- ================= SCRIPT DE LAS 106 PREGUNTAS Y CÁLCULO OFICIAL POR ÁREAS ================= -->
-    <script>
-        const preguntasVocacionales = [
-            "Trabajar resolviendo cálculos físicos y matemáticos",
-            "Investigar el nivel de los precops",
-            "Aprender estilos de pintura artística",
-            "Hacer esculturas",
-            "Trabaja en estudios jurídicos",
-            "Estudiar derecho Constitucional",
-            "Aprender a interpretar radiografías",
-            "Asesorar a estudiantes sobre orientación vocacional",
-            "Reparar la dentadura de una persona",
-            "Trabajar con equipos electrónicos",
-            "Estudiar los ecosistemas de una región",
-            "Organizar la producción de una industria química",
-            "Aprender a diseñar y decorar ambientes",
-            "Realizar cálculos físicos matemáticos de estructuras",
-            "Resolver ejercicios matemáticos",
-            "Planificar actividades administrativas de una empresa",
-            "Realizar una crítica a una obra literaria y cinematográfica",
-            "Conocer técnicas y materiales de dibujo artístico",
-            "Enseñar contenidos matemáticos",
-            "Exponer casos jurídicos en audiencias o juicios",
-            "Aprender sobre causas y tratamientos de enfermedades",
-            "Trabajar en centros médicos",
-            "Armar y reparar computadoras",
-            "Diseñar páginas web",
-            "Planificar la construcción de obras fluviales y marítimas",
-            "Supervisar obras en construcción",
-            "Aprender a realizar pronósticos metereológicos",
-            "Realizar análisis químicos",
-            "Investigar centros y movimientos sísmicos",
-            "Aprender anatomía",
-            "Evaluar daños de viviendas y edificios",
-            "Aprender anatomía",
-            "Evaluar daños de viviendas y edificios",
-            "Construir puentes",
-            "Investigar sobre diferentes enfermedades mentales",
-            "Ayudar a fortalecer músculos en una persona",
-            "Llevar adelante pago de impuestos de otras personas",
-            "Asesorar financieramente a empresas",
-            "Aprender a tomar fotografías",
-            "Crear música con software",
-            "Analizar las condiciones y habitat de vida de una familia",
-            "Tomar declaración a personas acusadas de un delito",
-            "Diseñar juegos electrónicos",
-            "Realizar edición de música y videos",
-            "Aprender el proceso de formación de sustancias",
-            "Realizar análisis químicos de productos industriales",
-            "Evaluar el estado de conexiones eléctricas",
-            "Asesorar a empresas constructoras",
-            "Investigar donde se almacena información tecnológica",
-            "Reconocer los diferentes programas informáticos",
-            "Elaborar dietas para pacientes",
-            "Trabajar en un banco",
-            "Analizar temas de comercio internacional",
-            "Enseñar a niños",
-            "Analizar problemáticas sociales",
-            "Musicalizar obras teatrales",
-            "Realizar artesanías",
-            "Ayudar a personas enfermas",
-            "Ayudar a personas con problemas emocionales",
-            "Investigar sobre nuevas aplicaciones tecnológicas",
-            "Producir programas televisivos",
-            "Realizar experimentos para desarrollar productos curativos",
-            "Analizar fórmulas científicas",
-            "Investigar índice de precios",
-            "Organizar una empresa",
-            "Supervisar las condiciones laborales de una empresa",
-            "Investigar conocimientos históricos",
-            "Leer partituras",
-            "Organizar conciertos musicales",
-            "Trabajar en laboratorios",
-            "Investigar el movimiento de los átomos",
-            "Diseñar y controlar planos de una casa",
-            "Trabajar con elementos de geometría",
-            "Cuidar a personas con capacidades especiales",
-            "Ayudar a niños con problemas de aprendizaje",
-            "Aprender a realizar guiones audiovisuales",
-            "Diseñar ropa",
-            "Diseñar un sistema operativo informática",
-            "Realizar diagnóstico de autos por computadoras",
-            "Diseñar amueblamientos para una casa",
-            "Investigar sobre materiales ecológicos para la construcción de viviendas",
-            "Llevar adelante el pago de sueldo de trabajadores",
-            "Realizar el seguimiento contable de una empresa o comercio",
-            "Llevar adelante el pago de sueldo de trabajadores",
-            "Tocar en una banda musical",
-            "Realizar notas periodísticas para una radio",
-            "Organizar las relaciones públicas de una empresa",
-            "Conocer sobre redes informáticas",
-            "Analizar logaritmos",
-            "Conocer los componentes químicos de un alimento",
-            "Experimentar con reactivos químicos",
-            "Diseñar un avión",
-            "Diseñar obras de ingeniería",
-            "Programar computadoras",
-            "Diseñar el prototipo de una máquina",
-            "Curar animales",
-            "Socorrer emergencias médicas",
-            "Conocer y viajar por distintos lugsares del mundo",
-            "Enseñar deportes",
-            "Conocer diferentes drogas y sus efectos",
-            "Experimentar para descubrir nuevas variedades de vegetales",
-            "Conocer y realizar cálculos estructurales de una vivienda",
-            "Realizar el diseño de donde ubicar viviendas en una ciudad",
-            "Asesorar a personas sobre inversiones financieras",
-            "Aprender álgebra",
-            "Investigar sobre las propiedades de diferentes metales",
-            "Asesorar sobre el cuidado de vegetales",
-        ];
-
-        // Renderizar dinámicamente las 106 preguntas
         function inicializarPreguntas() {
             const container = document.getElementById('preguntas-container');
             if (!container) return;
 
+            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+            const qt = questText[lang];
+
+            const seleccionadas = {};
+            for (let i = 1; i <= preguntasVocacionales.length; i++) {
+                const checked = container.querySelector(`input[name="p_${i}"]:checked`);
+                if (checked) seleccionadas[i] = checked.value;
+            }
+
             container.innerHTML = preguntasVocacionales.map((pregunta, index) => {
                 const num = index + 1;
+                const textoPregunta = pregunta[lang] || pregunta.es;
+                const valSel = seleccionadas[num] || '';
+
                 return `
                     <div class="bg-white rounded-2xl p-5 border border-tomato/10 shadow-2xs flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${pregunta}</p>
+                        <p class="text-sm sm:text-base font-semibold text-[#2D2424] flex-1">${num}. ${textoPregunta}</p>
                         <div class="flex items-center gap-3 shrink-0">
-                            <label title="Desagrada (1 pt)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="D" class="sr-only peer" required>
+                            <label title="${qt.optTitles.D}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="D" ${valSel === 'D' ? 'checked' : ''} class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">D</span>
                             </label>
-                            <label title="Indiferente (2 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="I" class="sr-only peer" required>
+                            <label title="${qt.optTitles.I}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="I" ${valSel === 'I' ? 'checked' : ''} class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">I</span>
                             </label>
-                            <label title="Agrada (3 pts)" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
-                                <input type="radio" name="p_${num}" value="A" class="sr-only peer" required>
+                            <label title="${qt.optTitles.A}" class="w-10 h-10 rounded-full bg-cream hover:bg-softpink border border-tomato/20 flex items-center justify-center text-xs font-bold text-tomato cursor-pointer transition-colors select-none">
+                                <input type="radio" name="p_${num}" value="A" ${valSel === 'A' ? 'checked' : ''} class="sr-only peer" required>
                                 <span class="peer-checked:bg-tomato peer-checked:text-white w-full h-full rounded-full flex items-center justify-center">A</span>
                             </label>
                         </div>
->>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
                     </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    function renderResultadosCuestionario() {
-        if (!ultimoResultadoCuestionario) return;
-        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-        const qt = questText[lang];
-        const { nombre, apellido, curso, totalesArea, mejoresAreas } = ultimoResultadoCuestionario;
-
-        document.getElementById('res-title').textContent = qt.resTitle;
-        document.getElementById('res-alumno').textContent = qt.resAlumno(nombre, apellido, curso);
-        document.getElementById('res-subtitle').textContent = qt.resSubtitle;
-
-        const grid = document.getElementById('res-puntajes-grid');
-        grid.innerHTML = Object.entries(totalesArea).map(([areaKey, ptos]) => {
-            const areaLabel = qt.areas[areaKey] || areaKey;
-            return `
-                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
-                    <span class="font-bold text-xs text-[#2D2424]">${areaLabel}</span>
-                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} ${qt.pointsSuffix}</span>
-                </div>
-            `;
-        }).join('');
-
-        const mejoresTraducidas = mejoresAreas.map(k => qt.areas[k] || k);
-        const joiner = lang === 'en' ? ' and ' : ' y ';
-        document.getElementById('res-mayor-area').textContent = qt.resMayorArea(mejoresTraducidas.join(joiner));
-    }
-
-    function traducirCuestionarioUI() {
-        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-        const qt = questText[lang];
-
-        const backBtn = document.querySelector('#quest-back-btn span');
-        if (backBtn) backBtn.textContent = qt.back;
-
-        const titleEl = document.getElementById('quest-title');
-        if (titleEl) titleEl.textContent = qt.title;
-
-        const subEl = document.getElementById('quest-subtitle');
-        if (subEl) subEl.textContent = qt.subtitle;
-
-        const lNombre = document.getElementById('quest-label-nombre');
-        if (lNombre) lNombre.textContent = qt.labelNombre;
-        const iNombre = document.getElementById('quest-nombre');
-        if (iNombre) iNombre.placeholder = qt.placeholderNombre;
-
-        const lApellido = document.getElementById('quest-label-apellido');
-        if (lApellido) lApellido.textContent = qt.labelApellido;
-        const iApellido = document.getElementById('quest-apellido');
-        if (iApellido) iApellido.placeholder = qt.placeholderApellido;
-
-        const lCurso = document.getElementById('quest-label-curso');
-        if (lCurso) lCurso.textContent = qt.labelCurso;
-        const iCurso = document.getElementById('quest-curso');
-        if (iCurso) iCurso.placeholder = qt.placeholderCurso;
-
-        const instEl = document.getElementById('quest-instructions');
-        if (instEl) {
-            instEl.innerHTML = `
-                <h3 class="font-serif font-bold text-lg text-tomato mb-2">${qt.instructionsTitle}</h3>
-                <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">${qt.instructionsBody}</p>
-            `;
+                `;
+            }).join('');
         }
 
-        const submitBtn = document.getElementById('quest-submit-btn');
-        if (submitBtn) submitBtn.textContent = qt.submitBtn;
+        function renderResultadosCuestionario() {
+            if (!ultimoResultadoCuestionario) return;
+            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+            const qt = questText[lang];
+            const { nombre, apellido, curso, totalesArea, mejoresAreas } = ultimoResultadoCuestionario;
 
-        inicializarPreguntas();
-        renderResultadosCuestionario();
-    }
+            document.getElementById('res-title').textContent = qt.resTitle;
+            document.getElementById('res-alumno').textContent = qt.resAlumno(nombre, apellido, curso);
+            document.getElementById('res-subtitle').textContent = qt.resSubtitle;
 
-    document.addEventListener('DOMContentLoaded', traducirCuestionarioUI);
+            const grid = document.getElementById('res-puntajes-grid');
+            grid.innerHTML = Object.entries(totalesArea).map(([areaKey, ptos]) => {
+                const areaLabel = qt.areas[areaKey] || areaKey;
+                return `
+                    <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
+                        <span class="font-bold text-xs text-[#2D2424]">${areaLabel}</span>
+                        <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} ${qt.pointsSuffix}</span>
+                    </div>
+                `;
+            }).join('');
 
-    function openCuestionarioView() {
-    hideAllViews();
-    document.getElementById('cuestionario-vocab-view').classList.remove('hidden');
-    const footer = document.querySelector('footer');
-    if (footer) footer.classList.add('hidden');
-    traducirCuestionarioUI();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-    function procesarCuestionario(event) {
-        event.preventDefault();
-        const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
-        const qt = questText[lang];
-
-        const nombre = document.getElementById('quest-nombre').value.trim();
-        const apellido = document.getElementById('quest-apellido').value.trim();
-        const curso = document.getElementById('quest-curso').value.trim();
-
-        if (!nombre || !apellido || !curso) {
-            alert(qt.alertMissingData);
-            return;
+            const mejoresTraducidas = mejoresAreas.map(k => qt.areas[k] || k);
+            const joiner = lang === 'en' ? ' and ' : ' y ';
+            document.getElementById('res-mayor-area').textContent = qt.resMayorArea(mejoresTraducidas.join(joiner));
         }
 
-        let respuestas = {};
-        for (let i = 1; i <= 106; i++) {
-            const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
-            if (!seleccion) {
-                alert(qt.alertMissingQuestion(i));
-                const el = document.querySelector(`input[name="p_${i}"]`);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        function traducirCuestionarioUI() {
+            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+            const qt = questText[lang];
+
+            const bubble = document.getElementById('mascot-bubble');
+            if (bubble) bubble.textContent = qt.bubble;
+
+            const mascotBtn = document.getElementById('advent-mascot-container');
+            if (mascotBtn) mascotBtn.title = qt.bubble;
+
+            const backBtn = document.querySelector('#quest-back-btn span');
+            if (backBtn) backBtn.textContent = qt.back;
+
+            const titleEl = document.getElementById('quest-title');
+            if (titleEl) titleEl.textContent = qt.title;
+
+            const subEl = document.getElementById('quest-subtitle');
+            if (subEl) subEl.textContent = qt.subtitle;
+
+            const lNombre = document.getElementById('quest-label-nombre');
+            if (lNombre) lNombre.textContent = qt.labelNombre;
+            const iNombre = document.getElementById('quest-nombre');
+            if (iNombre) iNombre.placeholder = qt.placeholderNombre;
+
+            const lApellido = document.getElementById('quest-label-apellido');
+            if (lApellido) lApellido.textContent = qt.labelApellido;
+            const iApellido = document.getElementById('quest-apellido');
+            if (iApellido) iApellido.placeholder = qt.placeholderApellido;
+
+            const lCurso = document.getElementById('quest-label-curso');
+            if (lCurso) lCurso.textContent = qt.labelCurso;
+            const iCurso = document.getElementById('quest-curso');
+            if (iCurso) iCurso.placeholder = qt.placeholderCurso;
+
+            const instEl = document.getElementById('quest-instructions');
+            if (instEl) {
+                instEl.innerHTML = `
+                    <h3 class="font-serif font-bold text-lg text-tomato mb-2">${qt.instructionsTitle}</h3>
+                    <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">${qt.instructionsBody}</p>
+                `;
+            }
+
+            const submitBtn = document.getElementById('quest-submit-btn');
+            if (submitBtn) submitBtn.textContent = qt.submitBtn;
+
+            inicializarPreguntas();
+            renderResultadosCuestionario();
+        }
+
+        function openCuestionarioView() {
+            if (typeof hideAllViews === 'function') hideAllViews();
+            const view = document.getElementById('cuestionario-vocab-view');
+            if (view) view.classList.remove('hidden');
+            if (typeof setActiveNav === 'function') setActiveNav('cuestionario');
+            const footer = document.querySelector('footer');
+            if (footer) footer.classList.add('hidden');
+            traducirCuestionarioUI();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function procesarCuestionario(event) {
+            event.preventDefault();
+            const lang = (typeof currentLang !== 'undefined' && questText[currentLang]) ? currentLang : 'es';
+            const qt = questText[lang];
+
+            const nombre = document.getElementById('quest-nombre').value.trim();
+            const apellido = document.getElementById('quest-apellido').value.trim();
+            const curso = document.getElementById('quest-curso').value.trim();
+
+            if (!nombre || !apellido || !curso) {
+                alert(qt.alertMissingData);
                 return;
             }
-<<<<<<< HEAD
-            const val = seleccion.value;
-            respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
-=======
 
-            // Validar que todas las 106 preguntas estén contestadas
-            let respuestas = {};
+            const respuestas = {};
             for (let i = 1; i <= 106; i++) {
                 const seleccion = document.querySelector(`input[name="p_${i}"]:checked`);
                 if (!seleccion) {
-                    alert(`Te falta responder la pregunta número ${i}. ¡Todas son obligatorias!`);
+                    alert(qt.alertMissingQuestion(i));
                     const el = document.querySelector(`input[name="p_${i}"]`);
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
@@ -7204,7 +6771,6 @@ function openCuestionarioView() {
                 respuestas[i] = val === 'A' ? 3 : (val === 'I' ? 2 : 1);
             }
 
-            // Agrupación oficial de áreas e ítems según el documento[cite: 3]
             const areasDef = {
                 "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
                 "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
@@ -7215,12 +6781,12 @@ function openCuestionarioView() {
                 "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
             };
 
-            let totalesArea = {};
+            const totalesArea = {};
             let maxPuntaje = -1;
             let mejoresAreas = [];
 
-            for (let area in areasDef) {
-                let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
+            for (const area in areasDef) {
+                const suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
                 totalesArea[area] = suma;
                 if (suma > maxPuntaje) {
                     maxPuntaje = suma;
@@ -7230,720 +6796,390 @@ function openCuestionarioView() {
                 }
             }
 
-            // Mostrar resultados en pantalla
-            document.getElementById('res-alumno').textContent = `Alumno/a: ${nombre} ${apellido} — Curso: ${curso}`;
+            ultimoResultadoCuestionario = { nombre, apellido, curso, totalesArea, mejoresAreas };
+            renderResultadosCuestionario();
 
-            const grid = document.getElementById('res-puntajes-grid');
-            grid.innerHTML = Object.entries(totalesArea).map(([area, ptos]) => `
-                <div class="p-4 bg-cream rounded-2xl border border-tomato/10 flex justify-between items-center">
-                    <span class="font-bold text-xs text-[#2D2424]">${area}</span>
-                    <span class="px-3 py-1 bg-tomato text-white text-xs font-bold rounded-full">${ptos} puntos</span>
-                </div>
-            `).join('');
-
-            document.getElementById('res-mayor-area').textContent = `Las 2 áreas (o áreas principales) con mayor puntaje son: ${mejoresAreas.join(' y ')}`;
-
-            document.getElementById('resultados-container').classList.remove('hidden');
-            document.getElementById('resultados-container').scrollIntoView({ behavior: 'smooth' });
->>>>>>> 5a4e9c5e8389950d4915df03bff81a9d2dff38a8
+            const resBox = document.getElementById('resultados-container');
+            resBox.classList.remove('hidden');
+            resBox.scrollIntoView({ behavior: 'smooth' });
         }
 
-        const areasDef = {
-            "ECONÓMICA": [1, 2, 15, 16, 35, 36, 49, 50, 61, 62, 80, 81, 103, 104],
-            "MUSICAL / ARTÍSTICA": [3, 4, 17, 18, 37, 38, 53, 54, 65, 66, 73, 74, 82, 83],
-            "HUMANISTA": [5, 6, 19, 20, 39, 40, 51, 52, 63, 64, 84, 85, 97, 98],
-            "ASISTENCIAL": [7, 8, 9, 21, 22, 33, 34, 48, 55, 56, 71, 72, 95, 96],
-            "DISEÑO / CONSTRUCCIÓN": [1, 13, 14, 25, 26, 31, 32, 45, 46, 69, 70, 74, 78, 79, 90, 91, 94, 101, 102],
-            "TECNOLÓGICA / INFORMÁTICA": [10, 23, 24, 27, 38, 41, 42, 46, 47, 57, 58, 75, 76, 86, 87, 93, 94, 104],
-            "NATURALES / QUÍMICA": [11, 12, 27, 28, 29, 30, 43, 44, 48, 59, 60, 67, 68, 88, 89, 99, 100, 105, 106]
-        };
+        (function initFixedMascotButton() {
+            const container = document.getElementById('advent-mascot-container');
+            if (!container) return;
 
-        let totalesArea = {};
-        let maxPuntaje = -1;
-        let mejoresAreas = [];
+            let touchTimeout;
 
-        for (let area in areasDef) {
-            let suma = areasDef[area].reduce((acc, qNum) => acc + (respuestas[qNum] || 0), 0);
-            totalesArea[area] = suma;
-            if (suma > maxPuntaje) {
-                maxPuntaje = suma;
-                mejoresAreas = [area];
-            } else if (suma === maxPuntaje) {
-                mejoresAreas.push(area);
+            container.addEventListener('touchstart', () => {
+                container.classList.add('active-touch');
+                clearTimeout(touchTimeout);
+                touchTimeout = setTimeout(() => {
+                    container.classList.remove('active-touch');
+                }, 2500);
+            }, { passive: true });
+
+            container.addEventListener('click', () => {
+                openCuestionarioView();
+            });
+
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openCuestionarioView();
+                }
+            });
+        })();
+
+        traducirCuestionarioUI();
+    </script>
+
+    <!-- ================= VISTA NUESTRA EMPRESA Y TRADUCCIÓN AUTOMÁTICA ================= -->
+    <script>
+        (function () {
+            let isEmpresaOpen = false;
+            let isTranslatingNow = false;
+
+            const paresTraduccion = [
+                ['Inicio', 'Home'],
+                ['Especialidades', 'Specialties'],
+                ['Universidades', 'Universities'],
+                ['Viandas', 'Meals'],
+                ['Librería', 'Stationery'],
+                ['Biblioteca', 'Library'],
+                ['Reconocimientos', 'Awards'],
+                ['Noticias', 'News'],
+                ['Nuestra empresa', 'Our Company'],
+                ['Nuestra empresa →', 'Our Company →'],
+                ['← VOLVER', '← BACK'],
+                ['← Volver', '← Back'],
+                ['Volver', 'Back'],
+                ['Siguiente', 'Next'],
+                ['Anterior', 'Previous'],
+                ['Enviar', 'Submit'],
+                ['Guardar', 'Save'],
+                ['Reiniciar', 'Reset'],
+                ['Comenzar', 'Start'],
+                ['Ver más', 'See more'],
+                ['Cerrar', 'Close'],
+                ['Buscar', 'Search'],
+                ['Filtrar', 'Filter'],
+                ['Todos', 'All'],
+                ['Informática', 'Computer Science'],
+                ['Química', 'Chemistry'],
+                ['Construcciones', 'Construction'],
+                ['Introducción', 'Introduction'],
+                ['Plan de estudios', 'Curriculum'],
+                ['Horarios', 'Schedules'],
+                ['Profesores', 'Teachers'],
+                ['Comentarios', 'Comments'],
+                ['Cuestionario', 'Quiz'],
+                ['Pregunta', 'Question'],
+                ['Respuestas', 'Answers'],
+                ['Resultado', 'Result'],
+                ['Resultados', 'Results'],
+                ['Puntaje', 'Score'],
+                ['Correcto', 'Correct'],
+                ['Incorrecto', 'Incorrect'],
+                ['Portal Estudiantil', 'Student Portal'],
+                ['NUESTRA EMPRESA', 'OUR COMPANY'],
+                ['Quiénes somos', 'Who we are'],
+                ['Escribí acá la historia, identidad y origen de la empresa.', 'Write your company story, identity, and origin here.']
+            ];
+
+            const esToEn = new Map();
+            const enToEs = new Map();
+            paresTraduccion.forEach(([es, en]) => {
+                esToEn.set(es.trim(), en);
+                enToEs.set(en.trim(), es);
+            });
+
+            function getTargetLang() {
+                if (typeof currentLang !== 'undefined' && (currentLang === 'es' || currentLang === 'en')) {
+                    return currentLang;
+                }
+                return document.documentElement.lang === 'en' ? 'en' : 'es';
             }
-        }
 
-        ultimoResultadoCuestionario = { nombre, apellido, curso, totalesArea, mejoresAreas };
-        renderResultadosCuestionario();
+            function translatePhrase(text, targetLang) {
+                if (!text || typeof text !== 'string') return text;
+                const match = text.match(/^(\s*)([\s\S]*?)(\s*)$/);
+                if (!match) return text;
+                const [, leading, core, trailing] = match;
+                if (!core) return text;
 
-        const resBox = document.getElementById('resultados-container');
-        resBox.classList.remove('hidden');
-        resBox.scrollIntoView({ behavior: 'smooth' });
-    }
-</script>
+                const map = targetLang === 'en' ? esToEn : enToEs;
+                if (map.has(core)) {
+                    return `${leading}${map.get(core)}${trailing}`;
+                }
+                return text;
+            }
 
-    <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
-        <section id="empresa-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-blush/20 relative overflow-hidden">
-                <button id="emp-back-btn" type="button" onclick="volverDesdeEmpresa()" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
-                    <span>← VOLVER</span>
-                </button>
-
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-4">
-                    <div class="flex items-center gap-3">
-                        <h2 id="emp-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight uppercase">NUESTRA EMPRESA</h2>
-                        <svg class="w-7 h-7 text-blush shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
-                        </svg>
-                    </div>
-
-                    <div id="emp-tabs-bar" class="flex flex-wrap items-center gap-2">
-                        <button type="button" data-emp-tab="quienes" onclick="switchEmpresaTab('quienes')" class="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs">Quiénes somos</button>
-                    </div>
-                </div>
-                <div class="h-1 w-full bg-blush/15 rounded-full mb-8"></div>
-
-                <div id="empresa-tab-content"></div>
-            </div>
-        </section>
-
-        <script>
-            (function () {
-                let isEmpresaOpen = false;
-                let isTranslatingNow = false;
-
-                // 1) Diccionario ampliable: agregá acá cualquier frase exacta (cuestionarios, botones, etc.)
-                const paresTraduccion = [
-                    // Navegación y botones generales
-                    ['Inicio', 'Home'],
-                    ['Especialidades', 'Specialties'],
-                    ['Universidades', 'Universities'],
-                    ['Viandas', 'Meals'],
-                    ['Librería', 'Stationery'],
-                    ['Biblioteca', 'Library'],
-                    ['Reconocimientos', 'Awards'],
-                    ['Noticias', 'News'],
-                    ['Nuestra empresa', 'Our Company'],
-                    ['Nuestra empresa →', 'Our Company →'],
-                    ['← VOLVER', '← BACK'],
-                    ['← Volver', '← Back'],
-                    ['Volver', 'Back'],
-                    ['Siguiente', 'Next'],
-                    ['Anterior', 'Previous'],
-                    ['Enviar', 'Submit'],
-                    ['Guardar', 'Save'],
-                    ['Reiniciar', 'Reset'],
-                    ['Comenzar', 'Start'],
-                    ['Ver más', 'See more'],
-                    ['Cerrar', 'Close'],
-                    ['Buscar', 'Search'],
-                    ['Filtrar', 'Filter'],
-                    ['Todos', 'All'],
-
-                    // Especialidades y pestañas típicas
-                    ['Informática', 'Computer Science'],
-                    ['Química', 'Chemistry'],
-                    ['Construcciones', 'Construction'],
-                    ['Introducción', 'Introduction'],
-                    ['Plan de estudios', 'Curriculum'],
-                    ['Horarios', 'Schedules'],
-                    ['Profesores', 'Teachers'],
-                    ['Comentarios', 'Comments'],
-                    ['Cuestionario', 'Quiz'],
-                    ['Pregunta', 'Question'],
-                    ['Respuestas', 'Answers'],
-                    ['Resultado', 'Result'],
-                    ['Resultados', 'Results'],
-                    ['Puntaje', 'Score'],
-                    ['Correcto', 'Correct'],
-                    ['Incorrecto', 'Incorrect'],
-                    ['Portal Estudiantil', 'Student Portal'],
-
-                    // Vista Nuestra empresa
-                    ['NUESTRA EMPRESA', 'OUR COMPANY'],
-                    ['Quiénes somos', 'Who we are'],
-                    ['Escribí acá la historia, identidad y origen de la empresa.', 'Write your company story, identity, and origin here.']
-                ];
-
-                const esToEn = new Map();
-                const enToEs = new Map();
-                paresTraduccion.forEach(([es, en]) => {
-                    esToEn.set(es.trim(), en);
-                    enToEs.set(en.trim(), es);
+            function translateAttributes(el, targetLang) {
+                ['placeholder', 'title', 'aria-label', 'alt'].forEach(attr => {
+                    if (!el.hasAttribute(attr)) return;
+                    const val = el.getAttribute(attr);
+                    if (!el.dataset['orig_' + attr]) {
+                        el.dataset['orig_' + attr] = val;
+                    }
+                    const translated = translatePhrase(val, targetLang);
+                    if (translated !== val) {
+                        el.setAttribute(attr, translated);
+                    }
                 });
+            }
 
-                function getTargetLang() {
-                    if (typeof currentLang !== 'undefined' && (currentLang === 'es' || currentLang === 'en')) {
-                        return currentLang;
+            window.traducirTodoElDOM = function (forcedLang) {
+                if (isTranslatingNow) return;
+                isTranslatingNow = true;
+
+                try {
+                    const targetLang = forcedLang || getTargetLang();
+                    document.documentElement.lang = targetLang === 'en' ? 'en' : 'es';
+
+                    if (isEmpresaOpen) {
+                        window.switchEmpresaTab();
                     }
-                    const btn = document.getElementById('lang-toggle-btn');
-                    const txt = (btn ? btn.textContent : '').trim().toUpperCase();
-                    // Si el botón muestra "IN" / "EN", puede indicar idioma actual o destino según tu lógica
-                    return document.documentElement.lang === 'en' ? 'en' : 'es';
-                }
 
-                function translatePhrase(text, targetLang) {
-                    if (!text || typeof text !== 'string') return text;
-                    const match = text.match(/^(\s*)([\s\S]*?)(\s*)$/);
-                    if (!match) return text;
-                    const [, leading, core, trailing] = match;
-                    if (!core) return text;
-
-                    const map = targetLang === 'en' ? esToEn : enToEs;
-                    if (map.has(core)) {
-                        return `${leading}${map.get(core)}${trailing}`;
-                    }
-                    return text;
-                }
-
-                function translateAttributes(el, targetLang) {
-                    ['placeholder', 'title', 'aria-label', 'alt'].forEach(attr => {
-                        if (!el.hasAttribute(attr)) return;
-                        const val = el.getAttribute(attr);
-                        if (!el.dataset['orig_' + attr]) {
-                            el.dataset['orig_' + attr] = val;
-                        }
-                        const translated = translatePhrase(val, targetLang);
-                        if (translated !== val) {
-                            el.setAttribute(attr, translated);
-                        }
+                    document.querySelectorAll('*').forEach(el => {
+                        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+                        translateAttributes(el, targetLang);
                     });
-                }
 
-                window.traducirTodoElDOM = function (forcedLang) {
-                    if (isTranslatingNow) return;
-                    isTranslatingNow = true;
-
-                    try {
-                        const targetLang = forcedLang || getTargetLang();
-                        document.documentElement.lang = targetLang === 'en' ? 'en' : 'es';
-
-                        // 1) Si existen funciones de renderizado del portal, refrescar vistas dinámicas
-                        if (typeof applyLanguage === 'function') {
-                            try { applyLanguage(); } catch (_) {}
-                        }
-                        if (isEmpresaOpen) {
-                            window.switchEmpresaTab();
-                        }
-
-                        // 2) Traducir atributos en todos los elementos
-                        document.querySelectorAll('*').forEach(el => {
-                            if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
-                            translateAttributes(el, targetLang);
-                        });
-
-                        // 3) Traducir nodos de texto (incluye cuestionarios, preguntas, opciones y etiquetas)
-                        const walker = document.createTreeWalker(
-                            document.body,
-                            NodeFilter.SHOW_TEXT,
-                            {
-                                acceptNode(node) {
-                                    const parent = node.parentElement;
-                                    if (!parent) return NodeFilter.FILTER_REJECT;
-                                    if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT'].includes(parent.tagName)) {
-                                        return NodeFilter.FILTER_REJECT;
-                                    }
-                                    if (!node.nodeValue || !node.nodeValue.trim()) {
-                                        return NodeFilter.FILTER_SKIP;
-                                    }
-                                    return NodeFilter.FILTER_ACCEPT;
+                    const walker = document.createTreeWalker(
+                        document.body,
+                        NodeFilter.SHOW_TEXT,
+                        {
+                            acceptNode(node) {
+                                const parent = node.parentElement;
+                                if (!parent) return NodeFilter.FILTER_REJECT;
+                                if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT'].includes(parent.tagName)) {
+                                    return NodeFilter.FILTER_REJECT;
                                 }
-                            }
-                        );
-
-                        let currentNode;
-                        while ((currentNode = walker.nextNode())) {
-                            const updated = translatePhrase(currentNode.nodeValue, targetLang);
-                            if (updated !== currentNode.nodeValue) {
-                                currentNode.nodeValue = updated;
+                                if (!node.nodeValue || !node.nodeValue.trim()) {
+                                    return NodeFilter.FILTER_SKIP;
+                                }
+                                return NodeFilter.FILTER_ACCEPT;
                             }
                         }
-                    } finally {
-                        isTranslatingNow = false;
-                    }
-                };
+                    );
 
-                // Registrar pares extra en el diccionario desde cualquier parte de tu código
-                window.agregarTraducciones = function (listaPares) {
-                    if (!Array.isArray(listaPares)) return;
-                    listaPares.forEach(([es, en]) => {
-                        if (es && en) {
-                            esToEn.set(es.trim(), en);
-                            enToEs.set(en.trim(), es);
+                    let currentNode;
+                    while ((currentNode = walker.nextNode())) {
+                        const updated = translatePhrase(currentNode.nodeValue, targetLang);
+                        if (updated !== currentNode.nodeValue) {
+                            currentNode.nodeValue = updated;
                         }
-                    });
-                    window.traducirTodoElDOM();
-                };
-
-                // --- Vista Nuestra Empresa ---
-                const empresaI18n = {
-                    es: {
-                        back: '← VOLVER',
-                        title: 'NUESTRA EMPRESA',
-                        tabLabel: 'Quiénes somos',
-                        heading: 'Quiénes somos',
-                        body: 'Escribí acá la historia, identidad y origen de la empresa.'
-                    },
-                    en: {
-                        back: '← BACK',
-                        title: 'OUR COMPANY',
-                        tabLabel: 'Who we are',
-                        heading: 'Who we are',
-                        body: 'Write your company story, identity, and origin here.'
                     }
-                };
-
-                function setFooterVisible(visible) {
-                    const footer = document.querySelector('footer');
-                    if (footer) footer.classList.toggle('hidden', !visible);
+                } finally {
+                    isTranslatingNow = false;
                 }
+            };
 
-                window.switchEmpresaTab = function () {
-                    const lang = typeof currentLang !== 'undefined' ? currentLang : getTargetLang();
-                    const t = empresaI18n[lang] || empresaI18n.es;
-
-                    const backBtn = document.getElementById('emp-back-btn');
-                    const mainTitle = document.getElementById('emp-main-title');
-                    const tabBtn = document.querySelector('#emp-tabs-bar button[data-emp-tab="quienes"]');
-                    const container = document.getElementById('empresa-tab-content');
-
-                    if (backBtn) backBtn.innerHTML = `<span>${t.back}</span>`;
-                    if (mainTitle) mainTitle.textContent = t.title;
-                    if (tabBtn) {
-                        tabBtn.textContent = t.tabLabel;
-                        tabBtn.className = 'px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs';
+            window.agregarTraducciones = function (listaPares) {
+                if (!Array.isArray(listaPares)) return;
+                listaPares.forEach(([es, en]) => {
+                    if (es && en) {
+                        esToEn.set(es.trim(), en);
+                        enToEs.set(en.trim(), es);
                     }
-                    if (container) {
-                        container.innerHTML = `
-                            <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
-                                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
-                                <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
-                            </div>
-                        `;
-                    }
-                };
+                });
+                window.traducirTodoElDOM();
+            };
 
-                window.openEmpresaPage = function (event) {
-                    if (event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    isEmpresaOpen = true;
+            const empresaI18n = {
+                es: {
+                    back: '← VOLVER',
+                    title: 'NUESTRA EMPRESA',
+                    tabLabel: 'Quiénes somos',
+                    heading: 'Quiénes somos',
+                    body: 'Escribí acá la historia, identidad y origen de la empresa.'
+                },
+                en: {
+                    back: '← BACK',
+                    title: 'OUR COMPANY',
+                    tabLabel: 'Who we are',
+                    heading: 'Who we are',
+                    body: 'Write your company story, identity, and origin here.'
+                }
+            };
 
-                    document.querySelectorAll('main, section[id$="-view"]').forEach(el => {
-                        el.classList.add('hidden');
-                    });
-                    setFooterVisible(false);
+            function setFooterVisible(visible) {
+                const footer = document.querySelector('footer');
+                if (footer) footer.classList.toggle('hidden', !visible);
+            }
 
-                    const empView = document.getElementById('empresa-view');
-                    if (empView) empView.classList.remove('hidden');
+            window.switchEmpresaTab = function () {
+                const lang = typeof currentLang !== 'undefined' ? currentLang : getTargetLang();
+                const t = empresaI18n[lang] || empresaI18n.es;
 
-                    if (typeof setActiveNav === 'function') setActiveNav('inicio');
-                    window.switchEmpresaTab();
-                    window.traducirTodoElDOM();
-                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                const backBtn = document.getElementById('emp-back-btn');
+                const mainTitle = document.getElementById('emp-main-title');
+                const tabBtn = document.querySelector('#emp-tabs-bar button[data-emp-tab="quienes"]');
+                const container = document.getElementById('empresa-tab-content');
+
+                if (backBtn) backBtn.innerHTML = `<span>${t.back}</span>`;
+                if (mainTitle) mainTitle.textContent = t.title;
+                if (tabBtn) {
+                    tabBtn.textContent = t.tabLabel;
+                    tabBtn.className = 'px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-tomato text-white shadow-2xs';
+                }
+                if (container) {
+                    container.innerHTML = `
+                        <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
+                            <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
+                        </div>
+                    `;
+                }
+            };
+
+            window.openEmpresaPage = function (event) {
+                if (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                isEmpresaOpen = true;
+
+                if (typeof hideAllViews === 'function') hideAllViews();
+                setFooterVisible(false);
+
+                const empView = document.getElementById('empresa-view');
+                if (empView) empView.classList.remove('hidden');
+
+                if (typeof setActiveNav === 'function') setActiveNav('inicio');
+                window.switchEmpresaTab();
+                window.traducirTodoElDOM();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return false;
+            };
+
+            window.volverDesdeEmpresa = function () {
+                isEmpresaOpen = false;
+                const empView = document.getElementById('empresa-view');
+                if (empView) empView.classList.add('hidden');
+                setFooterVisible(true);
+                if (typeof showMainPortal === 'function') {
+                    showMainPortal('inicio');
+                } else {
+                    const mainView = document.getElementById('main-portal-view');
+                    if (mainView) mainView.classList.remove('hidden');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return false;
-                };
+                }
+                window.traducirTodoElDOM();
+            };
 
-                window.volverDesdeEmpresa = function () {
+            const heroCtaSpan = document.getElementById('hero-cta');
+            const heroCtaLink = heroCtaSpan ? heroCtaSpan.closest('a') : null;
+            if (heroCtaLink && heroCtaSpan) {
+                if (!heroCtaSpan.textContent.trim()) {
+                    heroCtaSpan.textContent = 'Nuestra empresa →';
+                }
+                heroCtaLink.removeAttribute('onclick');
+                heroCtaLink.setAttribute('href', '#empresa');
+                heroCtaLink.addEventListener('click', window.openEmpresaPage, true);
+            }
+
+            const langToggleBtn = document.getElementById('lang-toggle-btn');
+            if (langToggleBtn) {
+                langToggleBtn.addEventListener('click', () => {
+                    setTimeout(() => {
+                        window.traducirTodoElDOM();
+                    }, 10);
+                });
+            }
+
+            const observer = new MutationObserver(() => {
+                if (!isTranslatingNow) {
+                    clearTimeout(window.__adventTranslateTimer);
+                    window.__adventTranslateTimer = setTimeout(() => {
+                        window.traducirTodoElDOM();
+                    }, 30);
+                }
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            document.addEventListener('click', (e) => {
+                const trigger = e.target.closest('a, button');
+                if (!trigger || trigger.closest('#empresa-view') || trigger === heroCtaLink) return;
+                const fn = trigger.getAttribute('onclick') || '';
+                if (
+                    fn.includes('showMainPortal') ||
+                    fn.includes('openViandasView') ||
+                    fn.includes('openLibreriaView') ||
+                    fn.includes('openBibliotecaView') ||
+                    fn.includes('openSpecialtyPage') ||
+                    fn.includes('openUniversidadesView') ||
+                    fn.includes('openReconocimientosView') ||
+                    fn.includes('openNoticiasView')
+                ) {
                     isEmpresaOpen = false;
+                    setFooterVisible(true);
                     const empView = document.getElementById('empresa-view');
                     if (empView) empView.classList.add('hidden');
-                    setFooterVisible(true);
-                    if (typeof showMainPortal === 'function') {
-                        showMainPortal('inicio');
-                    } else {
-                        const mainView = document.getElementById('main-portal-view');
-                        if (mainView) mainView.classList.remove('hidden');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                    window.traducirTodoElDOM();
-                };
-
-                const heroCtaSpan = document.getElementById('hero-cta');
-                const heroCtaLink = heroCtaSpan ? heroCtaSpan.closest('a') : null;
-                if (heroCtaLink && heroCtaSpan) {
-                    if (!heroCtaSpan.textContent.trim()) {
-                        heroCtaSpan.textContent = 'Nuestra empresa →';
-                    }
-                    heroCtaLink.removeAttribute('onclick');
-                    heroCtaLink.setAttribute('href', '#empresa');
-                    heroCtaLink.addEventListener('click', window.openEmpresaPage, true);
                 }
+            });
+        })();
+    </script>
 
-                // Al hacer clic en el botón de idioma, esperar a que corra tu toggleLanguage y traducir todo
-                const langToggleBtn = document.getElementById('lang-toggle-btn');
-                if (langToggleBtn) {
-                    langToggleBtn.addEventListener('click', () => {
-                        setTimeout(() => {
-                            window.traducirTodoElDOM();
-                        }, 10);
-                    });
+    <!-- ================= ENLACES OFICIALES UNIVERSIDADES ================= -->
+    <script>
+        (function () {
+            const URLS_UNI = {
+                ucc: 'https://www.ucc.edu.ar',
+                unc: 'https://www.unc.edu.ar',
+                utn: 'https://www.frc.utn.edu.ar'
+            };
+
+            function getUrlActual() {
+                const cont = document.getElementById('universidades-view') || document.body;
+                const txt = (cont.innerText || '').toLowerCase();
+                if (txt.includes('católica') || txt.includes('ucc')) return URLS_UNI.ucc;
+                if (txt.includes('nacional de córdoba') || txt.includes('nacional de cordoba') || txt.includes('unc')) return URLS_UNI.unc;
+                if (txt.includes('tecnológica') || txt.includes('tecnologica') || txt.includes('utn')) return URLS_UNI.utn;
+                return '';
+            }
+
+            function aplicarLinks() {
+                const url = getUrlActual();
+                if (!url) return;
+
+                const cont = document.getElementById('universidades-view') || document.body;
+                cont.querySelectorAll('a, button').forEach(el => {
+                    const t = (el.textContent || '').trim().toLowerCase();
+                    if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
+
+                    el.setAttribute('href', url);
+                    el.setAttribute('target', '_blank');
+                    el.setAttribute('rel', 'noopener noreferrer');
+                    el.removeAttribute('onclick');
+                    el.style.cursor = 'pointer';
+                });
+            }
+
+            document.addEventListener('click', function (e) {
+                const btn = e.target.closest('#universidades-view a, #universidades-view button, a, button');
+                if (!btn) return;
+                const t = (btn.textContent || '').trim().toLowerCase();
+                if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
+
+                const url = btn.getAttribute('href') && btn.getAttribute('href').startsWith('http')
+                    ? btn.getAttribute('href')
+                    : getUrlActual();
+
+                if (!url) return;
+
+                e.preventDefault();
+                e.stopPropagation();
+                const nuevaPestana = window.open(url, '_blank', 'noopener,noreferrer');
+                if (!nuevaPestana || nuevaPestana.closed || typeof nuevaPestana.closed === 'undefined') {
+                    window.location.href = url;
                 }
+            }, true);
 
-                // Observar cambios dinámicos (por ejemplo al abrir un cuestionario o cambiar pestañas)
-                const observer = new MutationObserver(() => {
-                    if (!isTranslatingNow) {
-                        clearTimeout(window.__adventTranslateTimer);
-                        window.__adventTranslateTimer = setTimeout(() => {
-                            window.traducirTodoElDOM();
-                        }, 30);
-                    }
-                });
-                observer.observe(document.body, { childList: true, subtree: true });
-
-                // Ocultar #empresa-view si se abre cualquier otra vista
-                document.addEventListener('click', (e) => {
-                    const trigger = e.target.closest('a, button');
-                    if (!trigger || trigger.closest('#empresa-view') || trigger === heroCtaLink) return;
-                    const fn = trigger.getAttribute('onclick') || '';
-                    if (
-                        fn.includes('showMainPortal') ||
-                        fn.includes('openViandasView') ||
-                        fn.includes('openLibreriaView') ||
-                        fn.includes('openBibliotecaView') ||
-                        fn.includes('openSpecialtyPage') ||
-                        fn.includes('openUniversidadesView') ||
-                        fn.includes('openReconocimientosView') ||
-                        fn.includes('openNoticiasView')
-                    ) {
-                        isEmpresaOpen = false;
-                        setFooterVisible(true);
-                        const empView = document.getElementById('empresa-view');
-                        if (empView) empView.classList.add('hidden');
-                    }
-                });
-            })();
-        </script>
-        <script>
-(function () {
-    const URLS_UNI = {
-        ucc: 'https://www.ucc.edu.ar',
-        unc: 'https://www.unc.edu.ar',
-        utn: 'https://www.frc.utn.edu.ar'
-    };
-
-    function getUrlActual() {
-        const cont = document.getElementById('universidades-view') || document.body;
-        const txt = (cont.innerText || '').toLowerCase();
-        if (txt.includes('católica') || txt.includes('ucc')) return URLS_UNI.ucc;
-        if (txt.includes('nacional de córdoba') || txt.includes('nacional de cordoba') || txt.includes('unc')) return URLS_UNI.unc;
-        if (txt.includes('tecnológica') || txt.includes('tecnologica') || txt.includes('utn')) return URLS_UNI.utn;
-        return '';
-    }
-
-    function aplicarLinks() {
-        const url = getUrlActual();
-        if (!url) return;
-
-        const cont = document.getElementById('universidades-view') || document.body;
-        cont.querySelectorAll('a, button').forEach(el => {
-            const t = (el.textContent || '').trim().toLowerCase();
-            if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
-
-            el.setAttribute('href', url);
-            el.setAttribute('target', '_blank');
-            el.setAttribute('rel', 'noopener noreferrer');
-            el.removeAttribute('onclick');
-            el.style.cursor = 'pointer';
-        });
-    }
-
-    // Al hacer clic en el botón, abrir en pestaña nueva; si el navegador la bloquea, navegar directo
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('#universidades-view a, #universidades-view button, a, button');
-        if (!btn) return;
-        const t = (btn.textContent || '').trim().toLowerCase();
-        if (!t.includes('visitar') && !t.includes('visit') && !t.includes('sitio') && !t.includes('oficial')) return;
-
-        const url = btn.getAttribute('href') && btn.getAttribute('href').startsWith('http')
-            ? btn.getAttribute('href')
-            : getUrlActual();
-
-        if (!url) return;
-
-        e.preventDefault();
-        e.stopPropagation();
-        const nuevaPestana = window.open(url, '_blank', 'noopener,noreferrer');
-        if (!nuevaPestana || nuevaPestana.closed || typeof nuevaPestana.closed === 'undefined') {
-            window.location.href = url;
-        }
-    }, true);
-
-    setInterval(aplicarLinks, 300);
-})();
-</script>
-
-<!-- MODAL OCULTO DEL CUESTIONARIO (SOLO SE ABRE AL TOCAR A LA NENA) -->
-<div id="quiz-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-[#2D2424]/50 backdrop-blur-xs" onclick="if(event.target === this) closeQuizModal()">
-    <div class="bg-cream rounded-[2rem] max-w-lg w-full p-6 sm:p-8 border border-tomato/15 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-        <button type="button" onclick="closeQuizModal()" aria-label="Cerrar" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-softpink text-tomato hover:bg-tomato hover:text-white flex items-center justify-center transition-colors cursor-pointer">
-            <i data-lucide="x" class="w-4 h-4"></i>
-        </button>
-
-        <span id="quiz-badge" class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-softpink text-blush mb-2">
-            Orientación Vocacional
-        </span>
-        <h3 id="quiz-title" class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-2">
-            ¿Qué especialidad es para vos?
-        </h3>
-        <p id="quiz-subtitle" class="text-xs sm:text-sm text-[#5C4E4E] mb-6">
-            Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.
-        </p>
-
-        <form id="quiz-form" onsubmit="submitQuiz(event)" class="space-y-5">
-            <div class="bg-white rounded-2xl p-4 border border-blush/15">
-                <p id="quiz-q1" class="text-sm font-bold text-[#2D2424] mb-2.5">1. ¿Qué actividad disfrutás más?</p>
-                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q1" value="informatica" required class="accent-[#C42B34]">
-                        <span id="quiz-q1-a">Programar, armar computadoras o configurar redes.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q1" value="quimica" class="accent-[#C42B34]">
-                        <span id="quiz-q1-b">Hacer experimentos en laboratorio y analizar sustancias.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q1" value="construcciones" class="accent-[#C42B34]">
-                        <span id="quiz-q1-c">Diseñar planos, maquetas y proyectos arquitectónicos.</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl p-4 border border-blush/15">
-                <p id="quiz-q2" class="text-sm font-bold text-[#2D2424] mb-2.5">2. ¿En qué ambiente te gustaría trabajar en el futuro?</p>
-                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q2" value="informatica" required class="accent-[#C42B34]">
-                        <span id="quiz-q2-a">En empresas tecnológicas, soporte IT o desarrollo de software.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q2" value="quimica" class="accent-[#C42B34]">
-                        <span id="quiz-q2-b">En industrias alimentarias, farmacéuticas o control ambiental.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q2" value="construcciones" class="accent-[#C42B34]">
-                        <span id="quiz-q2-c">En estudios de arquitectura, obras civiles o topografía.</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-2xl p-4 border border-blush/15">
-                <p id="quiz-q3" class="text-sm font-bold text-[#2D2424] mb-2.5">3. ¿Qué herramienta preferís usar?</p>
-                <div class="space-y-2 text-xs sm:text-sm text-[#4A3F3F]">
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q3" value="informatica" required class="accent-[#C42B34]">
-                        <span id="quiz-q3-a">Código, servidores y hardware.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q3" value="quimica" class="accent-[#C42B34]">
-                        <span id="quiz-q3-b">Microscopios, reactivos y tubos de ensayo.</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 cursor-pointer">
-                        <input type="radio" name="q3" value="construcciones" class="accent-[#C42B34]">
-                        <span id="quiz-q3-c">AutoCAD, escuadras y cálculo estructural.</span>
-                    </label>
-                </div>
-            </div>
-
-            <button id="quiz-submit-btn" type="submit" class="w-full bg-tomato hover:bg-[#a6222a] text-white text-xs sm:text-sm font-bold uppercase tracking-wider py-3.5 rounded-full transition-colors cursor-pointer shadow-xs">
-                Ver mi resultado
-            </button>
-        </form>
-
-        <div id="quiz-result-box" class="hidden mt-5 bg-white rounded-2xl p-5 border border-olive/30 text-center">
-            <span id="quiz-result-label" class="block text-[11px] font-extrabold uppercase tracking-wider text-olive mb-1">Tu especialidad ideal es</span>
-            <h4 id="quiz-result-title" class="font-serif text-2xl font-bold text-tomato mb-2"></h4>
-            <p id="quiz-result-desc" class="text-xs sm:text-sm text-[#4A3F3F] mb-4"></p>
-            <div class="flex flex-wrap justify-center gap-2.5">
-                <button id="quiz-go-spec-btn" type="button" class="bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-5 py-2.5 rounded-full transition-colors cursor-pointer">
-                    Ir a la especialidad →
-                </button>
-                <button id="quiz-reset-btn" type="button" onclick="resetQuiz()" class="bg-softpink hover:bg-tomato text-tomato hover:text-white text-xs font-bold px-4 py-2.5 rounded-full transition-colors cursor-pointer">
-                    Volver a hacer
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-const quizTranslations = {
-    es: {
-        bubble: '¡Hacé el test!',
-        badge: 'Orientación Vocacional',
-        title: '¿Qué especialidad es para vos?',
-        subtitle: 'Respondé estas preguntas rápidas para descubrir qué orientación técnica de ADVENT se adapta mejor a tus intereses.',
-        q1: '1. ¿Qué actividad disfrutás más?',
-        q1a: 'Programar, armar computadoras o configurar redes.',
-        q1b: 'Hacer experimentos en laboratorio y analizar sustancias.',
-        q1c: 'Diseñar planos, maquetas y proyectos arquitectónicos.',
-        q2: '2. ¿En qué ambiente te gustaría trabajar en el futuro?',
-        q2a: 'En empresas tecnológicas, soporte IT o desarrollo de software.',
-        q2b: 'En industrias alimentarias, farmacéuticas o control ambiental.',
-        q2c: 'En estudios de arquitectura, obras civiles o topografía.',
-        q3: '3. ¿Qué herramienta preferís usar?',
-        q3a: 'Código, servidores y hardware.',
-        q3b: 'Microscopios, reactivos y tubos de ensayo.',
-        q3c: 'AutoCAD, escuadras y cálculo estructural.',
-        submitBtn: 'Ver mi resultado',
-        resultLabel: 'Tu especialidad ideal es',
-        goSpecBtn: 'Ir a la especialidad →',
-        resetBtn: 'Volver a hacer',
-        results: {
-            informatica: {
-                title: 'Informática',
-                desc: 'Tenés perfil tecnológico y analítico. Te vas a destacar en programación, redes, hardware y sistemas.'
-            },
-            quimica: {
-                title: 'Química',
-                desc: 'Tenés curiosidad científica y precisión. El laboratorio, los procesos industriales y el análisis son lo tuyo.'
-            },
-            construcciones: {
-                title: 'Construcciones',
-                desc: 'Tenés visión espacial y creativa. El diseño arquitectónico, las estructuras y la dirección de obra van con vos.'
-            }
-        }
-    },
-    en: {
-        bubble: 'Take the quiz!',
-        badge: 'Career Guidance',
-        title: 'Which specialty is right for you?',
-        subtitle: 'Answer these quick questions to find out which ADVENT technical track best matches your interests.',
-        q1: '1. Which activity do you enjoy the most?',
-        q1a: 'Coding, building computers, or setting up networks.',
-        q1b: 'Running lab experiments and analyzing substances.',
-        q1c: 'Designing blueprints, scale models, and architectural projects.',
-        q2: '2. What work environment appeals to you most?',
-        q2a: 'Tech companies, IT support, or software development.',
-        q2b: 'Food, pharmaceutical, or environmental control industries.',
-        q2c: 'Architecture firms, civil works, or land surveying.',
-        q3: '3. Which tool do you prefer to work with?',
-        q3a: 'Code, servers, and hardware.',
-        q3b: 'Microscopes, reagents, and test tubes.',
-        q3c: 'AutoCAD, drafting squares, and structural calculations.',
-        submitBtn: 'See my result',
-        resultLabel: 'Your ideal specialty is',
-        goSpecBtn: 'Go to specialty →',
-        resetBtn: 'Retake quiz',
-        results: {
-            informatica: {
-                title: 'Computer Science',
-                desc: 'You have an analytical, tech-driven profile. You will thrive in programming, networking, hardware, and systems.'
-            },
-            quimica: {
-                title: 'Chemistry',
-                desc: 'You have scientific curiosity and precision. Lab work, industrial processes, and chemical analysis are a great fit.'
-            },
-            construcciones: {
-                title: 'Construction',
-                desc: 'You have spatial vision and creativity. Architectural design, structures, and site management match your strengths.'
-            }
-        }
-    }
-};
-
-let lastQuizWinner = null;
-
-function getActiveQuizLang() {
-    if (typeof currentLang !== 'undefined' && quizTranslations[currentLang]) return currentLang;
-    const htmlLang = (document.documentElement.lang || 'es').slice(0, 2).toLowerCase();
-    return quizTranslations[htmlLang] ? htmlLang : 'es';
-}
-
-function openQuizModal() {
-    applyQuizLanguage();
-    const modal = document.getElementById('quiz-modal');
-    if (!modal) return;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-function closeQuizModal() {
-    const modal = document.getElementById('quiz-modal');
-    if (!modal) return;
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-}
-
-function resetQuiz() {
-    const form = document.getElementById('quiz-form');
-    const resultBox = document.getElementById('quiz-result-box');
-    if (form) form.reset();
-    if (resultBox) resultBox.classList.add('hidden');
-    lastQuizWinner = null;
-}
-
-function submitQuiz(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const counts = { informatica: 0, quimica: 0, construcciones: 0 };
-
-    for (const val of formData.values()) {
-        if (counts[val] !== undefined) counts[val]++;
-    }
-
-    lastQuizWinner = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
-    renderQuizResult();
-}
-
-function renderQuizResult() {
-    if (!lastQuizWinner) return;
-    const q = quizTranslations[getActiveQuizLang()];
-    const res = q.results[lastQuizWinner];
-
-    document.getElementById('quiz-result-label').textContent = q.resultLabel;
-    document.getElementById('quiz-result-title').textContent = res.title;
-    document.getElementById('quiz-result-desc').textContent = res.desc;
-
-    const goBtn = document.getElementById('quiz-go-spec-btn');
-    goBtn.textContent = q.goSpecBtn;
-    goBtn.onclick = () => {
-        closeQuizModal();
-        if (typeof openSpecialtyPage === 'function') {
-            openSpecialtyPage(lastQuizWinner);
-        }
-    };
-
-    document.getElementById('quiz-reset-btn').textContent = q.resetBtn;
-    document.getElementById('quiz-result-box').classList.remove('hidden');
-}
-
-function applyQuizLanguage() {
-    const q = quizTranslations[getActiveQuizLang()];
-    const setTxt = (id, txt) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = txt;
-    };
-
-    setTxt('mascot-bubble-text', q.bubble);
-    setTxt('quiz-badge', q.badge);
-    setTxt('quiz-title', q.title);
-    setTxt('quiz-subtitle', q.subtitle);
-    setTxt('quiz-q1', q.q1);
-    setTxt('quiz-q1-a', q.q1a);
-    setTxt('quiz-q1-b', q.q1b);
-    setTxt('quiz-q1-c', q.q1c);
-    setTxt('quiz-q2', q.q2);
-    setTxt('quiz-q2-a', q.q2a);
-    setTxt('quiz-q2-b', q.q2b);
-    setTxt('quiz-q2-c', q.q2c);
-    setTxt('quiz-q3', q.q3);
-    setTxt('quiz-q3-a', q.q3a);
-    setTxt('quiz-q3-b', q.q3b);
-    setTxt('quiz-q3-c', q.q3c);
-    setTxt('quiz-submit-btn', q.submitBtn);
-
-    if (lastQuizWinner) renderQuizResult();
-}
-
-// Sincroniza automáticamente el idioma del test cuando cambia el idioma de la página
-document.addEventListener('DOMContentLoaded', applyQuizLanguage);
-const langObserver = new MutationObserver(applyQuizLanguage);
-langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-</script>
+            setInterval(aplicarLinks, 300);
+        })();
+    </script>
 </body>
 
 </html>
