@@ -592,43 +592,219 @@
         </section>
 
         <!-- VISTA DE VIANDAS (GRILLA DE LOCALES + DETALLE INTERACTIVO) -->
-        <section id="viandas-view" class="hidden mb-16">
-            <div
-                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <!-- Contenedor Grilla Principal -->
-                <div id="viandas-grid-container">
-                    <div class="flex items-center gap-3 mb-3">
-                        <h2 id="viandas-main-title"
-                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Viandas</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                        </svg>
-                    </div>
-                    <div class="h-1 w-28 bg-tomato/20 rounded-full mb-5"></div>
-                    <p id="viandas-main-sub" class="text-sm sm:text-base text-[#5C4E4E] max-w-2xl mb-9">
-                        En esta sección podés encontrar diferentes opciones para almorzar. Tocá cada opción y conocé
-                        más.
-                    </p>
-
-                    <div id="viandas-cards-grid"
-                        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
-
-                <!-- Contenedor Detalle de Local -->
-                <div id="vianda-detail-container" class="hidden">
-                    <button id="viandas-back-btn" type="button" onclick="closeViandaDetail()"
-                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
-                        <span>← Volver a Viandas</span>
-                    </button>
-                    <div id="vianda-detail-content">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
+<section id="viandas-view" class="hidden mb-16">
+    <div
+        class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+        <!-- Contenedor Grilla Principal -->
+        <div id="viandas-grid-container">
+            <div class="flex items-center gap-3 mb-3">
+                <h2 id="viandas-main-title"
+                    class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Viandas</h2>
+                <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                    aria-hidden="true">
+                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                </svg>
             </div>
-        </section>
+            <div class="h-1 w-28 bg-tomato/20 rounded-full mb-5"></div>
+            <p id="viandas-main-sub" class="text-sm sm:text-base text-[#5C4E4E] max-w-2xl mb-9">
+                En esta sección podés encontrar diferentes opciones para almorzar. Tocá cada opción y conocé
+                más.
+            </p>
+
+            <div id="viandas-cards-grid"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Renderizado dinámicamente por JS -->
+            </div>
+        </div>
+
+        <!-- Contenedor Detalle de Local -->
+        <div id="vianda-detail-container" class="hidden">
+            <button id="viandas-back-btn" type="button" onclick="closeViandaDetail()"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                <span>← Volver a Viandas</span>
+            </button>
+            <div id="vianda-detail-content">
+                <!-- Renderizado dinámicamente por JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        // Si las fotos están en la raíz junto al index, dejá "".
+        // Si están en una subcarpeta (ej: "comida" o "imágenes/comida"), ponela acá.
+        const RUTA_VIANDAS = "";
+        const EXTENSIONES_VIANDAS = [".png", ".jpg", ".jpeg", ".webp", ".PNG", ".JPG", ".JPEG", ".WEBP"];
+
+        const mapaFotosViandas = {
+            "alta palta": "apalta",
+            "cantina del cole": "apalta",
+            "axion": "axion",
+            "axion spot": "axion",
+            "bite's": "bites",
+            "bites": "bites",
+            "dulce catalina": "dcatalina",
+            "delirios": "delirios",
+            "della casa": "dellacasa",
+            "el buen sabor": "elbuensabor",
+            "el hornito": "elhornito",
+            "el hornito santiagueño": "elhornito",
+            "francisco": "francisco",
+            "bar catalunya": "francisco",
+            "la colonia": "lacolonia",
+            "la filomena": "lafilomena",
+            "la granjita": "lagranjita",
+            "maiki": "maiki",
+            "maiki sushi": "maiki",
+            "maja morena": "majamorena",
+            "natural chef": "natural",
+            "nova": "nova",
+            "nova sushi": "nova",
+            "pizza box": "pbox",
+            "pepenero": "pepenero",
+            "polo": "polo",
+            "pizza quick": "quick",
+            "sake": "sake",
+            "sake sushi": "sake",
+            "shell": "shell",
+            "solo pizzas": "spizzas",
+            "tentate": "tentate",
+            "tentate cumaná": "tentate",
+            "tutti calzoni": "tutticalzoni",
+            "virrey": "virrey",
+            "wonder": "wonder"
+        };
+
+        function construirRuta(base, ext) {
+            const limpia = RUTA_VIANDAS.replace(/^\/+|\/+$/g, "");
+            return limpia ? `${limpia}/${base}${ext}` : `${base}${ext}`;
+        }
+
+        function crearImagenVianda(archivoBase, altTexto) {
+            const img = document.createElement("img");
+            img.alt = altTexto || archivoBase;
+            img.className = "w-full h-full object-contain rounded-xl";
+            let idx = 0;
+            img.src = construirRuta(archivoBase, EXTENSIONES_VIANDAS[idx]);
+            img.onerror = function () {
+                idx++;
+                if (idx < EXTENSIONES_VIANDAS.length) {
+                    img.src = construirRuta(archivoBase, EXTENSIONES_VIANDAS[idx]);
+                } else {
+                    img.style.display = "none";
+                }
+            };
+            return img;
+        }
+
+        function buscarArchivoPorTexto(texto) {
+            const limpio = (texto || "").trim().toLowerCase();
+            if (!limpio) return null;
+            if (mapaFotosViandas[limpio]) return mapaFotosViandas[limpio];
+            const clave = Object.keys(mapaFotosViandas).find((k) => limpio.includes(k));
+            return clave ? mapaFotosViandas[clave] : null;
+        }
+
+        function aplicarFotosGrillaViandas() {
+            const grid = document.getElementById("viandas-cards-grid");
+            if (!grid) return;
+
+            Array.from(grid.children).forEach((card) => {
+                const textoCard = (card.textContent || "").toLowerCase();
+                if (textoCard.includes("monkey")) {
+                    card.remove();
+                    return;
+                }
+
+                const tituloEl = card.querySelector("h3, h4, .font-serif, .font-bold");
+                const archivoBase = buscarArchivoPorTexto(tituloEl ? tituloEl.textContent : card.textContent);
+                if (!archivoBase) return;
+
+                // Busca el bloque superior de logo/color (primer hijo visual distinto al título y al enlace)
+                const candidatos = Array.from(card.querySelectorAll("div")).filter((el) => {
+                    if (el === grid) return false;
+                    if (tituloEl && el.contains(tituloEl)) return false;
+                    const txt = (el.textContent || "").trim().toLowerCase();
+                    if (txt.includes("ver menú") || txt.includes("ver menu")) return false;
+                    return el.children.length === 0 || el.querySelector("img, svg, span, p");
+                });
+
+                const cajaLogo = candidatos.find((el) => {
+                    const rect = el.getBoundingClientRect();
+                    return rect.width >= 40 && rect.height >= 40;
+                }) || candidatos[0];
+
+                if (!cajaLogo) return;
+                if (cajaLogo.dataset.viandaImgLista === archivoBase && cajaLogo.querySelector("img")) return;
+
+                cajaLogo.innerHTML = "";
+                cajaLogo.style.background = "#ffffff";
+                cajaLogo.style.padding = "6px";
+                cajaLogo.style.display = "flex";
+                cajaLogo.style.alignItems = "center";
+                cajaLogo.style.justifyContent = "center";
+                cajaLogo.style.overflow = "hidden";
+                cajaLogo.appendChild(crearImagenVianda(archivoBase, tituloEl ? tituloEl.textContent.trim() : archivoBase));
+                cajaLogo.dataset.viandaImgLista = archivoBase;
+            });
+        }
+
+        function aplicarFotosDetalleVianda() {
+            const detalle = document.getElementById("vianda-detail-content");
+            if (!detalle) return;
+
+            const tituloEl = detalle.querySelector("h2, h3, .font-serif");
+            const archivoBase = buscarArchivoPorTexto(tituloEl ? tituloEl.textContent : detalle.textContent);
+            if (!archivoBase) return;
+
+            const candidatos = Array.from(detalle.querySelectorAll("div")).filter((el) => {
+                if (el === detalle) return false;
+                if (tituloEl && el.contains(tituloEl)) return false;
+                const rect = el.getBoundingClientRect();
+                return rect.width >= 60 && rect.height >= 60;
+            });
+
+            const cajaLogo = candidatos[0];
+            if (!cajaLogo) return;
+            if (cajaLogo.dataset.viandaDetalleImgLista === archivoBase && cajaLogo.querySelector("img")) return;
+
+            cajaLogo.innerHTML = "";
+            cajaLogo.style.background = "#ffffff";
+            cajaLogo.style.padding = "10px";
+            cajaLogo.style.display = "flex";
+            cajaLogo.style.alignItems = "center";
+            cajaLogo.style.justifyContent = "center";
+            cajaLogo.style.overflow = "hidden";
+            cajaLogo.appendChild(crearImagenVianda(archivoBase, tituloEl ? tituloEl.textContent.trim() : archivoBase));
+            cajaLogo.dataset.viandaDetalleImgLista = archivoBase;
+        }
+
+        function ejecutarParcheViandas() {
+            aplicarFotosGrillaViandas();
+            aplicarFotosDetalleVianda();
+        }
+
+        ejecutarParcheViandas();
+        document.addEventListener("DOMContentLoaded", ejecutarParcheViandas);
+        window.addEventListener("load", ejecutarParcheViandas);
+
+        const observer = new MutationObserver(() => {
+            aplicarFotosGrillaViandas();
+            aplicarFotosDetalleVianda();
+        });
+
+        const observarContenedores = () => {
+            const grid = document.getElementById("viandas-cards-grid");
+            const detalle = document.getElementById("vianda-detail-content");
+            if (grid) observer.observe(grid, { childList: true, subtree: true });
+            if (detalle) observer.observe(detalle, { childList: true, subtree: true });
+        };
+
+        observarContenedores();
+        document.addEventListener("DOMContentLoaded", observarContenedores);
+    })();
+</script>
 
         <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + ARTÍCULOS CON WHATSAPP) -->
 <section id="libreria-view" class="hidden mb-16">
@@ -787,226 +963,499 @@
 </script>
 
         <!-- VISTA DE BIBLIOTECA (BIBLIOTECARIOS + TABLA DE HORARIOS + 5 RECURSOS FIJOS) -->
-        <section id="biblioteca-view" class="hidden mb-16">
-            <div
-                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <button id="bib-back-btn" onclick="showMainPortal('inicio')"
-                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    <span id="bib-back-label">Volver al inicio</span>
-                </button>
+<section id="biblioteca-view" class="hidden mb-16">
+    <div
+        class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+        <button id="bib-back-btn" onclick="showMainPortal('inicio')"
+            class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span id="bib-back-label">Volver al inicio</span>
+        </button>
 
-                <div class="flex items-center gap-3 mb-3">
-                    <h2 id="bib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">
-                        Biblioteca</h2>
-                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
-                        aria-hidden="true">
-                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                    </svg>
-                </div>
-                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-10"></div>
+        <div class="flex items-center gap-3 mb-3">
+            <h2 id="bib-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">
+                Biblioteca</h2>
+            <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                aria-hidden="true">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+            </svg>
+        </div>
+        <div class="h-1 w-28 bg-tomato/20 rounded-full mb-10"></div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-                    <!-- Columna Izquierda: Dos Bibliotecarios lado a lado -->
-                    <div class="lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-5">
-                        <!-- Bibliotecario 1: Matías Vivas -->
-                        <div
-                            class="bg-white rounded-[1.75rem] p-5 border border-blush/15 flex flex-col items-center text-center shadow-2xs select-none">
-                            <div
-                                class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs">
-                                <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                        aria-label="Matías Vivas">
-                                        <rect width="160" height="160" fill="#FCE8EC" />
-                                        <rect x="16" y="24" width="22" height="115" rx="4" fill="#F3D0D8" />
-                                        <rect x="122" y="28" width="22" height="110" rx="4" fill="#F3D0D8" />
-                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
-                                            fill="#232B2E" />
-                                        <polygon points="68,118 80,132 92,118" fill="#FFFFFF" />
-                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E8B89A" />
-                                        <path
-                                            d="M48 64C48 41 62 28 80 28C98 28 112 41 112 64C112 70 110 76 107 80H53C50 76 48 70 48 64Z"
-                                            fill="#262020" />
-                                        <path
-                                            d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
-                                            fill="#F2C6A8" />
-                                        <circle cx="67" cy="63" r="3" fill="#231D1D" />
-                                        <circle cx="93" cy="63" r="3" fill="#231D1D" />
-                                        <path d="M60 56C64 54 70 54 73 56" stroke="#262020" stroke-width="2.5"
-                                            stroke-linecap="round" />
-                                        <path d="M87 56C90 54 96 54 100 56" stroke="#262020" stroke-width="2.5"
-                                            stroke-linecap="round" />
-                                        <path d="M69 83C74 89 86 89 91 83" stroke="#FFFFFF" stroke-width="3"
-                                            stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <span id="bib-role-1"
-                                class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
-                                NOMBRE Y APELLIDO:
-                            </span>
-                            <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Matías Vivas</p>
-                        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+            <!-- Columna Izquierda: Dos Bibliotecarios lado a lado -->
+            <div class="lg:col-span-5 grid grid-cols-2 gap-4 sm:gap-5">
+                
+                <!-- Bibliotecario 1: Matías Vivas -->
+<div
+    class="bg-white rounded-[1.75rem] p-5 border border-blush/15 flex flex-col items-center text-center shadow-2xs select-none">
+    <div
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs">
+        <div class="w-full h-full rounded-full overflow-hidden bg-softpink relative flex items-center justify-center">
+            <img id="bib-foto-1" src="mati.png" alt="Matías Vivas" data-ext-idx="0"
+                onerror="reintentarExtensionBiblioteca(this, 'mati', 'bib-svg-1')"
+                class="w-full h-full object-cover object-top">
+            <svg id="bib-svg-1" viewBox="0 0 160 160" class="w-full h-full hidden" xmlns="http://www.w3.org/2000/svg"
+                aria-label="Matías Vivas">
+                <rect width="160" height="160" fill="#FCE8EC" />
+                <rect x="16" y="24" width="22" height="115" rx="4" fill="#F3D0D8" />
+                <rect x="122" y="28" width="22" height="110" rx="4" fill="#F3D0D8" />
+                <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
+                    fill="#232B2E" />
+                <polygon points="68,118 80,132 92,118" fill="#FFFFFF" />
+                <rect x="69" y="96" width="22" height="26" rx="10" fill="#E8B89A" />
+                <path
+                    d="M48 64C48 41 62 28 80 28C98 28 112 41 112 64C112 70 110 76 107 80H53C50 76 48 70 48 64Z"
+                    fill="#262020" />
+                <path
+                    d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
+                    fill="#F2C6A8" />
+                <circle cx="67" cy="63" r="3" fill="#231D1D" />
+                <circle cx="93" cy="63" r="3" fill="#231D1D" />
+                <path d="M60 56C64 54 70 54 73 56" stroke="#262020" stroke-width="2.5"
+                    stroke-linecap="round" />
+                <path d="M87 56C90 54 96 54 100 56" stroke="#262020" stroke-width="2.5"
+                    stroke-linecap="round" />
+                <path d="M69 83C74 89 86 89 91 83" stroke="#FFFFFF" stroke-width="3"
+                    stroke-linecap="round" />
+            </svg>
+        </div>
+    </div>
+    <span id="bib-role-1"
+        class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
+        NOMBRE Y APELLIDO:
+    </span>
+    <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Matías Vivas</p>
+</div>
 
-                        <!-- Bibliotecario 2: Víctor Vella -->
-                        <div
-                            class="bg-white rounded-[1.75rem] p-5 border border-olive/20 flex flex-col items-center text-center shadow-2xs select-none">
-                            <div
-                                class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-olive via-vanilla to-princeton mb-4 shadow-xs">
-                                <div class="w-full h-full rounded-full overflow-hidden bg-vanilla/40">
-                                    <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg"
-                                        aria-label="Víctor Vella">
-                                        <rect width="160" height="160" fill="#FCE9AB" fill-opacity="0.45" />
-                                        <rect x="20" y="22" width="120" height="62" rx="8" fill="#FFFFFF"
-                                            fill-opacity="0.7" />
-                                        <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
-                                            fill="#4A5256" />
-                                        <rect x="69" y="96" width="22" height="26" rx="10" fill="#E3B193" />
-                                        <path
-                                            d="M48 64C48 42 62 30 80 30C98 30 112 42 112 64C112 70 110 75 107 79H53C50 75 48 70 48 64Z"
-                                            fill="#3B3535" />
-                                        <path
-                                            d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
-                                            fill="#EBC0A3" />
-                                        <rect x="57" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
-                                            stroke-width="2.2" />
-                                        <rect x="84" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
-                                            stroke-width="2.2" />
-                                        <line x1="76" y1="62" x2="84" y2="62" stroke="#231D1D" stroke-width="2.2" />
-                                        <circle cx="66.5" cy="63" r="2.5" fill="#231D1D" />
-                                        <circle cx="93.5" cy="63" r="2.5" fill="#231D1D" />
-                                        <path d="M70 83C74 88 86 88 90 83" stroke="#FFFFFF" stroke-width="2.8"
-                                            stroke-linecap="round" />
-                                        <ellipse cx="95" cy="136" rx="14" ry="16" fill="#5C3D2E" />
-                                        <ellipse cx="95" cy="122" rx="12" ry="4" fill="#9E9820" />
-                                        <line x1="99" y1="122" x2="112" y2="105" stroke="#D4D4D4" stroke-width="3"
-                                            stroke-linecap="round" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <span id="bib-role-2"
-                                class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
-                                NOMBRE Y APELLIDO:
-                            </span>
-                            <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Víctor Vella</p>
-                        </div>
-                    </div>
-
-                    <!-- Columna Derecha: Tabla de Horarios -->
-                    <div class="lg:col-span-7">
-                        <h3 id="bib-schedule-title"
-                            class="font-serif text-2xl sm:text-3xl font-bold text-tomato text-center tracking-wide uppercase mb-4">
-                            HORARIOS
-                        </h3>
-
-                        <div class="bg-white rounded-[1.75rem] border border-tomato/15 overflow-hidden shadow-2xs">
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-center border-collapse min-w-[540px]">
-                                    <thead>
-                                        <tr
-                                            class="bg-softpink/75 text-tomato text-xs font-extrabold uppercase tracking-wider">
-                                            <th id="bib-th-shift"
-                                                class="py-3.5 px-3 border-b border-r border-tomato/12">TURNO</th>
-                                            <th id="bib-th-mon" class="py-3.5 px-3 border-b border-r border-tomato/12">
-                                                LUNES</th>
-                                            <th id="bib-th-tue" class="py-3.5 px-3 border-b border-r border-tomato/12">
-                                                MARTES</th>
-                                            <th id="bib-th-wed" class="py-3.5 px-3 border-b border-r border-tomato/12">
-                                                MIÉRCOLES</th>
-                                            <th id="bib-th-thu" class="py-3.5 px-3 border-b border-r border-tomato/12">
-                                                JUEVES</th>
-                                            <th id="bib-th-fri" class="py-3.5 px-3 border-b border-tomato/12">VIERNES
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="text-xs sm:text-[13px] font-bold text-[#2D2424]">
-                                        <tr class="border-b border-tomato/12">
-                                            <td id="bib-row-morning"
-                                                class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
-                                                MAÑANA
-                                            </td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
-                                                VÍCTOR<br>VELLA</td>
-                                            <td
-                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
-                                                MATÍAS<br>VIVAS</td>
-                                            <td
-                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
-                                                MATÍAS<br>VIVAS</td>
-                                            <td
-                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
-                                                MATÍAS<br>VIVAS</td>
-                                            <td class="py-5 px-3 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
-                                        </tr>
-                                        <tr>
-                                            <td id="bib-row-afternoon"
-                                                class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
-                                                TARDE
-                                            </td>
-                                            <td
-                                                class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
-                                                MATÍAS<br>VIVAS</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
-                                                VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
-                                                VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
-                                                VÍCTOR<br>VELLA</td>
-                                            <td class="py-5 px-3 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <!-- Bibliotecario 2: Víctor Vella -->
+                <div
+                    class="bg-white rounded-[1.75rem] p-5 border border-olive/20 flex flex-col items-center text-center shadow-2xs select-none">
+                    <div
+                        class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-olive via-vanilla to-princeton mb-4 shadow-xs">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-vanilla/40 relative flex items-center justify-center">
+                            <img id="bib-foto-2" src="BIB2.jpg" alt="Víctor Vella" data-ext-idx="0"
+                                onerror="reintentarExtensionBiblioteca(this, 'BIB2', 'bib-svg-2')"
+                                class="w-full h-full object-cover object-top">
+                            <svg id="bib-svg-2" viewBox="0 0 160 160" class="w-full h-full hidden" xmlns="http://www.w3.org/2000/svg"
+                                aria-label="Víctor Vella">
+                                <rect width="160" height="160" fill="#FCE9AB" fill-opacity="0.45" />
+                                <rect x="20" y="22" width="120" height="62" rx="8" fill="#FFFFFF"
+                                    fill-opacity="0.7" />
+                                <path d="M30 160C30 132 50 118 80 118C110 118 130 132 130 160H30Z"
+                                    fill="#4A5256" />
+                                <rect x="69" y="96" width="22" height="26" rx="10" fill="#E3B193" />
+                                <path
+                                    d="M48 64C48 42 62 30 80 30C98 30 112 42 112 64C112 70 110 75 107 79H53C50 75 48 70 48 64Z"
+                                    fill="#3B3535" />
+                                <path
+                                    d="M53 60C53 45 64 36 80 36C96 36 107 45 107 60V75C107 92 95 104 80 104C65 104 53 92 53 75V60Z"
+                                    fill="#EBC0A3" />
+                                <rect x="57" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
+                                    stroke-width="2.2" />
+                                <rect x="84" y="57" width="19" height="12" rx="3" fill="none" stroke="#231D1D"
+                                    stroke-width="2.2" />
+                                <line x1="76" y1="62" x2="84" y2="62" stroke="#231D1D" stroke-width="2.2" />
+                                <circle cx="66.5" cy="63" r="2.5" fill="#231D1D" />
+                                <circle cx="93.5" cy="63" r="2.5" fill="#231D1D" />
+                                <path d="M70 83C74 88 86 88 90 83" stroke="#FFFFFF" stroke-width="2.8"
+                                    stroke-linecap="round" />
+                                <ellipse cx="95" cy="136" rx="14" ry="16" fill="#5C3D2E" />
+                                <ellipse cx="95" cy="122" rx="12" ry="4" fill="#9E9820" />
+                                <line x1="99" y1="122" x2="112" y2="105" stroke="#D4D4D4" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
                         </div>
                     </div>
-                </div>
-
-                <!-- Fila Inferior: 5 Imágenes Fijas -->
-                <div id="biblioteca-resources-grid"
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 select-none">
-                    <!-- Renderizado estáticamente por JS -->
+                    <span id="bib-role-2"
+                        class="text-[11px] font-extrabold uppercase tracking-wider text-tomato leading-tight mb-1">
+                        NOMBRE Y APELLIDO:
+                    </span>
+                    <p class="font-semibold text-sm sm:text-base text-[#2D2424]">Víctor Vella</p>
                 </div>
             </div>
-        </section>
+
+            <!-- Columna Derecha: Tabla de Horarios -->
+            <div class="lg:col-span-7">
+                <h3 id="bib-schedule-title"
+                    class="font-serif text-2xl sm:text-3xl font-bold text-tomato text-center tracking-wide uppercase mb-4">
+                    HORARIOS
+                </h3>
+
+                <div class="bg-white rounded-[1.75rem] border border-tomato/15 overflow-hidden shadow-2xs">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-center border-collapse min-w-[540px]">
+                            <thead>
+                                <tr
+                                    class="bg-softpink/75 text-tomato text-xs font-extrabold uppercase tracking-wider">
+                                    <th id="bib-th-shift"
+                                        class="py-3.5 px-3 border-b border-r border-tomato/12">TURNO</th>
+                                    <th id="bib-th-mon" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                        LUNES</th>
+                                    <th id="bib-th-tue" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                        MARTES</th>
+                                    <th id="bib-th-wed" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                        MIÉRCOLES</th>
+                                    <th id="bib-th-thu" class="py-3.5 px-3 border-b border-r border-tomato/12">
+                                        JUEVES</th>
+                                    <th id="bib-th-fri" class="py-3.5 px-3 border-b border-tomato/12">VIERNES
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs sm:text-[13px] font-bold text-[#2D2424]">
+                                <tr class="border-b border-tomato/12">
+                                    <td id="bib-row-morning"
+                                        class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
+                                        MAÑANA
+                                    </td>
+                                    <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                        VÍCTOR<br>VELLA</td>
+                                    <td
+                                        class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                        MATÍAS<br>VIVAS</td>
+                                    <td
+                                        class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                        MATÍAS<br>VIVAS</td>
+                                    <td
+                                        class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                        MATÍAS<br>VIVAS</td>
+                                    <td class="py-5 px-3 bg-softpink/30 text-[#4A252D]">MATÍAS<br>VIVAS</td>
+                                </tr>
+                                <tr>
+                                    <td id="bib-row-afternoon"
+                                        class="py-5 px-3 bg-cream font-extrabold text-tomato uppercase tracking-wider border-r border-tomato/12">
+                                        TARDE
+                                    </td>
+                                    <td
+                                        class="py-5 px-3 border-r border-tomato/10 bg-softpink/30 text-[#4A252D]">
+                                        MATÍAS<br>VIVAS</td>
+                                    <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                        VÍCTOR<br>VELLA</td>
+                                    <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                        VÍCTOR<br>VELLA</td>
+                                    <td class="py-5 px-3 border-r border-tomato/10 bg-olive/10 text-[#3B3A12]">
+                                        VÍCTOR<br>VELLA</td>
+                                    <td class="py-5 px-3 bg-olive/10 text-[#3B3A12]">VÍCTOR<br>VELLA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila Inferior: 5 Imágenes Fijas -->
+        <div id="biblioteca-resources-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 select-none">
+            <!-- Renderizado estáticamente por JS -->
+        </div>
+    </div>
+</section>
+
+<script>
+    const RUTA_BIBLIOTECA = ""; // Imágenes en la raíz junto al index
+    const EXTENSIONES_BIB = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
+
+    const recursosFijosBiblioteca = [
+        { foto: "BIB3", titulo: "Notebooks y equipamiento" },
+        { foto: "BIB4", titulo: "Zapatilla y conexiones" },
+        { foto: "BIB5", titulo: "Reglas y escuadras" },
+        { foto: "BIB6", titulo: "Pantalla y estantería" },
+        { foto: "BIB7", titulo: "Espacio de biblioteca" }
+    ];
+
+    function construirRutaBib(nombreBase, ext) {
+        const limpia = RUTA_BIBLIOTECA.replace(/^\/+|\/+$/g, "");
+        return limpia ? `${limpia}/${nombreBase}${ext}` : `${nombreBase}${ext}`;
+    }
+
+    function reintentarExtensionBiblioteca(img, nombreBase, fallbackSvgId) {
+        const idx = Number(img.dataset.extIdx || 0) + 1;
+        if (idx < EXTENSIONES_BIB.length) {
+            img.dataset.extIdx = idx;
+            img.src = construirRutaBib(nombreBase, EXTENSIONES_BIB[idx]);
+        } else {
+            img.classList.add("hidden");
+            if (fallbackSvgId) {
+                const svgEl = document.getElementById(fallbackSvgId);
+                if (svgEl) svgEl.classList.remove("hidden");
+            }
+        }
+    }
+
+    function renderizarRecursosBiblioteca() {
+        const grid = document.getElementById("biblioteca-resources-grid");
+        if (!grid) return;
+
+        grid.innerHTML = recursosFijosBiblioteca.map((item) => {
+            const rutaInicial = construirRutaBib(item.foto, EXTENSIONES_BIB[0]);
+            return `
+                <div class="bg-white rounded-[1.5rem] p-3 border border-blush/15 shadow-2xs flex flex-col items-center text-center">
+                    <div class="w-full aspect-[4/3] rounded-2xl bg-cream/60 overflow-hidden mb-2.5 flex items-center justify-center">
+                        <img
+                            src="${rutaInicial}"
+                            alt="${item.titulo}"
+                            data-ext-idx="0"
+                            onerror="reintentarExtensionBiblioteca(this, '${item.foto}')"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                    <p class="text-xs font-bold text-[#2D2424]">${item.titulo}</p>
+                </div>
+            `;
+        }).join("");
+    }
+
+    function iniciarBiblioteca() {
+        renderizarRecursosBiblioteca();
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", iniciarBiblioteca);
+    } else {
+        iniciarBiblioteca();
+    }
+</script>
 
         <!-- VISTA DE RECONOCIMIENTOS (3 BOTONES DE ESTUDIANTES + PERFIL INDIVIDUAL CON FOTOS) -->
-        <section id="reconocimientos-view" class="hidden mb-16">
-            <div
-                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <div id="reconocimientos-grid-container">
-                    <button id="rec-home-btn" type="button" onclick="showMainPortal('inicio')"
-                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
-                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                        <span id="rec-home-label">Volver al inicio</span>
-                    </button>
+<section id="reconocimientos-view" class="hidden mb-16">
+    <div
+        class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+        <div id="reconocimientos-grid-container">
+            <button id="rec-home-btn" type="button" onclick="showMainPortal('inicio')"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                <span id="rec-home-label">Volver al inicio</span>
+            </button>
 
-                    <div class="flex items-center gap-3 mb-3">
-                        <h2 id="rec-main-title"
-                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Reconocimientos
-                        </h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                        </svg>
-                    </div>
-                    <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
-
-                    <div id="reconocimientos-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
-
-                <div id="reconocimiento-detail-container" class="hidden">
-                    <button id="rec-back-btn" type="button" onclick="closeReconocimientoDetail()"
-                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
-                        <span>← Volver a Reconocimientos</span>
-                    </button>
-                    <div id="reconocimiento-detail-content">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
+            <div class="flex items-center gap-3 mb-3">
+                <h2 id="rec-main-title"
+                    class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Reconocimientos
+                </h2>
+                <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
+                    aria-hidden="true">
+                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                </svg>
             </div>
-        </section>
+            <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
+
+            <div id="reconocimientos-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Renderizado dinámicamente por JS -->
+            </div>
+        </div>
+
+        <div id="reconocimiento-detail-container" class="hidden">
+            <button id="rec-back-btn" type="button" onclick="closeReconocimientoDetail()"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                <span>← Volver a Reconocimientos</span>
+            </button>
+            <div id="reconocimiento-detail-content">
+                <!-- Renderizado dinámicamente por JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        const RUTA_RECONOCIMIENTOS = ""; // Imágenes en la raíz junto al index
+        const EXTENSIONES_REC = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
+
+        const estudiantesReconocimientos = [
+            {
+                id: "felipe-gonzalez-7b",
+                nombre: "Felipe González",
+                subtitulo: "7° B • Reconocimiento Deportivo",
+                fotoPerfil: "FGR1",
+                fotos: ["FGR1", "FGR2", "FGR3", "FGR4", "FGR5", "FGR6", "FGR7"],
+                descripcion: "Reconocimiento por su participación, podios y logros en torneos y competencias de balonmano playa."
+            },
+            {
+                id: "guillermina-gonzalez-2c",
+                nombre: "Guillermina González",
+                subtitulo: "2° C • Reconocimiento Deportivo",
+                fotoPerfil: "GGR1",
+                fotos: ["GGR1", "GGR2", "GGR3", "GGR4", "GGR5"],
+                descripcion: "Reconocimiento por su participación en competencias, torneos y logros deportivos en handball."
+            },
+            {
+                id: "joaquin-decara-6c",
+                nombre: "Joaquín Decara",
+                subtitulo: "6° C • Reconocimiento Deportivo",
+                fotoPerfil: "JD21",
+                fotos: ["JD1", "JD3", "JD4", "JD5", "JD6", "JD7", "JD21"],
+                descripcion: "Reconocimiento por su participación y desempeño en torneos y competencias de handball."
+            }
+        ];
+
+        function construirRutaRec(nombreBase, ext) {
+            const limpia = RUTA_RECONOCIMIENTOS.replace(/^\/+|\/+$/g, "");
+            return limpia ? `${limpia}/${nombreBase}${ext}` : `${nombreBase}${ext}`;
+        }
+
+        function crearImgRec(nombreBase, altTexto, clases) {
+            const img = document.createElement("img");
+            img.alt = altTexto || nombreBase;
+            img.className = clases;
+            let idx = 0;
+            img.src = construirRutaRec(nombreBase, EXTENSIONES_REC[idx]);
+            img.onerror = function () {
+                idx++;
+                if (idx < EXTENSIONES_REC.length) {
+                    img.src = construirRutaRec(nombreBase, EXTENSIONES_REC[idx]);
+                } else {
+                    const wrap = img.closest("[data-rec-galeria-item]");
+                    if (wrap) {
+                        wrap.remove();
+                    } else {
+                        img.style.display = "none";
+                    }
+                }
+            };
+            return img;
+        }
+
+        function renderizarReconocimientosGrid() {
+            const grid = document.getElementById("reconocimientos-cards-grid");
+            if (!grid) return;
+
+            grid.innerHTML = "";
+            estudiantesReconocimientos.forEach((est) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.onclick = () => window.openReconocimientoDetail(est.id);
+                btn.className = "group bg-white rounded-[1.75rem] p-6 border border-blush/15 shadow-2xs hover:border-tomato/40 hover:shadow-md transition-all cursor-pointer flex flex-col items-center text-center justify-between";
+
+                const topWrap = document.createElement("div");
+                topWrap.className = "flex flex-col items-center w-full";
+
+                const ring = document.createElement("div");
+                ring.className = "w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs";
+
+                const circle = document.createElement("div");
+                circle.className = "w-full h-full rounded-full overflow-hidden bg-softpink flex items-center justify-center";
+                circle.appendChild(
+                    crearImgRec(est.fotoPerfil, est.nombre, "w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300")
+                );
+
+                ring.appendChild(circle);
+                topWrap.appendChild(ring);
+
+                const badge = document.createElement("span");
+                badge.className = "inline-block text-[11px] font-bold uppercase tracking-wider text-tomato bg-softpink px-3 py-1 rounded-full mb-2";
+                badge.textContent = est.subtitulo;
+                topWrap.appendChild(badge);
+
+                const h3 = document.createElement("h3");
+                h3.className = "font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2";
+                h3.textContent = est.nombre;
+                topWrap.appendChild(h3);
+
+                const desc = document.createElement("p");
+                desc.className = "text-xs sm:text-sm text-[#5C4E4E] line-clamp-2 mb-4";
+                desc.textContent = est.descripcion;
+                topWrap.appendChild(desc);
+
+                const linkTxt = document.createElement("span");
+                linkTxt.className = "text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline";
+                linkTxt.textContent = "VER PERFIL Y FOTOS →";
+
+                btn.appendChild(topWrap);
+                btn.appendChild(linkTxt);
+                grid.appendChild(btn);
+            });
+        }
+
+        window.openReconocimientoDetail = function (id) {
+            const est = estudiantesReconocimientos.find((item) => item.id === id);
+            const gridContainer = document.getElementById("reconocimientos-grid-container");
+            const detailContainer = document.getElementById("reconocimiento-detail-container");
+            const detailContent = document.getElementById("reconocimiento-detail-content");
+
+            if (!est || !gridContainer || !detailContainer || !detailContent) return;
+
+            detailContent.innerHTML = "";
+
+            const card = document.createElement("div");
+            card.className = "bg-white rounded-[2rem] p-6 sm:p-10 border border-blush/15 shadow-2xs space-y-8";
+
+            const header = document.createElement("div");
+            header.className = "flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-blush/15";
+
+            const ring = document.createElement("div");
+            ring.className = "w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton shrink-0 shadow-xs";
+
+            const circle = document.createElement("div");
+            circle.className = "w-full h-full rounded-full overflow-hidden bg-softpink flex items-center justify-center";
+            circle.appendChild(
+                crearImgRec(est.fotoPerfil, est.nombre, "w-full h-full object-cover object-top")
+            );
+            ring.appendChild(circle);
+
+            const info = document.createElement("div");
+            info.className = "text-center sm:text-left space-y-2";
+
+            const badge = document.createElement("span");
+            badge.className = "inline-block text-xs font-bold uppercase tracking-wider text-tomato bg-softpink px-3.5 py-1 rounded-full";
+            badge.textContent = est.subtitulo;
+
+            const title = document.createElement("h3");
+            title.className = "font-serif text-3xl sm:text-4xl font-bold text-[#2D2424]";
+            title.textContent = est.nombre;
+
+            const desc = document.createElement("p");
+            desc.className = "text-sm sm:text-base text-[#4A3F3F] leading-relaxed max-w-2xl";
+            desc.textContent = est.descripcion;
+
+            info.appendChild(badge);
+            info.appendChild(title);
+            info.appendChild(desc);
+
+            header.appendChild(ring);
+            header.appendChild(info);
+            card.appendChild(header);
+
+            const galeriaSection = document.createElement("div");
+            const galeriaTitle = document.createElement("h4");
+            galeriaTitle.className = "font-serif text-xl font-bold text-[#2D2424] mb-4";
+            galeriaTitle.textContent = "Fotos del reconocimiento";
+            galeriaSection.appendChild(galeriaTitle);
+
+            const galeriaGrid = document.createElement("div");
+            galeriaGrid.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4";
+
+            (est.fotos || []).forEach((cod) => {
+                const itemBox = document.createElement("div");
+                itemBox.dataset.recGaleriaItem = "true";
+                itemBox.className = "aspect-[4/3] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15";
+                itemBox.appendChild(
+                    crearImgRec(cod, `${est.nombre} - ${cod}`, "w-full h-full object-cover")
+                );
+                galeriaGrid.appendChild(itemBox);
+            });
+
+            galeriaSection.appendChild(galeriaGrid);
+            card.appendChild(galeriaSection);
+            detailContent.appendChild(card);
+
+            gridContainer.classList.add("hidden");
+            detailContainer.classList.remove("hidden");
+        };
+
+        window.closeReconocimientoDetail = function () {
+            const gridContainer = document.getElementById("reconocimientos-grid-container");
+            const detailContainer = document.getElementById("reconocimiento-detail-container");
+            if (gridContainer) gridContainer.classList.remove("hidden");
+            if (detailContainer) detailContainer.classList.add("hidden");
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", renderizarReconocimientosGrid);
+        } else {
+            renderizarReconocimientosGrid();
+        }
+    })();
+</script>
 
         <!-- VISTA COMPLETA DE ESPECIALIDAD: INFORMÁTICA (5 PESTAÑAS INTERACTIVAS) -->
         <section id="informatica-view" class="hidden mb-16">
@@ -1149,136 +1598,189 @@
             </div>
         </section>
 
-        <!-- VISTA DE NOTICIAS (5 TARJETAS + DETALLE INTERACTIVO CON CANSAT GALAXY 046) -->
-        <section id="noticias-view" class="hidden mb-16">
-            <div
-                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <!-- Contenedor Grilla de Noticias -->
-                <div id="noticias-grid-container">
-                    <button id="not-home-btn" type="button" onclick="showMainPortal('inicio')"
-                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
-                        <span>← Volver</span>
-                    </button>
+        <script>
+    (function () {
+        const RUTA_NOTICIAS = ""; // Imágenes en la raíz junto al index
+        const EXTENSIONES_NOT = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
 
-                    <div class="flex items-center gap-3 mb-3">
-                        <h2 id="not-main-title"
-                            class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Noticias</h2>
-                        <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor"
-                            aria-hidden="true">
-                            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-                        </svg>
-                    </div>
-                    <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
+        // Modificá acá los nombres exactos, el texto y qué foto va de portada ("imagen")
+        const NOTICIA_PICANSAT = {
+            id: "picansat-cansat-galaxy-046",
+            badge: "Ciencia y Tecnología • CanSat",
+            titulo: "Picansat y CanSat Galaxy 046",
+            resumen: "Desarrollo del prototipo CanSat Galaxy 046, difusión en radio y participación del equipo estudiantil.",
+            imagen: "cansat1",
+            galeria: ["cansat1", "cansat2", "cansat3", "cansat4"],
+            cuerpo: [
+                "El proyecto Picansat y el prototipo CanSat Galaxy 046 reúnen trabajo técnico, sensores y electrónica aplicada desarrollados por estudiantes junto a sus docentes referentes.",
+                "Integrantes y nombres del equipo: completá o modificá acá los nombres exactos que querés mostrar."
+            ]
+        };
 
-                    <div id="noticias-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
+        function construirRutaNot(base, ext) {
+            const limpia = RUTA_NOTICIAS.replace(/^\/+|\/+$/g, "");
+            return limpia ? `${limpia}/${base}${ext}` : `${base}${ext}`;
+        }
 
-                <!-- Contenedor Detalle de cada Noticia -->
-                <div id="noticia-detail-container" class="hidden">
-                    <button id="not-detail-back-btn" type="button" onclick="closeNoticiaDetail()"
-                        class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
-                        <span>← Volver</span>
-                    </button>
-                    <div id="noticia-detail-content">
-                        <!-- Renderizado dinámicamente por JS -->
-                    </div>
-                </div>
-            </div>
-        </section>
+        function crearImgNoticia(base, altTexto, clases) {
+            const img = document.createElement("img");
+            img.alt = altTexto || base;
+            img.className = clases;
+            let idx = 0;
+            img.src = construirRutaNot(base, EXTENSIONES_NOT[idx]);
+            img.onerror = function () {
+                idx++;
+                if (idx < EXTENSIONES_NOT.length) {
+                    img.src = construirRutaNot(base, EXTENSIONES_NOT[idx]);
+                } else {
+                    const box = img.closest("[data-not-img-wrap]");
+                    if (box) box.remove();
+                    else img.style.display = "none";
+                }
+            };
+            return img;
+        }
 
-        <!-- VISTA DEDICADA PARA OTRAS SECCIONES -->
-        <section id="subpage-view" class="hidden mb-16">
-            <div class="bg-cream/95 rounded-[2.25rem] p-8 sm:p-12 border border-tomato/15 relative overflow-hidden">
-                <button onclick="showMainPortal('inicio')"
-                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2 rounded-full transition-colors mb-6 cursor-pointer">
-                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                    <span id="subpage-back-label">Volver al inicio</span>
-                </button>
+        window.openPicansatDetail = function () {
+            const gridContainer = document.getElementById("noticias-grid-container");
+            const detailContainer = document.getElementById("noticia-detail-container");
+            const detailContent = document.getElementById("noticia-detail-content");
+            if (!gridContainer || !detailContainer || !detailContent) return;
 
-                <div class="max-w-2xl">
-                    <span id="subpage-badge"
-                        class="inline-block text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3"></span>
-                    <h2 id="subpage-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato mb-4"></h2>
-                    <p id="subpage-description" class="text-base text-[#4A3F3F] leading-relaxed mb-8"></p>
-                    <div id="subpage-note"
-                        class="p-6 rounded-2xl bg-white border border-tomato/10 text-sm text-[#6E5D5D]">
-                        Espacio reservado para el contenido y perfil técnico de esta sección.
-                    </div>
-                </div>
-            </div>
-        </section>
+            detailContent.innerHTML = "";
 
-        <!-- VISTA COMPLETA: CUESTIONARIO DE INTERESES VOCACIONALES (106 PREGUNTAS) -->
-        <section id="cuestionario-vocab-view" class="hidden mb-16">
-            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/15 relative overflow-hidden shadow-xl max-w-4xl mx-auto">
-                <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')"
-                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-8 cursor-pointer">
-                    <span>← Volver</span>
-                </button>
+            const article = document.createElement("article");
+            article.className = "bg-white rounded-[2rem] p-6 sm:p-10 border border-blush/15 shadow-2xs space-y-6";
 
-                <div class="text-center mb-10">
-                    <h2 id="quest-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight mb-2">Cuestionario de Intereses Vocacionales</h2>
-                    <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E]">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
-                </div>
+            const badge = document.createElement("span");
+            badge.className = "inline-block text-xs font-bold uppercase tracking-wider text-tomato bg-softpink px-3.5 py-1.5 rounded-full";
+            badge.textContent = NOTICIA_PICANSAT.badge;
 
-                <!-- Formulario de Datos Obligatorios -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-                    <div>
-                        <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
-                        <input type="text" id="quest-nombre" placeholder="Ingresá tu nombre" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                    </div>
-                    <div>
-                        <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
-                        <input type="text" id="quest-apellido" placeholder="Ingresá tu apellido" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                    </div>
-                    <div>
-                        <label id="quest-label-curso" for="quest-curso" class="block text-xs font-extrabold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
-                        <input type="text" id="quest-curso" placeholder="Ejemplo: 3° A" class="w-full bg-white border border-tomato/20 focus:border-tomato outline-none rounded-2xl px-4 py-3 text-sm text-[#2D2424] shadow-2xs" required>
-                    </div>
-                </div>
+            const h3 = document.createElement("h3");
+            h3.className = "font-serif text-3xl sm:text-4xl font-bold text-[#2D2424]";
+            h3.textContent = NOTICIA_PICANSAT.titulo;
 
-                <!-- Instrucciones -->
-                <div id="quest-instructions" class="bg-white/80 rounded-2xl p-6 border border-tomato/10 text-center mb-10 shadow-2xs">
-                    <h3 class="font-serif font-bold text-lg text-tomato mb-2">¿Cómo responder?</h3>
-                    <p class="text-xs sm:text-sm text-[#4A3F3F] leading-relaxed">
-                        Leé cada afirmación y elegí una sola opción obligatoria:<br>
-                        <strong>D (1 punto)</strong> = Me desagrada / no me gusta<br>
-                        <strong>I (2 puntos)</strong> = Me es indiferente<br>
-                        <strong>A (3 puntos)</strong> = Me agrada / me gusta
-                    </p>
-                </div>
+            article.appendChild(badge);
+            article.appendChild(h3);
 
-                <!-- Contenedor dinámico de las 106 preguntas -->
-                <form id="cuestionario-form" onsubmit="procesarCuestionario(event)">
-                    <div id="preguntas-container" class="space-y-6 mb-10">
-                        <!-- Se inyectan mediante JavaScript -->
-                    </div>
+            if (NOTICIA_PICANSAT.imagen) {
+                const imgWrap = document.createElement("div");
+                imgWrap.dataset.notImgWrap = "true";
+                imgWrap.className = "w-full max-h-[440px] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 flex items-center justify-center";
+                imgWrap.appendChild(
+                    crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-contain")
+                );
+                article.appendChild(imgWrap);
+            }
 
-                    <div class="text-center">
-                        <button id="quest-submit-btn" type="submit" class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-colors cursor-pointer shadow-lg">
-                            Calcular Puntajes por Área →
-                        </button>
-                    </div>
-                </form>
+            (NOTICIA_PICANSAT.cuerpo || []).forEach((parrafo) => {
+                const p = document.createElement("p");
+                p.className = "text-sm sm:text-base text-[#4A3F3F] leading-relaxed";
+                p.textContent = parrafo;
+                article.appendChild(p);
+            });
 
-                <!-- Contenedor de Resultados (Oculto al inicio) -->
-                <div id="resultados-container" class="hidden mt-10 p-8 bg-white rounded-3xl border border-tomato/20 shadow-md">
-                    <h3 id="res-title" class="font-serif text-2xl font-bold text-tomato mb-2 text-center">¡Resultados del Cuestionario Vocacional!</h3>
-                    <p id="res-alumno" class="text-base font-semibold text-[#2D2424] mb-6 text-center"></p>
+            if (Array.isArray(NOTICIA_PICANSAT.galeria) && NOTICIA_PICANSAT.galeria.length > 0) {
+                const galSection = document.createElement("div");
+                galSection.className = "pt-4 border-t border-blush/15";
 
-                    <h4 id="res-subtitle" class="font-serif font-bold text-lg text-[#2D2424] mb-3">Puntaje obtenido en cada orientación:</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6" id="res-puntajes-grid">
-                        <!-- Puntajes detallados por área -->
-                    </div>
+                const galTitle = document.createElement("h4");
+                galTitle.className = "font-serif text-xl font-bold text-[#2D2424] mb-4";
+                galTitle.textContent = "Galería del proyecto";
+                galSection.appendChild(galTitle);
 
-                    <div class="p-5 bg-softpink rounded-2xl border border-blush/30 text-center">
-                        <p id="res-mayor-area" class="font-serif font-bold text-lg text-tomato"></p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                const galGrid = document.createElement("div");
+                galGrid.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4";
+
+                NOTICIA_PICANSAT.galeria.forEach((cod) => {
+                    const box = document.createElement("div");
+                    box.dataset.notImgWrap = "true";
+                    box.className = "aspect-[4/3] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15";
+                    box.appendChild(
+                        crearImgNoticia(cod, `${NOTICIA_PICANSAT.titulo} - ${cod}`, "w-full h-full object-cover")
+                    );
+                    galGrid.appendChild(box);
+                });
+
+                galSection.appendChild(galGrid);
+                article.appendChild(galSection);
+            }
+
+            detailContent.appendChild(article);
+            gridContainer.classList.add("hidden");
+            detailContainer.classList.remove("hidden");
+        };
+
+        function inyectarTarjetaPicansat() {
+            const grid = document.getElementById("noticias-cards-grid");
+            if (!grid) return;
+
+            const existente = Array.from(grid.children).find((el) =>
+                (el.textContent || "").toLowerCase().includes("picansat") ||
+                (el.textContent || "").toLowerCase().includes("cansat")
+            );
+
+            if (existente) {
+                if (NOTICIA_PICANSAT.imagen && !existente.querySelector("img")) {
+                    const box = document.createElement("div");
+                    box.dataset.notImgWrap = "true";
+                    box.className = "w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 mb-4";
+                    box.appendChild(
+                        crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-cover")
+                    );
+                    existente.prepend(box);
+                }
+                return;
+            }
+
+            const card = document.createElement("button");
+            card.type = "button";
+            card.onclick = () => window.openPicansatDetail();
+            card.className = "group bg-white rounded-[1.75rem] p-6 border border-blush/15 shadow-2xs hover:border-tomato/40 hover:shadow-md transition-all cursor-pointer flex flex-col text-left justify-between";
+
+            const top = document.createElement("div");
+            if (NOTICIA_PICANSAT.imagen) {
+                const thumb = document.createElement("div");
+                thumb.dataset.notImgWrap = "true";
+                thumb.className = "w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 mb-4";
+                thumb.appendChild(
+                    crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300")
+                );
+                top.appendChild(thumb);
+            }
+
+            const tag = document.createElement("span");
+            tag.className = "inline-block text-[11px] font-bold uppercase tracking-wider text-tomato bg-softpink px-3 py-1 rounded-full mb-2";
+            tag.textContent = NOTICIA_PICANSAT.badge;
+
+            const title = document.createElement("h3");
+            title.className = "font-serif text-xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2";
+            title.textContent = NOTICIA_PICANSAT.titulo;
+
+            const desc = document.createElement("p");
+            desc.className = "text-xs sm:text-sm text-[#5C4E4E] mb-4";
+            desc.textContent = NOTICIA_PICANSAT.resumen;
+
+            top.appendChild(tag);
+            top.appendChild(title);
+            top.appendChild(desc);
+
+            const cta = document.createElement("span");
+            cta.className = "text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline";
+            cta.textContent = "LEER NOTICIA →";
+
+            card.appendChild(top);
+            card.appendChild(cta);
+            grid.appendChild(card);
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", inyectarTarjetaPicansat);
+        } else {
+            inyectarTarjetaPicansat();
+        }
+    })();
+</script>
 
         <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
         <section id="empresa-view" class="hidden mb-16">
@@ -3752,218 +4254,58 @@
             }
         ];
 
-        // Datos completos de Noticias (5 tarjetas + detalle CanSat Galaxy 046)
-        const noticiasData = [
-            {
-                id: 'olimpiadas-matematica',
-                badge: { es: 'Competencia Académica', en: 'Academic Competition' },
-                badgeClass: 'bg-softpink text-tomato',
-                borderClass: 'border-blush/20 hover:border-tomato',
-                title: { es: 'Olimpíadas Matemática', en: 'Mathematics Olympiad' },
-                subtitle: {
-                    es: 'Información sobre las olimpíadas de matemática.',
-                    en: 'Information about the mathematics olympiad.'
-                },
-                paragraphs: {
-                    es: [
-                        'Participación de estudiantes del Instituto El Obraje en las distintas instancias de las Olimpíadas Matemáticas, resolviendo desafíos de lógica, geometría, álgebra y razonamiento deductivo.',
-                        'El certamen fomenta el pensamiento crítico, la creatividad para abordar problemas no rutinarios y el acompañamiento docente en talleres de entrenamiento.'
-                    ],
-                    en: [
-                        'Participation of Instituto El Obraje students across the stages of the Mathematics Olympiad, solving challenges in logic, geometry, algebra, and deductive reasoning.',
-                        'The competition fosters critical thinking, creativity in tackling non-routine problems, and teacher guidance in training workshops.'
-                    ]
+        function forzarVistaNoticiasConDatos() {
+            const vista = document.getElementById('noticias-view');
+            const grid = document.getElementById('noticias-cards-grid');
+            if (!vista || !grid) return;
+
+            const hashEsNoticias = window.location.hash.toLowerCase().includes('noticias');
+            if (!hashEsNoticias && vista.classList.contains('hidden')) return;
+
+            document.querySelectorAll("section[id$='-view']").forEach((sec) => {
+                if (sec.id === 'noticias-view') {
+                    sec.classList.remove('hidden');
+                    sec.style.display = 'block';
+                } else {
+                    sec.classList.add('hidden');
                 }
-            },
-            {
-                id: 'olimpiadas-quimica',
-                badge: { es: 'Ciencias Experimentales', en: 'Experimental Sciences' },
-                badgeClass: 'bg-vanilla text-[#9A5812]',
-                borderClass: 'border-princeton/25 hover:border-princeton',
-                title: { es: 'Olimpíadas Química', en: 'Chemistry Olympiad' },
-                subtitle: {
-                    es: 'Información sobre las olimpíadas de química.',
-                    en: 'Information about the chemistry olympiad.'
-                },
-                paragraphs: {
-                    es: [
-                        'Estudiantes de la especialidad de Química representan a la institución en las Olimpíadas de Química, poniendo en práctica conocimientos teóricos y técnicas de análisis en laboratorio.',
-                        'A través de instancias colegiales, intercolegiales y nacionales, los alumnos profundizan su formación científica y experimental.'
-                    ],
-                    en: [
-                        'Students from the Chemistry specialty represent the school at the Chemistry Olympiad, applying theoretical knowledge and laboratory analysis techniques.',
-                        'Through school, inter-school, and national stages, students deepen their scientific and experimental training.'
-                    ]
-                }
-            },
-            {
-                id: 'olimpiadas-informatica',
-                badge: { es: 'Programación y Lógica', en: 'Programming & Logic' },
-                badgeClass: 'bg-softpink text-blush',
-                borderClass: 'border-blush/20 hover:border-blush',
-                title: { es: 'Olimpíadas Informática', en: 'Informatics Olympiad' },
-                subtitle: {
-                    es: 'Información sobre las olimpíadas de informática.',
-                    en: 'Information about the informatics olympiad.'
-                },
-                paragraphs: {
-                    es: [
-                        'Alumnos de la orientación Informática participan en las Olimpíadas de Informática desarrollando algoritmos, estructuras de datos y soluciones eficientes mediante programación.',
-                        'La experiencia fortalece el trabajo bajo presión, la optimización de código y la resolución computacional de problemas reales.'
-                    ],
-                    en: [
-                        'Students from the Computer Science track take part in the Informatics Olympiad by developing algorithms, data structures, and efficient programming solutions.',
-                        'The experience strengthens problem-solving under pressure, code optimization, and computational thinking.'
-                    ]
-                }
-            },
-            {
-                id: 'copa-robotica',
-                badge: { es: 'Innovación y Hardware', en: 'Innovation & Hardware' },
-                badgeClass: 'bg-olive/15 text-olive',
-                borderClass: 'border-olive/25 hover:border-olive',
-                title: { es: 'Copa Robótica', en: 'Robotics Cup' },
-                subtitle: {
-                    es: 'Información sobre la Copa Robótica.',
-                    en: 'Information about the Robotics Cup.'
-                },
-                paragraphs: {
-                    es: [
-                        'Equipos de estudiantes diseñan, programan y ponen a prueba prototipos robóticos autónomos y teleoperados para superar pistas y desafíos técnicos en la Copa Robótica.',
-                        'Integra electrónica, sensores, diseño mecánico y programación colaborativa entre distintos cursos de la escuela técnica.'
-                    ],
-                    en: [
-                        'Student teams design, program, and test autonomous and teleoperated robotic prototypes to overcome tracks and technical challenges at the Robotics Cup.',
-                        'It integrates electronics, sensors, mechanical design, and collaborative programming across different grades of the technical school.'
-                    ]
-                }
-            },
-            {
-                id: 'cansat-galaxy-046',
-                badge: { es: 'Proyecto Aeroespacial', en: 'Aerospace Project' },
-                badgeClass: 'bg-tomato/12 text-tomato',
-                borderClass: 'border-tomato/25 hover:border-tomato',
-                title: { es: 'CanSat Galaxy 046', en: 'CanSat Galaxy 046' },
-                subtitle: {
-                    es: 'Proyecto científico y tecnológico: exploración, investigación y desarrollo de un satélite en miniatura.',
-                    en: 'Scientific and technological project: exploration, research, and development of a miniature satellite.'
-                },
-                members: [
-                    {
-                        name: 'Juan Cruz Arguello',
-                        course: '7B',
-                        paragraphs: {
-                            es: [
-                                'En el proyecto CanSat Galaxy 046 me encargo de la investigación científica, principalmente del área de química, y también participo en el diseño de la estructura y la aerodinámica.',
-                                'Trabajo en el análisis de la calidad del aire mediante sensores y en la búsqueda de soluciones para cumplir los objetivos de nuestra misión.',
-                                'Me siento muy orgulloso de formar parte de este equipo, porque el CanSat me permitió aprender, enfrentar desafíos, trabajar con otras personas y crecer tanto en lo personal como en lo técnico.',
-                                'Es una experiencia que me motiva a seguir aprendiendo y que voy a recordar con mucho cariño.'
-                            ],
-                            en: [
-                                'In the CanSat Galaxy 046 project, I am in charge of scientific research—mainly in the chemistry area—and I also participate in structural and aerodynamic design.',
-                                'I work on analyzing air quality using sensors and finding solutions to fulfill our mission objectives.',
-                                'I feel very proud to be part of this team, because CanSat allowed me to learn, face challenges, collaborate with others, and grow both personally and technically.',
-                                'It is an experience that motivates me to keep learning and that I will remember with great fondness.'
-                            ]
-                        }
-                    },
-                    {
-                        name: 'Felipe Virga',
-                        course: '7C',
-                        paragraphs: {
-                            es: [
-                                'En el equipo me toca meterme en varias áreas.',
-                                'Estuve a cargo de buena parte del sistema de recuperación: desde la confección del paracaídas, con todo lo que implica trabajar la tela, el diseño y el armado, hasta pensar cómo se une al CanSat para que el descenso salga prolijo.',
-                                'También anduve metido en el mundo de los sensores y la programación, ayudando con calibraciones y desarrollando herramientas para la estación terrena.',
-                                'Un poco de todo, y de todo aprendí.',
-                                'Más allá de lo técnico, esta fue una experiencia enriquecedora de verdad.',
-                                'Descubrí que los mejores aprendizajes aparecen cuando se trabaja en equipo, y tuve la suerte de conocer gente increíble con la que antes no tenía relación. Eso, para mí, vale tanto como cualquier resultado.'
-                            ],
-                            en: [
-                                'Within the team, I get involved in several different areas.',
-                                'I was in charge of a large part of the recovery system: from crafting the parachute—with everything involved in working the fabric, design, and assembly—to figuring out how it attaches to the CanSat for a clean descent.',
-                                'I was also involved in the world of sensors and programming, helping with calibrations and developing tools for the ground station.',
-                                'A little bit of everything, and I learned from all of it.',
-                                'Beyond the technical side, this was a truly enriching experience.',
-                                'I discovered that the best learning happens when working as a team, and I was lucky to meet incredible people I had no connection with before. To me, that is worth just as much as any result.'
-                            ]
-                        }
-                    },
-                    {
-                        name: 'Alan Tahiel Aguirre',
-                        course: '7B',
-                        paragraphs: {
-                            es: [
-                                'Me encargo principalmente de la presentación de videos, la producción de material audiovisual y el manejo de las redes sociales.',
-                                'Además, colaboro en todo lo que puedo, ya sea en la parte estructural, el ensamblaje o las pruebas de sensores.',
-                                'La verdad es que me gustó mucho haberme sumado al proyecto, porque, en lo personal, siempre tuve ganas de aprender programación, robótica y todo lo relacionado con sensores, pero nunca llegaba a hacerlo.',
-                                'Este proyecto me impulsó a dar ese paso y, hoy en día, estoy muy conforme con lo que logré y con los conocimientos que adquirí.',
-                                'También me parece un proyecto muy lindo, en el que pude aprender un montón y formar lindas amistades.'
-                            ],
-                            en: [
-                                'I am mainly responsible for video presentations, audiovisual production, and managing social media.',
-                                'In addition, I help out wherever I can, whether in structural work, assembly, or sensor testing.',
-                                'Honestly, I am really glad I joined the project because, personally, I had always wanted to learn programming, robotics, and everything related to sensors, but never got around to doing it.',
-                                'This project pushed me to take that step, and today I am very pleased with what I achieved and the knowledge I gained.',
-                                'I also think it is a wonderful project where I learned a ton and built great friendships.'
-                            ]
-                        }
-                    },
-                    {
-                        name: 'Juan Almirón',
-                        course: '6B',
-                        paragraphs: {
-                            es: [
-                                'Lo que normalmente realizo dentro del equipo es encargarme de la electrónica, la programación y también de la documentación.',
-                                'Para mí, esta competencia es un espacio hermoso en el que aprendí un montón de cosas que jamás pensé que iba a aprender y donde, además, pude formar amistades con personas increíbles.',
-                                'Pero si hay algo que de verdad me inspira, es la idea de motivar a otros jóvenes a que se animen a participar y a hacer cosas como estas.'
-                            ],
-                            en: [
-                                'What I normally do within the team is handle electronics, programming, and also documentation.',
-                                'For me, this competition is a wonderful space where I learned a lot of things I never thought I would learn and where I was also able to build friendships with amazing people.',
-                                'But if there is something that truly inspires me, it is the idea of motivating other young people to dare to participate and build things like this.'
-                            ]
-                        }
-                    },
-                    {
-                        name: 'Lucca Gremo',
-                        course: '7C',
-                        paragraphs: {
-                            es: [
-                                'Me encargo del área de estructura, el armado y la selección de materiales, asegurándome de que todo el diseño sea resistente, liviano y aerodinámico.',
-                                'Trabajo en cada detalle físico del satélite para proteger los componentes y cumplir con los objetivos de nuestra misión.',
-                                'Me siento muy orgulloso de formar parte de este equipo, porque el CanSat me permitió aprender, enfrentar desafíos, trabajar con otras personas y crecer tanto en lo personal como en lo técnico.',
-                                'Es una experiencia que me motiva a seguir aprendiendo y que voy a recordar con mucho cariño.'
-                            ],
-                            en: [
-                                'I am in charge of the structural area, assembly, and material selection, making sure the entire design is sturdy, lightweight, and aerodynamic.',
-                                'I work on every physical detail of the satellite to protect the components and meet our mission goals.',
-                                'I feel very proud to be part of this team, because CanSat allowed me to learn, face challenges, collaborate with others, and grow both personally and technically.',
-                                'It is an experience that motivates me to keep learning and that I will remember with great fondness.'
-                            ]
-                        }
-                    }
-                ],
-                photos: [
-                    {
-                        caption: { es: 'Prototipo interno y placas de sensores del CanSat Galaxy 046', en: 'Internal prototype & sensor boards of CanSat Galaxy 046' },
-                        svg: `<svg viewBox="0 0 280 200" class="w-full h-52" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="200" fill="#F6EFE8"/><rect x="108" y="24" width="64" height="152" rx="10" fill="#FFFFFF" stroke="#4A3F3F" stroke-width="2"/><ellipse cx="140" cy="36" rx="34" ry="8" fill="#E6DFD8" stroke="#4A3F3F" stroke-width="1.8"/><ellipse cx="140" cy="76" rx="34" ry="8" fill="#E6DFD8" stroke="#4A3F3F" stroke-width="1.8"/><ellipse cx="140" cy="118" rx="34" ry="8" fill="#E6DFD8" stroke="#4A3F3F" stroke-width="1.8"/><ellipse cx="140" cy="162" rx="34" ry="8" fill="#E6DFD8" stroke="#4A3F3F" stroke-width="1.8"/><rect x="122" y="48" width="36" height="20" rx="3" fill="#2A6F97"/><rect x="120" y="90" width="40" height="20" rx="3" fill="#232020"/><rect x="126" y="94" width="28" height="12" rx="1" fill="#90E0EF"/><path d="M156 60C188 74 198 118 164 146" fill="none" stroke="#C42B34" stroke-width="2.5"/><path d="M124 98C96 112 94 142 124 156" fill="none" stroke="#FC8A2D" stroke-width="2.2"/></svg>`
-                    },
-                    {
-                        caption: { es: 'Entrevista radial presentando el proyecto Galaxy 046', en: 'Radio interview presenting the Galaxy 046 project' },
-                        svg: `<svg viewBox="0 0 280 200" class="w-full h-52" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="200" fill="#263248"/><rect x="16" y="16" width="248" height="110" rx="10" fill="#3A506B"/><circle cx="62" cy="78" r="13" fill="#EBC0A3"/><rect x="44" y="92" width="36" height="52" rx="8" fill="#FFFFFF"/><circle cx="110" cy="74" r="13" fill="#EBC0A3"/><rect x="92" y="88" width="36" height="56" rx="8" fill="#FCE8EC"/><circle cx="160" cy="76" r="13" fill="#EBC0A3"/><rect x="142" y="90" width="36" height="54" rx="8" fill="#7A1C24"/><circle cx="212" cy="80" r="13" fill="#EBC0A3"/><rect x="194" y="94" width="36" height="50" rx="8" fill="#1D222B"/><circle cx="116" cy="126" r="12" fill="#EBC0A3"/><rect x="96" y="139" width="40" height="52" rx="8" fill="#2B4162"/><circle cx="174" cy="126" r="12" fill="#EBC0A3"/><rect x="154" y="139" width="40" height="52" rx="8" fill="#6E1E2A"/><rect x="76" y="168" width="12" height="22" rx="5" fill="#FC8A2D"/><rect x="208" y="168" width="12" height="22" rx="5" fill="#C42B34"/></svg>`
-                    },
-                    {
-                        caption: { es: 'Equipo Galaxy 046 en el frente del Instituto El Obraje', en: 'Galaxy 046 team in front of Instituto El Obraje' },
-                        svg: `<svg viewBox="0 0 280 200" class="w-full h-52" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="200" fill="#9E9892"/><rect x="52" y="16" width="22" height="32" rx="3" fill="#2E3A46"/><rect x="128" y="16" width="22" height="32" rx="3" fill="#2E3A46"/><rect x="204" y="16" width="22" height="32" rx="3" fill="#2E3A46"/><rect x="86" y="64" width="108" height="90" fill="#262B30"/><rect x="52" y="76" width="26" height="86" rx="4" fill="#6E6A66"/><rect x="202" y="76" width="26" height="86" rx="4" fill="#6E6A66"/><rect x="0" y="156" width="280" height="44" fill="#C9C3BC"/><circle cx="102" cy="108" r="9" fill="#EBC0A3"/><rect x="90" y="118" width="24" height="44" rx="5" fill="#FFFFFF"/><circle cx="136" cy="105" r="9" fill="#EBC0A3"/><rect x="124" y="115" width="24" height="47" rx="5" fill="#F8EDEB"/><circle cx="170" cy="108" r="9" fill="#EBC0A3"/><rect x="158" y="118" width="24" height="44" rx="5" fill="#FFFFFF"/></svg>`
-                    },
-                    {
-                        caption: { es: 'Integrantes y docentes acompañantes del proyecto', en: 'Team members and supervising teachers of the project' },
-                        svg: `<svg viewBox="0 0 280 200" class="w-full h-52" xmlns="http://www.w3.org/2000/svg"><rect width="280" height="200" fill="#A59F99"/><rect x="52" y="14" width="22" height="30" rx="3" fill="#2E3A46"/><rect x="128" y="14" width="22" height="30" rx="3" fill="#2E3A46"/><rect x="204" y="14" width="22" height="30" rx="3" fill="#2E3A46"/><rect x="82" y="62" width="116" height="92" fill="#262B30"/><rect x="0" y="156" width="280" height="44" fill="#D4CEC7"/><circle cx="88" cy="106" r="8" fill="#EBC0A3"/><rect x="77" y="115" width="22" height="46" rx="5" fill="#3B7A75"/><circle cx="118" cy="102" r="8" fill="#EBC0A3"/><rect x="107" y="111" width="22" height="50" rx="5" fill="#FFFFFF"/><circle cx="150" cy="105" r="8" fill="#EBC0A3"/><rect x="139" y="114" width="22" height="47" rx="5" fill="#6E1E2A"/><circle cx="182" cy="107" r="8" fill="#EBC0A3"/><rect x="171" y="116" width="22" height="45" rx="5" fill="#FCE8EC"/></svg>`
-                    }
-                ]
+            });
+
+            const gridCont = document.getElementById('noticias-grid-container');
+            const detCont = document.getElementById('noticia-detail-container');
+            if (gridCont) gridCont.classList.remove('hidden');
+            if (detCont) detCont.classList.add('hidden');
+
+            if (grid.children.length === 0 && typeof noticiasData !== 'undefined') {
+                const lang = (document.documentElement.lang || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
+                grid.innerHTML = noticiasData.map((n) => `
+                    <button
+                        type="button"
+                        onclick="if (typeof openNoticiaDetail === 'function') { openNoticiaDetail('${n.id}'); }"
+                        class="group bg-white rounded-[1.75rem] p-6 border ${n.borderClass || 'border-blush/20'} shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col text-left justify-between"
+                    >
+                        <div>
+                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${n.badgeClass || 'bg-softpink text-tomato'}">
+                                ${n.badge[lang] || n.badge.es}
+                            </span>
+                            <h3 class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2">
+                                ${n.title[lang] || n.title.es}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-[#5C4E4E]">
+                                ${n.subtitle[lang] || n.subtitle.es}
+                            </p>
+                        </div>
+                        <span class="mt-5 text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline">
+                            ${lang === 'en' ? 'READ MORE →' : 'VER NOTICIA →'}
+                        </span>
+                    </button>
+                `).join('');
             }
-        ];
+        }
+
+        [0, 150, 500].forEach((ms) => setTimeout(forzarVistaNoticiasConDatos, ms));
+        window.addEventListener('load', () => setTimeout(forzarVistaNoticiasConDatos, 50));
+        window.addEventListener('hashchange', () => setTimeout(forzarVistaNoticiasConDatos, 50));
 
         // Datos del Plan de Estudios de Informática (4° a 7° Año)
         const informaticaPlanData = [
