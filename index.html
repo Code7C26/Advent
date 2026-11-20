@@ -630,7 +630,7 @@
             </div>
         </section>
 
-        <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + 6 ARTÍCULOS CON WHATSAPP + GALERÍA LIB) -->
+        <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + ARTÍCULOS CON WHATSAPP) -->
 <section id="libreria-view" class="hidden mb-16">
     <div
         class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
@@ -653,7 +653,7 @@
                 <div class="flex flex-col items-center text-center mb-6">
                     <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
                         <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                            <img src="imágenes/LIB1.jpg" alt="Salvador" data-ext-idx="0"
+                            <img src="LIB1.jpg" alt="Salvador" data-ext-idx="0"
                                 onerror="reintentarExtensionLibreria(this, 'LIB1')"
                                 class="w-full h-full object-cover object-top">
                         </div>
@@ -693,17 +693,9 @@
                 </div>
             </div>
 
-            <!-- Columna Derecha: Grilla de 6 Artículos -->
+            <!-- Columna Derecha: Grilla de Productos -->
             <div id="libreria-products-grid"
                 class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-                <!-- Renderizado dinámicamente por JS -->
-            </div>
-        </div>
-
-        <!-- Galería completa de fotos LIB2 a LIB16 -->
-        <div id="galeria-extra-libreria" class="mt-10 pt-8 border-t border-tomato/15">
-            <h3 class="font-serif text-xl font-bold text-[#2D2424] mb-4">Más fotos de la librería</h3>
-            <div id="libreria-all-photos-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
                 <!-- Renderizado dinámicamente por JS -->
             </div>
         </div>
@@ -711,15 +703,19 @@
 </section>
 
 <script>
-    const RUTA_LIBRERIA = "imágenes";
-    const EXTENSIONES_LIB = [".jpg", ".jpeg", ".png", ".webp"];
+    const RUTA_LIBRERIA = ""; // Imágenes en la raíz junto al index
+    const EXTENSIONES_LIB = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
     const TELEFONO_WA_SALVADOR = "5493547570898";
+
+    function construirRutaLib(nombreBase, ext) {
+        return RUTA_LIBRERIA ? `${RUTA_LIBRERIA}/${nombreBase}${ext}` : `${nombreBase}${ext}`;
+    }
 
     function reintentarExtensionLibreria(img, nombreBase) {
         const idx = Number(img.dataset.extIdx || 0) + 1;
         if (idx < EXTENSIONES_LIB.length) {
             img.dataset.extIdx = idx;
-            img.src = `${RUTA_LIBRERIA}/${nombreBase}${EXTENSIONES_LIB[idx]}`;
+            img.src = construirRutaLib(nombreBase, EXTENSIONES_LIB[idx]);
         } else {
             const tarjeta = img.closest("[data-lib-card]");
             if (tarjeta) {
@@ -730,13 +726,23 @@
         }
     }
 
+    // Todos los productos de librería ordenados (LIB2 a LIB16)
     const articulosLibreria = [
-        { nombre: "Exhibidor de cartulinas", foto: "LIB2", bg: "bg-softpink" },
-        { nombre: "Hojas y papeles de colores", foto: "LIB3", bg: "bg-vanilla/50" },
+        { nombre: "Afiches", foto: "LIB2", bg: "bg-softpink" },
+        { nombre: "afiches y gomaeva", foto: "LIB3", bg: "bg-vanilla/50" },
         { nombre: "Láminas y materiales", foto: "LIB4", bg: "bg-cream" },
-        { nombre: "Marcadores y resaltadores", foto: "LIB6", bg: "bg-softpink" },
-        { nombre: "Fibrones y bolígrafos", foto: "LIB8", bg: "bg-vanilla/50" },
-        { nombre: "Geometría y carpetas", foto: "LIB10", bg: "bg-cream" }
+        { nombre: "Lapiceras", foto: "LIB5", bg: "bg-softpink" },
+        { nombre: "Portaminas", foto: "LIB6", bg: "bg-vanilla/50" },
+        { nombre: "Resaltadores y marcadores", foto: "LIB7", bg: "bg-cream" },
+        { nombre: "Fibrones", foto: "LIB8", bg: "bg-softpink" },
+        { nombre: "Lapiceras", foto: "LIB9", bg: "bg-vanilla/50" },
+        { nombre: "Geometría", foto: "LIB10", bg: "bg-cream" },
+        { nombre: "Reglas y artículos", foto: "LIB11", bg: "bg-softpink" },
+        { nombre: "Hojas de carpeta", foto: "LIB12", bg: "bg-vanilla/50" },
+        { nombre: "Apuntes y guías", foto: "LIB13", bg: "bg-cream" },
+        { nombre: "Fotocopias y material impreso", foto: "LIB14", bg: "bg-softpink" },
+        { nombre: "Pizarra", foto: "LIB15", bg: "bg-vanilla/50" },
+        { nombre: "Cartulinas", foto: "LIB16", bg: "bg-cream" }
     ];
 
     function renderizarArticulosLibreria() {
@@ -744,7 +750,7 @@
         if (!grid) return;
 
         grid.innerHTML = articulosLibreria.map((item) => {
-            const rutaImg = `${RUTA_LIBRERIA}/${item.foto}${EXTENSIONES_LIB[0]}`;
+            const rutaImg = construirRutaLib(item.foto, EXTENSIONES_LIB[0]);
             const mensajeWa = encodeURIComponent(`Hola Salvador! Quería consultar precio por: ${item.nombre}`);
             return `
                 <article data-lib-card class="bg-white rounded-[1.5rem] p-4 border border-blush/15 shadow-2xs flex flex-col justify-between">
@@ -773,29 +779,11 @@
         }).join("");
     }
 
-    function renderizarGaleriaCompletaLibreria() {
-        const grid = document.getElementById("libreria-all-photos-grid");
-        if (!grid) return;
-
-        const codigosLib = Array.from({ length: 15 }, (_, i) => `LIB${i + 2}`); // LIB2..LIB16
-        grid.innerHTML = codigosLib.map((cod) => {
-            const rutaImg = `${RUTA_LIBRERIA}/${cod}${EXTENSIONES_LIB[0]}`;
-            return `
-                <div data-lib-card class="aspect-square rounded-xl overflow-hidden bg-white border border-blush/15">
-                    <img
-                        src="${rutaImg}"
-                        alt="${cod}"
-                        data-ext-idx="0"
-                        onerror="reintentarExtensionLibreria(this, '${cod}')"
-                        class="w-full h-full object-cover"
-                    />
-                </div>
-            `;
-        }).join("");
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", renderizarArticulosLibreria);
+    } else {
+        renderizarArticulosLibreria();
     }
-
-    renderizarArticulosLibreria();
-    renderizarGaleriaCompletaLibreria();
 </script>
 
         <!-- VISTA DE BIBLIOTECA (BIBLIOTECARIOS + TABLA DE HORARIOS + 5 RECURSOS FIJOS) -->
