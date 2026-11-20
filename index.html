@@ -4254,58 +4254,135 @@
             }
         ];
 
-        function forzarVistaNoticiasConDatos() {
-            const vista = document.getElementById('noticias-view');
-            const grid = document.getElementById('noticias-cards-grid');
-            if (!vista || !grid) return;
-
-            const hashEsNoticias = window.location.hash.toLowerCase().includes('noticias');
-            if (!hashEsNoticias && vista.classList.contains('hidden')) return;
-
-            document.querySelectorAll("section[id$='-view']").forEach((sec) => {
-                if (sec.id === 'noticias-view') {
-                    sec.classList.remove('hidden');
-                    sec.style.display = 'block';
-                } else {
-                    sec.classList.add('hidden');
-                }
-            });
-
-            const gridCont = document.getElementById('noticias-grid-container');
-            const detCont = document.getElementById('noticia-detail-container');
-            if (gridCont) gridCont.classList.remove('hidden');
-            if (detCont) detCont.classList.add('hidden');
-
-            if (grid.children.length === 0 && typeof noticiasData !== 'undefined') {
-                const lang = (document.documentElement.lang || 'es').toLowerCase().startsWith('en') ? 'en' : 'es';
-                grid.innerHTML = noticiasData.map((n) => `
-                    <button
-                        type="button"
-                        onclick="if (typeof openNoticiaDetail === 'function') { openNoticiaDetail('${n.id}'); }"
-                        class="group bg-white rounded-[1.75rem] p-6 border ${n.borderClass || 'border-blush/20'} shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col text-left justify-between"
-                    >
-                        <div>
-                            <span class="inline-block text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${n.badgeClass || 'bg-softpink text-tomato'}">
-                                ${n.badge[lang] || n.badge.es}
-                            </span>
-                            <h3 class="font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2">
-                                ${n.title[lang] || n.title.es}
-                            </h3>
-                            <p class="text-xs sm:text-sm text-[#5C4E4E]">
-                                ${n.subtitle[lang] || n.subtitle.es}
-                            </p>
-                        </div>
-                        <span class="mt-5 text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline">
-                            ${lang === 'en' ? 'READ MORE →' : 'VER NOTICIA →'}
-                        </span>
-                    </button>
-                `).join('');
+        function obtenerFotoPortadaCanSat() {
+            const noticiaCanSat = (typeof noticiasData !== 'undefined')
+                ? noticiasData.find((item) => item.id === 'cansat-galaxy-046')
+                : null;
+            if (noticiaCanSat && Array.isArray(noticiaCanSat.photos) && noticiaCanSat.photos.length > 0) {
+                return 'cansat1';
             }
+            return 'cansat1';
         }
 
-        [0, 150, 500].forEach((ms) => setTimeout(forzarVistaNoticiasConDatos, ms));
-        window.addEventListener('load', () => setTimeout(forzarVistaNoticiasConDatos, 50));
-        window.addEventListener('hashchange', () => setTimeout(forzarVistaNoticiasConDatos, 50));
+        function crearElementoFotoCanSat(base, altTexto, clases) {
+            const exts = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'];
+            const img = document.createElement('img');
+            img.alt = altTexto || base;
+            img.className = clases;
+            let idx = 0;
+            img.src = `${base}${exts[idx]}`;
+            img.onerror = function () {
+                idx++;
+                if (idx < exts.length) {
+                    img.src = `${base}${exts[idx]}`;
+                } else {
+                    const wrap = img.closest('[data-cansat-img-box]');
+                    if (wrap) wrap.remove();
+                    else img.style.display = 'none';
+                }
+            };
+            return img;
+        }
+
+        function insertarImagenesEnTarjetasNoticias() {
+            const grid = document.getElementById('noticias-cards-grid');
+            if (!grid) return;
+
+            Array.from(grid.children).forEach((card) => {
+                const texto = (card.textContent || '').toLowerCase();
+                if (texto.includes('cansat') || texto.includes('picansat')) {
+                    if (card.querySelector('[data-cansat-img-box]')) return;
+
+                    const box = document.createElement('div');
+                    box.dataset.cansatImgBox = 'true';
+                    box.className = 'w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 mb-4';
+                    box.appendChild(
+                        crearElementoFotoCanSat(
+                            obtenerFotoPortadaCanSat(),
+                            'CanSat Galaxy 046',
+                            'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                        )
+                    );
+
+                    const primerBloqueTexto = card.querySelector('div');
+                    if (primerBloqueTexto) {
+                        primerBloqueTexto.prepend(box);
+                    } else {
+                        card.prepend(box);
+                    }
+                }
+            });
+        }
+
+        function insertarGaleriaEnDetalleCanSat() {
+            const detalle = document.getElementById('noticia-detail-content');
+            if (!detalle) return;
+
+            const texto = (detalle.textContent || '').toLowerCase();
+            if (!texto.includes('cansat') && !texto.includes('galaxy 046') && !texto.includes('picansat')) return;
+            if (detalle.querySelector('[data-cansat-galeria-final]')) return;
+
+            const fotosCanSat = [
+                { cod: 'cansat1', epigraf: 'Prototipo interno y placas de sensores del CanSat Galaxy 046' },
+                { cod: 'cansat2', epigraf: 'Entrevista radial presentando el proyecto Galaxy 046' },
+                { cod: 'cansat3', epigraf: 'Equipo Galaxy 046 en el frente del Instituto El Obraje' },
+                { cod: 'cansat4', epigraf: 'Integrantes y docentes acompañantes del proyecto' }
+            ];
+
+            const seccion = document.createElement('div');
+            seccion.dataset.cansatGaleriaFinal = 'true';
+            seccion.className = 'mt-8 pt-6 border-t border-blush/15';
+
+            const titulo = document.createElement('h4');
+            titulo.className = 'font-serif text-xl font-bold text-[#2D2424] mb-4';
+            titulo.textContent = 'Fotos del proyecto CanSat Galaxy 046';
+            seccion.appendChild(titulo);
+
+            const grilla = document.createElement('div');
+            grilla.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
+
+            fotosCanSat.forEach((f) => {
+                const cardFoto = document.createElement('figure');
+                cardFoto.dataset.cansatImgBox = 'true';
+                cardFoto.className = 'rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 flex flex-col';
+
+                const mediaWrap = document.createElement('div');
+                mediaWrap.className = 'w-full h-56 overflow-hidden bg-white flex items-center justify-center';
+                mediaWrap.appendChild(
+                    crearElementoFotoCanSat(f.cod, f.epigraf, 'w-full h-full object-cover object-top')
+                );
+
+                const cap = document.createElement('figcaption');
+                cap.className = 'p-3 text-xs text-[#4A3F3F] font-medium';
+                cap.textContent = f.epigraf;
+
+                cardFoto.appendChild(mediaWrap);
+                cardFoto.appendChild(cap);
+                grilla.appendChild(cardFoto);
+            });
+
+            seccion.appendChild(grilla);
+            (detalle.firstElementChild || detalle).appendChild(seccion);
+        }
+
+        function sincronizarFotosNoticias() {
+            insertarImagenesEnTarjetasNoticias();
+            insertarGaleriaEnDetalleCanSat();
+        }
+
+        sincronizarFotosNoticias();
+        document.addEventListener('DOMContentLoaded', sincronizarFotosNoticias);
+        window.addEventListener('load', sincronizarFotosNoticias);
+
+        const obsNoticias = new MutationObserver(sincronizarFotosNoticias);
+        const activarObsNoticias = () => {
+            const grid = document.getElementById('noticias-cards-grid');
+            const detalle = document.getElementById('noticia-detail-content');
+            if (grid) obsNoticias.observe(grid, { childList: true, subtree: true });
+            if (detalle) obsNoticias.observe(detalle, { childList: true, subtree: true });
+        };
+        activarObsNoticias();
+        document.addEventListener('DOMContentLoaded', activarObsNoticias);
 
         // Datos del Plan de Estudios de Informática (4° a 7° Año)
         const informaticaPlanData = [
@@ -4697,25 +4774,34 @@
         }
 
         function hideAllViews() {
-            document.getElementById('main-portal-view').classList.add('hidden');
-            document.getElementById('universidades-view').classList.add('hidden');
-            document.getElementById('viandas-view').classList.add('hidden');
-            document.getElementById('libreria-view').classList.add('hidden');
-            document.getElementById('biblioteca-view').classList.add('hidden');
-            document.getElementById('reconocimientos-view').classList.add('hidden');
-            document.getElementById('informatica-view').classList.add('hidden');
-            document.getElementById('quimica-view').classList.add('hidden');
-            document.getElementById('construcciones-view').classList.add('hidden');
-            document.getElementById('noticias-view').classList.add('hidden');
-            document.getElementById('subpage-view').classList.add('hidden');
-            const vocabView = document.getElementById('cuestionario-vocab-view');
-            if (vocabView) vocabView.classList.add('hidden');
-            const empView = document.getElementById('empresa-view');
-            if (empView) empView.classList.add('hidden');
+            const viewIds = [
+                'main-portal-view',
+                'universidades-view',
+                'viandas-view',
+                'libreria-view',
+                'biblioteca-view',
+                'reconocimientos-view',
+                'informatica-view',
+                'quimica-view',
+                'construcciones-view',
+                'noticias-view',
+                'subpage-view',
+                'cuestionario-vocab-view',
+                'empresa-view'
+            ];
+
+            viewIds.forEach((id) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('hidden');
+                }
+            });
         }
 
         function closeMobileMenu() {
-            if (mobileMenu) mobileMenu.classList.add('hidden');
+            if (typeof mobileMenu !== 'undefined' && mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
         }
 
         // Navegación y Renderizado de Noticias
