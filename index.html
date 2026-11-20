@@ -4482,6 +4482,7 @@
         }
 
         function hideAllViews() {
+            document.querySelectorAll('#empresa-view video').forEach(v => { try { v.pause(); } catch (e) {} });
             const viewIds = [
                 'main-portal-view',
                 'universidades-view',
@@ -7106,8 +7107,7 @@
                 ['Incorrecto', 'Incorrect'],
                 ['Portal Estudiantil', 'Student Portal'],
                 ['NUESTRA EMPRESA', 'OUR COMPANY'],
-                ['Quiénes somos', 'Who we are'],
-                ['Escribí acá la historia, identidad y origen de la empresa.', 'Write your company story, identity, and origin here.']
+                ['Quiénes somos', 'Who we are']
             ];
 
             const esToEn = new Map();
@@ -7224,15 +7224,13 @@
                     back: '← VOLVER',
                     title: 'NUESTRA EMPRESA',
                     tabLabel: 'Quiénes somos',
-                    heading: 'Quiénes somos',
-                    body: 'Escribí acá la historia, identidad y origen de la empresa.'
+                    heading: 'Quiénes somos'
                 },
                 en: {
                     back: '← BACK',
                     title: 'OUR COMPANY',
                     tabLabel: 'Who we are',
-                    heading: 'Who we are',
-                    body: 'Write your company story, identity, and origin here.'
+                    heading: 'Who we are'
                 }
             };
 
@@ -7259,8 +7257,17 @@
                 if (container) {
                     container.innerHTML = `
                         <div class="bg-white rounded-[1.75rem] p-6 sm:p-8 border border-blush/15 shadow-2xs">
-                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-4">${t.heading}</h3>
-                            <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed">${t.body}</p>
+                            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato">${t.heading}</h3>
+                        </div>
+
+                        <div class="mt-6 bg-white rounded-[1.75rem] p-3 sm:p-4 border border-blush/15 shadow-2xs">
+                            <div class="rounded-2xl overflow-hidden bg-black aspect-video">
+                                <video id="empresa-video" controls playsinline preload="metadata"
+                                    class="w-full h-full object-contain"
+                                    onerror="this.parentElement.outerHTML='<p class=&quot;p-6 text-sm text-[#4A3F3F]&quot;>No se pudo cargar el video. Verificá que proyectavideo.mp4 esté en la misma carpeta que index.html.</p>'">
+                                    <source src="proyectavideo.mp4" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     `;
                 }
