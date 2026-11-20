@@ -630,74 +630,173 @@
             </div>
         </section>
 
-        <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + 6 ARTÍCULOS CON WHATSAPP) -->
-        <section id="libreria-view" class="hidden mb-16">
-            <div
-                class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
-                <button id="lib-back-btn" type="button" onclick="showMainPortal('inicio')"
-                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
-                    <span>← Volver</span>
-                </button>
+        <!-- VISTA DE LIBRERÍA (CONTACTO SALVADOR + 6 ARTÍCULOS CON WHATSAPP + GALERÍA LIB) -->
+<section id="libreria-view" class="hidden mb-16">
+    <div
+        class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+        <button id="lib-back-btn" type="button" onclick="showMainPortal('inicio')"
+            class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+            <span>← Volver</span>
+        </button>
 
-                <div class="flex items-center gap-3">
-    <h2 id="lib-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Librería</h2>
-    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-    </svg>
-</div>
-<div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-    <!-- Columna Izquierda: Perfil y Datos de Salvador -->
-    <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
-        <div class="flex flex-col items-center text-center mb-6">
-            <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
-                <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
-                    <img src="imagen/LIB1_3.jpg" alt="Salvador" class="w-full h-full object-cover object-top">
+        <div class="flex items-center gap-3">
+            <h2 id="lib-title" class="font-serif text-3xl sm:text-4xl font-bold text-tomato tracking-tight">Librería</h2>
+            <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+            </svg>
+        </div>
+        <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Columna Izquierda: Perfil y Datos de Salvador -->
+            <div class="lg:col-span-4 bg-white rounded-[2rem] p-7 border border-blush/15 shadow-2xs">
+                <div class="flex flex-col items-center text-center mb-6">
+                    <div class="w-32 h-32 rounded-full p-1.5 bg-gradient-to-tr from-blush via-princeton to-vanilla mb-4 shadow-xs">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-softpink">
+                            <img src="imágenes/LIB1.jpg" alt="Salvador" data-ext-idx="0"
+                                onerror="reintentarExtensionLibreria(this, 'LIB1')"
+                                class="w-full h-full object-cover object-top">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3 text-sm text-[#4A3F3F] mb-6">
+                    <p><strong id="lib-label-name" class="text-[#2D2424]">Nombre</strong>: Salvador</p>
+                    <p><strong id="lib-label-phone" class="text-[#2D2424]">Teléfono</strong>: 3547 570898</p>
+                    <div class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
+                        <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span
+                                class="font-mono font-bold text-tomato">salvamelo</span></p>
+                        <button type="button" onclick="copyAlias()"
+                            class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
+                            <span id="lib-copy-label">Copiar</span>
+                        </button>
+                    </div>
+                    <div class="pt-2">
+                        <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:</p>
+                        <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y muchos más.</p>
+                        <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a color, stickers, entre otros.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2.5">
+                    <a href="tel:3547570898"
+                        class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        <span id="lib-call-btn">Llamar</span>
+                    </a>
+                    <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898"
+                        target="_blank" rel="noopener noreferrer"
+                        class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>WhatsApp</span>
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="space-y-3 text-sm text-[#4A3F3F] mb-6">
-            <p><strong id="lib-label-name" class="text-[#2D2424]">Nombre</strong>: Salvador</p>
-            <p><strong id="lib-label-phone" class="text-[#2D2424]">Teléfono</strong>: 3547 570898</p>
-            <div class="flex items-center justify-between gap-2 bg-cream px-3.5 py-2.5 rounded-2xl border border-blush/15">
-                <p><strong id="lib-label-alias" class="text-[#2D2424]">Alias</strong>: <span
-                        class="font-mono font-bold text-tomato">salvamelo</span></p>
-                <button type="button" onclick="copyAlias()"
-                    class="text-[11px] font-bold uppercase tracking-wider bg-softpink hover:bg-tomato text-tomato hover:text-white px-3 py-1 rounded-full transition-colors cursor-pointer">
-                    <span id="lib-copy-label">Copiar</span>
-                </button>
-            </div>
-            <div class="pt-2">
-                <p class="font-bold text-[#2D2424] mb-1"><span id="lib-label-desc">Descripción</span>:</p>
-                <p id="lib-desc-p1" class="leading-relaxed mb-1.5">Podés conseguir estos productos y muchos más.</p>
-                <p id="lib-desc-p2" class="leading-relaxed">Además, realizo fotocopias blanco y negro, a color, stickers, entre otros.</p>
+            <!-- Columna Derecha: Grilla de 6 Artículos -->
+            <div id="libreria-products-grid"
+                class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <!-- Renderizado dinámicamente por JS -->
             </div>
         </div>
 
-        <div class="flex flex-wrap gap-2.5">
-            <a href="tel:3547570898"
-                class="flex-1 inline-flex items-center justify-center gap-2 bg-tomato hover:bg-[#a6222a] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
-                <i data-lucide="phone" class="w-4 h-4"></i>
-                <span id="lib-call-btn">Llamar</span>
-            </a>
-            <a id="lib-direct-wa-btn" href="https://api.whatsapp.com/send?phone=5493547570898"
-                target="_blank" rel="noopener noreferrer"
-                class="flex-1 inline-flex items-center justify-center gap-2 bg-olive hover:bg-[#847f19] text-white text-xs font-bold px-4 py-3 rounded-full transition-colors">
-                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                <span>WhatsApp</span>
-            </a>
+        <!-- Galería completa de fotos LIB2 a LIB16 -->
+        <div id="galeria-extra-libreria" class="mt-10 pt-8 border-t border-tomato/15">
+            <h3 class="font-serif text-xl font-bold text-[#2D2424] mb-4">Más fotos de la librería</h3>
+            <div id="libreria-all-photos-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                <!-- Renderizado dinámicamente por JS -->
+            </div>
         </div>
     </div>
+</section>
 
-    <!-- Columna Derecha: Grilla de 6 Artículos -->
-    <div id="libreria-products-grid"
-        class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-        <!-- Renderizado dinámicamente por JS -->
-    </div>
-</div>
-            </div>
-        </section>
+<script>
+    const RUTA_LIBRERIA = "imágenes";
+    const EXTENSIONES_LIB = [".jpg", ".jpeg", ".png", ".webp"];
+    const TELEFONO_WA_SALVADOR = "5493547570898";
+
+    function reintentarExtensionLibreria(img, nombreBase) {
+        const idx = Number(img.dataset.extIdx || 0) + 1;
+        if (idx < EXTENSIONES_LIB.length) {
+            img.dataset.extIdx = idx;
+            img.src = `${RUTA_LIBRERIA}/${nombreBase}${EXTENSIONES_LIB[idx]}`;
+        } else {
+            const tarjeta = img.closest("[data-lib-card]");
+            if (tarjeta) {
+                tarjeta.style.display = "none";
+            } else {
+                img.style.display = "none";
+            }
+        }
+    }
+
+    const articulosLibreria = [
+        { nombre: "Exhibidor de cartulinas", foto: "LIB2", bg: "bg-softpink" },
+        { nombre: "Hojas y papeles de colores", foto: "LIB3", bg: "bg-vanilla/50" },
+        { nombre: "Láminas y materiales", foto: "LIB4", bg: "bg-cream" },
+        { nombre: "Marcadores y resaltadores", foto: "LIB6", bg: "bg-softpink" },
+        { nombre: "Fibrones y bolígrafos", foto: "LIB8", bg: "bg-vanilla/50" },
+        { nombre: "Geometría y carpetas", foto: "LIB10", bg: "bg-cream" }
+    ];
+
+    function renderizarArticulosLibreria() {
+        const grid = document.getElementById("libreria-products-grid");
+        if (!grid) return;
+
+        grid.innerHTML = articulosLibreria.map((item) => {
+            const rutaImg = `${RUTA_LIBRERIA}/${item.foto}${EXTENSIONES_LIB[0]}`;
+            const mensajeWa = encodeURIComponent(`Hola Salvador! Quería consultar precio por: ${item.nombre}`);
+            return `
+                <article data-lib-card class="bg-white rounded-[1.5rem] p-4 border border-blush/15 shadow-2xs flex flex-col justify-between">
+                    <div>
+                        <div class="w-full aspect-square rounded-2xl ${item.bg} overflow-hidden mb-3 flex items-center justify-center">
+                            <img
+                                src="${rutaImg}"
+                                alt="${item.nombre}"
+                                data-ext-idx="0"
+                                onerror="reintentarExtensionLibreria(this, '${item.foto}')"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <h3 class="font-bold text-sm text-[#2D2424] text-center mb-3">${item.nombre}</h3>
+                    </div>
+                    <a
+                        href="https://api.whatsapp.com/send?phone=${TELEFONO_WA_SALVADOR}&text=${mensajeWa}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-auto inline-flex items-center justify-center gap-1.5 text-xs font-bold text-olive hover:underline pt-2 border-t border-blush/10"
+                    >
+                        <span>Consultar precio por WhatsApp ↗</span>
+                    </a>
+                </article>
+            `;
+        }).join("");
+    }
+
+    function renderizarGaleriaCompletaLibreria() {
+        const grid = document.getElementById("libreria-all-photos-grid");
+        if (!grid) return;
+
+        const codigosLib = Array.from({ length: 15 }, (_, i) => `LIB${i + 2}`); // LIB2..LIB16
+        grid.innerHTML = codigosLib.map((cod) => {
+            const rutaImg = `${RUTA_LIBRERIA}/${cod}${EXTENSIONES_LIB[0]}`;
+            return `
+                <div data-lib-card class="aspect-square rounded-xl overflow-hidden bg-white border border-blush/15">
+                    <img
+                        src="${rutaImg}"
+                        alt="${cod}"
+                        data-ext-idx="0"
+                        onerror="reintentarExtensionLibreria(this, '${cod}')"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
+            `;
+        }).join("");
+    }
+
+    renderizarArticulosLibreria();
+    renderizarGaleriaCompletaLibreria();
+</script>
 
         <!-- VISTA DE BIBLIOTECA (BIBLIOTECARIOS + TABLA DE HORARIOS + 5 RECURSOS FIJOS) -->
         <section id="biblioteca-view" class="hidden mb-16">
