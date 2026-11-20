@@ -1256,206 +1256,7 @@
     </div>
 </section>
 
-<script>
-    (function () {
-        const RUTA_RECONOCIMIENTOS = ""; // Imágenes en la raíz junto al index
-        const EXTENSIONES_REC = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
 
-        const estudiantesReconocimientos = [
-            {
-                id: "felipe-gonzalez-7b",
-                nombre: "Felipe González",
-                subtitulo: "7° B • Reconocimiento Deportivo",
-                fotoPerfil: "FGR1",
-                fotos: ["FGR1", "FGR2", "FGR3", "FGR4", "FGR5", "FGR6", "FGR7"],
-                descripcion: "Reconocimiento por su participación, podios y logros en torneos y competencias de balonmano playa."
-            },
-            {
-                id: "guillermina-gonzalez-2c",
-                nombre: "Guillermina González",
-                subtitulo: "2° C • Reconocimiento Deportivo",
-                fotoPerfil: "GGR1",
-                fotos: ["GGR1", "GGR2", "GGR3", "GGR4", "GGR5"],
-                descripcion: "Reconocimiento por su participación en competencias, torneos y logros deportivos en handball."
-            },
-            {
-                id: "joaquin-decara-6c",
-                nombre: "Joaquín Decara",
-                subtitulo: "6° C • Reconocimiento Deportivo",
-                fotoPerfil: "JD21",
-                fotos: ["JD1", "JD3", "JD4", "JD5", "JD6", "JD7", "JD21"],
-                descripcion: "Reconocimiento por su participación y desempeño en torneos y competencias de handball."
-            }
-        ];
-
-        function construirRutaRec(nombreBase, ext) {
-            const limpia = RUTA_RECONOCIMIENTOS.replace(/^\/+|\/+$/g, "");
-            return limpia ? `${limpia}/${nombreBase}${ext}` : `${nombreBase}${ext}`;
-        }
-
-        function crearImgRec(nombreBase, altTexto, clases) {
-            const img = document.createElement("img");
-            img.alt = altTexto || nombreBase;
-            img.className = clases;
-            let idx = 0;
-            img.src = construirRutaRec(nombreBase, EXTENSIONES_REC[idx]);
-            img.onerror = function () {
-                idx++;
-                if (idx < EXTENSIONES_REC.length) {
-                    img.src = construirRutaRec(nombreBase, EXTENSIONES_REC[idx]);
-                } else {
-                    const wrap = img.closest("[data-rec-galeria-item]");
-                    if (wrap) {
-                        wrap.remove();
-                    } else {
-                        img.style.display = "none";
-                    }
-                }
-            };
-            return img;
-        }
-
-        function renderizarReconocimientosGrid() {
-            const grid = document.getElementById("reconocimientos-cards-grid");
-            if (!grid) return;
-
-            grid.innerHTML = "";
-            estudiantesReconocimientos.forEach((est) => {
-                const btn = document.createElement("button");
-                btn.type = "button";
-                btn.onclick = () => window.openReconocimientoDetail(est.id);
-                btn.className = "group bg-white rounded-[1.75rem] p-6 border border-blush/15 shadow-2xs hover:border-tomato/40 hover:shadow-md transition-all cursor-pointer flex flex-col items-center text-center justify-between";
-
-                const topWrap = document.createElement("div");
-                topWrap.className = "flex flex-col items-center w-full";
-
-                const ring = document.createElement("div");
-                ring.className = "w-28 h-28 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton mb-4 shadow-xs";
-
-                const circle = document.createElement("div");
-                circle.className = "w-full h-full rounded-full overflow-hidden bg-softpink flex items-center justify-center";
-                circle.appendChild(
-                    crearImgRec(est.fotoPerfil, est.nombre, "w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300")
-                );
-
-                ring.appendChild(circle);
-                topWrap.appendChild(ring);
-
-                const badge = document.createElement("span");
-                badge.className = "inline-block text-[11px] font-bold uppercase tracking-wider text-tomato bg-softpink px-3 py-1 rounded-full mb-2";
-                badge.textContent = est.subtitulo;
-                topWrap.appendChild(badge);
-
-                const h3 = document.createElement("h3");
-                h3.className = "font-serif text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2";
-                h3.textContent = est.nombre;
-                topWrap.appendChild(h3);
-
-                const desc = document.createElement("p");
-                desc.className = "text-xs sm:text-sm text-[#5C4E4E] line-clamp-2 mb-4";
-                desc.textContent = est.descripcion;
-                topWrap.appendChild(desc);
-
-                const linkTxt = document.createElement("span");
-                linkTxt.className = "text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline";
-                linkTxt.textContent = "VER PERFIL Y FOTOS →";
-
-                btn.appendChild(topWrap);
-                btn.appendChild(linkTxt);
-                grid.appendChild(btn);
-            });
-        }
-
-        window.openReconocimientoDetail = function (id) {
-            const est = estudiantesReconocimientos.find((item) => item.id === id);
-            const gridContainer = document.getElementById("reconocimientos-grid-container");
-            const detailContainer = document.getElementById("reconocimiento-detail-container");
-            const detailContent = document.getElementById("reconocimiento-detail-content");
-
-            if (!est || !gridContainer || !detailContainer || !detailContent) return;
-
-            detailContent.innerHTML = "";
-
-            const card = document.createElement("div");
-            card.className = "bg-white rounded-[2rem] p-6 sm:p-10 border border-blush/15 shadow-2xs space-y-8";
-
-            const header = document.createElement("div");
-            header.className = "flex flex-col sm:flex-row items-center sm:items-start gap-6 pb-6 border-b border-blush/15";
-
-            const ring = document.createElement("div");
-            ring.className = "w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-gradient-to-tr from-blush via-vanilla to-princeton shrink-0 shadow-xs";
-
-            const circle = document.createElement("div");
-            circle.className = "w-full h-full rounded-full overflow-hidden bg-softpink flex items-center justify-center";
-            circle.appendChild(
-                crearImgRec(est.fotoPerfil, est.nombre, "w-full h-full object-cover object-top")
-            );
-            ring.appendChild(circle);
-
-            const info = document.createElement("div");
-            info.className = "text-center sm:text-left space-y-2";
-
-            const badge = document.createElement("span");
-            badge.className = "inline-block text-xs font-bold uppercase tracking-wider text-tomato bg-softpink px-3.5 py-1 rounded-full";
-            badge.textContent = est.subtitulo;
-
-            const title = document.createElement("h3");
-            title.className = "font-serif text-3xl sm:text-4xl font-bold text-[#2D2424]";
-            title.textContent = est.nombre;
-
-            const desc = document.createElement("p");
-            desc.className = "text-sm sm:text-base text-[#4A3F3F] leading-relaxed max-w-2xl";
-            desc.textContent = est.descripcion;
-
-            info.appendChild(badge);
-            info.appendChild(title);
-            info.appendChild(desc);
-
-            header.appendChild(ring);
-            header.appendChild(info);
-            card.appendChild(header);
-
-            const galeriaSection = document.createElement("div");
-            const galeriaTitle = document.createElement("h4");
-            galeriaTitle.className = "font-serif text-xl font-bold text-[#2D2424] mb-4";
-            galeriaTitle.textContent = "Fotos del reconocimiento";
-            galeriaSection.appendChild(galeriaTitle);
-
-            const galeriaGrid = document.createElement("div");
-            galeriaGrid.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4";
-
-            (est.fotos || []).forEach((cod) => {
-                const itemBox = document.createElement("div");
-                itemBox.dataset.recGaleriaItem = "true";
-                itemBox.className = "aspect-[4/3] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15";
-                itemBox.appendChild(
-                    crearImgRec(cod, `${est.nombre} - ${cod}`, "w-full h-full object-cover")
-                );
-                galeriaGrid.appendChild(itemBox);
-            });
-
-            galeriaSection.appendChild(galeriaGrid);
-            card.appendChild(galeriaSection);
-            detailContent.appendChild(card);
-
-            gridContainer.classList.add("hidden");
-            detailContainer.classList.remove("hidden");
-        };
-
-        window.closeReconocimientoDetail = function () {
-            const gridContainer = document.getElementById("reconocimientos-grid-container");
-            const detailContainer = document.getElementById("reconocimiento-detail-container");
-            if (gridContainer) gridContainer.classList.remove("hidden");
-            if (detailContainer) detailContainer.classList.add("hidden");
-        };
-
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", renderizarReconocimientosGrid);
-        } else {
-            renderizarReconocimientosGrid();
-        }
-    })();
-</script>
 
         <!-- VISTA COMPLETA DE ESPECIALIDAD: INFORMÁTICA (5 PESTAÑAS INTERACTIVAS) -->
         <section id="informatica-view" class="hidden mb-16">
@@ -1598,189 +1399,7 @@
             </div>
         </section>
 
-        <script>
-    (function () {
-        const RUTA_NOTICIAS = ""; // Imágenes en la raíz junto al index
-        const EXTENSIONES_NOT = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
-
-        // Modificá acá los nombres exactos, el texto y qué foto va de portada ("imagen")
-        const NOTICIA_PICANSAT = {
-            id: "picansat-cansat-galaxy-046",
-            badge: "Ciencia y Tecnología • CanSat",
-            titulo: "Picansat y CanSat Galaxy 046",
-            resumen: "Desarrollo del prototipo CanSat Galaxy 046, difusión en radio y participación del equipo estudiantil.",
-            imagen: "cansat1",
-            galeria: ["cansat1", "cansat2", "cansat3", "cansat4"],
-            cuerpo: [
-                "El proyecto Picansat y el prototipo CanSat Galaxy 046 reúnen trabajo técnico, sensores y electrónica aplicada desarrollados por estudiantes junto a sus docentes referentes.",
-                "Integrantes y nombres del equipo: completá o modificá acá los nombres exactos que querés mostrar."
-            ]
-        };
-
-        function construirRutaNot(base, ext) {
-            const limpia = RUTA_NOTICIAS.replace(/^\/+|\/+$/g, "");
-            return limpia ? `${limpia}/${base}${ext}` : `${base}${ext}`;
-        }
-
-        function crearImgNoticia(base, altTexto, clases) {
-            const img = document.createElement("img");
-            img.alt = altTexto || base;
-            img.className = clases;
-            let idx = 0;
-            img.src = construirRutaNot(base, EXTENSIONES_NOT[idx]);
-            img.onerror = function () {
-                idx++;
-                if (idx < EXTENSIONES_NOT.length) {
-                    img.src = construirRutaNot(base, EXTENSIONES_NOT[idx]);
-                } else {
-                    const box = img.closest("[data-not-img-wrap]");
-                    if (box) box.remove();
-                    else img.style.display = "none";
-                }
-            };
-            return img;
-        }
-
-        window.openPicansatDetail = function () {
-            const gridContainer = document.getElementById("noticias-grid-container");
-            const detailContainer = document.getElementById("noticia-detail-container");
-            const detailContent = document.getElementById("noticia-detail-content");
-            if (!gridContainer || !detailContainer || !detailContent) return;
-
-            detailContent.innerHTML = "";
-
-            const article = document.createElement("article");
-            article.className = "bg-white rounded-[2rem] p-6 sm:p-10 border border-blush/15 shadow-2xs space-y-6";
-
-            const badge = document.createElement("span");
-            badge.className = "inline-block text-xs font-bold uppercase tracking-wider text-tomato bg-softpink px-3.5 py-1.5 rounded-full";
-            badge.textContent = NOTICIA_PICANSAT.badge;
-
-            const h3 = document.createElement("h3");
-            h3.className = "font-serif text-3xl sm:text-4xl font-bold text-[#2D2424]";
-            h3.textContent = NOTICIA_PICANSAT.titulo;
-
-            article.appendChild(badge);
-            article.appendChild(h3);
-
-            if (NOTICIA_PICANSAT.imagen) {
-                const imgWrap = document.createElement("div");
-                imgWrap.dataset.notImgWrap = "true";
-                imgWrap.className = "w-full max-h-[440px] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 flex items-center justify-center";
-                imgWrap.appendChild(
-                    crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-contain")
-                );
-                article.appendChild(imgWrap);
-            }
-
-            (NOTICIA_PICANSAT.cuerpo || []).forEach((parrafo) => {
-                const p = document.createElement("p");
-                p.className = "text-sm sm:text-base text-[#4A3F3F] leading-relaxed";
-                p.textContent = parrafo;
-                article.appendChild(p);
-            });
-
-            if (Array.isArray(NOTICIA_PICANSAT.galeria) && NOTICIA_PICANSAT.galeria.length > 0) {
-                const galSection = document.createElement("div");
-                galSection.className = "pt-4 border-t border-blush/15";
-
-                const galTitle = document.createElement("h4");
-                galTitle.className = "font-serif text-xl font-bold text-[#2D2424] mb-4";
-                galTitle.textContent = "Galería del proyecto";
-                galSection.appendChild(galTitle);
-
-                const galGrid = document.createElement("div");
-                galGrid.className = "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4";
-
-                NOTICIA_PICANSAT.galeria.forEach((cod) => {
-                    const box = document.createElement("div");
-                    box.dataset.notImgWrap = "true";
-                    box.className = "aspect-[4/3] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15";
-                    box.appendChild(
-                        crearImgNoticia(cod, `${NOTICIA_PICANSAT.titulo} - ${cod}`, "w-full h-full object-cover")
-                    );
-                    galGrid.appendChild(box);
-                });
-
-                galSection.appendChild(galGrid);
-                article.appendChild(galSection);
-            }
-
-            detailContent.appendChild(article);
-            gridContainer.classList.add("hidden");
-            detailContainer.classList.remove("hidden");
-        };
-
-        function inyectarTarjetaPicansat() {
-            const grid = document.getElementById("noticias-cards-grid");
-            if (!grid) return;
-
-            const existente = Array.from(grid.children).find((el) =>
-                (el.textContent || "").toLowerCase().includes("picansat") ||
-                (el.textContent || "").toLowerCase().includes("cansat")
-            );
-
-            if (existente) {
-                if (NOTICIA_PICANSAT.imagen && !existente.querySelector("img")) {
-                    const box = document.createElement("div");
-                    box.dataset.notImgWrap = "true";
-                    box.className = "w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 mb-4";
-                    box.appendChild(
-                        crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-cover")
-                    );
-                    existente.prepend(box);
-                }
-                return;
-            }
-
-            const card = document.createElement("button");
-            card.type = "button";
-            card.onclick = () => window.openPicansatDetail();
-            card.className = "group bg-white rounded-[1.75rem] p-6 border border-blush/15 shadow-2xs hover:border-tomato/40 hover:shadow-md transition-all cursor-pointer flex flex-col text-left justify-between";
-
-            const top = document.createElement("div");
-            if (NOTICIA_PICANSAT.imagen) {
-                const thumb = document.createElement("div");
-                thumb.dataset.notImgWrap = "true";
-                thumb.className = "w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 mb-4";
-                thumb.appendChild(
-                    crearImgNoticia(NOTICIA_PICANSAT.imagen, NOTICIA_PICANSAT.titulo, "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300")
-                );
-                top.appendChild(thumb);
-            }
-
-            const tag = document.createElement("span");
-            tag.className = "inline-block text-[11px] font-bold uppercase tracking-wider text-tomato bg-softpink px-3 py-1 rounded-full mb-2";
-            tag.textContent = NOTICIA_PICANSAT.badge;
-
-            const title = document.createElement("h3");
-            title.className = "font-serif text-xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors mb-2";
-            title.textContent = NOTICIA_PICANSAT.titulo;
-
-            const desc = document.createElement("p");
-            desc.className = "text-xs sm:text-sm text-[#5C4E4E] mb-4";
-            desc.textContent = NOTICIA_PICANSAT.resumen;
-
-            top.appendChild(tag);
-            top.appendChild(title);
-            top.appendChild(desc);
-
-            const cta = document.createElement("span");
-            cta.className = "text-[11px] font-bold uppercase tracking-wider text-tomato group-hover:underline";
-            cta.textContent = "LEER NOTICIA →";
-
-            card.appendChild(top);
-            card.appendChild(cta);
-            grid.appendChild(card);
-        }
-
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", inyectarTarjetaPicansat);
-        } else {
-            inyectarTarjetaPicansat();
-        }
-    })();
-</script>
+        
 
         <!-- VISTA COMPLETA: NUESTRA EMPRESA -->
         <section id="empresa-view" class="hidden mb-16">
@@ -1807,22 +1426,99 @@
             </div>
         </section>
 
-        <!-- FOOTER MINIMALISTA -->
-        <footer
-            class="bg-cream rounded-[2rem] px-7 py-5 border border-tomato/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#5C4E4E]">
-            <div aria-label="ADVENT" class="inline-flex items-center select-none">
-                <svg class="h-8 w-auto text-black" viewBox="0 0 132 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                        d="M44 8C20.5 8 4 24.5 4 46H32C32 37.5 37.5 32 45.5 32C53.5 32 59 37.5 59 46V48.5C54 45.5 47.5 44 40 44C18.5 44 4 58.5 4 79V92H32C32 84.5 37.5 79 45 79C52.5 79 58 84.5 58 92H86V46C86 23 68.5 8 44 8Z"
-                        fill="currentColor" />
-                    <text x="0" y="0" transform="translate(116, 92) rotate(-90)" fill="currentColor"
-                        font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="800" font-size="25.5"
-                        letter-spacing="-0.4" textLength="84" lengthAdjust="spacingAndGlyphs">advent</text>
+        <!-- VISTA DE NOTICIAS -->
+<section id="noticias-view" class="hidden mb-16">
+    <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+        <div id="noticias-grid-container">
+            <button id="not-home-btn" type="button" onclick="showMainPortal('inicio')"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                <span>← Volver</span>
+            </button>
+
+            <div class="flex items-center gap-3 mb-3">
+                <h2 id="not-main-title" class="font-serif text-4xl sm:text-5xl font-bold text-tomato tracking-tight">Noticias</h2>
+                <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
                 </svg>
             </div>
+            <div class="h-1 w-28 bg-tomato/20 rounded-full mb-9"></div>
 
-            <p id="footer-copy" class="text-xs text-[#7A6B6B]">© 2026 ADVENT • Portal Estudiantil</p>
-        </footer>
+            <div id="noticias-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Renderizado dinámicamente -->
+            </div>
+        </div>
+
+        <div id="noticia-detail-container" class="hidden">
+            <button id="not-detail-back-btn" type="button" onclick="closeNoticiaDetail()"
+                class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-7 cursor-pointer">
+                <span>← Volver a Noticias</span>
+            </button>
+            <div id="noticia-detail-content">
+                <!-- Renderizado dinámicamente -->
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- VISTA DEL CUESTIONARIO VOCACIONAL -->
+        <section id="cuestionario-vocab-view" class="hidden mb-16">
+            <div class="bg-cream/95 backdrop-blur-xs rounded-[2.25rem] p-7 sm:p-12 border border-tomato/12 relative overflow-hidden">
+                <button id="quest-back-btn" type="button" onclick="showMainPortal('inicio')"
+                    class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-tomato bg-softpink hover:bg-tomato hover:text-white px-4 py-2.5 rounded-full transition-colors mb-6 cursor-pointer">
+                    <span>← Volver</span>
+                </button>
+
+                <div class="flex items-center gap-3 mb-3">
+                    <h2 id="quest-title" class="font-serif text-3xl sm:text-5xl font-bold text-tomato tracking-tight">Cuestionario de Intereses Vocacionales</h2>
+                    <svg class="w-7 h-7 text-tomato shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                    </svg>
+                </div>
+                <div class="h-1 w-28 bg-tomato/20 rounded-full mb-5"></div>
+                <p id="quest-subtitle" class="text-sm sm:text-base text-[#5C4E4E] max-w-3xl mb-8">Completá tus datos y respondé todas las afirmaciones para calcular tu puntaje en cada orientación.</p>
+
+                <form id="cuestionario-form" novalidate onsubmit="procesarCuestionario(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label id="quest-label-nombre" for="quest-nombre" class="block text-xs font-bold uppercase tracking-wider text-[#2D2424] mb-1.5">Nombre *</label>
+                            <input id="quest-nombre" type="text" autocomplete="given-name" placeholder="Ingresá tu nombre"
+                                class="w-full rounded-2xl border border-tomato/20 bg-white px-4 py-3 text-sm focus:outline-none focus:border-tomato">
+                        </div>
+                        <div>
+                            <label id="quest-label-apellido" for="quest-apellido" class="block text-xs font-bold uppercase tracking-wider text-[#2D2424] mb-1.5">Apellido *</label>
+                            <input id="quest-apellido" type="text" autocomplete="family-name" placeholder="Ingresá tu apellido"
+                                class="w-full rounded-2xl border border-tomato/20 bg-white px-4 py-3 text-sm focus:outline-none focus:border-tomato">
+                        </div>
+                        <div>
+                            <label id="quest-label-curso" for="quest-curso" class="block text-xs font-bold uppercase tracking-wider text-[#2D2424] mb-1.5">Curso *</label>
+                            <input id="quest-curso" type="text" placeholder="Ejemplo: 3° A"
+                                class="w-full rounded-2xl border border-tomato/20 bg-white px-4 py-3 text-sm focus:outline-none focus:border-tomato">
+                        </div>
+                    </div>
+
+                    <div id="quest-instructions" class="bg-white rounded-2xl p-5 border border-tomato/12 mb-6"></div>
+
+                    <div id="preguntas-container" class="space-y-3 mb-8"></div>
+
+                    <button id="quest-submit-btn" type="submit"
+                        class="inline-flex items-center justify-center bg-tomato hover:bg-[#a6222a] text-white text-sm font-bold px-7 py-3.5 rounded-full transition-colors cursor-pointer">
+                        Calcular Puntajes por Área →
+                    </button>
+                </form>
+
+                <div id="resultados-container" class="hidden mt-10 bg-white rounded-[2rem] p-6 sm:p-9 border border-tomato/12 shadow-2xs">
+                    <h3 id="res-title" class="font-serif text-2xl sm:text-4xl font-bold text-tomato mb-2"></h3>
+                    <p id="res-alumno" class="text-sm font-semibold text-[#4A3F3F] mb-4"></p>
+                    <p id="res-subtitle" class="text-sm text-[#5C4E4E] mb-4"></p>
+                    <div id="res-puntajes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6"></div>
+                    <p id="res-mayor-area" class="font-serif text-lg sm:text-xl font-bold text-[#2D2424]"></p>
+                </div>
+            </div>
+        </section>
+
+
+
+
     </div>
 
     <!-- LÓGICA DE NAVEGACIÓN, IDIOMAS (ES / IN), UNIVERSIDADES, VIANDAS, LIBRERÍA, BIBLIOTECA, RECONOCIMIENTOS Y ESPECIALIDADES -->
@@ -4173,39 +3869,16 @@
             }
         ];
 
-        // Datos completos de los 3 estudiantes en Reconocimientos
+        // Datos de Reconocimientos (cada alumno es un botón que abre su perfil con fotos)
+        // "portada" = foto del botón; "fotos" = galería (nombres de archivo sin extensión).
         const reconocimientosData = [
-            {
-                id: 'joaquin-decara',
-                cardName: 'Joaquin Decara',
-                detailTitle: 'Joaquin Decara',
-                borderClass: 'border-blush/20 hover:border-tomato',
-                coverSvg: `<svg viewBox="0 0 320 190" class="w-full h-48 object-cover" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="jd-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#D8E2EC"/><stop offset="100%" stop-color="#FCE8EC"/></linearGradient></defs><rect width="320" height="190" fill="url(#jd-bg)"/><rect x="0" y="34" width="320" height="18" fill="#B5C4D4" fill-opacity="0.45"/><rect x="0" y="64" width="320" height="18" fill="#B5C4D4" fill-opacity="0.35"/><path d="M98 190C102 135 124 114 160 114C196 114 218 135 222 190H98Z" fill="#7DA8CC"/><path d="M126 116L160 132L194 116" fill="none" stroke="#FFFFFF" stroke-width="3"/><text x="160" y="168" text-anchor="middle" fill="#C42B34" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="28">3</text><rect x="148" y="88" width="24" height="28" rx="10" fill="#E3B193"/><path d="M132 54C132 34 144 22 160 22C176 22 188 34 188 54C188 60 186 65 183 68H137C134 65 132 60 132 54Z" fill="#231D1D"/><path d="M137 52C137 38 147 30 160 30C173 30 183 38 183 52V66C183 82 173 93 160 93C147 93 137 82 137 66V52Z" fill="#EBC0A3"/><circle cx="151" cy="55" r="2.5" fill="#231D1D"/><circle cx="169" cy="55" r="2.5" fill="#231D1D"/></svg>`,
-                paragraphs: {
-                    es: [
-                        'Soy Joaquín Decara, de 6C. Juego al Handball en la Municipalidad de Alta Gracia.',
-                        'Participé en la Selección Cordobesa durante 5 años consecutivos, tuve la oportunidad de estar en 2 procesos de Selección Argentina y he jugado en los binacionales 2007-2008 siendo 2009. También he jugado muchísimos nacionales de clubes donde hemos tenido grandes puestos y ganado infinidad de veces el torneo local (apertura y clausura) de la Fe.Co.Bal (Federación Cordobesa de Balonmano).'
-                    ],
-                    en: [
-                        'I am Joaquín Decara, from 6C. I play Handball at the Municipality of Alta Gracia.',
-                        'I participated in the Córdoba Provincial Team for 5 consecutive years, had the opportunity to be part of 2 Argentine National Team training processes, and played in the 2007–2008 Binational Games being born in 2009. I have also competed in numerous national club tournaments achieving top placements and winning the local tournament (Apertura and Clausura) of Fe.Co.Bal (Córdoba Handball Federation) countless times.'
-                    ]
-                },
-                photos: [
-                    { caption: { es: 'Festejo en arco • Torneos Nacionales', en: 'Goal celebration • National Tournaments' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#F6E5D6"/><rect x="44" y="24" width="172" height="96" fill="none" stroke="#C42B34" stroke-width="5"/><circle cx="130" cy="84" r="14" fill="#EBC0A3"/><path d="M106 135C108 110 118 98 130 98C142 98 152 110 154 135H106Z" fill="#C42B34"/></svg>` },
-                    { caption: { es: 'Contraataque en cancha indoor', en: 'Fast break on indoor court' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#FCE9AB" fill-opacity="0.65"/><rect x="0" y="118" width="260" height="52" fill="#E5A96F"/><circle cx="132" cy="54" r="13" fill="#EBC0A3"/><path d="M112 115L124 68H144L154 115H112Z" fill="#DF4C74"/></svg>` },
-                    { caption: { es: 'Lanzamiento suspendido • Selección Cordobesa', en: 'Jump shot • Córdoba Provincial Team' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#D9E8F5"/><rect x="0" y="128" width="260" height="42" fill="#5D8EC4"/><circle cx="122" cy="46" r="12" fill="#EBC0A3"/><path d="M104 98L114 58H134L142 98H104Z" fill="#89B4DC"/></svg>` },
-                    { caption: { es: 'Definición en el área', en: 'Finishing at the 6-meter line' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#EEDBC8"/><rect x="0" y="124" width="260" height="46" fill="#D99B66"/><circle cx="135" cy="42" r="12" fill="#EBC0A3"/><path d="M116 96L126 55H146L154 96H116Z" fill="#C42B34"/></svg>` },
-                    { caption: { es: 'Equipo • Juegos Binacionales', en: 'Team • Binational Games' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#FCE8EC"/><rect x="0" y="124" width="260" height="46" fill="#C9BDBD"/><circle cx="80" cy="68" r="11" fill="#EBC0A3"/><rect x="64" y="80" width="32" height="46" rx="6" fill="#89B4DC"/><circle cx="130" cy="64" r="11" fill="#EBC0A3"/><rect x="114" y="76" width="32" height="50" rx="6" fill="#89B4DC"/><circle cx="180" cy="68" r="11" fill="#EBC0A3"/><rect x="164" y="80" width="32" height="46" rx="6" fill="#C42B34"/></svg>` },
-                    { caption: { es: 'Remate al ángulo • Fe.Co.Bal', en: 'Top-corner shot • Fe.Co.Bal' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#E8ECE6"/><rect x="0" y="126" width="260" height="44" fill="#9E9820" fill-opacity="0.35"/><circle cx="128" cy="52" r="12" fill="#EBC0A3"/><path d="M105 104L118 65H142L152 104H105Z" fill="#C42B34"/></svg>` }
-                ]
-            },
             {
                 id: 'felipe-gonzalez-rivero',
                 cardName: 'Felipe Gonzalez Rivero',
                 detailTitle: 'Felipe Gonzalez Rivero',
                 borderClass: 'border-princeton/25 hover:border-princeton',
-                coverSvg: `<svg viewBox="0 0 320 190" class="w-full h-48 object-cover" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="fg-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CBE3F7"/><stop offset="68%" stop-color="#FCE9AB"/><stop offset="100%" stop-color="#F2C88B"/></linearGradient></defs><rect width="320" height="190" fill="url(#fg-bg)"/><rect x="0" y="102" width="320" height="22" fill="#6BA4D4" fill-opacity="0.6"/><rect x="0" y="124" width="320" height="66" fill="#F5D39B"/><circle cx="152" cy="48" r="13" fill="#E8B89A"/><path d="M132 64L174 62L184 106L136 112Z" fill="#FFFFFF" stroke="#5A4D7A" stroke-width="2.5"/><text x="158" y="92" text-anchor="middle" fill="#5A4D7A" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18">5</text><circle cx="116" cy="36" r="9" fill="#FC8A2D"/></svg>`,
+                portada: 'FGR1',
+                fotos: ['FGR1', 'FGR2', 'FGR3', 'FGR4', 'FGR5', 'FGR6', 'FGR7'],
                 paragraphs: {
                     es: [
                         'Soy Felipe Gonzalez Rivero, de 7B. Juego al Handball en la Municipalidad de Alta Gracia y al Beach Handball.',
@@ -4217,172 +3890,47 @@
                         'Beach handball gave me the opportunity to live incredible experiences. I had the pride of wearing the Argentine National Team jersey and playing in major tournaments, including the World Championship. I was also crowned Argentine Champion in Mar del Plata, won the South-Central tournament becoming Champion of the Americas, and finished as World Runner-Up at the Club World Championship. Furthermore, thanks to this sport I was able to travel and visit places like Brazil, Chile, and Tunisia.',
                         'In indoor handball, I represented the Córdoba Provincial Team in several National Team Championships and Binational Games, and with Alta Gracia I played in several National A tournaments where our best finish was 6th in the country.'
                     ]
-                },
-                photos: [
-                    { caption: { es: 'Camiseta de la Selección Argentina', en: 'Argentine National Team jersey' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#F4E2C8"/><circle cx="130" cy="52" r="14" fill="#E8B89A"/><path d="M98 150C102 104 114 78 130 78C146 78 158 104 162 150H98Z" fill="#FFFFFF"/><rect x="114" y="82" width="10" height="68" fill="#74ACDF"/><rect x="136" y="82" width="10" height="68" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Podio y trofeo internacional', en: 'International podium & trophy' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#FCE9AB"/><circle cx="130" cy="54" r="13" fill="#E8B89A"/><path d="M104 150C106 108 116 80 130 80C144 80 154 108 156 150H104Z" fill="#232020"/></svg>` },
-                    { caption: { es: 'Bandera Argentina en arena • Mundial', en: 'Argentine flag on sand • World Cup' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#1E2A3A"/><rect x="0" y="130" width="260" height="40" fill="#E5C08D"/><rect x="82" y="34" width="96" height="96" fill="none" stroke="#FCE9AB" stroke-width="5"/><circle cx="130" cy="64" r="10" fill="#E8B89A"/><rect x="110" y="76" width="40" height="44" rx="4" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Plantel Selección Argentina Beach Handball', en: 'Argentine Beach Handball Squad' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#2B3542"/><rect x="0" y="126" width="260" height="44" fill="#DFBA86"/><circle cx="74" cy="76" r="9" fill="#E8B89A"/><rect x="62" y="86" width="24" height="36" rx="4" fill="#74ACDF"/><circle cx="130" cy="76" r="9" fill="#E8B89A"/><rect x="118" y="86" width="24" height="36" rx="4" fill="#74ACDF"/><circle cx="186" cy="76" r="9" fill="#E8B89A"/><rect x="174" y="86" width="24" height="36" rx="4" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Campeones Sur-Centro de América', en: 'South-Central America Champions' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#9E9820" fill-opacity="0.3"/><rect x="0" y="124" width="260" height="46" fill="#E2BC84"/><circle cx="84" cy="74" r="9" fill="#E8B89A"/><rect x="72" y="84" width="24" height="36" rx="4" fill="#74ACDF"/><circle cx="130" cy="74" r="9" fill="#E8B89A"/><rect x="118" y="84" width="24" height="36" rx="4" fill="#74ACDF"/><circle cx="176" cy="74" r="9" fill="#E8B89A"/><rect x="164" y="84" width="24" height="36" rx="4" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Subcampeones Mundial de Clubes', en: 'Club World Championship Runners-Up' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#F2DEC4"/><rect x="0" y="124" width="260" height="46" fill="#DFBA86"/><circle cx="78" cy="74" r="9" fill="#E8B89A"/><rect x="66" y="84" width="24" height="38" rx="4" fill="#232020"/><circle cx="130" cy="74" r="9" fill="#E8B89A"/><rect x="118" y="84" width="24" height="38" rx="4" fill="#232020"/><circle cx="182" cy="74" r="9" fill="#E8B89A"/><rect x="170" y="84" width="24" height="38" rx="4" fill="#232020"/></svg>` }
-                ]
+                }
             },
             {
                 id: 'guillermina-gonzalez-rivero',
                 cardName: 'Guillermina Gonzalez Rivero',
                 detailTitle: 'Guillermina Gonzalez Rivero',
                 borderClass: 'border-olive/25 hover:border-olive',
-                coverSvg: `<svg viewBox="0 0 320 190" class="w-full h-48 object-cover" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gg-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FCE8EC"/><stop offset="100%" stop-color="#FCE9AB"/></linearGradient></defs><rect width="320" height="190" fill="url(#gg-bg)"/><rect x="0" y="138" width="320" height="52" fill="#D6B994"/><circle cx="156" cy="54" r="14" fill="#F0C2A2"/><path d="M126 142L138 74H174L186 142H126Z" fill="#C42B34"/><text x="156" y="114" text-anchor="middle" fill="#FCE9AB" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22">11</text><circle cx="192" cy="56" r="11" fill="#FCE9AB" stroke="#FC8A2D" stroke-width="2"/></svg>`,
+                portada: 'GGR1',
+                fotos: ['GGR1', 'GGR2', 'GGR3', 'GGR4', 'GGR5'],
                 paragraphs: {
                     es: [
                         'Soy Guillermina González Rivero, tengo 14 años y voy a 2do año C. Juego al Handball y el beach handball en la Municipalidad de Alta Gracia en la categoría menores.',
-                        'Forme parte de la Selección Argentina en 2025, donde salimos subcampeonas del sur centro (torneo suramericano de Handball). También forme parte de la Selección Cordobesa de mi categoría en 2025 y en 2026, este año quedamos 5tas a nivel nacional entre 16 provincias que participamos.',
-                        'Entreno todos los días, voy al gimnasio y los fines de semana jugamos partidos del torneo de la Federación Cordobesa de Handball. En noviembre tenemos un torneo Nacional C en Chaco. También me llamaron para jugar con un equipo de Buenos Aires algunos torneos de beach handball'
+                        'Formé parte de la Selección Argentina en 2025, donde salimos subcampeonas del sur centro (torneo suramericano de Handball). También formé parte de la Selección Cordobesa de mi categoría en 2025 y en 2026, este año quedamos 5tas a nivel nacional entre 16 provincias que participamos.',
+                        'Entreno todos los días, voy al gimnasio y los fines de semana jugamos partidos del torneo de la Federación Cordobesa de Handball. En noviembre tenemos un torneo Nacional C en Chaco. También me llamaron para jugar con un equipo de Buenos Aires algunos torneos de beach handball.'
                     ],
                     en: [
                         'I am Guillermina González Rivero, I am 14 years old and I am in 2nd year C. I play Handball and beach handball at the Municipality of Alta Gracia in the youth (menores) category.',
                         'I was part of the Argentine National Team in 2025, where we finished as runners-up in the South-Central tournament (South American Handball Tournament). I was also part of the Córdoba Provincial Team in my category in 2025 and 2026; this year we finished 5th nationally among 16 participating provinces.',
                         'I train every day, go to the gym, and on weekends we play matches in the Córdoba Handball Federation tournament. In November we have a National C tournament in Chaco. I was also invited to play in some beach handball tournaments with a team from Buenos Aires.'
                     ]
-                },
-                photos: [
-                    { caption: { es: 'Subcampeonas Sur-Centro • Selección Argentina', en: 'South-Central Runners-Up • Argentine National Team' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#F5E6D8"/><rect x="0" y="122" width="260" height="48" fill="#D4A673"/><circle cx="144" cy="48" r="12" fill="#F0C2A2"/><path d="M126 98L136 62H154L162 98H126Z" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Festejo Selección Argentina Menores', en: 'Argentine Youth National Team Celebration' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#E8EDF2"/><rect x="0" y="122" width="260" height="48" fill="#D4A673"/><circle cx="80" cy="84" r="8" fill="#F0C2A2"/><rect x="70" y="92" width="20" height="32" rx="4" fill="#74ACDF"/><circle cx="130" cy="80" r="8" fill="#F0C2A2"/><rect x="120" y="88" width="20" height="36" rx="4" fill="#74ACDF"/><circle cx="180" cy="84" r="8" fill="#F0C2A2"/><rect x="170" y="92" width="20" height="32" rx="4" fill="#74ACDF"/></svg>` },
-                    { caption: { es: 'Trofeo Suramericano de Handball', en: 'South American Handball Trophy' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#FCE8EC"/><circle cx="114" cy="64" r="13" fill="#F0C2A2"/><path d="M90 150L100 84H128L138 150H90Z" fill="#232B52"/><text x="114" y="120" text-anchor="middle" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="16">3</text></svg>` },
-                    { caption: { es: 'Selección Cordobesa • Torneo Nacional', en: 'Córdoba Provincial Team • National Tournament' }, svg: `<svg viewBox="0 0 260 170" class="w-full h-44" xmlns="http://www.w3.org/2000/svg"><rect width="260" height="170" fill="#F2E4D5"/><rect x="34" y="24" width="192" height="96" fill="none" stroke="#74ACDF" stroke-width="4"/><circle cx="84" cy="80" r="8" fill="#F0C2A2"/><rect x="74" y="88" width="20" height="34" rx="4" fill="#C42B34"/><circle cx="130" cy="80" r="8" fill="#F0C2A2"/><rect x="120" y="88" width="20" height="34" rx="4" fill="#C42B34"/><circle cx="176" cy="80" r="8" fill="#F0C2A2"/><rect x="166" y="88" width="20" height="34" rx="4" fill="#C42B34"/></svg>` }
-                ]
+                }
+            },
+            {
+                id: 'joaquin-decara',
+                cardName: 'Joaquin Decara',
+                detailTitle: 'Joaquin Decara',
+                borderClass: 'border-blush/20 hover:border-tomato',
+                portada: 'JD21',
+                fotos: ['JD1', 'JD3', 'JD4', 'JD5', 'JD6', 'JD7', 'JD21'],
+                paragraphs: {
+                    es: [
+                        'Soy Joaquín Decara. Juego al Handball en la Municipalidad de Alta Gracia.',
+                        'Participé en la Selección Cordobesa durante 5 años consecutivos, tuve la oportunidad de estar en 2 procesos de Selección Argentina y he jugado en los binacionales 2007-2008 siendo 2009. También he jugado muchísimos nacionales de clubes donde hemos tenido grandes puestos y ganado infinidad de veces el torneo local (apertura y clausura) de la Fe.Co.Bal (Federación Cordobesa de Balonmano).'
+                    ],
+                    en: [
+                        'I am Joaquín Decara. I play Handball at the Municipality of Alta Gracia.',
+                        'I participated in the Córdoba Provincial Team for 5 consecutive years, had the opportunity to be part of 2 Argentine National Team training processes, and played in the 2007–2008 Binational Games being born in 2009. I have also competed in numerous national club tournaments achieving top placements and winning the local tournament (Apertura and Clausura) of Fe.Co.Bal (Córdoba Handball Federation) countless times.'
+                    ]
+                }
             }
         ];
-
-        function obtenerFotoPortadaCanSat() {
-            const noticiaCanSat = (typeof noticiasData !== 'undefined')
-                ? noticiasData.find((item) => item.id === 'cansat-galaxy-046')
-                : null;
-            if (noticiaCanSat && Array.isArray(noticiaCanSat.photos) && noticiaCanSat.photos.length > 0) {
-                return 'cansat1';
-            }
-            return 'cansat1';
-        }
-
-        function crearElementoFotoCanSat(base, altTexto, clases) {
-            const exts = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'];
-            const img = document.createElement('img');
-            img.alt = altTexto || base;
-            img.className = clases;
-            let idx = 0;
-            img.src = `${base}${exts[idx]}`;
-            img.onerror = function () {
-                idx++;
-                if (idx < exts.length) {
-                    img.src = `${base}${exts[idx]}`;
-                } else {
-                    const wrap = img.closest('[data-cansat-img-box]');
-                    if (wrap) wrap.remove();
-                    else img.style.display = 'none';
-                }
-            };
-            return img;
-        }
-
-        function insertarImagenesEnTarjetasNoticias() {
-            const grid = document.getElementById('noticias-cards-grid');
-            if (!grid) return;
-
-            Array.from(grid.children).forEach((card) => {
-                const texto = (card.textContent || '').toLowerCase();
-                if (texto.includes('cansat') || texto.includes('picansat')) {
-                    if (card.querySelector('[data-cansat-img-box]')) return;
-
-                    const box = document.createElement('div');
-                    box.dataset.cansatImgBox = 'true';
-                    box.className = 'w-full aspect-[16/9] rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 mb-4';
-                    box.appendChild(
-                        crearElementoFotoCanSat(
-                            obtenerFotoPortadaCanSat(),
-                            'CanSat Galaxy 046',
-                            'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
-                        )
-                    );
-
-                    const primerBloqueTexto = card.querySelector('div');
-                    if (primerBloqueTexto) {
-                        primerBloqueTexto.prepend(box);
-                    } else {
-                        card.prepend(box);
-                    }
-                }
-            });
-        }
-
-        function insertarGaleriaEnDetalleCanSat() {
-            const detalle = document.getElementById('noticia-detail-content');
-            if (!detalle) return;
-
-            const texto = (detalle.textContent || '').toLowerCase();
-            if (!texto.includes('cansat') && !texto.includes('galaxy 046') && !texto.includes('picansat')) return;
-            if (detalle.querySelector('[data-cansat-galeria-final]')) return;
-
-            const fotosCanSat = [
-                { cod: 'cansat1', epigraf: 'Prototipo interno y placas de sensores del CanSat Galaxy 046' },
-                { cod: 'cansat2', epigraf: 'Entrevista radial presentando el proyecto Galaxy 046' },
-                { cod: 'cansat3', epigraf: 'Equipo Galaxy 046 en el frente del Instituto El Obraje' },
-                { cod: 'cansat4', epigraf: 'Integrantes y docentes acompañantes del proyecto' }
-            ];
-
-            const seccion = document.createElement('div');
-            seccion.dataset.cansatGaleriaFinal = 'true';
-            seccion.className = 'mt-8 pt-6 border-t border-blush/15';
-
-            const titulo = document.createElement('h4');
-            titulo.className = 'font-serif text-xl font-bold text-[#2D2424] mb-4';
-            titulo.textContent = 'Fotos del proyecto CanSat Galaxy 046';
-            seccion.appendChild(titulo);
-
-            const grilla = document.createElement('div');
-            grilla.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4';
-
-            fotosCanSat.forEach((f) => {
-                const cardFoto = document.createElement('figure');
-                cardFoto.dataset.cansatImgBox = 'true';
-                cardFoto.className = 'rounded-2xl overflow-hidden bg-cream/70 border border-blush/15 flex flex-col';
-
-                const mediaWrap = document.createElement('div');
-                mediaWrap.className = 'w-full h-56 overflow-hidden bg-white flex items-center justify-center';
-                mediaWrap.appendChild(
-                    crearElementoFotoCanSat(f.cod, f.epigraf, 'w-full h-full object-cover object-top')
-                );
-
-                const cap = document.createElement('figcaption');
-                cap.className = 'p-3 text-xs text-[#4A3F3F] font-medium';
-                cap.textContent = f.epigraf;
-
-                cardFoto.appendChild(mediaWrap);
-                cardFoto.appendChild(cap);
-                grilla.appendChild(cardFoto);
-            });
-
-            seccion.appendChild(grilla);
-            (detalle.firstElementChild || detalle).appendChild(seccion);
-        }
-
-        function sincronizarFotosNoticias() {
-            insertarImagenesEnTarjetasNoticias();
-            insertarGaleriaEnDetalleCanSat();
-        }
-
-        sincronizarFotosNoticias();
-        document.addEventListener('DOMContentLoaded', sincronizarFotosNoticias);
-        window.addEventListener('load', sincronizarFotosNoticias);
-
-        const obsNoticias = new MutationObserver(sincronizarFotosNoticias);
-        const activarObsNoticias = () => {
-            const grid = document.getElementById('noticias-cards-grid');
-            const detalle = document.getElementById('noticia-detail-content');
-            if (grid) obsNoticias.observe(grid, { childList: true, subtree: true });
-            if (detalle) obsNoticias.observe(detalle, { childList: true, subtree: true });
-        };
-        activarObsNoticias();
-        document.addEventListener('DOMContentLoaded', activarObsNoticias);
 
         // Datos del Plan de Estudios de Informática (4° a 7° Año)
         const informaticaPlanData = [
@@ -4420,6 +3968,166 @@
                     { field: 'tecnica', subjects: ['Mantenimiento de Hardware', 'Mantenimiento de Software', 'Instalación y Administración de Redes Locales', 'Conexión de Redes Extendidas'] },
                     { field: 'practica', subjects: ['Formación en Ambiente de Trabajo'] },
                     { field: 'pastoral', subjects: ['Doctrina Social'] }
+                ]
+            }
+        ];
+
+        // ===== NOTICIAS =====
+        // Para cambiar nombres de fotos: editá la lista "fotos" de CanSat (sin extensión).
+        const RUTA_NOTICIAS = '';
+        const EXT_NOTICIAS = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'];
+
+        function reintentarFotoNoticia(img, base) {
+            const idx = Number(img.dataset.idx || 0) + 1;
+            if (idx < EXT_NOTICIAS.length) {
+                img.dataset.idx = idx;
+                img.src = RUTA_NOTICIAS + base + EXT_NOTICIAS[idx];
+            } else {
+                const box = img.closest('[data-foto-noticia]');
+                if (box) box.remove();
+                else img.style.display = 'none';
+            }
+        }
+
+        function fotoNoticiaHtml(base, alt) {
+            return `<img src="${RUTA_NOTICIAS}${base}${EXT_NOTICIAS[0]}" alt="${alt}" data-idx="0" loading="lazy"
+                onerror="reintentarFotoNoticia(this, '${base}')"
+                class="block w-full h-auto max-h-[480px] object-contain mx-auto">`;
+        }
+
+        const noticiasData = [
+            {
+                id: 'olimpiadas-matematica',
+                borderClass: 'border-blush/20 hover:border-tomato',
+                badgeClass: 'bg-softpink text-tomato',
+                badge: { es: 'Olimpiadas', en: 'Olympiads' },
+                title: { es: 'Olimpiadas Matemática', en: 'Math Olympiad' },
+                subtitle: { es: 'Información sobre las olimpiadas de matemática.', en: 'Information about the math olympiads.' },
+                paragraphs: { es: [], en: [] }
+            },
+            {
+                id: 'olimpiadas-quimica',
+                borderClass: 'border-princeton/25 hover:border-princeton',
+                badgeClass: 'bg-vanilla text-[#9A5812]',
+                badge: { es: 'Olimpiadas', en: 'Olympiads' },
+                title: { es: 'Olimpiadas Química', en: 'Chemistry Olympiad' },
+                subtitle: { es: 'Información sobre las olimpiadas de química.', en: 'Information about the chemistry olympiads.' },
+                paragraphs: { es: [], en: [] }
+            },
+            {
+                id: 'olimpiadas-informatica',
+                borderClass: 'border-olive/25 hover:border-olive',
+                badgeClass: 'bg-olive/15 text-olive',
+                badge: { es: 'Olimpiadas', en: 'Olympiads' },
+                title: { es: 'Olimpiadas Informática', en: 'Computer Science Olympiad' },
+                subtitle: { es: 'Información sobre las olimpiadas de informática.', en: 'Information about the computer science olympiads.' },
+                paragraphs: { es: [], en: [] }
+            },
+            {
+                id: 'copa-robotica',
+                borderClass: 'border-blush/20 hover:border-tomato',
+                badgeClass: 'bg-softpink text-tomato',
+                badge: { es: 'Competencia', en: 'Competition' },
+                title: { es: 'Copa Robótica', en: 'Robotics Cup' },
+                subtitle: { es: 'Información sobre la Copa Robótica.', en: 'Information about the Robotics Cup.' },
+                paragraphs: { es: [], en: [] }
+            },
+            {
+                id: 'cansat-galaxy-046',
+                borderClass: 'border-princeton/25 hover:border-princeton',
+                badgeClass: 'bg-vanilla text-[#9A5812]',
+                badge: { es: 'Ciencia y Tecnología', en: 'Science & Technology' },
+                title: { es: 'CanSat Galaxy 046', en: 'CanSat Galaxy 046' },
+                subtitle: {
+                    es: 'Proyecto científico y tecnológico: exploración, investigación y desarrollo de un satélite en miniatura.',
+                    en: 'Scientific and technological project: exploration, research, and development of a miniature satellite.'
+                },
+                members: [
+                    {
+                        name: 'Juan Cruz Arguello', course: '7B',
+                        paragraphs: {
+                            es: [
+                                'En el proyecto CanSat Galaxy 046 me encargo de la investigación científica, principalmente del área de química, y también participo en el diseño de la estructura y la aerodinámica.',
+                                'Trabajo en el análisis de la calidad del aire mediante sensores y en la búsqueda de soluciones para cumplir los objetivos de nuestra misión.',
+                                'Me siento muy orgulloso de formar parte de este equipo, porque el CanSat me permitió aprender, enfrentar desafíos, trabajar con otras personas y crear tanto en lo personal como en lo técnico.',
+                                'Es una experiencia que me motiva a seguir aprendiendo y que voy a recordar con mucho cariño.'
+                            ],
+                            en: [
+                                'In the CanSat Galaxy 046 project I am in charge of scientific research, mainly in the area of chemistry, and I also take part in the design of the structure and aerodynamics.',
+                                'I work on air quality analysis using sensors and on finding solutions to meet the goals of our mission.',
+                                'I am very proud to be part of this team, because CanSat allowed me to learn, face challenges, work with other people, and create both personally and technically.',
+                                'It is an experience that motivates me to keep learning and that I will remember fondly.'
+                            ]
+                        }
+                    },
+                    {
+                        name: 'Felipe Virga', course: '7C',
+                        paragraphs: {
+                            es: [
+                                'En el equipo me toca meterme en varias áreas.',
+                                'Estuve a cargo de buena parte del sistema de recuperación: desde la confección del paracaídas, con todo lo que implica trabajar la tela, el diseño y el armado, hasta pensar cómo lograr un descenso lento y estable.',
+                                'También estuve metido en el mundo de los sensores y la programación, ayudando con calibraciones y desarrollando herramientas para la estación terrena.',
+                                'Un poco de todo, y de todo aprendí. Más allá de lo técnico, descubrí que los mejores aprendizajes aparecen cuando se trabaja en equipo, con compromiso, constancia y mucha dedicación.'
+                            ],
+                            en: [
+                                'In the team I get involved in several areas.',
+                                'I was in charge of a large part of the recovery system: from making the parachute, with everything that involves working with fabric, design, and assembly, to figuring out how to achieve a slow and stable descent.',
+                                'I was also involved in sensors and programming, helping with calibrations and developing tools for the ground station.',
+                                'A little bit of everything, and I learned from all of it. Beyond the technical side, I discovered that the best learning happens when you work as a team, with commitment, consistency, and a lot of dedication.'
+                            ]
+                        }
+                    },
+                    {
+                        name: 'Alan Tahiel Aguirre', course: '5B',
+                        paragraphs: {
+                            es: [
+                                'Me encargo principalmente de la presentación de videos, la producción de material audiovisual y el manejo de las redes sociales. Además, colaboro en todo lo que puedo, ya que me gusta aprender de todas las áreas.',
+                                'La verdad es que me gustó mucho haber sumado al proyecto, porque, en lo personal, siempre tuve ganas de aprender programación, robótica y todo lo relacionado con sensores, pero nunca tuve la oportunidad.',
+                                'Este proyecto me impulsó a dar ese paso y hoy en día estoy muy conforme con lo que logré y con los conocimientos que adquirí.'
+                            ],
+                            en: [
+                                'I am mainly in charge of video presentations, audiovisual production, and managing social media. I also help with whatever I can, since I like learning about every area.',
+                                'I really enjoyed joining the project because, personally, I always wanted to learn programming, robotics, and everything related to sensors, but never had the chance.',
+                                'This project pushed me to take that step, and today I am very happy with what I achieved and the knowledge I gained.'
+                            ]
+                        }
+                    },
+                    {
+                        name: 'Juan Almirón', course: '5B',
+                        paragraphs: {
+                            es: [
+                                'Dentro del equipo me encargo de la electrónica, la programación y también de la documentación.',
+                                'Para mí, este proyecto es un espacio donde puedo crear cosas que jamás pensé que podría hacer, además de formar amistades con personas increíbles.',
+                                'Pero si hay algo que de verdad me inspira es la idea de motivar a otros jóvenes a que se animen a participar y a hacer cosas como estas.'
+                            ],
+                            en: [
+                                'Within the team I am in charge of electronics, programming, and also documentation.',
+                                'For me, this project is a space where I can create things I never thought I could, and also form friendships with incredible people.',
+                                'But what truly inspires me is the idea of motivating other young people to dare to take part and do things like this.'
+                            ]
+                        }
+                    },
+                    {
+                        name: 'Lucas Gremo', course: '7C',
+                        paragraphs: {
+                            es: [
+                                'Me encargo del área de estructura, el armado y la selección de materiales, asegurándome de que quede resistente, liviano y aerodinámico.',
+                                'Trabajo en cada detalle físico del equipo para proteger los componentes y cumplir con los objetivos de nuestra misión.',
+                                'Me siento muy orgulloso de formar parte de este equipo, porque el CanSat me permitió aprender, enfrentar desafíos, trabajar con otras personas y crear tanto en lo personal como en lo técnico.'
+                            ],
+                            en: [
+                                'I am in charge of the structure, assembly, and material selection, making sure it is strong, lightweight, and aerodynamic.',
+                                'I work on every physical detail of the team to protect the components and meet the goals of our mission.',
+                                'I am very proud to be part of this team, because CanSat allowed me to learn, face challenges, work with other people, and create both personally and technically.'
+                            ]
+                        }
+                    }
+                ],
+                photos: [
+                    { file: 'cansat1', caption: { es: '', en: '' } },
+                    { file: 'cansat2', caption: { es: '', en: '' } },
+                    { file: 'cansat3', caption: { es: '', en: '' } },
+                    { file: 'cansat4', caption: { es: '', en: '' } }
                 ]
             }
         ];
@@ -4874,14 +4582,14 @@
                 `).join('');
 
                 const photosHtml = item.photos ? `
-                    <div class="mt-8">
+                    <div class="mt-10">
                         <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#2D2424] mb-5">${t.notPhotosTitle}</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             ${item.photos.map(ph => `
-                                <div class="bg-cream rounded-[1.5rem] p-3.5 border border-tomato/12 shadow-2xs">
-                                    <div class="rounded-xl overflow-hidden mb-2.5">${ph.svg}</div>
-                                    <p class="text-xs font-semibold text-[#5C4E4E] text-center">${ph.caption[currentLang]}</p>
-                                </div>
+                                <figure data-foto-noticia class="bg-cream rounded-[1.5rem] p-3 border border-tomato/12 shadow-2xs m-0">
+                                    <div class="rounded-xl overflow-hidden bg-white flex items-center justify-center">${ph.svg || fotoNoticiaHtml(ph.file, item.title[currentLang])}</div>
+                                    ${ph.caption && ph.caption[currentLang] ? `<figcaption class="text-xs font-semibold text-[#5C4E4E] text-center mt-2.5">${ph.caption[currentLang]}</figcaption>` : ''}
+                                </figure>
                             `).join('')}
                         </div>
                     </div>
@@ -4894,7 +4602,7 @@
                     ${photosHtml}
                 `;
             } else {
-                const paragraphsHtml = (item.paragraphs[currentLang] || []).map(p => `
+                const paragraphsHtml = ((item.paragraphs && item.paragraphs[currentLang]) || []).map(p => `
                     <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed mb-3.5">${p}</p>
                 `).join('');
 
@@ -5180,16 +4888,18 @@
         // Renderizar los 3 botones de Reconocimientos
         function renderReconocimientosGrid() {
             const grid = document.getElementById('reconocimientos-cards-grid');
+            if (!grid) return;
             grid.innerHTML = reconocimientosData.map(person => `
                 <button type="button" onclick="openReconocimientoDetail('${person.id}')" class="group bg-white rounded-[2rem] p-4 border ${person.borderClass} card-hover flex flex-col items-center text-center shadow-2xs cursor-pointer">
-                    <div class="w-full rounded-[1.35rem] overflow-hidden mb-4 bg-cream">
-                        <div class="group-hover:scale-[1.03] transition-transform duration-300">
-                            ${person.coverSvg}
-                        </div>
+                    <div class="w-full aspect-[4/3] rounded-[1.35rem] overflow-hidden mb-4 bg-softpink flex items-center justify-center">
+                        <img src="${RUTA_NOTICIAS}${person.portada}${EXT_NOTICIAS[0]}" alt="${person.cardName}" data-idx="0"
+                            onerror="reintentarFotoNoticia(this, '${person.portada}')"
+                            class="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-300">
                     </div>
-                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors pb-2">
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#2D2424] group-hover:text-tomato transition-colors pb-1">
                         ${person.cardName}
                     </h3>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-tomato pb-2">${currentLang === 'es' ? 'Ver perfil y fotos →' : 'View profile & photos →'}</span>
                 </button>
             `).join('');
         }
@@ -5225,13 +4935,12 @@
                 <p class="text-sm sm:text-base text-[#4A3F3F] leading-relaxed mb-3.5 last:mb-0">${p}</p>
             `).join('');
 
-            const photosHTML = person.photos.map(photo => `
-                <div class="bg-cream rounded-[1.5rem] p-3 border border-tomato/10 overflow-hidden shadow-2xs">
-                    <div class="rounded-xl overflow-hidden mb-2.5">
-                        ${photo.svg}
+            const photosHTML = person.fotos.map(f => `
+                <figure data-foto-noticia class="bg-cream rounded-[1.5rem] p-3 border border-tomato/10 shadow-2xs m-0">
+                    <div class="rounded-xl overflow-hidden bg-white flex items-center justify-center">
+                        ${fotoNoticiaHtml(f, person.cardName)}
                     </div>
-                    <p class="text-xs font-semibold text-[#6E5D5D] text-center px-1">${photo.caption[currentLang]}</p>
-                </div>
+                </figure>
             `).join('');
 
             document.getElementById('reconocimiento-detail-content').innerHTML = `
@@ -5246,7 +4955,7 @@
                     </div>
 
                     <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#2D2424] mb-5">${t.recPhotosTitle}</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         ${photosHTML}
                     </div>
                 </div>
@@ -6853,7 +6562,7 @@
             }
 
             // Footer
-            document.getElementById('footer-copy').textContent = t.footerCopy;
+            
 
             // Si estamos dentro de otra subpágina, actualizarla al instante
             if (currentViewState.type === 'specialty' && currentViewState.key !== 'informatica' && currentViewState.key !== 'quimica' && currentViewState.key !== 'construcciones') {
@@ -6936,7 +6645,7 @@
     <div id="advent-mascot-container" role="button" tabindex="0" aria-label="Hacer cuestionario ADVENT" title="¡Hacer cuestionario!">
         <div id="mascot-bubble">¡Hacer cuestionario! ✨</div>
         <div id="advent-mascot">
-            <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none">
+            <img src="nena.png" alt="Mascota ADVENT" class="w-full h-auto object-contain pointer-events-none" onerror="this.outerHTML='<div style=&quot;width:84px;height:84px;border-radius:9999px;background:#C42B34;color:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800&quot;>?</div>'">
         </div>
     </div>
 
@@ -7415,12 +7124,20 @@
                 return document.documentElement.lang === 'en' ? 'en' : 'es';
             }
 
+            function toCamelAttrKey(attr) {
+                return 'orig' + attr.replace(/(^|-)([a-z])/g, (_, __, ch) => ch.toUpperCase());
+            }
+
             function translatePhrase(text, targetLang) {
                 if (!text || typeof text !== 'string') return text;
                 const match = text.match(/^(\s*)([\s\S]*?)(\s*)$/);
                 if (!match) return text;
                 const [, leading, core, trailing] = match;
                 if (!core) return text;
+
+                if (targetLang === 'es') {
+                    return text;
+                }
 
                 const map = targetLang === 'en' ? esToEn : enToEs;
                 if (map.has(core)) {
@@ -7429,29 +7146,61 @@
                 return text;
             }
 
-         function toCamelAttrKey(attr) {
-                return 'orig' + attr.replace(/(^|-)([a-z])/g, (_, __, ch) => ch.toUpperCase());
-            }
-
             function translateAttributes(el, targetLang) {
                 ['placeholder', 'title', 'aria-label', 'alt'].forEach(attr => {
                     if (!el.hasAttribute(attr)) return;
-                    const val = el.getAttribute(attr);
+
+                    const currentVal = el.getAttribute(attr);
+                    if (!currentVal) return;
+
                     const key = toCamelAttrKey(attr);
                     if (!el.dataset[key]) {
-                        el.dataset[key] = val;
+                        el.dataset[key] = currentVal;
                     }
-                    const translated = translatePhrase(val, targetLang);
-                    if (translated !== val) {
+
+                    const original = el.dataset[key];
+                    const translated = translatePhrase(original, targetLang);
+
+                    if (typeof translated === 'string' && translated !== currentVal) {
                         el.setAttribute(attr, translated);
                     }
                 });
             }
+
+            window.traducirTodoElDOM = function () {
+                if (isTranslatingNow) return;
+                isTranslatingNow = true;
+                try {
+                    const targetLang = getTargetLang();
+                    document.documentElement.lang = targetLang;
+
+                    const root = document.body;
+                    if (!root) return;
+
+                    const walker = document.createTreeWalker(
+                        root,
+                        NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
+                        {
+                            acceptNode(node) {
+                                const parent = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+                                if (!parent) return NodeFilter.FILTER_REJECT;
+                                if (parent.closest('script, style, noscript, textarea, code, pre')) {
+                                    return NodeFilter.FILTER_REJECT;
+                                }
+                                return NodeFilter.FILTER_ACCEPT;
+                            }
+                        }
+                    );
+
                     let currentNode;
                     while ((currentNode = walker.nextNode())) {
-                        const updated = translatePhrase(currentNode.nodeValue, targetLang);
-                        if (updated !== currentNode.nodeValue) {
-                            currentNode.nodeValue = updated;
+                        if (currentNode.nodeType === Node.ELEMENT_NODE) {
+                            translateAttributes(currentNode, targetLang);
+                        } else if (currentNode.nodeType === Node.TEXT_NODE) {
+                            const updated = translatePhrase(currentNode.nodeValue, targetLang);
+                            if (updated !== currentNode.nodeValue) {
+                                currentNode.nodeValue = updated;
+                            }
                         }
                     }
                 } finally {
