@@ -7412,6 +7412,174 @@
             setInterval(aplicarLinks, 300);
         })();
     </script>
+
+
+    <!-- ADVENT_SUPABASE_INTEGRATION: persistencia compartida de comentarios -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        (function () {
+            const SUPABASE_URL = 'https://nswiqqcyhpkeltiylsno.supabase.co';
+            const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_ZK1S3oRp6MID6UWkH6a-Wg_UTtKxvFn';
+            const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+            window.adventSupabase = db;
+
+            let commentsLoaded = false;
+            let commentsLoading = null;
+
+            function toastError() {
+                const message = currentLang === 'en'
+                    ? 'Could not save. Please try again.'
+                    : 'No se pudo guardar. Revisá tu conexión e intentá nuevamente.';
+                showToast(message);
+            }
+
+            async function loadAdventComments(force) {
+                if (commentsLoaded && !force) return;
+                if (commentsLoading) return commentsLoading;
+
+                commentsLoading = (async function () {
+                    const [commentsResult, repliesResult] = await Promise.all([
+                        db.from('comments').select('id, specialty, name, course, opinion, created_at').order('created_at', { ascending: false }),
+                        db.from('replies').select('id, comment_id, name, course, reply, created_at').order('created_at', { ascending: true })
+                    ]);
+
+                    if (commentsResult.error) throw commentsResult.error;
+                    if (repliesResult.error) throw repliesResult.error;
+
+                    const repliesByComment = new Map();
+                    (repliesResult.data || []).forEach(function (r) {
+                        const key = String(r.comment_id);
+                        if (!repliesByComment.has(key)) repliesByComment.set(key, []);
+                        repliesByComment.get(key).push({ id: r.id, name: r.name, course: r.course, text: r.reply });
+                    });
+
+                    const mapped = (commentsResult.data || []).map(function (c) {
+                        return {
+                            id: c.id,
+                            name: c.name,
+                            course: c.course,
+                            opinion: c.opinion,
+                            replies: repliesByComment.get(String(c.id)) || []
+                        };
+                    });
+
+                    informaticaComments = mapped.filter(c => commentsResult.data.find(x => x.id === c.id).specialty === 'informatica');
+                    quimicaComments = mapped.filter(c => commentsResult.data.find(x => x.id === c.id).specialty === 'quimica');
+                    construccionesComments = mapped.filter(c => commentsResult.data.find(x => x.id === c.id).specialty === 'construcciones');
+                    commentsLoaded = true;
+
+                    if (typeof renderInformaticaCommentsList === 'function') renderInformaticaCommentsList();
+                    if (typeof renderQuimicaCommentsList === 'function') renderQuimicaCommentsList();
+                    if (typeof renderConstruccionesCommentsList === 'function') renderConstruccionesCommentsList();
+                })();
+
+                try {
+                    await commentsLoading;
+                } catch (error) {
+                    console.error('Error cargando comentarios de ADVENT:', error);
+                    toastError();
+                } finally {
+                    commentsLoading = null;
+                }
+            }
+
+            async function saveComment(event, specialty, prefix, listName, renderName) {
+                event.preventDefault();
+                const com = i18n[currentLang].infComentarios;
+                const nameInput = document.getElementById(prefix + '-com-name');
+                const courseInput = document.getElementById(prefix + '-com-course');
+                const opinionInput = document.getElementById(prefix + '-com-opinion');
+                const name = nameInput ? nameInput.value.trim() : '';
+                const course = courseInput ? courseInput.value.trim() : '';
+                const opinion = opinionInput ? opinionInput.value.trim() : '';
+
+                if (!name || !course || !opinion) {
+                    showToast(com.toastError);
+                    return;
+                }
+
+                const { error } = await db.from('comments').insert({ specialty, name, course, opinion });
+                if (error) {
+                    console.error('Error guardando comentario:', error);
+                    toastError();
+                    return;
+                }
+
+                if (nameInput) nameInput.value = '';
+                if (courseInput) courseInput.value = '';
+                if (opinionInput) opinionInput.value = '';
+                commentsLoaded = false;
+                await loadAdventComments(true);
+                window[renderName]();
+                showToast(com.toastSuccess);
+            }
+
+            async function saveReply(event, commentId, prefix, activeName, renderName) {
+                event.preventDefault();
+                const com = i18n[currentLang].infComentarios;
+                const nameInput = document.getElementById(prefix + '-reply-name-' + commentId);
+                const courseInput = document.getElementById(prefix + '-reply-course-' + commentId);
+                const textInput = document.getElementById(prefix + '-reply-text-' + commentId);
+                const name = nameInput ? nameInput.value.trim() : '';
+                const course = courseInput ? courseInput.value.trim() : '';
+                const reply = textInput ? textInput.value.trim() : '';
+
+                if (!name || !course || !reply) {
+                    showToast(com.toastError);
+                    return;
+                }
+
+                const { error } = await db.from('replies').insert({
+                    comment_id: commentId,
+                    name,
+                    course,
+                    reply
+                });
+                if (error) {
+                    console.error('Error guardando respuesta:', error);
+                    toastError();
+                    return;
+                }
+
+                if (activeName === 'activeReplyCommentId') activeReplyCommentId = null;
+                if (activeName === 'activeQuimReplyCommentId') activeQuimReplyCommentId = null;
+                if (activeName === 'activeConstReplyCommentId') activeConstReplyCommentId = null;
+                commentsLoaded = false;
+                await loadAdventComments(true);
+                window[renderName]();
+                showToast(com.toastReplySuccess);
+            }
+
+            // Reemplaza únicamente las funciones de guardado; el HTML de las tarjetas y su diseño se conservan.
+            window.submitInformaticaComment = function (event) {
+                return saveComment(event, 'informatica', 'inf', 'informaticaComments', 'renderInformaticaCommentsList');
+            };
+            window.submitQuimicaComment = function (event) {
+                return saveComment(event, 'quimica', 'quim', 'quimicaComments', 'renderQuimicaCommentsList');
+            };
+            window.submitConstruccionesComment = function (event) {
+                return saveComment(event, 'construcciones', 'const', 'construccionesComments', 'renderConstruccionesCommentsList');
+            };
+
+            window.submitInformaticaReply = function (event, commentId) {
+                return saveReply(event, commentId, 'inf', 'activeReplyCommentId', 'renderInformaticaCommentsList');
+            };
+            window.submitQuimicaReply = function (event, commentId) {
+                return saveReply(event, commentId, 'quim', 'activeQuimReplyCommentId', 'renderQuimicaCommentsList');
+            };
+            window.submitConstruccionesReply = function (event, commentId) {
+                return saveReply(event, commentId, 'const', 'activeConstReplyCommentId', 'renderConstruccionesCommentsList');
+            };
+
+            // Carga los registros al abrir el portal; las listas se actualizan sin alterar su presentación.
+            loadAdventComments(false);
+            window.addEventListener('focus', function () {
+                loadAdventComments(true);
+            });
+            window.adventReloadComments = function () { return loadAdventComments(true); };
+        })();
+    </script>
+
 </body>
 
 </html>
