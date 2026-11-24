@@ -1690,8 +1690,6 @@
                 infProfesores: {
                     title: 'Profesores',
                     p1: 'En esta sección encontrarás información sobre los docentes de la especialidad de Informática, las materias que dictan y en qué cursos.',
-                    p2: 'Podés conocer quiénes te acompañarán de 4to a 7mo año y ver un resumen de los contenidos a desarrollar en cada materia.',
-                    important: 'Importante: Los contenidos son del ciclo lectivo 2026, pueden estar sujetos a modificaciones para el ciclo 2027.',
                     searchPlaceholder: 'Buscar profesor por nombre...',
                     allAreas: 'Todas las áreas',
                     areas: {
@@ -2913,72 +2911,67 @@
 
         // Datos completos de los 31 Profesores de Informática
         const informaticaProfesoresData = [
-            {
-                name: 'Fabiana Roja', 
-                gender: 'F', 
-                photo: 'img/profesores/roja.jpg',
-                subjects: ['Lengua 4C.', 'Lengua 5C.', 'Lengua 6C.'], 
-                areas: ['humanistica'] },
-            { name: 'Silvana Sisti', gender: 'F', subjects: ['Biología 4C.'], areas: ['humanistica'] },
-            { name: 'Laura Farías', gender: 'F', subjects: ['Matemática 4C.', 'Matemática 5C.'], areas: ['cientifica'] },
-            { name: 'Miguel Martín', gender: 'M', subjects: ['Laboratorio de Aplicaciones 4C.', 'Sistemas y Organizaciones 5C.', 'Laboratorio de Aplicaciones II 6C.', 'Bases de Datos 6C.'], areas: ['tecnica'] },
-            { name: 'Marcelo Liendo', gender: 'M', subjects: ['Educación Física 4C.', 'Educación Física 5C.'], areas: ['humanistica'] },
-            { name: 'Jorge Mira', gender: 'M', subjects: ['Introducción a la Programación 4C.', 'Laboratorio de Sistemas Operativos 4C.', 'Laboratorio de Programación 6C.', 'Mantenimiento de Hardware 7C.'], areas: ['tecnica'] },
-            { name: 'Gabriela Luna', gender: 'F', subjects: ['Inglés 4C.', 'Inglés Técnico 7C.'], areas: ['humanistica', 'cientifica'] },
-            { name: 'Germán Masgoret', gender: 'M', subjects: ['Geografía 4C.', 'Historia 5C.'], areas: ['humanistica'] },
-            { name: 'Gabriela Orozco', gender: 'F', subjects: ['Física 4C.'], areas: ['cientifica'] },
-            { name: 'Gabriela Hoffman', gender: 'F', subjects: ['Formación Artística 4C.'], areas: ['humanistica'] },
-            { name: 'Lucía Oyola', gender: 'F', subjects: ['Historia 4C.', 'Bioética y Cuidado de la Vida 6C.', 'Doctrina Social 7C.'], areas: ['humanistica', 'pastoral'] },
-            { name: 'Daniela Jacquelín', gender: 'F', subjects: ['Química 4C.'], areas: ['cientifica'] },
-            { name: 'Antonella Argüello', gender: 'F', subjects: ['Formación Cristiana 4C.'], areas: ['pastoral'] },
-            { name: 'Natalia Carzoglio', gender: 'F', subjects: ['Química 5C.'], areas: ['cientifica'] },
-            { name: 'Marcia Coria', gender: 'F', subjects: ['Inglés 5C.', 'Inglés 6C.'], areas: ['humanistica'] },
-            { name: 'Mauricio Sliakonis', gender: 'M', subjects: ['Educación Artística 5C.'], areas: ['humanistica'] },
-            { name: 'Mariela Flores', gender: 'F', subjects: ['Gestión de Datos 5C.'], areas: ['tecnica'] },
-            { name: 'Federico Maidana', gender: 'M', subjects: ['Física 5C.'], areas: ['cientifica'] },
-            { name: 'Tamara Piccinni', gender: 'F', subjects: ['Laboratorio de Hardware 5C.', 'Formación Ambiente y Trabajo 7C.', 'Emprendimientos 7C.'], areas: ['tecnica', 'practica', 'cientifica'] },
-            { name: 'Víctor Vella', gender: 'M', subjects: ['Formación Cristiana y Proyecto de Vida 5C.'], areas: ['pastoral'] },
-            { name: 'Belén Heredia', gender: 'F', subjects: ['Psicología 5C.'], areas: ['humanistica'] },
-            { name: 'María Torres', gender: 'F', subjects: ['Recursos Humanos 6C.'], areas: ['cientifica'] },
-            { name: 'Gladys Miranda', gender: 'F', subjects: ['Economía y Gestión de la Producción Industrial 6C.'], areas: ['cientifica'] },
-            { name: 'Emanuel Villalba', gender: 'M', subjects: ['Educación Física 6C.'], areas: ['humanistica'] },
-            { name: 'Cynthia Manías', gender: 'F', subjects: ['Análisis Matemático 6C.'], areas: ['cientifica'] },
-            { name: 'Damián Guereschi', gender: 'M', subjects: ['Ciudadanía y Política 6C.'], areas: ['humanistica'] },
-            { name: 'Maximiliano Sliakonis', gender: 'M', subjects: ['Filosofía 6C.'], areas: ['humanistica'] },
-            { name: 'Irene Molina', gender: 'F', subjects: ['Estadística 6C.'], areas: ['cientifica'] },
-            { name: 'Mara Ferrari', gender: 'F', subjects: ['Educación Artística (Teatro) 6C.'], areas: ['humanistica'] },
-            { name: 'Gustavo Cabral', gender: 'M', subjects: ['Instalación y Administración de Redes Locales 7C.', 'Marco Jurídico 7C.', 'Conexión de Redes Extendidas 7C.'], areas: ['tecnica', 'cientifica'] },
-            { name: 'Juan Domínguez', gender: 'M', subjects: ['Higiene y Seguridad Laboral 7C.'], areas: ['cientifica'] }
+            {name: 'Fabiana Roja', gender: 'F', photo: 'assets/img/roja.jpg', subjects: ['Lengua 4C.', 'Lengua 5C.', 'Lengua 6C.'], areas: ['humanistica'] },
+            {name: 'Silvana Sisti', gender: 'F', photo: 'assets/img/sisti.jpg', subjects: ['Biología 4C.'], areas: ['humanistica']},
+            { name: 'Laura Farías', gender: 'F', photo: 'assets/img/farias.jpg',subjects: ['Matemática 4C.', 'Matemática 5C.'], areas: ['cientifica'] },
+            { name: 'Miguel Martín', gender: 'M', photo: 'assets/img/martin.jpg',subjects: ['Laboratorio de Aplicaciones 4C.', 'Sistemas y Organizaciones 5C.', 'Laboratorio de Aplicaciones II 6C.', 'Bases de Datos 6C.'], areas: ['tecnica'] },
+            { name: 'Marcelo Liendo', gender: 'M', photo: 'assets/img/liendo.jpg',subjects: ['Educación Física 4C.', 'Educación Física 5C.'], areas: ['humanistica'] },
+            { name: 'Jorge Mira', gender: 'M', photo: 'assets/img/mira.jpg',subjects: ['Introducción a la Programación 4C.', 'Laboratorio de Sistemas Operativos 4C.', 'Laboratorio de Programación 6C.', 'Mantenimiento de Hardware 7C.'], areas: ['tecnica'] },
+            { name: 'Gabriela Luna', gender: 'F', photo: 'assets/img/luna.jpg', subjects: ['Inglés 4C.', 'Inglés Técnico 7C.'], areas: ['humanistica', 'cientifica'] },
+            { name: 'Germán Masgoret', gender: 'M', photo: 'assets/img/masgoret.jpg', subjects: ['Geografía 4C.', 'Historia 5C.'], areas: ['humanistica'] },
+            { name: 'Gabriela Orozco', gender: 'F', photo: 'assets/img/orozco.jpg', subjects: ['Física 4C.'], areas: ['cientifica'] },
+            { name: 'Gabriela Hoffman', gender: 'F', photo: 'assets/img/hoffman.jpg', subjects: ['Formación Artística 4C.'], areas: ['humanistica'] },
+            { name: 'Lucía Oyola', gender: 'F', photo: 'assets/img/oyola.jpg', subjects: ['Historia 4C.', 'Bioética y Cuidado de la Vida 6C.', 'Doctrina Social 7C.'], areas: ['humanistica', 'pastoral'] },
+            { name: 'Daniela Jacquelín', gender: 'F', photo: 'assets/img/jacquelin.jpg', subjects: ['Química 4C.'], areas: ['cientifica'] },
+            { name: 'Antonella Argüello', gender: 'F', photo: 'assets/img/argüello.jpg', subjects: ['Formación Cristiana 4C.'], areas: ['pastoral'] },
+            { name: 'Natalia Carzoglio', gender: 'F', photo: 'assets/img/carzoglio.jpg', subjects: ['Química 5C.'], areas: ['cientifica'] },
+            { name: 'Marcia Coria', gender: 'F', photo: 'assets/img/coria.jpg', subjects: ['Inglés 5C.', 'Inglés 6C.'], areas: ['humanistica'] },
+            { name: 'Mauricio Sliakonis', gender: 'M', photo: 'assets/img/sliakonis.jpg', subjects: ['Educación Artística 5C.'], areas: ['humanistica'] },
+            { name: 'Mariela Flores', gender: 'F', photo: 'assets/img/flores.jpg', subjects: ['Gestión de Datos 5C.'], areas: ['tecnica'] },
+            { name: 'Federico Maidana', gender: 'M', photo: 'assets/img/maidana.jpg', subjects: ['Física 5C.'], areas: ['cientifica'] },
+            { name: 'Tamara Piccinni', gender: 'F', photo:'assets/img/piccinni.jpg', subjects: ['Laboratorio de Hardware 5C.', 'Formación Ambiente y Trabajo 7C.', 'Emprendimientos 7C.'], areas: ['tecnica', 'practica', 'cientifica'] },
+            { name: 'Víctor Vella', gender: 'M', photo: 'assets/img/vella.jpg', subjects:['Formación Cristiana y Proyecto de Vida 5C.'], areas:['pastoral'] },
+            { name: 'Belén Heredia', gender: 'F', photo: 'assets/img/heredia.jpg', subjects: ['Psicología 5C.'], areas: ['humanistica'] },
+            { name: 'María Torres', gender: 'F', photo: 'assets/img/torres.jpg', subjects: ['Recursos Humanos 6C.'], areas: ['cientifica'] },
+            { name: 'Gladys Miranda', gender: 'F', photo: 'assets/img/miranda.jpg', subjects: ['Economía y Gestión de la Producción Industrial 6C.'], areas: ['cientifica'] },
+            { name: 'Emanuel Villalba', gender: 'M', photo: 'assets/img/villalba.jpg', subjects: ['Educación Física 6C.'], areas: ['humanistica'] },
+            { name: 'Cynthia Manías', gender: 'F', photo: 'assets/img/manias.jpg', subjects: ['Análisis Matemático 6C.'], areas: ['cientifica'] },
+            { name: 'Damián Guereschi', gender: 'M', photo: 'assets/img/guereschi.jpg', subjects: ['Ciudadanía y Política 6C.'], areas: ['humanistica'] },
+            { name: 'Maximiliano Sliakonis', gender: 'M', photo: 'assets/img/sliakonis.jpg', subjects: ['Filosofía 6C.'], areas: ['humanistica'] },
+            { name: 'Irene Molina', gender: 'F', photo: 'assets/img/molina.jpg', subjects: ['Estadística 6C.'], areas: ['cientifica'] },
+            { name: 'Mara Ferrari', gender: 'F', photo: 'assets/img/ferrari.jpg', subjects: ['Educación Artística (Teatro) 6C.'], areas: ['humanistica'] },
+            { name: 'Gustavo Cabral', gender: 'M', photo: 'assets/img/cabral.jpg', subjects: ['Instalación y Administración de Redes Locales 7C.', 'Marco Jurídico 7C.', 'Conexión de Redes Extendidas 7C.'], areas: ['tecnica', 'cientifica'] },
+            { name: 'Juan Domínguez', gender: 'M', photo: 'assets/img/domínguez.jpg', subjects: ['Higiene y Seguridad Laboral 7C.'], areas: ['cientifica'] }
         ];
 
         // Datos completos de los Profesores de Química
         const quimicaProfesoresData = [
-            { name: 'Cecilia Pereyra', gender: 'F', subjects: ['Geografía 4B.', 'Geografía 5B.'], areas: ['humanistica'] },
-            { name: 'Marcelo Liendo', gender: 'M', subjects: ['Educación Física 4B.', 'Educación Física 5B.'], areas: ['humanistica'] },
-            { name: 'Paula Buoni', gender: 'F', subjects: ['Química General 4B.', 'Química Analítica Cualitativa 5B.'], areas: ['tecnica'] },
-            { name: 'Juan Leonardi', gender: 'M', subjects: ['Química Inorgánica 4B.', 'Tecnología de los Materiales 4B.', 'Energías Renovables 5B.', 'Química Orgánica I 5B.', 'Química Cuantitativa II 7B.'], areas: ['tecnica', 'cientifica'] },
-            { name: 'Irene Molina', gender: 'F', subjects: ['Matemática 4B.', 'Estadística Aplicada 7B.'], areas: ['cientifica', 'tecnica'] },
-            { name: 'Gabriela Hoffman', gender: 'F', subjects: ['Formación Artística 4B.'], areas: ['humanistica'] },
-            { name: 'Antonella Saccenti', gender: 'F', subjects: ['Lengua 5B.'], areas: ['humanistica'] },
-            { name: 'Matías Ciaramella', gender: 'M', subjects: ['Lengua 4B.', 'Lengua 6B.'], areas: ['humanistica'] },
-            { name: 'Daniela Echazú', gender: 'F', subjects: ['Biología 4B.'], areas: ['cientifica'] },
-            { name: 'Antonella Argüello', gender: 'F', subjects: ['Formación Cristiana 4B.'], areas: ['pastoral'] },
-            { name: 'Magdalena Hakimian', gender: 'F', subjects: ['Inglés 4B.', 'Inglés 5B.', 'Inglés 6B.'], areas: ['humanistica'] },
-            { name: 'Federico Maidana', gender: 'M', subjects: ['Física 5B.', 'Operaciones y Procesos Químicos I 5B.', 'Química Industrial 6B.', 'Higiene y Seguridad Laboral 7B.'], areas: ['cientifica', 'tecnica'] },
-            { name: 'Nelson Marmol', gender: 'M', subjects: ['Matemática 5B.', 'Análisis Matemático 6B.'], areas: ['cientifica'] },
-            { name: 'Víctor Vella', gender: 'M', subjects: ['Formación Cristiana y Proyecto de Vida 5B.'], areas: ['pastoral'] },
-            { name: 'María Torres', gender: 'F', subjects: ['Psicología 5B.'], areas: ['humanistica'] },
-            { name: 'Lucía Oyola', gender: 'F', subjects: ['Historia 5B.', 'Bioética y Cuidado de la Vida 6B.', 'Doctrina Social 7B.'], areas: ['humanistica', 'pastoral'] },
-            { name: 'Alejandro Sosa', gender: 'M', subjects: ['Química Orgánica II 6B.', 'Operaciones y Procesos Químicos 6B.', 'Química Industrial II 7B.'], areas: ['tecnica'] },
-            { name: 'Gladys Miranda', gender: 'F', subjects: ['Economía y Gestión de la Producción Industrial 6B.', 'Emprendimientos 7B.'], areas: ['cientifica'] },
-            { name: 'Marcelo Esteller', gender: 'M', subjects: ['Educación Física 6B.'], areas: ['humanistica'] },
-            { name: 'Mara Ferrari', gender: 'F', subjects: ['Educación Artística 6B.'], areas: ['humanistica'] },
-            { name: 'María Jiménez', gender: 'F', subjects: ['Ciudadanía y Política 6B.'], areas: ['humanistica'] },
-            { name: 'Maximiliano Slakonra', gender: 'M', subjects: ['Filosofía 6B.'], areas: ['humanistica'] },
-            { name: 'Lucas Agazzi', gender: 'M', subjects: ['Formación Ambiente de Trabajo 7B.'], areas: ['practica'] },
-            { name: 'Flavio Molgara', gender: 'M', subjects: ['Marco Jurídico 7B.'], areas: ['cientifica'] },
-            { name: 'Marcia Coria', gender: 'F', subjects: ['Inglés Técnico 7B.'], areas: ['cientifica'] },
-            { name: 'Docente a confirmar', gender: 'M', subjects: ['Química Cuantitativa I 6B.'], areas: ['tecnica'] }
+            { name: 'Cecilia Pereyra', gender: 'F', photo: 'assets/img/pereyra.jpg', subjects: ['Geografía 4B.', 'Geografía 5B.'], areas: ['humanistica'] },
+            { name: 'Marcelo Liendo', gender: 'M', photo: 'assets/img/liendo.jpg', subjects: ['Educación Física 4B.', 'Educación Física 5B.'], areas: ['humanistica'] },
+            { name: 'Paula Buoni', gender: 'F', photo: 'assets/img/buoni.jpg', subjects: ['Química General 4B.', 'Química Analítica Cualitativa 5B.'], areas: ['tecnica'] },
+            { name: 'Juan Leonardi', gender: 'M', photo: 'assets/img/leonardi.jpg', subjects: ['Química Inorgánica 4B.', 'Tecnología de los Materiales 4B.', 'Energías Renovables 5B.', 'Química Orgánica I 5B.', 'Química Cuantitativa II 7B.'], areas: ['tecnica', 'cientifica'] },
+            { name: 'Irene Molina', gender: 'F', photo: 'assets/img/molina.jpg', subjects: ['Matemática 4B.', 'Estadística Aplicada 7B.'], areas: ['cientifica', 'tecnica'] },
+            { name: 'Gabriela Hoffman', gender: 'F', photo: 'assets/img/hoffman.jpg', subjects: ['Formación Artística 4B.'], areas: ['humanistica'] },
+            { name: 'Antonella Saccenti', gender: 'F', photo: 'assets/img/saccenti.jpg', subjects: ['Lengua 5B.'], areas: ['humanistica'] },
+            { name: 'Matías Ciaramella', gender: 'M', photo: 'assets/img/ciaramella.jpg', subjects: ['Lengua 4B.', 'Lengua 6B.'], areas: ['humanistica'] },
+            { name: 'Daniela Echazú', gender: 'F', photo: 'assets/img/echazu.jpg', subjects: ['Biología 4B.'], areas: ['cientifica'] },
+            { name: 'Antonella Argüello', gender: 'F', photo: 'assets/img/argüello.jpg', subjects: ['Formación Cristiana 4B.'], areas: ['pastoral'] },
+            { name: 'Magdalena Hakimian', gender: 'F', photo: 'assets/img/hakimian.jpg', subjects: ['Inglés 4B.', 'Inglés 5B.', 'Inglés 6B.'], areas: ['humanistica'] },
+            { name: 'Federico Maidana', gender: 'M', photo: 'assets/img/maidana.jpg', subjects: ['Física 5B.', 'Operaciones y Procesos Químicos I 5B.', 'Química Industrial 6B.', 'Higiene y Seguridad Laboral 7B.'], areas: ['cientifica', 'tecnica'] },
+            { name: 'Nelson Marmol', gender: 'M', photo: 'assets/img/marmol.jpg', subjects: ['Matemática 5B.', 'Análisis Matemático 6B.'], areas: ['cientifica'] },
+            { name: 'Víctor Vella', gender: 'M', photo: 'assets/img/vella.jpg', subjects: ['Formación Cristiana y Proyecto de Vida 5B.'], areas: ['pastoral'] },
+            { name: 'María Torres', gender: 'F', photo: 'assets/img/torres.jpg', subjects: ['Psicología 5B.'], areas: ['humanistica'] },
+            { name: 'Lucía Oyola', gender: 'F', photo: 'assets/img/oyola.jpg', subjects: ['Historia 5B.', 'Bioética y Cuidado de la Vida 6B.', 'Doctrina Social 7B.'], areas: ['humanistica', 'pastoral'] },
+            { name: 'Alejandro Sosa', gender: 'M', photo: 'assets/img/sosa.jpg', subjects: ['Química Orgánica II 6B.', 'Operaciones y Procesos Químicos 6B.', 'Química Industrial II 7B.'], areas: ['tecnica'] },
+            { name: 'Gladys Miranda', gender: 'F', photo: 'assets/img/miranda.jpg', subjects: ['Economía y Gestión de la Producción Industrial 6B.', 'Emprendimientos 7B.'], areas: ['cientifica'] },
+            { name: 'Marcelo Esteller', gender: 'M', photo: 'assets/img/esteller.jpg', subjects: ['Educación Física 6B.'], areas: ['humanistica'] },
+            { name: 'Mara Ferrari', gender: 'F', photo: 'assets/img/ferrari.jpg', subjects: ['Educación Artística 6B.'], areas: ['humanistica'] },
+            { name: 'María Jiménez', gender: 'F', photo: 'assets/img/jiménez.jpg', subjects: ['Ciudadanía y Política 6B.'], areas: ['humanistica'] },
+            { name: 'Maximiliano Slakonra', gender: 'M', photo: 'assets/img/sliakonis.jpg', subjects: ['Filosofía 6B.'], areas: ['humanistica'] },
+            { name: 'Lucas Agazzi', gender: 'M', photo: 'assets/img/agazzi.jpg', subjects: ['Formación Ambiente de Trabajo 7B.'], areas: ['practica'] },
+            { name: 'Flavio Molgara', gender: 'M', photo: 'assets/img/molgara.jpg', subjects: ['Marco Jurídico 7B.'], areas: ['cientifica'] },
+            { name: 'Marcia Coria', gender: 'F', photo: 'assets/img/coria.jpg', subjects: ['Inglés Técnico 7B.'], areas: ['cientifica'] },
+            { name: 'Docente a confirmar', gender: 'M', photo: 'assets/img/confirmar.jpg', subjects: ['Química Cuantitativa I 6B.'], areas: ['tecnica'] }
         ];
 
         // Plan de estudios de Química (4° a 7° Año)
@@ -5242,7 +5235,6 @@
                             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-3">${prof.title}</h3>
                             <p class="text-xs sm:text-sm text-[#4A3F3F] mb-1">${prof.p1}</p>
                             <p class="text-xs sm:text-sm text-[#4A3F3F] mb-2">${prof.p2}</p>
-                            <p class="text-xs font-bold text-tomato">${prof.important}</p>
                         </div>
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-7 max-w-2xl mx-auto">
                             <input id="inf-prof-search-input" type="text" value="${infTeacherSearch}" oninput="infTeacherSearch = this.value; renderInformaticaProfesoresList();" placeholder="${prof.searchPlaceholder}" class="w-full sm:flex-1 bg-white border border-blush/25 focus:border-tomato outline-none rounded-full px-4 py-2.5 text-xs sm:text-sm text-[#2D2424]">
@@ -5322,11 +5314,11 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-blush/15 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
-                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
-                                <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
-                            </svg>
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl shrink-0 overflow-hidden">
+                            <img src="${p.photo}" 
+                            alt="${p.name}"
+                            class="w-full h-full object-cover"
+                            style="object-position: center 20%;">
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -5646,8 +5638,7 @@
                         <div class="text-center max-w-3xl mx-auto mb-6">
                             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-3">${prof.title}</h3>
                             <p class="text-xs sm:text-sm text-[#4A3F3F] mb-1">${t.quimProfesoresSubtitle}</p>
-                            <p class="text-xs sm:text-sm text-[#4A3F3F] mb-2">${prof.p2}</p>
-                            <p class="text-xs font-bold text-tomato">${prof.important}</p>
+                            <p class="text-xs sm:text-sm text-[#4A3F3F] mb-2">Podés conocer quiénes te acompañarán de 4to a 7mo año.</p>
                         </div>
 
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-7 max-w-2xl mx-auto">
@@ -5728,11 +5719,15 @@
 
                 return `
                     <div class="bg-white rounded-[1.5rem] p-4 sm:p-5 border border-princeton/20 shadow-2xs flex items-center gap-4">
-                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl ${avatarBg} flex items-center justify-center shrink-0">
-                            <svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden shrink-0 ${p.photo ? '' : `${avatarBg} flex 
+                        items-center justify-center`}">
+                            ${p.photo
+                            ? `<img src="${p.photo}" alt="${p.name}" class="w-full h-full object-cover">`
+                            : `<svg viewBox="0 0 80 80" class="w-14 h-14" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="40" cy="28" r="14" fill="currentColor" fill-opacity="0.85"/>
                                 <path d="M16 70C16 54 26 46 40 46C54 46 64 54 64 70H16Z" fill="currentColor" fill-opacity="0.85"/>
-                            </svg>
+                            </svg>`
+                            }
                         </div>
                         <div class="min-w-0 flex-1">
                             <span class="block text-[11px] font-bold text-tomato">${roleLabel}</span>
@@ -6055,7 +6050,6 @@
                             <h3 class="font-serif text-2xl sm:text-3xl font-bold text-tomato mb-3">${prof.title}</h3>
                             <p class="text-xs sm:text-sm text-[#4A3F3F] mb-1">${t.constProfesoresSubtitle}</p>
                             <p class="text-xs sm:text-sm text-[#4A3F3F] mb-2">${prof.p2}</p>
-                            <p class="text-xs font-bold text-tomato">${prof.important}</p>
                         </div>
 
                         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-7 max-w-2xl mx-auto">
@@ -6654,110 +6648,108 @@
     <script>
         const preguntasVocacionales = [
         { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
-        { es: "Investigar el nivel de los precios", en: "Investigating price levels" },
-        { es: "Aprender estilos de pintura artística", en: "Learning artistic painting styles" },
-        { es: "Hacer esculturas", en: "Making sculptures" },
-        { es: "Trabaja en estudios jurídicos", en: "Working in law firms" },
-        { es: "Estudiar derecho Constitucional", en: "Studying Constitutional Law" },
-        { es: "Aprender a interpretar radiografías", en: "Learning to read X-rays" },
-        { es: "Asesorar a estudiantes sobre orientación vocacional", en: "Advising students on vocational guidance" },
-        { es: "Reparar la dentadura de una persona", en: "Fixing a person's teeth" },
-        { es: "Trabajar con equipos electrónicos", en: "Working with electronic equipment" },
-        { es: "Estudiar los ecosistemas de una región", en: "Studying the ecosystems of a region" },
-        { es: "Organizar la producción de una industria química", en: "Organizing production in a chemical industry" },
-        { es: "Aprender a diseñar y decorar ambientes", en: "Learning to design and decorate spaces" },
-        { es: "Realizar cálculos físicos matemáticos de estructuras", en: "Performing physical and mathematical calculations for structures" },
-        { es: "Resolver ejercicios matemáticos", en: "Solving math exercises" },
-        { es: "Planificar actividades administrativas de una empresa", en: "Planning administrative activities for a company" },
-        { es: "Realizar una crítica a una obra literaria y cinematográfica", en: "Writing a critique of a literary and film work" },
-        { es: "Conocer técnicas y materiales de dibujo artístico", en: "Learning artistic drawing techniques and materials" },
-        { es: "Enseñar contenidos matemáticos", en: "Teaching math topics" },
-        { es: "Exponer casos jurídicos en audiencias o juicios", en: "Presenting legal cases in hearings or trials" },
-        { es: "Aprender sobre causas y tratamientos de enfermedades", en: "Learning about causes and treatments of illnesses" },
-        { es: "Trabajar en centros médicos", en: "Working in medical centers" },
-        { es: "Armar y reparar computadoras", en: "Assembling and repairing computers" },
-        { es: "Diseñar páginas web", en: "Designing web pages" },
-        { es: "Planificar la construcción de obras fluviales y marítimas", en: "Planning the construction of river and marine works" },
-        { es: "Supervisar obras en construcción", en: "Supervising construction sites" },
-        { es: "Aprender a realizar pronósticos meteorológicos", en: "Learning to make weather forecasts" },
-        { es: "Realizar análisis químicos", en: "Performing chemical analyses" },
-        { es: "Investigar centros y movimientos sísmicos", en: "Researching seismic centers and movements" },
-        { es: "Aprender anatomía", en: "Learning anatomy" },
-        { es: "Evaluar daños de viviendas y edificios", en: "Assessing damage to homes and buildings" },
-        { es: "Construir puentes", en: "Building bridges" },
-        { es: "Investigar sobre diferentes enfermedades mentales", en: "Researching different mental illnesses" },
-        { es: "Ayudar a fortalecer músculos en una persona", en: "Helping strengthen a person's muscles" },
-        { es: "Llevar adelante pago de impuestos de otras personas", en: "Handling tax payments for other people" },
-        { es: "Asesorar financieramente a empresas", en: "Providing financial advice to companies" },
-        { es: "Aprender a tomar fotografías", en: "Learning how to take photographs" },
-        { es: "Crear música con software", en: "Creating music with software" },
-        { es: "Analizar las condiciones y habitat de vida de una familia", en: "Analyzing a family's living conditions and habitat" },
-        { es: "Tomar declaración a personas acusadas de un delito", en: "Taking statements from people accused of a crime" },
-        { es: "Diseñar juegos electrónicos", en: "Designing video games" },
-        { es: "Realizar edición de música y videos", en: "Editing music and videos" },
-        { es: "Aprender el proceso de formación de sustancias", en: "Learning how substances are formed" },
-        { es: "Realizar análisis químicos de productos industriales", en: "Performing chemical analyses of industrial products" },
-        { es: "Evaluar el estado de conexiones eléctricas", en: "Evaluating the condition of electrical connections" },
-        { es: "Asesorar a empresas constructoras", en: "Advising construction companies" },
-        { es: "Investigar dónde se almacena información tecnológica", en: "Researching where technological information is stored" },
-        { es: "Reconocer los diferentes programas informáticos", en: "Identifying different computer software programs" },
-        { es: "Elaborar dietas para pacientes", en: "Creating meal plans for patients" },
-        { es: "Trabajar en un banco", en: "Working at a bank" },
-        { es: "Analizar temas de comercio internacional", en: "Analyzing international trade topics" },
-        { es: "Enseñar a niños", en: "Teaching children" },
-        { es: "Analizar problemáticas sociales", en: "Analyzing social issues" },
-        { es: "Musicalizar obras teatrales", en: "Composing music for theater plays" },
-        { es: "Realizar artesanías", en: "Making crafts" },
-        { es: "Ayudar a personas enfermas", en: "Helping sick people" },
-        { es: "Ayudar a personas con problemas emocionales", en: "Helping people with emotional issues" },
-        { es: "Investigar sobre nuevas aplicaciones tecnológicas", en: "Researching new technological applications" },
-        { es: "Producir programas televisivos", en: "Producing television shows" },
-        { es: "Realizar experimentos para desarrollar productos curativos", en: "Running experiments to develop medicinal products" },
-        { es: "Analizar formulas científicas", en: "Analyzing scientific formulas" },
-        { es: "Investigar índice de precios", en: "Researching price indexes" },
-        { es: "Organizar una empresa", en: "Organizing a business" },
-        { es: "Supervisar las condiciones laborales de una empresa", en: "Supervising working conditions in a company" },
-        { es: "Investigar acontecimientos históricos", en: "Researching historical events" },
-        { es: "Leer partituras", en: "Reading sheet music" },
-        { es: "Organizar conciertos musicales", en: "Organizing music concerts" },
-        { es: "Trabajar en laboratorios", en: "Working in laboratories" },
-        { es: "Investigar el movimiento de los átomos", en: "Researching the movement of atoms" },
-        { es: "Diseñar y controlar planos de una casa", en: "Designing and reviewing house blueprints" },
-        { es: "Trabajar con elementos de geometría", en: "Working with geometry tools" },
-        { es: "Cuidar a personas con capacidades especiales", en: "Caring for people with special needs" },
-        { es: "Ayudar a niños con problemas de aprendizaje", en: "Helping children with learning difficulties" },
-        { es: "Aprender a realizar guiones con audiovisuales", en: "Learning to write audiovisual scripts" },
-        { es: "Diseñar ropa", en: "Designing clothing" },
-        { es: "Diseñar un sistema operativo informática", en: "Designing a computer operating system" },
-        { es: "Realizar diagnóstico de autos por computadoras", en: "Running computer diagnostics on cars" },
-        { es: "Diseñar amueblamientos para una casa", en: "Designing home furniture" },
-        { es: "Investigar sobre materiales ecológicos para la construcción de viviendas", en: "Researching eco-friendly materials for housing construction" },
-        { es: "Llevar adelante el pago de sueldo de trabajadores", en: "Managing payroll and wage payments for workers" },
-        { es: "Realizar el seguimiento contable de una empresa o comercio", en: "Handling accounting tracking for a business or store" },
-        { es: "Realizar una pintura mural", en: "Painting a mural" },
-        { es: "Tocar en una banda musical", en: "Playing in a music band" },
-        { es: "Realizar notas periodísticas para una radio", en: "Writing news stories for a radio station" },
-        { es: "Organizar las relaciones públicas de una empresa", en: "Organizing public relations for a company" },
-        { es: "Conocer sobre redes informáticas", en: "Learning about computer networks" },
-        { es: "Analizar logaritmos", en: "Analyzing logarithms" },
-        { es: "Conocer los componentes químicos de un alimento", en: "Learning the chemical components of a food" },
-        { es: "Experimentar con reactivos químicos", en: "Experimenting with chemical reagents" },
-        { es: "Diseñar un avión", en: "Designing an airplane" },
-        { es: "Diseñar obras de ingeniería", en: "Designing engineering projects" },
-        { es: "Programar Computadoras", en: "Programming computers" },
-        { es: "Diseñar el prototipo de una maquina", en: "Designing a machine prototype" },
-        { es: "Curar animales", en: "Treating animals" },
-        { es: "Socorrer emergencias médicas", en: "Responding to medical emergencies" },
-        { es: "Conocer y viajar por distintos lugares del mundo", en: "Traveling to and exploring different places around the world" },
-        { es: "Enseñar deportes", en: "Teaching sports" },
-        { es: "Conocer diferentes drogas y sus efectos", en: "Learning about different drugs and their effects" },
-        { es: "Experimentar para descubrir nuevas variedades de vegetales", en: "Experimenting to discover new plant varieties" },
-        { es: "Conocer y realizar cálculos estructurales de una vivienda", en: "Learning and performing structural calculations for a home" },
-        { es: "Realizar el diseño de donde ubicar viviendas en una ciudad", en: "Planning where to locate housing within a city" },
-        { es: "Asesorar a personas sobre inversiones financieras", en: "Advising people on financial investments" },
-        { es: "Aprender algebra", en: "Learning algebra" },
-        { es: "Investigar sobre las propiedades de diferentes metales", en: "Researching the properties of different metals" },
-        { es: "Asesorar sobre el cuidado de los vegetales", en: "Advising on plant care" }
+        { es: "Investigar el nivel de los precios", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender estilos de pintura artística", en: "Working on solving physical and mathematical calculations" },
+        { es: "Hacer esculturas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar en estudios jurídicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Estudiar derecho constitucional", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender a interpretar radiografías", en: "Working on solving physical and mathematical calculations" },
+        { es: "Asesorar a estudiantes sobre orientación vocacional", en: "Working on solving physical and mathematical calculations" },
+        { es: "Reparar la dentadura de una persona", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar con equipos electrónicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Estudiar los ecosistemas de una región", en: "Working on solving physical and mathematical calculations" },
+        { es: "Organizar la producción de una industria química", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender a diseñar y decorar ambientes", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar cálculos físicos matemáticos de estructuras", en: "Working on solving physical and mathematical calculations" },
+        { es: "Resolver ejercicios matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Planificar actividades administrativas de una empresa", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar una crítica a una obra literaria y cinematográfica", en: "Working on solving physical and mathematical calculations" },
+        { es: "Conocer técnicas y materiales de dibujo artístico", en: "Working on solving physical and mathematical calculations" },
+        { es: "Enseñar contenidos matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Exponer casos jurídicos en audiencias o juicios", en: "Working on solving physical and mathematical calculations" },{ es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender sobre causas y tratamientos de enfermedades", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar en centros médicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Armar y reparar computadoras", en: "Working on solving physical and mathematical calculations" },{ es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Diseñar páginas web", en: "Working on solving physical and mathematical calculations" },
+        { es: "Planificar la construcción de obras fluviales y marítimas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Supervisar obras en construcción", en: "Working on solving physical and mathematical calculations" },{ es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender a realizar pronósticos metereológicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar análisis químicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar centros y movimientos sísmicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender anatomía", en: "Working on solving physical and mathematical calculations" },
+        { es: "Evaluar daños de viviendas y edificios", en: "Working on solving physical and mathematical calculations" },
+        { es: "Construir puentes", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar sobre diferentes enfermedades mentales", en: "Working on solving physical and mathematical calculations" },
+        { es: "Ayudar a fortalecer músculos en una persona", en: "Working on solving physical and mathematical calculations" },
+        { es: "Llevar aadelante pago de impuestos de otras personas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Asesorar financieramente a empresas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Crear música con software", en: "Working on solving physical and mathematical calculations" },
+        { es: "Analizar las condiciones y habitat de vida de una familia", en: "Working on solving physical and mathematical calculations" },
+        { es: "Tomar declaración a personas acusadas de un delito", en: "Working on solving physical and mathematical calculations" },
+        { es: "Diseñar juegos electrónicos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar edición de música y videos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Aprender el proceso de formación de sustancias", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar análisis químicos de productos industriales", en: "Working on solving physical and mathematical calculations" },
+        { es: "Evaluar el estado de conexiones eléctricas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Asesorar a empresas constructoras", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar a donde se almacena información tecnológica", en: "Working on solving physical and mathematical calculations" },
+        { es: "Reconocer los diferentes programas informáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Elaborar dietas para pacientes", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar en un banco", en: "Working on solving physical and mathematical calculations" },
+        { es: "Analizar temas de comercio internacional", en: "Working on solving physical and mathematical calculations" },
+        { es: "Enseñar a niños", en: "Working on solving physical and mathematical calculations" },
+        { es: "Analizar problemáticas sociales", en: "Working on solving physical and mathematical calculations" },
+        { es: "Musicalizar obras teatrales", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar artesanías", en: "Working on solving physical and mathematical calculations" },
+        { es: "Ayudar a personas enfermas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Ayudar a personas con problemas emocionales", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar sobre nuevas aplicaciones tecnológicas", en: "Working on solving physical and mathematical calculations" },{ es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Producir programas televisivos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Realizar experimentos para desarrollar productos curativos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Analizar fórmulas científicas", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar índice de precios", en: "Working on solving physical and mathematical calculations" },
+        { es: "Organizar una empresa", en: "Working on solving physical and mathematical calculations" },
+        { es: "Supervisar las condiciones laborales de una empresa", en: "Working on solving physical and mathematical calculations" },
+        { es: "Investigar acontecimientos históricos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Leer partituras", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },{ es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+        { es: "Trabajar resolviendo cálculos físicos y matemáticos", en: "Working on solving physical and mathematical calculations" },
+
     ];
 
         const questText = {
